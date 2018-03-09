@@ -23,6 +23,12 @@ public class BrowserPanel extends UiPart<Region> {
     public static final String DEFAULT_PAGE = "default.html";
     public static final String SEARCH_PAGE_URL =
             "https://se-edu.github.io/addressbook-level4/DummySearchPage.html?name=";
+    public static final String MODULE_PAGE_URL =
+            "https://nus-cs2103-ay1718s2.github.io/";
+    public static final String OUTCOMES_PAGE_PATH =
+            "website/schedule/week";
+    public static final String OUTCOMES_PAGE_DOCUMENT =
+            "/outcomes.html";
 
     private static final String FXML = "BrowserPanel.fxml";
 
@@ -43,6 +49,11 @@ public class BrowserPanel extends UiPart<Region> {
 
     private void loadPersonPage(Person person) {
         loadPage(SEARCH_PAGE_URL + person.getName().fullName);
+    }
+
+    // TODO: update loading to use API to pull data from Google Tasks
+    private void loadOutcomesPage(int index) {
+        loadPage(MODULE_PAGE_URL + OUTCOMES_PAGE_PATH + index + OUTCOMES_PAGE_DOCUMENT);
     }
 
     public void loadPage(String url) {
