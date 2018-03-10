@@ -12,6 +12,7 @@ import javafx.scene.layout.Region;
 import javafx.scene.web.WebView;
 import seedu.address.MainApp;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.commons.events.ui.PageLoadChangedEvent;
 import seedu.address.commons.events.ui.PersonPanelSelectionChangedEvent;
 import seedu.address.model.person.Person;
 
@@ -52,7 +53,8 @@ public class BrowserPanel extends UiPart<Region> {
     }
 
     // TODO: update loading to use API to pull data from Google Tasks
-    private void loadOutcomesPage(int index) {
+    public void loadOutcomesPage(int index) {
+        System.out.println(MODULE_PAGE_URL + OUTCOMES_PAGE_PATH + index + OUTCOMES_PAGE_DOCUMENT);
         loadPage(MODULE_PAGE_URL + OUTCOMES_PAGE_PATH + index + OUTCOMES_PAGE_DOCUMENT);
     }
 
@@ -79,5 +81,11 @@ public class BrowserPanel extends UiPart<Region> {
     private void handlePersonPanelSelectionChangedEvent(PersonPanelSelectionChangedEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
         loadPersonPage(event.getNewSelection().person);
+    }
+    
+    @Subscribe
+    private void handlePageLoadChangedEvent(PageLoadChangedEvent event) {
+        logger.info(LogsCenter.getEventHandlingLogMessage(event));
+        loadOutcomesPage(event.getPageIndex());
     }
 }
