@@ -48,13 +48,14 @@ public class BrowserPanel extends UiPart<Region> {
         registerAsAnEventHandler(this);
     }
 
+    // TODO: replace with a default page for each person when API has been implemented
     private void loadPersonPage(Person person) {
-        loadPage(SEARCH_PAGE_URL + person.getName().fullName);
+        loadOutcomesPage(2);
     }
 
     // TODO: update loading to use API to pull data from Google Tasks
+    // TODO: also check which person is currently selected to display the corresponding data
     public void loadOutcomesPage(int index) {
-        System.out.println(MODULE_PAGE_URL + OUTCOMES_PAGE_PATH + index + OUTCOMES_PAGE_DOCUMENT);
         loadPage(MODULE_PAGE_URL + OUTCOMES_PAGE_PATH + index + OUTCOMES_PAGE_DOCUMENT);
     }
 
