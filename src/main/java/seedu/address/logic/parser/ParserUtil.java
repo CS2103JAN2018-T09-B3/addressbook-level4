@@ -51,7 +51,7 @@ public class ParserUtil {
      */
     public static Index parseIndexRange(String oneBasedIndex) throws IllegalValueException {
         String trimmedIndex = oneBasedIndex.trim();
-        if (!StringUtil.isNonZeroUnsignedInteger(trimmedIndex) && !StringUtil.isWithinRange(trimmedIndex)) {
+        if (!StringUtil.isNonZeroUnsignedInteger(trimmedIndex) || !StringUtil.isWithinRange(trimmedIndex)) {
             throw new IllegalValueException(MESSAGE_INVALID_INDEX);
         }
         return Index.fromOneBased(Integer.parseInt(trimmedIndex));
