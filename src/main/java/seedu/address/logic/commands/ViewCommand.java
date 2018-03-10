@@ -1,17 +1,31 @@
 package seedu.address.logic.commands;
 
+import seedu.address.commons.core.EventsCenter;
+import seedu.address.commons.core.index.Index;
+import seedu.address.commons.events.ui.PageLoadChangedEvent;
+
 /**
  * View the web view of outcomes of a particular week.
  */
 public class ViewCommand extends Command {
 
+    public static final int MIN_WEEK_NUMBER = 2;
+    public static final int MAX_WEEK_NUMBER = 13;
+    
     public static final String COMMAND_WORD = "view";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             // TODO: change description and parameter range when appropriate
             + ": Toggle view to display outcomes in the specified week.\n"
-            + "Parameters: INDEX (must be a positive integer ranging from 1 to 13)\n"
-            + "Example: " + COMMAND_WORD + " 1";
+            + "Parameters: INDEX (must be a positive integer ranging from "
+            + MIN_WEEK_NUMBER + " to " + MAX_WEEK_NUMBER + "\n"
+            + "Example: " + COMMAND_WORD + " 2";
 
     public static final String MESSAGE_SUCCESS = "Viewing week %1$s";
+
+    private final Index targetIndex;
+
+    public ViewCommand(Index targetIndex) {
+        this.targetIndex = targetIndex;
+    }
 }
