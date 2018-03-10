@@ -28,4 +28,10 @@ public class ViewCommand extends Command {
     public ViewCommand(Index targetIndex) {
         this.targetIndex = targetIndex;
     }
+
+    @Override
+    public CommandResult execute() {
+        EventsCenter.getInstance().post(new PageLoadChangedEvent(targetIndex));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, targetIndex.getOneBased()));
+    }
 }
