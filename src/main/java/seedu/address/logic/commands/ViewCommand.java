@@ -11,7 +11,7 @@ public class ViewCommand extends Command {
 
     public static final int MIN_WEEK_NUMBER = 2;
     public static final int MAX_WEEK_NUMBER = 13;
-    
+
     public static final String COMMAND_WORD = "view";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
