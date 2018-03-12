@@ -853,6 +853,25 @@ _{More to be added}_
 (For all use cases below, the *System* is the `AddressBook` and the *Actor* is the `user`, unless specified otherwise)
 
 [discrete]
+=== Use case: View contents of a specific week
+
+*MSS*
+
+1.  User requests to view a specific week
+2.  AddressBook shows content of the specified week
++
+Use case ends.
+
+*Extensions*
+
+* 1a. Specified week does not exist.
++
+[none]
+** 1a1. AddressBook shows an error message.
++
+Use case ends.
+
+[discrete]
 === Use case: Delete person
 
 *MSS*
