@@ -15,23 +15,23 @@ public class MajorTest {
     }
 
     @Test
-    public void constructor_invalidAddress_throwsIllegalArgumentException() {
-        String invalidAddress = "";
-        Assert.assertThrows(IllegalArgumentException.class, () -> new Major(invalidAddress));
+    public void constructor_invalidMajor_throwsIllegalArgumentException() {
+        String invalidMajor = "";
+        Assert.assertThrows(IllegalArgumentException.class, () -> new Major(invalidMajor));
     }
 
     @Test
-    public void isValidAddress() {
-        // null address
-        Assert.assertThrows(NullPointerException.class, () -> Major.isValidAddress(null));
+    public void isValidMajor() {
+        // null major
+        Assert.assertThrows(NullPointerException.class, () -> Major.isValidMajor(null));
 
-        // invalid addresses
-        assertFalse(Major.isValidAddress("")); // empty string
-        assertFalse(Major.isValidAddress(" ")); // spaces only
+        // invalid majors
+        assertFalse(Major.isValidMajor("")); // empty string
+        assertFalse(Major.isValidMajor(" ")); // spaces only
 
-        // valid addresses
-        assertTrue(Major.isValidAddress("Blk 456, Den Road, #01-355"));
-        assertTrue(Major.isValidAddress("-")); // one character
-        assertTrue(Major.isValidAddress("Leng Inc; 1234 Market St; San Francisco CA 2349879; USA")); // long address
+        // valid majors
+        assertTrue(Major.isValidMajor("Blk 456, Den Road, #01-355"));
+        assertTrue(Major.isValidMajor("-")); // one character
+        assertTrue(Major.isValidMajor("Leng Inc; 1234 Market St; San Francisco CA 2349879; USA")); // long major
     }
 }

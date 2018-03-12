@@ -10,6 +10,7 @@ import javax.xml.bind.annotation.XmlElement;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.person.Major;
+import seedu.address.model.person.Year;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
@@ -31,6 +32,8 @@ public class XmlAdaptedPerson {
     private String email;
     @XmlElement(required = true)
     private String major;
+    @XmlElement(required = true)
+    private String year;
 
     @XmlElement
     private List<XmlAdaptedTag> tagged = new ArrayList<>();
@@ -44,11 +47,12 @@ public class XmlAdaptedPerson {
     /**
      * Constructs an {@code XmlAdaptedPerson} with the given person details.
      */
-    public XmlAdaptedPerson(String name, String phone, String email, String major, List<XmlAdaptedTag> tagged) {
+    public XmlAdaptedPerson(String name, String phone, String email, String major, String year, List<XmlAdaptedTag> tagged) {
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.major = major;
+        this.year = year;
         if (tagged != null) {
             this.tagged = new ArrayList<>(tagged);
         }
@@ -64,6 +68,7 @@ public class XmlAdaptedPerson {
         phone = source.getPhone().value;
         email = source.getEmail().value;
         major = source.getMajor().value;
+        year = source.getYear().value;
         tagged = new ArrayList<>();
         for (Tag tag : source.getTags()) {
             tagged.add(new XmlAdaptedTag(tag));
@@ -113,8 +118,16 @@ public class XmlAdaptedPerson {
         }
         final Major major = new Major(this.major);
 
+        if (this.year == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Year.class.getSimpleName()));
+        }
+        if (!Year.isValidYear(this.year)) {
+            throw new IllegalValueException(Year.MESSAGE_YEAR_CONSTRAINTS);
+        }
+        final Year year = new Year(this.year);
+
         final Set<Tag> tags = new HashSet<>(personTags);
-        return new Person(name, phone, email, major, tags);
+        return new Person(name, phone, email, major, year, tags);
     }
 
     @Override
@@ -132,6 +145,7 @@ public class XmlAdaptedPerson {
                 && Objects.equals(phone, otherPerson.phone)
                 && Objects.equals(email, otherPerson.email)
                 && Objects.equals(major, otherPerson.major)
+                && Objects.equals(major, otherPerson.year)
                 && tagged.equals(otherPerson.tagged);
     }
 }

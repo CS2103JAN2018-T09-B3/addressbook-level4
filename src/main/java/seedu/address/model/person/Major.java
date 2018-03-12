@@ -32,7 +32,7 @@ public class Major {
     }
 
     /**
-     * Returns true if a given string is a valid person email.
+     * Returns true if a given string is a valid person major.
      */
     public static boolean isValidMajor(String test) {
         return test.matches(MAJOR_VALIDATION_REGEX);
