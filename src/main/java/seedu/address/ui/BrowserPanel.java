@@ -30,6 +30,7 @@ public class BrowserPanel extends UiPart<Region> {
             "website/schedule/week";
     public static final String OUTCOMES_PAGE_DOCUMENT =
             "/outcomes.html";
+    public static final int CURRENT_WEEK = 2;
 
     private static final String FXML = "BrowserPanel.fxml";
 
@@ -50,7 +51,7 @@ public class BrowserPanel extends UiPart<Region> {
 
     // TODO: replace with a default page for each person when API has been implemented
     private void loadPersonPage(Person person) {
-        loadOutcomesPage(2);
+        loadOutcomesPage(CURRENT_WEEK);
     }
 
     // TODO: update loading to use API to pull data from Google Tasks
