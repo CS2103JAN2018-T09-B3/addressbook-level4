@@ -3,6 +3,7 @@
 <person>
     <phone>9482424</phone>
     <email>hans@example</email>
-    <major>4th street</major>
+    <major>Computer Science</major>
+    <year>2</year>
     <tagged>friends</tagged>
 </person>

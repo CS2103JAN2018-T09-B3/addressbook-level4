@@ -6,6 +6,7 @@
         <lastName>Doe</lastName>
         <githubUsername></githubUsername>
         <major></major>
+        <year></year>
     </persons>
     <tags>
         <name>Friends</name>

@@ -125,8 +125,8 @@ public class ParserUtil {
     public static Year parseYear(String year) throws IllegalValueException {
         requireNonNull(year);
         String trimmedYear = year.trim();
-        if (!Major.isValidMajor(trimmedYear)) {
-            throw new IllegalValueException(Major.MESSAGE_MAJOR_CONSTRAINTS);
+        if (!Year.isValidYear(trimmedYear)) {
+            throw new IllegalValueException(Year.MESSAGE_YEAR_CONSTRAINTS);
         }
         return new Year(trimmedYear);
     }
