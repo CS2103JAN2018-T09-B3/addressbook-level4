@@ -18,7 +18,7 @@ public class ViewCommand extends Command {
             // TODO: change description and parameter range when appropriate
             + ": Toggle view to display outcomes in the specified week.\n"
             + "Parameters: INDEX (must be a positive integer ranging from "
-            + MIN_WEEK_NUMBER + " to " + MAX_WEEK_NUMBER + "\n"
+            + MIN_WEEK_NUMBER + " to " + MAX_WEEK_NUMBER + ")\n"
             + "Example: " + COMMAND_WORD + " 2";
 
     public static final String MESSAGE_SUCCESS = "Viewing week %1$s";
