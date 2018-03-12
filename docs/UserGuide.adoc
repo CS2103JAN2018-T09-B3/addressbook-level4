@@ -170,7 +170,7 @@ Format: `view INDEX`
 ****
 
 Examples:
-*`view 2`
+* `view 2`
 
 === Listing entered commands : `history`
 
