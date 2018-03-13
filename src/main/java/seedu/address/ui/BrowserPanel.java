@@ -88,6 +88,6 @@ public class BrowserPanel extends UiPart<Region> {
     @Subscribe
     private void handlePageLoadChangedEvent(PageLoadChangedEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
-        loadOutcomesPage(event.getPageIndex()); 
+        loadOutcomesPage(event.getPageIndex());  
     }
 }
