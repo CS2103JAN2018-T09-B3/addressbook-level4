@@ -34,4 +34,11 @@ public class ViewCommand extends Command {
         EventsCenter.getInstance().post(new PageLoadChangedEvent(targetIndex));
         return new CommandResult(String.format(MESSAGE_SUCCESS, targetIndex.getOneBased()));
     }
+
+    @Override
+    public boolean equals(Object other) {
+        return other == this // short circuit if same object
+                || (other instanceof ViewCommand // instanceof handles nulls
+                && this.targetIndex.equals(((ViewCommand) other).targetIndex)); // state check
+    }
 }
