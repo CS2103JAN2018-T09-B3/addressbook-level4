@@ -17,7 +17,7 @@ By: `Team T09-B3`      Since: `Jun 2016`      Licence: `MIT`
 
 == Introduction
 
-AddressBook Level 4 (AB4) is for those who *prefer to use a desktop app for managing contacts*. More importantly, AB4 is *optimized for those who prefer to work with a Command Line Interface* (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB4 can get your contact management tasks done faster than traditional GUI apps. Interested? Jump to the <<Quick Start>> to get started. Enjoy!
+Progress Checker is for those who *prefer to use a desktop app for managing contacts*. More importantly, Progress Checker is *optimized for those who prefer to work with a Command Line Interface* (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, Progress Checker can get your learning outcome tasks done faster than traditional GUI apps. Interested? Jump to the <<Quick Start>> to get started. Enjoy!
 
 == Quick Start
 
@@ -27,8 +27,8 @@ AddressBook Level 4 (AB4) is for those who *prefer to use a desktop app for mana
 Having any Java 8 version is not enough. +
 This app will not work with earlier versions of Java 8.
 +
-.  Download the latest `addressbook.jar` link:{repoURL}/releases[here].
-.  Copy the file to the folder you want to use as the home folder for your Address Book.
+.  Download the latest `progresschecker.jar` link:{repoURL}/releases[here].
+.  Copy the file to the folder you want to use as the home folder for your Progress Checker.
 .  Double-click the file to start the app. The GUI should appear in a few seconds.
 +
 image::Ui.png[width="790"]
@@ -38,7 +38,7 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 .  Some example commands you can try:
 
 * *`list`* : lists all contacts
-* **`add`**`n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : adds a contact named `John Doe` to the Address Book.
+* **`add`**`n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : adds a contact named `John Doe` to the Progress Checker.
 * **`delete`**`3` : deletes the 3rd contact shown in the current list
 * *`exit`* : exits the app
 
@@ -62,7 +62,7 @@ Format: `help OR h`
 
 === Adding a person: `add OR a`
 
-Adds a person to the address book +
+Adds a person to the progress checker +
 Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]...` +
         `OR` +
        `a n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]...`
@@ -79,12 +79,12 @@ Examples:
 
 === Listing all persons : `list OR l`
 
-Shows a list of all persons in the address book. +
+Shows a list of all persons in the progress checker. +
 Format: `list OR l`
 
 === Editing a person : `edit OR e`
 
-Edits an existing person in the address book. +
+Edits an existing person in the progress checker. +
 Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]...` +
 `e INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]...`
 
@@ -125,7 +125,7 @@ Returns any person having names `Betsy`, `Tim`, or `John`
 
 === Deleting a person : `delete or d`
 
-Deletes the specified person from the address book. +
+Deletes the specified person from the progress checker. +
 Format: `delete INDEX OR d INDEX`
 
 ****
@@ -138,7 +138,7 @@ Examples:
 
 * `list` +
 `delete 2` +
-Deletes the 2nd person in the address book.
+Deletes the 2nd person in the progress checker.
 * `find Betsy` +
 `d 1` +
 Deletes the 1st person in the results of the `find` command.
@@ -158,7 +158,7 @@ Examples:
 
 * `list` +
 `select 2` +
-Selects the 2nd person in the address book.
+Selects the 2nd person in the progress checker.
 * `find Betsy` +
 `s 1` +
 Selects the 1st person in the results of the `find` command.
@@ -186,12 +186,12 @@ Pressing the kbd:[&uarr;] and kbd:[&darr;] arrows will display the previous and 
 // tag::undoredo[]
 === Undoing previous command : `undo OR u`
 
-Restores the address book to the state before the previous _undoable_ command was executed. +
+Restores the progress checker to the state before the previous _undoable_ command was executed. +
 Format: `undo OR u`
 
 [NOTE]
 ====
-Undoable commands: those commands that modify the address book's content (`add`, `delete`, `edit` and `clear`).
+Undoable commands: those commands that modify the progress checker's content (`add`, `delete`, `edit` and `clear`).
 ====
 
 Examples:
@@ -240,7 +240,7 @@ Format: `refresh OR r`
 
 === Clearing all entries : `clear OR c`
 
-Clears all entries from the address book. +
+Clears all entries from the progress checker. +
 Format: `clear OR c`
 
 === Exiting the program : `exit OR e`
@@ -250,13 +250,13 @@ Format: `exit OR e`
 
 === Saving the data
 
-Address book data are saved in the hard disk automatically after any command that changes the data. +
+progress checker data are saved in the hard disk automatically after any command that changes the data. +
 There is no need to save manually.
 
 == FAQ
 
 *Q*: How do I transfer my data to another Computer? +
-*A*: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Address Book folder.
+*A*: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous progress checker folder.
 
 == Command Summary
 
