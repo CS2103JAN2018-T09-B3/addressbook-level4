@@ -274,6 +274,8 @@ e.g. `find James Jake`
 * *Help* : `help`
 * *Select* : `select INDEX` +
 e.g.`select 2`
+* *View* : `view INDEX` +
+e.g. `view 5`
 * *History* : `history`
 * *Undo* : `undo`
 * *Redo* : `redo`
