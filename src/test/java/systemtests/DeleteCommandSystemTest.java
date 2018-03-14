@@ -29,11 +29,9 @@ public class DeleteCommandSystemTest extends AddressBookSystemTest {
     public void delete() {
         /* ----------------- Performing delete operation while an unfiltered list is being shown -------------------- */
 
-        /* Case: delete the first person in the list with mixed-case,
-         * command with leading spaces and trailing spaces -> deleted
-         */
+        /* Case: delete the first person in the list, command with leading spaces and trailing spaces -> deleted */
         Model expectedModel = getModel();
-        String command = "     " + "DeLEte" + "      " + INDEX_FIRST_PERSON.getOneBased() + "       ";
+        String command = "     " + DeleteCommand.COMMAND_WORD + "      " + INDEX_FIRST_PERSON.getOneBased() + "       ";
         Person deletedPerson = removePerson(expectedModel, INDEX_FIRST_PERSON);
         String expectedResultMessage = String.format(MESSAGE_DELETE_PERSON_SUCCESS, deletedPerson);
         assertCommandSuccess(command, expectedModel, expectedResultMessage);
@@ -57,6 +55,16 @@ public class DeleteCommandSystemTest extends AddressBookSystemTest {
         /* Case: delete the middle person in the list -> deleted */
         Index middlePersonIndex = getMidIndex(getModel());
         assertCommandSuccess(middlePersonIndex);
+
+        /* Case: delete the middle person in the list, command in mixed casing -> deleted */
+        Model modelBeforeDeletingLastPerson = getModel();
+        Index lastPersonNewIndex = getLastIndex(modelBeforeDeletingLastPerson);
+        Model expectedNewModel = getModel();
+        Person deletedNewPerson = removePerson(expectedNewModel, lastPersonNewIndex);
+        String expectedNewResultMessage = String.format(MESSAGE_DELETE_PERSON_SUCCESS, deletedNewPerson);
+
+        assertCommandSuccess(
+                "DeleTE" + " " + lastPersonNewIndex.getOneBased(), expectedNewModel, expectedNewResultMessage);
 
         /* ------------------ Performing delete operation while a filtered list is being shown ---------------------- */
 
