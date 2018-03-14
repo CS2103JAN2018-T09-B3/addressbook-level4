@@ -5,20 +5,20 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.6.1">
-<title>AddressBook Level 4 - Developer Guide</title>
+<title>ProgressChecker - Developer Guide</title>
 <link rel="stylesheet" href="stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 <link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css">
 </head>
 <body class="article">
 <div id="header">
-<h1>AddressBook Level 4 - Developer Guide</h1>
+<h1>ProgressChecker - Developer Guide</h1>
 </div>
 <div id="content">
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>By: <code>Team T09-B3</code>      Since: <code>Jun 2016</code>      Licence: <code>MIT</code></p>
+<p>By: <code>Team T09-B3</code>      Since: <code>Feb 2018</code>      Licence: <code>MIT</code></p>
 </div>
 </div>
 <div id="toc" class="toc">
@@ -2070,7 +2070,7 @@ for <code>RemarkCommandParser</code>.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">upload a profile picture (not larger than 3MB)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">upload a profile picture</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">help others to recognize me</p></td>
 </tr>
 <tr>
@@ -2096,7 +2096,7 @@ for <code>RemarkCommandParser</code>.</p>
 <h2 id="use-cases"><a class="link" href="#use-cases">Appendix D: Use Cases</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>(For all use cases below, the <strong>System</strong> is the <code>ProgressCheck</code> and the <strong>Actor</strong> is the <code>user</code>, unless specified otherwise)</p>
+<p>(For all use cases below, the <strong>System</strong> is the <code>AddressBook</code> and the <strong>Actor</strong> is the <code>user</code>, unless specified otherwise)</p>
 </div>
 <h3 id="use-case-view-contents-of-a-specific-week" class="discrete">Use case: View contents of a specific week</h3>
 <div class="paragraph">
@@ -2108,7 +2108,7 @@ for <code>RemarkCommandParser</code>.</p>
 <p>User requests to view a specific week</p>
 </li>
 <li>
-<p>ProgressCheck shows content of the specified week</p>
+<p>AddressBook shows content of the specified week</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2125,7 +2125,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a1. ProgressCheck shows an error message.</p>
+<p>1a1. AddressBook shows an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2145,13 +2145,13 @@ for <code>RemarkCommandParser</code>.</p>
 <p>User requests to list persons</p>
 </li>
 <li>
-<p>ProgressCheck shows a list of persons</p>
+<p>AddressBook shows a list of persons</p>
 </li>
 <li>
 <p>User requests to delete a specific person in the list</p>
 </li>
 <li>
-<p>ProgressCheck deletes the person</p>
+<p>AddressBook deletes the person</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2174,7 +2174,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>3a1. ProgressCheck shows an error message.</p>
+<p>3a1. AddressBook shows an error message.</p>
 <div class="paragraph">
 <p>Use case resumes at step 2.</p>
 </div>
@@ -2194,13 +2194,13 @@ for <code>RemarkCommandParser</code>.</p>
 <p>User requests to view tasks in a specific week</p>
 </li>
 <li>
-<p>ProgressCheck shows tasks in the specified week</p>
+<p>AddressBook shows tasks in the specified week</p>
 </li>
 <li>
 <p>User requests to add a new task in a specific week</p>
 </li>
 <li>
-<p>ProgressCheck adds a new task to the existing list</p>
+<p>AddressBook adds a new task to the existing list</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2217,7 +2217,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a1. ProgressCheck shows an error message.</p>
+<p>1a1. AddressBook shows an error message.</p>
 <div class="paragraph">
 <p>Use case resumes at step 2.</p>
 </div>
@@ -2237,13 +2237,13 @@ for <code>RemarkCommandParser</code>.</p>
 <p>User requests to view tasks in a specific week</p>
 </li>
 <li>
-<p>ProgressCheck shows tasks in the specified week</p>
+<p>AddressBook shows tasks in the specified week</p>
 </li>
 <li>
 <p>User requests to complete a task in a specific week</p>
 </li>
 <li>
-<p>ProgressCheck marks specified task as complete</p>
+<p>AddressBook marks specified task as complete</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2260,7 +2260,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a1. ProgressCheck shows an error message.</p>
+<p>1a1. AddressBook shows an error message.</p>
 <div class="paragraph">
 <p>Use case resumes at step 2.</p>
 </div>
@@ -2270,6 +2270,28 @@ for <code>RemarkCommandParser</code>.</p>
 </li>
 </ul>
 </div>
+<h3 id="use-case-find-person" class="discrete">Use case: find person</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User types find</p>
+</li>
+<li>
+<p>ProgressCheck automatically shows the list dynamically without the user needing to press enter key</p>
+</li>
+<li>
+<p>User need not need to type the whole name, substrings will generate results</p>
+</li>
+<li>
+<p>ProgressCheck displays the necessary results</p>
+</li>
+</ol>
+</div>
+<div class="exampleblock">
+<div class="content">
 <div class="ulist none">
 <ul class="none">
 <li>
@@ -2283,7 +2305,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>3a1. ProgressCheck shows an error message.</p>
+<p>3a1. AddressBook shows an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2303,13 +2325,13 @@ for <code>RemarkCommandParser</code>.</p>
 <p>User requests to view a specific week</p>
 </li>
 <li>
-<p>ProgressCheck shows content of the specified week</p>
+<p>AddressBook shows content of the specified week</p>
 </li>
 <li>
 <p>User requests to key in and save an answer to a question</p>
 </li>
 <li>
-<p>ProgressCheck takes in input and saves</p>
+<p>AddressBook takes in input and saves</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2319,6 +2341,31 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="paragraph">
 <p><strong>Extensions</strong></p>
 </div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. The list is empty.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+<li>
+<p>3a. The given substring doesn&#8217;t exist in any name</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a1. AddressBook shows an error message.</p>
+<div class="paragraph">
+<p>Use case resumes at step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
 <div class="ulist">
 <ul>
 <li>
@@ -2326,7 +2373,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a1. ProgressCheck shows an error message.</p>
+<p>1a1. AddressBook shows an error message.</p>
 <div class="paragraph">
 <p>Use case resumes at step 2.</p>
 </div>
@@ -2349,9 +2396,55 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>3a1. ProgressCheck shows an error message.</p>
+<p>3a1. AddressBook shows an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-upload-a-photo-for-the-profile" class="discrete">Use case: Upload a photo for the profile</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to view their profile</p>
+</li>
+<li>
+<p>AddressBook shows the profile of the user</p>
+</li>
+<li>
+<p>User requests to upload a new photo to the profile</p>
+</li>
+<li>
+<p>AddressBook adds a new photo to the profile of user</p>
+</li>
+<li>
+<p>Profile displays the new photo</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>1a. Picture intented to add cannot be found.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. AddressBook shows an error message.</p>
+<div class="paragraph">
+<p>Use case resumes at step 2.</p>
 </div>
 </li>
 </ul>
@@ -2580,7 +2673,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-14 17:37:18 UTC
+Last updated 2018-03-14 17:46:41 UTC
 </div>
 </div>
 </body>
