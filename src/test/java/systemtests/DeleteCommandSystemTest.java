@@ -64,7 +64,7 @@ public class DeleteCommandSystemTest extends AddressBookSystemTest {
         String expectedNewResultMessage = String.format(MESSAGE_DELETE_PERSON_SUCCESS, deletedNewPerson);
 
         assertCommandSuccess(
-                "DeleTE" + " " + lastPersonNewIndex.getOneBased(), expectedNewModel, expectedNewResultMessage);
+                "delETE" + " " + lastPersonNewIndex.getOneBased(), expectedNewModel, expectedNewResultMessage);
 
         /* ------------------ Performing delete operation while a filtered list is being shown ---------------------- */
 
