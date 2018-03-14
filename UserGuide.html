@@ -104,7 +104,7 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <p><strong><code>list</code></strong> : lists all contacts</p>
 </li>
 <li>
-<p><strong><code>add</code></strong><code>n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code> : adds a contact named <code>John Doe</code> to the Address Book.</p>
+<p><strong><code>add</code></strong><code>n/John Doe p/98765432 e/johnd@example.com m/Computer Science y/2</code> : adds a contact named <code>John Doe</code> to the Address Book. He is in his 2nd year majoring in computer engineering.</p>
 </li>
 <li>
 <p><strong><code>delete</code></strong><code>3</code> : deletes the 3rd contact shown in the current list</p>
@@ -158,9 +158,9 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <h3 id="adding-a-person-code-add-or-a-code"><a class="link" href="#adding-a-person-code-add-or-a-code">3.2. Adding a person: <code>add OR a</code></a></h3>
 <div class="paragraph">
 <p>Adds a person to the address book<br>
-Format: <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code><br>
+Format: <code>add n/NAME p/PHONE_NUMBER e/EMAIL m/MAJOR y/YEAR [t/TAG]&#8230;&#8203;</code><br>
         <code>OR</code><br>
-       <code>a n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code></p>
+       <code>a n/NAME p/PHONE_NUMBER e/EMAIL m/MAJOR y/YEAR [t/TAG]&#8230;&#8203;</code></p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -180,16 +180,16 @@ A person can have any number of tags (including 0)
 <div class="ulist">
 <ul>
 <li>
-<p><code>add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code></p>
+<p><code>add n/John Doe p/98765432 e/johnd@example.com m/Computer Science y/2</code></p>
 </li>
 <li>
-<p><code>a n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code></p>
+<p><code>a n/John Doe p/98765432 e/johnd@example.com m/Computer Science y/2</code></p>
 </li>
 <li>
-<p><code>add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal</code></p>
+<p><code>add n/Betsy Crowe t/friend e/betsycrowe@example.com m/Computer Engineering p/1234567 y/3 t/criminal</code></p>
 </li>
 <li>
-<p><code>a n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal</code></p>
+<p><code>a n/Betsy Crowe t/friend e/betsycrowe@example.com m/Information Security y/2 p/1234567 t/criminal</code></p>
 </li>
 </ul>
 </div>
@@ -516,9 +516,9 @@ There is no need to save manually.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Add</strong> <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code><br>
-<code>a n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code>
-e.g. <code>add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague</code></p>
+<p><strong>Add</strong> <code>add n/NAME p/PHONE_NUMBER e/EMAIL m/MAJOR y/YEAR [t/TAG]&#8230;&#8203;</code><br>
+<code>a n/NAME p/PHONE_NUMBER e/EMAIL m/MAJOR y/YEAR [t/TAG]&#8230;&#8203;</code>
+e.g. <code>add n/James Ho p/22224444 e/jamesho@example.com m/Computer Science y/2 t/friend t/colleague</code></p>
 </li>
 <li>
 <p><strong>Clear</strong> : <code>clear OR c</code></p>
@@ -528,7 +528,7 @@ e.g. <code>add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1
 e.g. <code>delete 3</code></p>
 </li>
 <li>
-<p><strong>Edit</strong> : <code>edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203; OR e INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code><br>
+<p><strong>Edit</strong> : <code>edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [m/MAJOR] [y/YEAR] [t/TAG]&#8230;&#8203; OR e INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [m/MAJOR] [y/YEAR] [t/TAG]&#8230;&#8203;</code><br>
 e.g. <code>edit 2 n/James Lee e/jameslee@example.com</code></p>
 </li>
 <li>
@@ -562,7 +562,7 @@ e.g.<code>select 2</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-14 00:26:07 UTC
+Last updated 2018-03-14 14:10:46 UTC
 </div>
 </div>
 </body>
