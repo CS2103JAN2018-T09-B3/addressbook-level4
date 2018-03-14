@@ -163,6 +163,11 @@ Selects the 2nd person in the address book.
 `s 1` +
 Selects the 1st person in the results of the `find` command.
 
+=== Mark a learning outcome as completed : `complete INDEX` `[coming in v2.0]`
+
+Check a learning outcome as completed based by the given task index.
+Format: `complete INDEX`
+
 === Answering and saving an exercise : `answer INDEX ANSWER` `[coming in v2.0]`
 
 Answer an exercise based off the given question number.
