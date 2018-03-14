@@ -17,7 +17,7 @@ By: `Team T09-B3`      Since: `Jun 2016`      Licence: `MIT`
 
 == Introduction
 
-Progress Checker is for those who *prefer to use a desktop app for managing contacts*. More importantly, Progress Checker is *optimized for those who prefer to work with a Command Line Interface* (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, Progress Checker can get your learning outcome tasks done faster than traditional GUI apps. Interested? Jump to the <<Quick Start>> to get started. Enjoy!
+ProgressChecker is for those who *prefer to use a desktop app for managing contacts*. More importantly, ProgressChecker is *optimized for those who prefer to work with a Command Line Interface* (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, ProgressChecker can get your learning outcome tasks done faster than traditional GUI apps. Interested? Jump to the <<Quick Start>> to get started. Enjoy!
 
 == Quick Start
 
@@ -27,8 +27,8 @@ Progress Checker is for those who *prefer to use a desktop app for managing cont
 Having any Java 8 version is not enough. +
 This app will not work with earlier versions of Java 8.
 +
-.  Download the latest `progresschecker.jar` link:{repoURL}/releases[here].
-.  Copy the file to the folder you want to use as the home folder for your Progress Checker.
+.  Download the latest `addressbook.jar` link:{repoURL}/releases[here].
+.  Copy the file to the folder you want to use as the home folder for your Address Book.
 .  Double-click the file to start the app. The GUI should appear in a few seconds.
 +
 image::Ui.png[width="790"]
@@ -39,7 +39,7 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 
 * *`list`* : lists all contacts
 
-* **`add`**`n/John Doe p/98765432 e/johnd@example.com m/Computer Science y/2` : adds a contact named `John Doe` to the Progress Checker. He is in his 2nd year majoring in computer engineering.
+* **`add`**`n/John Doe p/98765432 e/johnd@example.com m/Computer Science y/2` : adds a contact named `John Doe` to the Address Book. He is in his 2nd year majoring in computer engineering.
 
 * **`delete`**`3` : deletes the 3rd contact shown in the current list
 * *`exit`* : exits the app
@@ -52,6 +52,7 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 ====
 *Command Format*
 
+* The commands are case-insensitive. However, for simplicity all the examples have the commands in lower case.
 * Words in `UPPER_CASE` are the parameters to be supplied by the user e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
 * Items in square brackets are optional e.g `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
 * Items with `…`​ after them can be used multiple times including zero times e.g. `[t/TAG]...` can be used as `{nbsp}` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
@@ -82,7 +83,7 @@ Examples:
 
 === Listing all persons : `list OR l`
 
-Shows a list of all persons in the progress checker. +
+Shows a list of all persons in the address book. +
 Format: `list OR l`
 
 === Sorting all persons : `sort`
@@ -92,7 +93,7 @@ Format: `sort`
 
 === Editing a person : `edit OR e`
 
-Edits an existing person in the progress checker. +
+Edits an existing person in the address book. +
 Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]...` +
 `e INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]...`
 
@@ -134,7 +135,7 @@ Returns any person having names `Betsy`, `Tim`, or `John`
 
 === Deleting a person : `delete or d`
 
-Deletes the specified person from the progress checker. +
+Deletes the specified person from the address book. +
 Format: `delete INDEX OR d INDEX`
 
 ****
@@ -147,7 +148,7 @@ Examples:
 
 * `list` +
 `delete 2` +
-Deletes the 2nd person in the progress checker.
+Deletes the 2nd person in the address book.
 * `find Betsy` +
 `d 1` +
 Deletes the 1st person in the results of the `find` command.
@@ -167,10 +168,11 @@ Examples:
 
 * `list` +
 `select 2` +
-Selects the 2nd person in the progress checker.
+Selects the 2nd person in the address book.
 * `find Betsy` +
 `s 1` +
 Selects the 1st person in the results of the `find` command.
+
 
 === Mark a learning outcome as completed : `complete INDEX` `[coming in v2.0]`
 
@@ -181,6 +183,21 @@ Format: `complete INDEX`
 
 Answer an exercise based off the given question number.
 Format: `answer INDEX ANSWER`
+
+=== Change view to a specific week : `view`
+
+Change the browser view to display contents identified by the week number.
+Format: `view INDEX`
+
+****
+* View the contents such as learning outcomes and practices of the week at the specified `INDEX`.
+* The index refers to the school week number.
+* The index *must be a positive integer* in the *range of 2 to 13* `2, 3, ..., 13`
+****
+
+Examples:
+
+* `view 2`
 
 === Listing entered commands : `history`
 
@@ -195,12 +212,12 @@ Pressing the kbd:[&uarr;] and kbd:[&darr;] arrows will display the previous and 
 // tag::undoredo[]
 === Undoing previous command : `undo OR u`
 
-Restores the progress checker to the state before the previous _undoable_ command was executed. +
+Restores the address book to the state before the previous _undoable_ command was executed. +
 Format: `undo OR u`
 
 [NOTE]
 ====
-Undoable commands: those commands that modify the progress checker's content (`add`, `delete`, `edit` and `clear`).
+Undoable commands: those commands that modify the address book's content (`add`, `delete`, `edit` and `clear`).
 ====
 
 Examples:
@@ -249,7 +266,7 @@ Format: `refresh OR r`
 
 === Clearing all entries : `clear OR c`
 
-Clears all entries from the progress checker. +
+Clears all entries from the address book. +
 Format: `clear OR c`
 
 === Exiting the program : `exit OR e`
@@ -259,13 +276,13 @@ Format: `exit OR e`
 
 === Saving the data
 
-progress checker data are saved in the hard disk automatically after any command that changes the data. +
+address book data are saved in the hard disk automatically after any command that changes the data. +
 There is no need to save manually.
 
 == FAQ
 
 *Q*: How do I transfer my data to another Computer? +
-*A*: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous progress checker folder.
+*A*: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous address book folder.
 
 == Command Summary
 
@@ -284,6 +301,8 @@ e.g. `search James Jake` +
 * *Help* : `help OR h`
 * *Select* : `select INDEX OR s INDEX` +
 e.g.`select 2`
+* *View* : `view INDEX` +
+e.g. `view 5`
 * *History* : `history`
 * *Undo* : `undo OR u`
 * *Redo* : `redo OR r`
