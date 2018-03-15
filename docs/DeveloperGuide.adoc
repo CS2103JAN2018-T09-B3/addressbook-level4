@@ -68,7 +68,7 @@ Optionally, you can follow the <<UsingCheckstyle#, UsingCheckstyle.adoc>> docume
 
 ==== Updating documentation to match your fork
 
-After forking the repo, links in the documentation will still point to the `se-edu/progresschecker-level4` repo. If you plan to develop this as a separate product (i.e. instead of contributing to the `se-edu/progresschecker-level4`) , you should replace the URL in the variable `repoURL` in `DeveloperGuide.adoc` and `UserGuide.adoc` with the URL of your fork.
+After forking the repo, links in the documentation will still point to the `se-edu/addressbook-level4` repo. If you plan to develop this as a separate product (i.e. instead of contributing to the `se-edu/addressbook-level4`) , you should replace the URL in the variable `repoURL` in `DeveloperGuide.adoc` and `UserGuide.adoc` with the URL of your fork.
 
 ==== Setting up CI
 
@@ -345,7 +345,7 @@ image::UndoRedoActivityDiagram.png[width="650"]
 * **Alternative 2:** Include all commands.
 ** Pros: Might be more intuitive for the user.
 ** Cons: User have no way of skipping such commands if he or she just want to reset the state of the address * book and not the view.
-**Additional Info:** See our discussion  https://github.com/se-edu/progresschecker-level4/issues/390#issuecomment-298936672[here].
+**Additional Info:** See our discussion  https://github.com/se-edu/addressbook-level4/issues/390#issuecomment-298936672[here].
 
 
 ===== Aspect: Data structure to support the undo/redo commands
@@ -530,7 +530,7 @@ Do take a look at <<Design-Logic>> before attempting to modify the `Logic` compo
 ** Modify the switch statement in link:{repoURL}/src/main/java/seedu/address/logic/parser/ProgressCheckerParser.java[`ProgressCheckerParser#parseCommand(String)`] such that both the proper command word and alias can be used to execute the same intended command.
 ** Add new tests for each of the aliases that you have added.
 ** Update the user guide to document the new aliases.
-** See this https://github.com/se-edu/progresschecker-level4/pull/785[PR] for the full solution.
+** See this https://github.com/se-edu/addressbook-level4/pull/785[PR] for the full solution.
 ****
 
 [discrete]
@@ -552,8 +552,8 @@ Do take a look at <<Design-Model>> before attempting to modify the `Model` compo
 ** Implement a `removeTag(Tag)` method in link:{repoURL}/src/main/java/seedu/address/model/ProgressChecker.java[`ProgressChecker`]. Loop through each person, and remove the `tag` from each person.
 ** Add a new API method `deleteTag(Tag)` in link:{repoURL}/src/main/java/seedu/address/model/ModelManager.java[`ModelManager`]. Your link:{repoURL}/src/main/java/seedu/address/model/ModelManager.java[`ModelManager`] should call `ProgressChecker#removeTag(Tag)`.
 ** Add new tests for each of the new public methods that you have added.
-** See this https://github.com/se-edu/progresschecker-level4/pull/790[PR] for the full solution.
-*** The current codebase has a flaw in tags management. Tags no longer in use by anyone may still exist on the link:{repoURL}/src/main/java/seedu/address/model/ProgressChecker.java[`ProgressChecker`]. This may cause some tests to fail. See issue  https://github.com/se-edu/progresschecker-level4/issues/753[`#753`] for more information about this flaw.
+** See this https://github.com/se-edu/addressbook-level4/pull/790[PR] for the full solution.
+*** The current codebase has a flaw in tags management. Tags no longer in use by anyone may still exist on the link:{repoURL}/src/main/java/seedu/address/model/ProgressChecker.java[`ProgressChecker`]. This may cause some tests to fail. See issue  https://github.com/se-edu/addressbook-level4/issues/753[`#753`] for more information about this flaw.
 *** The solution PR has a temporary fix for the flaw mentioned above in its first commit.
 ****
 
@@ -582,7 +582,7 @@ image::getting-started-ui-tag-after.png[width="300"]
 ** You may wish to modify link:{repoURL}/src/main/resources/view/DarkTheme.css[`DarkTheme.css`] to include some pre-defined colors using css, especially if you have experience with web-based css.
 * Solution
 ** You can modify the existing test methods for `PersonCard` 's to include testing the tag's color as well.
-** See this https://github.com/se-edu/progresschecker-level4/pull/798[PR] for the full solution.
+** See this https://github.com/se-edu/addressbook-level4/pull/798[PR] for the full solution.
 *** The PR uses the hash code of the tag names to generate a color. This is deliberately designed to ensure consistent colors each time the application runs. You may wish to expand on this design to include additional features, such as allowing users to set their own tag colors, and directly saving the colors to storage, so that tags retain their colors even if the hash code algorithm changes.
 ****
 
@@ -606,7 +606,7 @@ image::getting-started-ui-result-after.png[width="200"]
 ** You can write two different kinds of tests to ensure that the functionality works:
 *** The unit tests for `ResultDisplay` can be modified to include verification of the color.
 *** The system tests link:{repoURL}/src/test/java/systemtests/ProgressCheckerSystemTest.java[`ProgressCheckerSystemTest#assertCommandBoxShowsDefaultStyle() and ProgressCheckerSystemTest#assertCommandBoxShowsErrorStyle()`] to include verification for `ResultDisplay` as well.
-** See this https://github.com/se-edu/progresschecker-level4/pull/799[PR] for the full solution.
+** See this https://github.com/se-edu/addressbook-level4/pull/799[PR] for the full solution.
 *** Do read the commits one at a time if you feel overwhelmed.
 ****
 
@@ -629,7 +629,7 @@ image::getting-started-ui-status-after.png[width="500"]
 ** Use link:{repoURL}/src/main/java/seedu/address/ui/StatusBarFooter.java[`StatusBarFooter#handleProgressCheckerChangedEvent(ProgressCheckerChangedEvent)`] to update the number of persons whenever there are new changes to the progresschecker.
 ** For tests, modify link:{repoURL}/src/test/java/guitests/guihandles/StatusBarFooterHandle.java[`StatusBarFooterHandle`] by adding a state-saving functionality for the total number of people status, just like what we did for save location and sync status.
 ** For system tests, modify link:{repoURL}/src/test/java/systemtests/ProgressCheckerSystemTest.java[`ProgressCheckerSystemTest`] to also verify the new total number of persons status bar.
-** See this https://github.com/se-edu/progresschecker-level4/pull/803[PR] for the full solution.
+** See this https://github.com/se-edu/addressbook-level4/pull/803[PR] for the full solution.
 ****
 
 [discrete]
@@ -647,7 +647,7 @@ Do take a look at <<Design-Storage>> before attempting to modify the `Storage` c
 ** Add the API method in link:{repoURL}/src/main/java/seedu/address/storage/ProgressCheckerStorage.java[`ProgressCheckerStorage`] interface.
 ** Implement the logic in link:{repoURL}/src/main/java/seedu/address/storage/StorageManager.java[`StorageManager`] and link:{repoURL}/src/main/java/seedu/address/storage/XmlProgressCheckerStorage.java[`XmlProgressCheckerStorage`] class.
 * Solution
-** See this https://github.com/se-edu/progresschecker-level4/pull/594[PR] for the full solution.
+** See this https://github.com/se-edu/addressbook-level4/pull/594[PR] for the full solution.
 ****
 
 [[GetStartedProgramming-RemarkCommand]]
@@ -775,7 +775,7 @@ We now have everything set up... but we still can't modify the remarks. Let's fi
 
 ==== Full Solution
 
-See this https://github.com/se-edu/progresschecker-level4/pull/599[PR] for the step-by-step solution.
+See this https://github.com/se-edu/addressbook-level4/pull/599[PR] for the step-by-step solution.
 
 [appendix]
 == Product Scope
