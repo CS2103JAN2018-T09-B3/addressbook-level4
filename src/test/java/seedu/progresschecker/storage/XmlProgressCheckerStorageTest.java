@@ -67,7 +67,8 @@ public class XmlProgressCheckerStorageTest {
     }
 
     @Test
-    public void readProgressChecker_invalidAndValidPersonProgressChecker_throwDataConversionException() throws Exception {
+    public void readProgressChecker_invalidAndValidPersonProgressChecker_throwDataConversionException()
+            throws Exception {
         thrown.expect(DataConversionException.class);
         readProgressChecker("invalidAndValidPersonProgressChecker.xml");
     }
@@ -109,7 +110,8 @@ public class XmlProgressCheckerStorageTest {
      */
     private void saveProgressChecker(ReadOnlyProgressChecker progressChecker, String filePath) {
         try {
-            new XmlProgressCheckerStorage(filePath).saveProgressChecker(progressChecker, addToTestDataPathIfNotNull(filePath));
+            new XmlProgressCheckerStorage(filePath).saveProgressChecker(progressChecker,
+                    addToTestDataPathIfNotNull(filePath));
         } catch (IOException ioe) {
             throw new AssertionError("There should not be an error writing to the file.", ioe);
         }

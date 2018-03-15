@@ -17,9 +17,9 @@ import org.junit.Test;
 
 import seedu.progresschecker.logic.CommandHistory;
 import seedu.progresschecker.logic.UndoRedoStack;
-import seedu.progresschecker.model.ProgressChecker;
 import seedu.progresschecker.model.Model;
 import seedu.progresschecker.model.ModelManager;
+import seedu.progresschecker.model.ProgressChecker;
 import seedu.progresschecker.model.UserPrefs;
 import seedu.progresschecker.model.person.NameContainsKeywordsPredicate;
 import seedu.progresschecker.model.person.Person;

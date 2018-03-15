@@ -18,8 +18,8 @@ import seedu.progresschecker.model.ProgressChecker;
 import seedu.progresschecker.storage.XmlAdaptedPerson;
 import seedu.progresschecker.storage.XmlAdaptedTag;
 import seedu.progresschecker.storage.XmlSerializableProgressChecker;
-import seedu.progresschecker.testutil.ProgressCheckerBuilder;
 import seedu.progresschecker.testutil.PersonBuilder;
+import seedu.progresschecker.testutil.ProgressCheckerBuilder;
 import seedu.progresschecker.testutil.TestUtil;
 
 public class XmlUtilTest {
@@ -71,7 +71,8 @@ public class XmlUtilTest {
 
     @Test
     public void getDataFromFile_validFile_validResult() throws Exception {
-        ProgressChecker dataFromFile = XmlUtil.getDataFromFile(VALID_FILE, XmlSerializableProgressChecker.class).toModelType();
+        ProgressChecker dataFromFile = XmlUtil.getDataFromFile(VALID_FILE, XmlSerializableProgressChecker.class)
+                .toModelType();
         assertEquals(9, dataFromFile.getPersonList().size());
         assertEquals(0, dataFromFile.getTagList().size());
     }
@@ -126,7 +127,8 @@ public class XmlUtilTest {
         TEMP_FILE.createNewFile();
         XmlSerializableProgressChecker dataToWrite = new XmlSerializableProgressChecker(new ProgressChecker());
         XmlUtil.saveDataToFile(TEMP_FILE, dataToWrite);
-        XmlSerializableProgressChecker dataFromFile = XmlUtil.getDataFromFile(TEMP_FILE, XmlSerializableProgressChecker.class);
+        XmlSerializableProgressChecker dataFromFile = XmlUtil.getDataFromFile(TEMP_FILE,
+                XmlSerializableProgressChecker.class);
         assertEquals(dataToWrite, dataFromFile);
 
         ProgressCheckerBuilder builder = new ProgressCheckerBuilder(new ProgressChecker());

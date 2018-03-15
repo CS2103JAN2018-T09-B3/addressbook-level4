@@ -65,7 +65,8 @@ public class AddCommandSystemTest extends ProgressCheckerSystemTest {
 
         /* ------------------------ Perform add operations on the shown unfiltered list ----------------------------- */
 
-        /* Case: add a person without tags to a non-empty ProgressChecker, command with leading spaces and trailing spaces
+        /* Case: add a person without tags to a non-empty ProgressChecker, command with leading spaces and trailing
+         * spaces
          * -> added
          */
         Person toAdd = AMY;

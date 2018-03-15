@@ -20,14 +20,14 @@ import seedu.progresschecker.commons.util.ConfigUtil;
 import seedu.progresschecker.commons.util.StringUtil;
 import seedu.progresschecker.logic.Logic;
 import seedu.progresschecker.logic.LogicManager;
-import seedu.progresschecker.model.ProgressChecker;
 import seedu.progresschecker.model.Model;
 import seedu.progresschecker.model.ModelManager;
+import seedu.progresschecker.model.ProgressChecker;
 import seedu.progresschecker.model.ReadOnlyProgressChecker;
 import seedu.progresschecker.model.UserPrefs;
 import seedu.progresschecker.model.util.SampleDataUtil;
-import seedu.progresschecker.storage.ProgressCheckerStorage;
 import seedu.progresschecker.storage.JsonUserPrefsStorage;
+import seedu.progresschecker.storage.ProgressCheckerStorage;
 import seedu.progresschecker.storage.Storage;
 import seedu.progresschecker.storage.StorageManager;
 import seedu.progresschecker.storage.UserPrefsStorage;
@@ -61,7 +61,8 @@ public class MainApp extends Application {
 
         UserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(config.getUserPrefsFilePath());
         userPrefs = initPrefs(userPrefsStorage);
-        ProgressCheckerStorage progressCheckerStorage = new XmlProgressCheckerStorage(userPrefs.getProgressCheckerFilePath());
+        ProgressCheckerStorage progressCheckerStorage = new XmlProgressCheckerStorage(
+                userPrefs.getProgressCheckerFilePath());
         storage = new StorageManager(progressCheckerStorage, userPrefsStorage);
 
         initLogging(config);

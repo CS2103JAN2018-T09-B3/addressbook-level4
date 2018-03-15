@@ -16,7 +16,8 @@ import seedu.progresschecker.testutil.TypicalPersons;
 
 public class XmlSerializableProgressCheckerTest {
 
-    private static final String TEST_DATA_FOLDER = FileUtil.getPath("src/test/data/XmlSerializableProgressCheckerTest/");
+    private static final String TEST_DATA_FOLDER = FileUtil.getPath(
+            "src/test/data/XmlSerializableProgressCheckerTest/");
     private static final File TYPICAL_PERSONS_FILE = new File(TEST_DATA_FOLDER + "typicalPersonsProgressChecker.xml");
     private static final File INVALID_PERSON_FILE = new File(TEST_DATA_FOLDER + "invalidPersonProgressChecker.xml");
     private static final File INVALID_TAG_FILE = new File(TEST_DATA_FOLDER + "invalidTagProgressChecker.xml");
