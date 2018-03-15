@@ -23,7 +23,7 @@ public class BrowserPanel extends UiPart<Region> {
 
     public static final String DEFAULT_PAGE = "default.html";
     public static final String SEARCH_PAGE_URL =
-            "https://se-edu.github.io/progresschecker-level4/DummySearchPage.html?name=";
+            "https://se-edu.github.io/addressbook-level4/DummySearchPage.html?name=";
     public static final String MODULE_PAGE_URL =
             "https://nus-cs2103-ay1718s2.github.io/";
     public static final String OUTCOMES_PAGE_PATH =
