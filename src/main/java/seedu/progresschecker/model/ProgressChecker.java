@@ -72,7 +72,7 @@ public class ProgressChecker implements ReadOnlyProgressChecker {
         try {
             setPersons(syncedPersonList);
         } catch (DuplicatePersonException e) {
-            throw new AssertionError("ProgressCheckers should not have duplicate persons");
+            throw new AssertionError("ProgressChecker should not have duplicate persons");
         }
     }
 
