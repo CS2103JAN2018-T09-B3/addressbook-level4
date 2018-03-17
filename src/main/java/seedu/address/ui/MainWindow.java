@@ -45,7 +45,7 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private StackPane commandBoxPlaceholder;
-    
+
     @FXML
     private StackPane exercisesPlaceholder;
 
