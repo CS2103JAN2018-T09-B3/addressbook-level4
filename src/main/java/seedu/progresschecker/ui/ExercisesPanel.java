@@ -1,4 +1,4 @@
-package seedu.address.ui;
+package seedu.progresschecker.ui;
 
 import java.util.logging.Logger;
 
@@ -9,9 +9,9 @@ import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.Region;
-import seedu.address.commons.core.LogsCenter;
-import seedu.address.commons.events.ui.PageLoadChangedEvent;
-import seedu.address.commons.events.ui.PersonPanelSelectionChangedEvent;
+import seedu.progresschecker.commons.core.LogsCenter;
+import seedu.progresschecker.commons.events.ui.PageLoadChangedEvent;
+import seedu.progresschecker.commons.events.ui.PersonPanelSelectionChangedEvent;
 
 /**
  * The Exercises Panel of the App.
