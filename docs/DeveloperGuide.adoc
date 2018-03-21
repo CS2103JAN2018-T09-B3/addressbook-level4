@@ -356,7 +356,110 @@ image::UndoRedoActivityDiagram.png[width="650"]
 * **Alternative 2:** Use `HistoryManager` for undo/redo
 ** Pros: We do not need to maintain a separate stack, and just reuse what is already in the codebase.
 ** Cons: Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as `HistoryManager` now needs to do two * different things.
+
 // end::undoredo[]
+
+// tag::upload[]
+=== Upload feature
+==== Planned Implementation
+
+The Upload command will allow users to upload their preferred image to replace the default profile photo.
+
+Upload can be undoable. The following diagram shows the inheritance diagram for upload command:
+
+image::LogicCommandClassDiagram.png[width="800"]
+
+UploadCommand is implemented this way:
+[source,java]
+----
+public class UploadCommand extends UndoableCommand {
+    @Override
+    public CommandResult executeUndoableCommand() throws CommandException {
+        requireNonNull(model);
+        try {
+            model.uploadPhoto(toUpload);
+            return new CommandResult(MESSAGE_SUCCESS);
+        } catch (FileNotFoundException e) {
+            throw new CommandException(MESSAGE_IMAGE_NOT_FOUND);
+        } catch (IOException e) {
+            throw new CommandException("Caught IOException!");
+        }
+    }
+}
+----
+
+[NOTE]
+If the path is invalid or the image cannot be found, the upload will not be successful. User will be asked to write the correct path to image again. Users are allowed to reload the image if they want to update the profile photo.
+
+==== Design Considerations
+
+===== Aspect: Implementation of `UploadCommand`
+
+* **Alternative 1 (current choice):** user will provide the path of image
+** Pros: The path can be used directly to find the image and display it in the app.
+** Cons: Image may be a local file. When other users open the app, they cannot see the update.
+* **Alternative 2:** user will upload image into our github folder manually
+** Pros: Everyone can see the update of profile photo.
+** Cons: Quite trobulesome to upload photo manually first.
+// end::undoredo[]
+
+=== Dynamic Search Implementation
+==== Current Implementation
+
+The `find` command shows the searched contact currently. However, the user does not need to type the complete name press enter, the whole search is dynamic. As soon as the user types the command `find` dynamic search state is toggled. After typing `find` command, whichever character is entered by the user, the results which contain
+ the typed keywords appear.
+
+The following diagram shows the UML diagram for `find` command :
+
+image::FindCommandUMLDiagram.png[width="600"]
+
+To implement the dynamic search, we used the following method - as soon as the user enters any character in the command box, the text is retrieved from
+the command box and checked if it is the `find` command. If it is the `find` command, dynamic search is started. After the `find` command is detected in the
+command box, every key that is pressed is parsed and sent to the `find` command parser. After that the basic functionality of find is used and the results are displayed.
+
+The code snippet for the implementation is:
+[source,java]
+----
+private void handleKeyPress(KeyEvent keyEvent) {
+        switch (keyEvent.getCode()) {
+        // .. other keypress logic ..
+        default:
+            try {
+                if (// .. checking if the text is `find` command) {
+                    isCorrectCommandWord = !commandTextField.getText().trim().isEmpty();
+                    CommandResult commandResult;
+                    if (keyEvent.getCode() != KeyCode.BACK_SPACE && keyEvent.getCode() != KeyCode.DELETE) {
+                        commandResult = logic.execute(commandTextField.getText() + keyEvent.getText());
+                    } else {
+                        commandResult = logic.execute(commandTextField.getText().substring(0,
+                                commandTextField.getText().length() - 1));
+                    }
+                    // process result of the command
+                    logger.info("Result: " + commandResult.feedbackToUser);
+                    raise(new NewResultAvailableEvent(commandResult.feedbackToUser));
+                }
+            } catch (CommandException | ParseException e) {
+               // .. command failure logic ..
+            }
+        }
+    }
+----
+[NOTE]
+The entered key is not instantly updated in the command box thats why after the `commandTextField.getText()` is executed we need to append\delete a character for the
+ code to the result to process the right input - the one that the user can see on their screens.
+
+[discrete]
+==== Design consideration
+
+**Aspect**: User Interface (UI)
+
+**Alternative 1 (current choice):** Show the search results without actually highlighting the keywords. +
+**Pros**: Allows more readability of the of the results as they contain multiple fields and not just user name. +
+**Cons**: User needs to manually search for the keywords entered by him in the search results.
+
+**Alternative 2:** Show the search results WITH highlighting the keywords in the searched name. +
+**Pros**: It will make it easier for the user to view the user to identify the searched keyword in the displayed results. +
+**Cons**: Adding highlights to the results might make the displayed results a bit too cluttered specially with the presence of tags which are colored as well.
 
 // tag::dataencryption[]
 === [Proposed] Data Encryption
@@ -931,6 +1034,27 @@ Use case ends.
 ** 3a1. ProgressChecker shows an error message.
 +
 Use case resumes at step 2.
+
+[discrete]
+=== Use case: Autocomplete a command
+
+*MSS*
+
+1.  User types an incomplete command
+2.  User presses `tab` key to complete the command
+3.  ProgessChecker returns the completed command with dummy fields if there exists a specific format
++
+Use case ends.
+
+*Extensions*
+
+* 1a. Specified command does not exist.
++
+[none]
+** 1a1. ProgressChecker doesn't do anything and waits for the right key/command to be entered.
+** 1a2. It waits for the right letter to be pressed or the correct command to be entered.
++
+Use case resumes at step 1.
 
 [discrete]
 === Use case: Find teammate
