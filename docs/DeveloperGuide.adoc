@@ -369,8 +369,8 @@ The following diagram shows the UML diagram for `find` command :
 image::FindCommandUMLDiagram.png[width="600"]
 
 To implement the dynamic search, we used the following method - as soon as the user enters any character in the command box, the text is retrieved from
- the command box and checked if it is the `find` command. If it is the `find` command, dynamic search is started. After the `find` command is detected in the 
- command box, every key that is pressed is parsed and sent to the `find` command parser. After that the basic functionality of find is used and the results are displayed.
+the command box and checked if it is the `find` command. If it is the `find` command, dynamic search is started. After the `find` command is detected in the
+command box, every key that is pressed is parsed and sent to the `find` command parser. After that the basic functionality of find is used and the results are displayed.
 
 The code snippet for the implementation is:
 [source,java]
@@ -407,14 +407,14 @@ The entered key is not instantly updated in the command box thats why after the 
 ==== Design consideration
 
 **Aspect**: User Interface (UI)
-    
+
 **Alternative 1 (current choice):** Show the search results without actually highlighting the keywords. +
 **Pros**: Allows more readability of the of the results as they contain multiple fields and not just user name. +
-**Cons**: User needs to manually search for the keywords entered by him in the search results.   
+**Cons**: User needs to manually search for the keywords entered by him in the search results.
 
 **Alternative 2:** Show the search results WITH highlighting the keywords in the searched name. +
 **Pros**: It will make it easier for the user to view the user to identify the searched keyword in the displayed results. +
-**Cons**: Adding highlights to the results might make the displayed results a bit too cluttered specially with the presence of tags which are colored as well.   
+**Cons**: Adding highlights to the results might make the displayed results a bit too cluttered specially with the presence of tags which are colored as well.
 
 // tag::dataencryption[]
 === [Proposed] Data Encryption
