@@ -6,6 +6,9 @@ import static seedu.progresschecker.model.task.MyTaskList.createTaskList;
 
 import seedu.progresschecker.logic.commands.exceptions.CommandException;
 
+/**
+ * Adds a default task list to the user's Google account.
+ */
 public class AddDefaultTasksCommand extends Command {
 
     public static final String COMMAND_WORD = "newtasklist";

@@ -9,6 +9,9 @@ import com.google.api.services.tasks.model.TaskLists;
 import seedu.progresschecker.logic.apisetup.ConnectTasksApi;
 import seedu.progresschecker.logic.commands.exceptions.CommandException;
 
+/**
+ * Include customized methods (based on Google Tasks API) to manipulate task lists.
+ */
 public class MyTaskList {
 
     public static final String AUTHORIZE_FAILURE = "Failed to authorize tasks api client credentials";
