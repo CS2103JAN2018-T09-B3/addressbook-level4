@@ -980,6 +980,27 @@ Use case ends.
 Use case resumes at step 2.
 
 [discrete]
+=== Use case: Autocomplete a command
+
+*MSS*
+
+1.  User types an incomplete command
+2.  User presses `tab` key to complete the command
+3. ProgessChecker returns the completed command with dummy fields if there exists a specific format
++
+Use case ends.
+
+*Extensions*
+
+* 1a. Specified command does not exist.
++
+[none]
+** 1a1. ProgressChecker doesn't do anything and waits for the right key/command to be entered.
+** 1a2. It waits for the right letter to be pressed or the correct command to be entered.
++
+Use case resumes at step 2.
+
+[discrete]
 === Use case: Add a to-do
 
 *MSS*
