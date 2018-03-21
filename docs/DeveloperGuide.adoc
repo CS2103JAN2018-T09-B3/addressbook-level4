@@ -366,6 +366,7 @@ The `find` command shows the searched contact currently. However, the user does 
  
 The following diagram shows the UML diagram for `find` command :
 
+image::FindCommandUMLDiagram.png[width="600"]
 
 To implement the dynamic search, we used the following method - as soon as the user enters any character in the command box, the text is retrieved from
  the command box and checked if it is the `find` command. If it is the `find` command, dynamic search is started. After the `find` command is detected in the 
@@ -986,7 +987,7 @@ Use case resumes at step 2.
 
 1.  User types an incomplete command
 2.  User presses `tab` key to complete the command
-3. ProgessChecker returns the completed command with dummy fields if there exists a specific format
+3.  ProgessChecker returns the completed command with dummy fields if there exists a specific format
 +
 Use case ends.
 
@@ -998,7 +999,7 @@ Use case ends.
 ** 1a1. ProgressChecker doesn't do anything and waits for the right key/command to be entered.
 ** 1a2. It waits for the right letter to be pressed or the correct command to be entered.
 +
-Use case resumes at step 2.
+Use case resumes at step 1.
 
 [discrete]
 === Use case: Add a to-do
