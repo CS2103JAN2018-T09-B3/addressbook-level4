@@ -457,7 +457,7 @@ image::SDforExercisesEventHandling.png[width="800"]
 
 * Trigger an event change in `Logic` to signal `UI` for a change in text display in `ExercisesPanel`
 * Process checking of correctness in `Model`
-* Save data to local file in `Storage` 
+* Save data to local file in `Storage`
 
 ===== Aspect: Storing of exercise questions
 
