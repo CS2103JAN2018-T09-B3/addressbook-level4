@@ -1,11 +1,12 @@
 package seedu.progresschecker.model.task;
 
+import java.io.IOException;
+
 import com.google.api.services.tasks.Tasks;
 import com.google.api.services.tasks.model.TaskList;
 import com.google.api.services.tasks.model.TaskLists;
 
-import java.io.IOException;
-import seedu.progresschecker.logic.apiSetup.ConnectTasksApi;
+import seedu.progresschecker.logic.apisetup.ConnectTasksApi;
 import seedu.progresschecker.logic.commands.exceptions.CommandException;
 
 public class MyTaskList {

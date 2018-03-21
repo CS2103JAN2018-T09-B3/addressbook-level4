@@ -1,4 +1,4 @@
-package seedu.progresschecker.logic.apiSetup;
+package seedu.progresschecker.logic.apisetup;
 
 import java.io.File;
 import java.io.FileReader;
