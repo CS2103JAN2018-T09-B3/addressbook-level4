@@ -515,6 +515,41 @@ image::SDforExercisesEventHandling.png[width="800"]
 ** Cons: Formatting the exercises becomes harder and the implementation is less modular
 // end::answerexercise[]
 
+// tag::adddefaulttasklist[]
+=== [Planned] Answering an exercise
+==== Planned Implementation
+
+The LOs and todos for all weeks would be stored as a local file upon which it would be loaded by the `StorageManager` on start up.
+
+The _Sequence Diagram_ below shows how the components interact for the scenario where the user issues the command `newtasklist`.
+
+.Component interactions for `newtasklist` command (part 1)
+image::SDforAddDefaultTaskList.png[width="800"]
+
+[NOTE]
+This command has no parameter regarding user input. The arguments passed are pre-initialized constant variables stored in the AddDefaultTasksCommand Class itself.
+
+We apply Google Tasks API to help us save user tasks data online (there will be cases where data of teammates are needed, thus only local data is not enough).
+To use Google Tasks API, we first add corresponding dependencies to build.gradle, the JAR files will be downloaded automatically upon rebuild.
+
+[NOTE]
+Simply downloading JAR files without editing gradle is incorrect. JARs are not in git thus our co-developers will rely on the dependencies to retrieve the libraries.
+
+
+It also help us save time of building massive data structures (ie. Tasks, TaskLists, Lists of TaskLists).
+However, we do have a few classes in the modeling part that further add more customized methods which are useful for current commands and even future commands.
+
+
+==== Design Considerations
+
+===== Aspect: Implementation of `AddDefaultTasksCommand`
+
+* Add a new command that extends `Command`
+
+===== Aspect: Format of add default task list command
+
+// end::adddefaulttasklist[]
+
 === Logging
 
 We are using `java.util.logging` package for logging. The `LogsCenter` class is used to manage the logging levels and logging destinations.
