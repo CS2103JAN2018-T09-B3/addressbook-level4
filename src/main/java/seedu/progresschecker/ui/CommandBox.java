@@ -181,7 +181,8 @@ public class CommandBox extends UiPart<Region> {
     }
 
     /**
-     * @param text
+     * Sets the commandbox to completed command format if the entered substring of the command is valid
+     * @param text is the command which is to be autocompleted
      */
     private void autocompleteCommad(String text) {
         ArrayList<String> commandFormatList = CommandFormatListUtil.getCommandFormatList();
