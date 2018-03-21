@@ -45,9 +45,10 @@
 <li><a href="#implementation">3. Implementation</a>
 <ul class="sectlevel2">
 <li><a href="#undo-redo-feature">3.1. Undo/Redo feature</a></li>
-<li><a href="#proposed-data-encryption">3.2. [Proposed] Data Encryption</a></li>
-<li><a href="#logging">3.3. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.4. Configuration</a></li>
+<li><a href="#dynamic-search-implementation">3.2. Dynamic Search Implementation</a></li>
+<li><a href="#proposed-data-encryption">3.3. [Proposed] Data Encryption</a></li>
+<li><a href="#logging">3.4. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.5. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a>
@@ -869,20 +870,100 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.2. [Proposed] Data Encryption</a></h3>
+<h3 id="dynamic-search-implementation"><a class="link" href="#dynamic-search-implementation">3.2. Dynamic Search Implementation</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">3.2.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>The <code>find</code> command shows the searched contact currently. However, the user does not need to type the complete name press enter, the whole search is dynamic. As soon as the user types the command <code>find</code> dynamic search state is toggled. After typing <code>find</code> command, whichever character is entered by the user, the results which contain
+ the typed keywords appear.</p>
+</div>
+<div class="paragraph">
+<p>The following diagram shows the UML diagram for <code>find</code> command :</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/FindCommandUMLDiagram.png" alt="FindCommandUMLDiagram" width="600">
+</div>
+</div>
+<div class="paragraph">
+<p>To implement the dynamic search, we used the following method - as soon as the user enters any character in the command box, the text is retrieved from
+the command box and checked if it is the <code>find</code> command. If it is the <code>find</code> command, dynamic search is started. After the <code>find</code> command is detected in the
+command box, every key that is pressed is parsed and sent to the <code>find</code> command parser. After that the basic functionality of find is used and the results are displayed.</p>
+</div>
+<div class="paragraph">
+<p>The code snippet for the implementation is:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">private</span> <span class="type">void</span> handleKeyPress(<span class="predefined-type">KeyEvent</span> keyEvent) {
+        <span class="keyword">switch</span> (keyEvent.getCode()) {
+        <span class="comment">// .. other keypress logic ..</span>
+        <span class="keyword">default</span>:
+            <span class="keyword">try</span> {
+                <span class="keyword">if</span> (<span class="comment">// .. checking if the text is `find` command) {</span>
+                    isCorrectCommandWord = !commandTextField.getText().trim().isEmpty();
+                    CommandResult commandResult;
+                    <span class="keyword">if</span> (keyEvent.getCode() != KeyCode.BACK_SPACE &amp;&amp; keyEvent.getCode() != KeyCode.DELETE) {
+                        commandResult = logic.execute(commandTextField.getText() + keyEvent.getText());
+                    } <span class="keyword">else</span> {
+                        commandResult = logic.execute(commandTextField.getText().substring(<span class="integer">0</span>,
+                                commandTextField.getText().length() - <span class="integer">1</span>));
+                    }
+                    <span class="comment">// process result of the command</span>
+                    logger.info(<span class="string"><span class="delimiter">&quot;</span><span class="content">Result: </span><span class="delimiter">&quot;</span></span> + commandResult.feedbackToUser);
+                    raise(<span class="keyword">new</span> NewResultAvailableEvent(commandResult.feedbackToUser));
+                }
+            } <span class="keyword">catch</span> (CommandException | <span class="exception">ParseException</span> e) {
+               <span class="comment">// .. command failure logic ..</span>
+            }
+        }
+    }</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The entered key is not instantly updated in the command box thats why after the <code>commandTextField.getText()</code> is executed we need to append\delete a character for the
+ code to the result to process the right input - the one that the user can see on their screens.
+</td>
+</tr>
+</table>
+</div>
+<h4 id="design-consideration" class="discrete">Design consideration</h4>
+<div class="paragraph">
+<p><strong>Aspect</strong>: User Interface (UI)</p>
+</div>
+<div class="paragraph">
+<p><strong>Alternative 1 (current choice):</strong> Show the search results without actually highlighting the keywords.<br>
+<strong>Pros</strong>: Allows more readability of the of the results as they contain multiple fields and not just user name.<br>
+<strong>Cons</strong>: User needs to manually search for the keywords entered by him in the search results.</p>
+</div>
+<div class="paragraph">
+<p><strong>Alternative 2:</strong> Show the search results WITH highlighting the keywords in the searched name.<br>
+<strong>Pros</strong>: It will make it easier for the user to view the user to identify the searched keyword in the displayed results.<br>
+<strong>Cons</strong>: Adding highlights to the results might make the displayed results a bit too cluttered specially with the presence of tags which are colored as well.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.3. [Proposed] Data Encryption</a></h3>
 <div class="paragraph">
 <p><em>{Explain here how the data encryption feature will be implemented}</em></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.3. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">3.4. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.4, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.5, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -913,7 +994,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.4. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.5. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -2273,6 +2354,49 @@ for <code>RemarkCommandParser</code>.</p>
 </li>
 </ul>
 </div>
+<h3 id="use-case-autocomplete-a-command" class="discrete">Use case: Autocomplete a command</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User types an incomplete command</p>
+</li>
+<li>
+<p>User presses <code>tab</code> key to complete the command</p>
+</li>
+<li>
+<p>ProgessChecker returns the completed command with dummy fields if there exists a specific format</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>1a. Specified command does not exist.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. ProgressChecker doesn&#8217;t do anything and waits for the right key/command to be entered.</p>
+</li>
+<li>
+<p>1a2. It waits for the right letter to be pressed or the correct command to be entered.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 <h3 id="use-case-find-teammate" class="discrete">Use case: Find teammate</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
@@ -2657,7 +2781,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-21 15:05:20 UTC
+Last updated 2018-03-21 18:00:28 UTC
 </div>
 </div>
 </body>
