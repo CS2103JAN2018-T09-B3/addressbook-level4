@@ -364,6 +364,19 @@ image::UndoRedoActivityDiagram.png[width="650"]
 
 The exercises for all weeks would be stored as a local file upon which it would be loaded by the `StorageManager` on start up.
 
+The _Sequence Diagram_ below shows how the components interact for the scenario where the user issues the command `answer 2.1.1 a d`.
+
+.Component interactions for `answer 2.1.1 a d` command (part 1)
+image::SDforAnswerExercise.png[width="800"]
+
+[NOTE]
+Note how the `Model` simply raises a `ExercisesChangedEvent` when the exercises data are changed, instead of asking the `Storage` to save the updates to the hard disk.
+
+The diagram below shows how the `EventsCenter` reacts to that event, which eventually results in the updates being saved to the hard disk and the exercises display of the UI being updated to reflect the newly given answers.
+
+.Component interactions for `delete 1` command (part 2)
+image::SDforExerciseEventHandling.png[width="800"]
+
 ==== Design Considerations
 
 ===== Aspect: Implementation of `AnswerCommand`
