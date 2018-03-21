@@ -29,23 +29,24 @@
 <li><a href="#Features">3. Features</a>
 <ul class="sectlevel2">
 <li><a href="#viewing-help-code-help-or-h-code">3.1. Viewing help : <code>help OR h</code></a></li>
-<li><a href="#adding-a-person-code-add-or-a-code">3.2. Adding a person: <code>add OR a</code></a></li>
-<li><a href="#listing-all-persons-code-list-or-l-code">3.3. Listing all persons : <code>list OR l</code></a></li>
-<li><a href="#sorting-all-persons-code-sort-code">3.4. Sorting all persons : <code>sort</code></a></li>
-<li><a href="#editing-a-person-code-edit-or-e-code">3.5. Editing a person : <code>edit OR e</code></a></li>
-<li><a href="#locating-persons-by-name-code-find-or-search-code">3.6. Locating persons by name: <code>find OR search</code></a></li>
-<li><a href="#deleting-a-person-code-delete-or-d-code">3.7. Deleting a person : <code>delete or d</code></a></li>
-<li><a href="#selecting-a-person-code-select-or-s-code">3.8. Selecting a person : <code>select OR s</code></a></li>
+<li><a href="#adding-a-teammate-code-add-or-a-code">3.2. Adding a teammate: <code>add OR a</code></a></li>
+<li><a href="#listing-all-teammates-code-list-or-l-code">3.3. Listing all teammates : <code>list OR l</code></a></li>
+<li><a href="#sorting-all-teammates-code-sort-code">3.4. Sorting all teammates : <code>sort</code></a></li>
+<li><a href="#editing-a-teammate-code-edit-or-e-code">3.5. Editing a teammate : <code>edit OR e</code></a></li>
+<li><a href="#locating-teammates-by-name-code-find-or-search-code">3.6. Locating teammates by name: <code>find OR search</code></a></li>
+<li><a href="#deleting-a-teammate-code-delete-or-d-code">3.7. Deleting a teammate : <code>delete or d</code></a></li>
+<li><a href="#selecting-a-teammate-code-select-or-s-code">3.8. Selecting a teammate : <code>select OR s</code></a></li>
 <li><a href="#mark-a-learning-outcome-as-completed-code-complete-index-code-code-coming-in-v2-0-code">3.9. Mark a learning outcome as completed : <code>complete INDEX</code> <code>[coming in v2.0]</code></a></li>
 <li><a href="#answering-and-saving-an-exercise-code-answer-index-answer-code-code-coming-in-v2-0-code">3.10. Answering and saving an exercise : <code>answer INDEX ANSWER</code> <code>[coming in v2.0]</code></a></li>
-<li><a href="#change-view-to-a-specific-week-code-view-code">3.11. Change view to a specific week : <code>view</code></a></li>
+<li><a href="#change-view-to-a-specific-week-code-view-or-v-code">3.11. Change view to a specific week : <code>view OR v</code></a></li>
 <li><a href="#listing-entered-commands-code-history-code">3.12. Listing entered commands : <code>history</code></a></li>
 <li><a href="#undoing-previous-command-code-undo-or-u-code">3.13. Undoing previous command : <code>undo OR u</code></a></li>
 <li><a href="#redoing-the-previously-undone-command-code-redo-or-r-code">3.14. Redoing the previously undone command : <code>redo OR r</code></a></li>
 <li><a href="#refreshing-the-content-code-refresh-or-r-code-code-coming-in-v2-0-code">3.15. Refreshing the content : <code>refresh OR r</code> <code>[coming in v2.0]</code></a></li>
 <li><a href="#clearing-all-entries-code-clear-or-c-code">3.16. Clearing all entries : <code>clear OR c</code></a></li>
-<li><a href="#exiting-the-program-code-exit-or-e-code">3.17. Exiting the program : <code>exit OR e</code></a></li>
-<li><a href="#saving-the-data">3.18. Saving the data</a></li>
+<li><a href="#toggle-theme-code-theme-code-code-coming-in-v2-0-code">3.17. Toggle theme : <code>theme</code> <code>[coming in v2.0]</code></a></li>
+<li><a href="#exiting-the-program-code-exit-or-e-code">3.18. Exiting the program : <code>exit OR e</code></a></li>
+<li><a href="#saving-the-data">3.19. Saving the data</a></li>
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
@@ -86,7 +87,7 @@ This app will not work with earlier versions of Java 8.
 <p>Download the latest <code>progresschecker.jar</code> <a href="https://github.com/CS2103JAN2018-T09-B3/main/releases">here</a>.</p>
 </li>
 <li>
-<p>Copy the file to the folder you want to use as the home folder for your Address Book.</p>
+<p>Copy the file to the folder you want to use as the home folder for your ProgressChecker.</p>
 </li>
 <li>
 <p>Double-click the file to start the app. The GUI should appear in a few seconds.</p>
@@ -162,9 +163,9 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 </div>
 </div>
 <div class="sect2">
-<h3 id="adding-a-person-code-add-or-a-code"><a class="link" href="#adding-a-person-code-add-or-a-code">3.2. Adding a person: <code>add OR a</code></a></h3>
+<h3 id="adding-a-teammate-code-add-or-a-code"><a class="link" href="#adding-a-teammate-code-add-or-a-code">3.2. Adding a teammate: <code>add OR a</code></a></h3>
 <div class="paragraph">
-<p>Adds a person to the ProgressChecker<br>
+<p>Adds a teammate to the ProgressChecker<br>
 Format: <code>add n/NAME p/PHONE_NUMBER e/EMAIL m/MAJOR y/YEAR [t/TAG]&#8230;&#8203;</code><br>
         <code>OR</code><br>
        <code>a n/NAME p/PHONE_NUMBER e/EMAIL m/MAJOR y/YEAR [t/TAG]&#8230;&#8203;</code></p>
@@ -176,7 +177,7 @@ Format: <code>add n/NAME p/PHONE_NUMBER e/EMAIL m/MAJOR y/YEAR [t/TAG]&#8230;&#8
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-A person can have any number of tags (including 0)
+A teammate can have any number of tags (including 0)
 </td>
 </tr>
 </table>
@@ -202,23 +203,23 @@ A person can have any number of tags (including 0)
 </div>
 </div>
 <div class="sect2">
-<h3 id="listing-all-persons-code-list-or-l-code"><a class="link" href="#listing-all-persons-code-list-or-l-code">3.3. Listing all persons : <code>list OR l</code></a></h3>
+<h3 id="listing-all-teammates-code-list-or-l-code"><a class="link" href="#listing-all-teammates-code-list-or-l-code">3.3. Listing all teammates : <code>list OR l</code></a></h3>
 <div class="paragraph">
-<p>Shows a list of all persons in the ProgressChecker.<br>
+<p>Shows a list of all teammates in the ProgressChecker.<br>
 Format: <code>list OR l</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="sorting-all-persons-code-sort-code"><a class="link" href="#sorting-all-persons-code-sort-code">3.4. Sorting all persons : <code>sort</code></a></h3>
+<h3 id="sorting-all-teammates-code-sort-code"><a class="link" href="#sorting-all-teammates-code-sort-code">3.4. Sorting all teammates : <code>sort</code></a></h3>
 <div class="paragraph">
-<p>Sorts all persons in the ProgressChecker with their names in alphabetical order.<br>
+<p>Sorts all teammates in the ProgressChecker with their names in alphabetical order.<br>
 Format: <code>sort</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="editing-a-person-code-edit-or-e-code"><a class="link" href="#editing-a-person-code-edit-or-e-code">3.5. Editing a person : <code>edit OR e</code></a></h3>
+<h3 id="editing-a-teammate-code-edit-or-e-code"><a class="link" href="#editing-a-teammate-code-edit-or-e-code">3.5. Editing a teammate : <code>edit OR e</code></a></h3>
 <div class="paragraph">
-<p>Edits an existing person in the ProgressChecker.<br>
+<p>Edits an existing teammate in the ProgressChecker.<br>
 Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code><br>
 <code>e INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code></p>
 </div>
@@ -227,7 +228,7 @@ Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;
 <div class="ulist">
 <ul>
 <li>
-<p>Edits the person at the specified <code>INDEX</code>. The index refers to the index number shown in the last person listing. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+<p>Edits the teammate at the specified <code>INDEX</code>. The index refers to the index number shown in the last teammate listing. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
 </li>
 <li>
 <p>At least one of the optional fields must be provided.</p>
@@ -236,10 +237,10 @@ Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;
 <p>Existing values will be updated to the input values.</p>
 </li>
 <li>
-<p>When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.</p>
+<p>When editing tags, the existing tags of the teammate will be removed i.e adding of tags is not cumulative.</p>
 </li>
 <li>
-<p>You can remove all the person&#8217;s tags by typing <code>t/</code> without specifying any tags after it.</p>
+<p>You can remove all the teammate&#8217;s tags by typing <code>t/</code> without specifying any tags after it.</p>
 </li>
 </ul>
 </div>
@@ -252,19 +253,19 @@ Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;
 <ul>
 <li>
 <p><code>edit 1 p/91234567 e/johndoe@example.com</code><br>
-Edits the phone number and email address of the 1st person to be <code>91234567</code> and <code>johndoe@example.com</code> respectively.</p>
+Edits the phone number and email address of the 1st teammate to be <code>91234567</code> and <code>johndoe@example.com</code> respectively.</p>
 </li>
 <li>
 <p><code>edit 2 n/Betsy Crower t/</code><br>
-Edits the name of the 2nd person to be <code>Betsy Crower</code> and clears all existing tags.</p>
+Edits the name of the 2nd teammate to be <code>Betsy Crower</code> and clears all existing tags.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="locating-persons-by-name-code-find-or-search-code"><a class="link" href="#locating-persons-by-name-code-find-or-search-code">3.6. Locating persons by name: <code>find OR search</code></a></h3>
+<h3 id="locating-teammates-by-name-code-find-or-search-code"><a class="link" href="#locating-teammates-by-name-code-find-or-search-code">3.6. Locating teammates by name: <code>find OR search</code></a></h3>
 <div class="paragraph">
-<p>Finds persons whose names contain any of the given keywords.<br>
+<p>Finds teammates whose names contain any of the given keywords.<br>
 Format: <code>find KEYWORD [MORE_KEYWORDS] OR search KEYWORD {MORE_KEYWORDS]</code></p>
 </div>
 <div class="sidebarblock">
@@ -287,7 +288,7 @@ Format: <code>find KEYWORD [MORE_KEYWORDS] OR search KEYWORD {MORE_KEYWORDS]</co
 <p>Only full words will be matched e.g. <code>Han</code> will not match <code>Hans</code></p>
 </li>
 <li>
-<p>Persons matching at least one keyword will be returned (i.e. <code>OR</code> search). e.g. <code>Hans Bo</code> will return <code>Hans Gruber</code>, <code>Bo Yang</code></p>
+<p>Teammates matching at least one keyword will be returned (i.e. <code>OR</code> search). e.g. <code>Hans Bo</code> will return <code>Hans Gruber</code>, <code>Bo Yang</code></p>
 </li>
 </ul>
 </div>
@@ -304,15 +305,15 @@ Returns <code>john</code> and <code>John Doe</code></p>
 </li>
 <li>
 <p><code>search Betsy Tim John</code><br>
-Returns any person having names <code>Betsy</code>, <code>Tim</code>, or <code>John</code></p>
+Returns any teammate having names <code>Betsy</code>, <code>Tim</code>, or <code>John</code></p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-person-code-delete-or-d-code"><a class="link" href="#deleting-a-person-code-delete-or-d-code">3.7. Deleting a person : <code>delete or d</code></a></h3>
+<h3 id="deleting-a-teammate-code-delete-or-d-code"><a class="link" href="#deleting-a-teammate-code-delete-or-d-code">3.7. Deleting a teammate : <code>delete or d</code></a></h3>
 <div class="paragraph">
-<p>Deletes the specified person from the ProgressChecker.<br>
+<p>Deletes the specified teammate from the ProgressChecker.<br>
 Format: <code>delete INDEX OR d INDEX</code></p>
 </div>
 <div class="sidebarblock">
@@ -320,7 +321,7 @@ Format: <code>delete INDEX OR d INDEX</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Deletes the person at the specified <code>INDEX</code>.</p>
+<p>Deletes the teammate at the specified <code>INDEX</code>.</p>
 </li>
 <li>
 <p>The index refers to the index number shown in the most recent listing.</p>
@@ -340,20 +341,20 @@ Format: <code>delete INDEX OR d INDEX</code></p>
 <li>
 <p><code>list</code><br>
 <code>delete 2</code><br>
-Deletes the 2nd person in the ProgressChecker.</p>
+Deletes the 2nd teammate in the ProgressChecker.</p>
 </li>
 <li>
 <p><code>find Betsy</code><br>
 <code>d 1</code><br>
-Deletes the 1st person in the results of the <code>find</code> command.</p>
+Deletes the 1st teammate in the results of the <code>find</code> command.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="selecting-a-person-code-select-or-s-code"><a class="link" href="#selecting-a-person-code-select-or-s-code">3.8. Selecting a person : <code>select OR s</code></a></h3>
+<h3 id="selecting-a-teammate-code-select-or-s-code"><a class="link" href="#selecting-a-teammate-code-select-or-s-code">3.8. Selecting a teammate : <code>select OR s</code></a></h3>
 <div class="paragraph">
-<p>Selects the person identified by the index number used in the last person listing.<br>
+<p>Selects the teammate identified by the index number used in the last teammate listing.<br>
 Format: <code>select INDEX OR s INDEX</code></p>
 </div>
 <div class="sidebarblock">
@@ -361,7 +362,7 @@ Format: <code>select INDEX OR s INDEX</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Selects the person and loads the Google search page the person at the specified <code>INDEX</code>.</p>
+<p>Selects the teammate and loads the Google search page the teammate at the specified <code>INDEX</code>.</p>
 </li>
 <li>
 <p>The index refers to the index number shown in the most recent listing.</p>
@@ -381,12 +382,12 @@ Format: <code>select INDEX OR s INDEX</code></p>
 <li>
 <p><code>list</code><br>
 <code>select 2</code><br>
-Selects the 2nd person in the ProgressChecker.</p>
+Selects the 2nd teammate in the ProgressChecker.</p>
 </li>
 <li>
 <p><code>find Betsy</code><br>
 <code>s 1</code><br>
-Selects the 1st person in the results of the <code>find</code> command.</p>
+Selects the 1st teammate in the results of the <code>find</code> command.</p>
 </li>
 </ul>
 </div>
@@ -404,9 +405,40 @@ Format: <code>complete INDEX</code></p>
 <p>Answer an exercise based off the given question number.
 Format: <code>answer INDEX ANSWER</code></p>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Answer an exercise at the specified <code>INDEX</code>.</p>
+</li>
+<li>
+<p>The index refers to the question number.</p>
+</li>
+<li>
+<p>The index must be of format <code>section number</code>.<code>question number</code>, 2.1.1, 3.2.5, 6.1.7</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><code>ANSWER</code> should be in the form of listed choices if the exercise is a multiple choice question. For example, in a question with 4 four choices, one can choose choice 1 and 3 as the answer by using <code>answer 2.1.1 a c</code>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 </div>
 <div class="sect2">
-<h3 id="change-view-to-a-specific-week-code-view-code"><a class="link" href="#change-view-to-a-specific-week-code-view-code">3.11. Change view to a specific week : <code>view</code></a></h3>
+<h3 id="change-view-to-a-specific-week-code-view-or-v-code"><a class="link" href="#change-view-to-a-specific-week-code-view-or-v-code">3.11. Change view to a specific week : <code>view OR v</code></a></h3>
 <div class="paragraph">
 <p>Change the browser view to display contents identified by the week number.
 Format: <code>view INDEX</code></p>
@@ -552,14 +584,21 @@ Format: <code>clear OR c</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exiting-the-program-code-exit-or-e-code"><a class="link" href="#exiting-the-program-code-exit-or-e-code">3.17. Exiting the program : <code>exit OR e</code></a></h3>
+<h3 id="toggle-theme-code-theme-code-code-coming-in-v2-0-code"><a class="link" href="#toggle-theme-code-theme-code-code-coming-in-v2-0-code">3.17. Toggle theme : <code>theme</code> <code>[coming in v2.0]</code></a></h3>
+<div class="paragraph">
+<p>Toggle between a light and dark theme.
+Format: <code>theme OR t</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="exiting-the-program-code-exit-or-e-code"><a class="link" href="#exiting-the-program-code-exit-or-e-code">3.18. Exiting the program : <code>exit OR e</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit OR e</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.18. Saving the data</a></h3>
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.19. Saving the data</a></h3>
 <div class="paragraph">
 <p>Address book data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
@@ -585,6 +624,9 @@ There is no need to save manually.</p>
 <p><strong>Add</strong> <code>add n/NAME p/PHONE_NUMBER e/EMAIL m/MAJOR y/YEAR [t/TAG]&#8230;&#8203;</code><br>
 <code>a n/NAME p/PHONE_NUMBER e/EMAIL m/MAJOR y/YEAR [t/TAG]&#8230;&#8203;</code>
 e.g. <code>add n/James Ho p/22224444 e/jamesho@example.com m/Computer Science y/2 t/friend t/colleague</code></p>
+</li>
+<li>
+<p><strong>Answer</strong>: <code>answer INDEX ANSWER</code></p>
 </li>
 <li>
 <p><strong>Clear</strong> : <code>clear OR c</code></p>
@@ -613,7 +655,10 @@ e.g. <code>search James Jake</code><br>
 e.g.<code>select 2</code></p>
 </li>
 <li>
-<p><strong>View</strong> : <code>view INDEX</code><br>
+<p><strong>Theme</strong>: <code>theme OR t</code></p>
+</li>
+<li>
+<p><strong>View</strong> : <code>view INDEX OR v INDEX</code><br>
 e.g. <code>view 5</code></p>
 </li>
 <li>
@@ -632,7 +677,7 @@ e.g. <code>view 5</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-21 19:25:48 UTC
+Last updated 2018-03-21 19:28:42 UTC
 </div>
 </div>
 </body>
