@@ -374,7 +374,7 @@ Note how the `Model` simply raises a `ExercisesChangedEvent` when the exercises 
 
 The diagram below shows how the `EventsCenter` reacts to that event, which eventually results in the updates being saved to the hard disk and the exercises display of the UI being updated to reflect the newly given answers.
 
-.Component interactions for `delete 1` command (part 2)
+.Component interactions for `answer 2.1.1 a d` command (part 2)
 image::SDforExercisesEventHandling.png[width="800"]
 
 ==== Design Considerations
