@@ -45,10 +45,11 @@
 <li><a href="#implementation">3. Implementation</a>
 <ul class="sectlevel2">
 <li><a href="#undo-redo-feature">3.1. Undo/Redo feature</a></li>
-<li><a href="#dynamic-search-implementation">3.2. Dynamic Search Implementation</a></li>
-<li><a href="#proposed-data-encryption">3.3. [Proposed] Data Encryption</a></li>
-<li><a href="#logging">3.4. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.5. Configuration</a></li>
+<li><a href="#upload-feature">3.2. Upload feature</a></li>
+<li><a href="#dynamic-search-implementation">3.3. Dynamic Search Implementation</a></li>
+<li><a href="#proposed-data-encryption">3.4. [Proposed] Data Encryption</a></li>
+<li><a href="#logging">3.5. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.6. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a>
@@ -870,9 +871,95 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 <div class="sect2">
-<h3 id="dynamic-search-implementation"><a class="link" href="#dynamic-search-implementation">3.2. Dynamic Search Implementation</a></h3>
+<h3 id="upload-feature"><a class="link" href="#upload-feature">3.2. Upload feature</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">3.2.1. Current Implementation</a></h4>
+<h4 id="planned-implementation"><a class="link" href="#planned-implementation">3.2.1. Planned Implementation</a></h4>
+<div class="paragraph">
+<p>The Upload command will allow users to upload their preferred image to replace the default profile photo.</p>
+</div>
+<div class="paragraph">
+<p>Upload can be undoable. The following diagram shows the inheritance diagram for upload command:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/LogicCommandClassDiagram.png" alt="LogicCommandClassDiagram" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>UploadCommand is implemented this way:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">UploadCommand</span> <span class="directive">extends</span> UndoableCommand {
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> CommandResult executeUndoableCommand() <span class="directive">throws</span> CommandException {
+        requireNonNull(model);
+        <span class="keyword">try</span> {
+            model.uploadPhoto(toUpload);
+            <span class="keyword">return</span> <span class="keyword">new</span> CommandResult(MESSAGE_SUCCESS);
+        } <span class="keyword">catch</span> (<span class="exception">FileNotFoundException</span> e) {
+            <span class="keyword">throw</span> <span class="keyword">new</span> CommandException(MESSAGE_IMAGE_NOT_FOUND);
+        } <span class="keyword">catch</span> (<span class="exception">IOException</span> e) {
+            <span class="keyword">throw</span> <span class="keyword">new</span> CommandException(<span class="string"><span class="delimiter">&quot;</span><span class="content">Caught IOException!</span><span class="delimiter">&quot;</span></span>);
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If the path is invalid or the image cannot be found, the upload will not be successful. User will be asked to write the correct path to image again. Users are allowed to reload the image if they want to update the profile photo.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.2.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-implementation-of-code-uploadcommand-code"><a class="link" href="#aspect-implementation-of-code-uploadcommand-code">Aspect: Implementation of <code>UploadCommand</code></a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> user will provide the path of image</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: The path can be used directly to find the image and display it in the app.</p>
+</li>
+<li>
+<p>Cons: Image may be a local file. When other users open the app, they cannot see the update.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> user will upload image into our github folder manually</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Everyone can see the update of profile photo.</p>
+</li>
+<li>
+<p>Cons: Quite trobulesome to upload photo manually first.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="dynamic-search-implementation"><a class="link" href="#dynamic-search-implementation">3.3. Dynamic Search Implementation</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">3.3.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The <code>find</code> command shows the searched contact currently. However, the user does not need to type the complete name press enter, the whole search is dynamic. As soon as the user types the command <code>find</code> dynamic search state is toggled. After typing <code>find</code> command, whichever character is entered by the user, the results which contain
  the typed keywords appear.</p>
@@ -950,20 +1037,20 @@ The entered key is not instantly updated in the command box thats why after the 
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.3. [Proposed] Data Encryption</a></h3>
+<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.4. [Proposed] Data Encryption</a></h3>
 <div class="paragraph">
 <p><em>{Explain here how the data encryption feature will be implemented}</em></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.4. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">3.5. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.5, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.6, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -994,7 +1081,7 @@ The entered key is not instantly updated in the command box thats why after the 
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.5. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.6. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -2781,7 +2868,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-21 18:04:59 UTC
+Last updated 2018-03-21 19:15:28 UTC
 </div>
 </div>
 </body>
