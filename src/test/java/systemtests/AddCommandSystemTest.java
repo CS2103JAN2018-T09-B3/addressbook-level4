@@ -52,6 +52,7 @@ import seedu.progresschecker.logic.commands.UndoCommand;
 import seedu.progresschecker.model.Model;
 import seedu.progresschecker.model.person.Email;
 //import seedu.progresschecker.model.person.Major;
+import seedu.progresschecker.model.person.GithubUsername;
 import seedu.progresschecker.model.person.Name;
 import seedu.progresschecker.model.person.Person;
 import seedu.progresschecker.model.person.Phone;
@@ -211,7 +212,7 @@ public class AddCommandSystemTest extends ProgressCheckerSystemTest {
         /* Case: invalid username -> rejected */
         command = AddCommand.COMMAND_WORD + NAME_DESC_AMY + PHONE_DESC_AMY + EMAIL_DESC_AMY + INVALID_USERNAME_DESC
                 + MAJOR_DESC_AMY + YEAR_DESC_AMY;
-        assertCommandFailure(command, Email.MESSAGE_EMAIL_CONSTRAINTS);
+        assertCommandFailure(command, GithubUsername.MESSAGE_USERNAME_CONSTRAINTS);
 
         /* Case: invalid tag -> rejected */
         command = AddCommand.COMMAND_WORD + NAME_DESC_AMY + PHONE_DESC_AMY + EMAIL_DESC_AMY + USERNAME_DESC_AMY

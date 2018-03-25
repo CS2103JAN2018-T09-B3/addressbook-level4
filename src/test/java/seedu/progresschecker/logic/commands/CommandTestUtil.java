@@ -64,7 +64,7 @@ public class CommandTestUtil {
     public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "James&"; // '&' not allowed in names
     public static final String INVALID_PHONE_DESC = " " + PREFIX_PHONE + "911a"; // 'a' not allowed in phones
     public static final String INVALID_EMAIL_DESC = " " + PREFIX_EMAIL + "bob!yahoo"; // missing '@' symbol
-    public static final String INVALID_USERNAME_DESC = " " + PREFIX_NAME + "James&Github"; // '&' not allowed in names
+    public static final String INVALID_USERNAME_DESC = " " + PREFIX_USERNAME + "James&Github"; // '&' not allowed in names
     public static final String INVALID_MAJOR_DESC = " " + PREFIX_MAJOR; // empty string not allowed for majors
     public static final String INVALID_YEAR_DESC = " " + PREFIX_YEAR + "9"; // year of study cannot exceed 5
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "hubby*"; // '*' not allowed in tags
