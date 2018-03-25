@@ -99,7 +99,8 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code Optional<String> username} into an {@code Optional<GithubUsername>} if {@code username} is present.
+     * Parses a {@code Optional<String> username} into an {@code Optional<GithubUsername>}
+     *     if {@code username} is present.
      * See header comment of this class regarding the use of {@code Optional} parameters.
      */
     public static Optional<GithubUsername> parseUsername(Optional<String> username) throws IllegalValueException {

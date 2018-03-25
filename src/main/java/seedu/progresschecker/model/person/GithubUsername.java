@@ -10,7 +10,8 @@ import static seedu.progresschecker.commons.util.AppUtil.checkArgument;
 public class GithubUsername {
 
     public static final String MESSAGE_USERNAME_CONSTRAINTS =
-            "Person Github usernames should only contain alphanumeric characters and spaces, and it should not be blank";
+            "Person Github usernames should only contain alphanumeric characters and spaces, " +
+                    "and it should not be blank";
 
     /*
      * The first character of the username must not be a whitespace,
