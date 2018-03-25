@@ -6,6 +6,7 @@ import java.util.stream.Stream;
 
 import seedu.progresschecker.logic.commands.EditCommand.EditPersonDescriptor;
 import seedu.progresschecker.model.person.Email;
+import seedu.progresschecker.model.person.GithubUsername;
 import seedu.progresschecker.model.person.Major;
 import seedu.progresschecker.model.person.Name;
 import seedu.progresschecker.model.person.Person;
@@ -62,6 +63,14 @@ public class EditPersonDescriptorBuilder {
      */
     public EditPersonDescriptorBuilder withEmail(String email) {
         descriptor.setEmail(new Email(email));
+        return this;
+    }
+
+    /**
+     * Sets the {@code GithubUsername} of the {@code EditPersonDescriptor} that we are building.
+     */
+    public EditPersonDescriptorBuilder withUsername(String username) {
+        descriptor.setUsername(new GithubUsername(username));
         return this;
     }
 

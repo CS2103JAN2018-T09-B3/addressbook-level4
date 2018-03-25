@@ -9,6 +9,7 @@ import static seedu.progresschecker.logic.commands.CommandTestUtil.INVALID_EMAIL
 import static seedu.progresschecker.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
 import static seedu.progresschecker.logic.commands.CommandTestUtil.INVALID_PHONE_DESC;
 import static seedu.progresschecker.logic.commands.CommandTestUtil.INVALID_TAG_DESC;
+import static seedu.progresschecker.logic.commands.CommandTestUtil.INVALID_USERNAME_DESC;
 import static seedu.progresschecker.logic.commands.CommandTestUtil.MAJOR_DESC_AMY;
 import static seedu.progresschecker.logic.commands.CommandTestUtil.MAJOR_DESC_BOB;
 import static seedu.progresschecker.logic.commands.CommandTestUtil.NAME_DESC_AMY;
@@ -44,6 +45,7 @@ import seedu.progresschecker.logic.commands.UndoCommand;
 import seedu.progresschecker.model.Model;
 import seedu.progresschecker.model.person.Email;
 //import seedu.progresschecker.model.person.Major;
+import seedu.progresschecker.model.person.GithubUsername;
 import seedu.progresschecker.model.person.Name;
 import seedu.progresschecker.model.person.Person;
 import seedu.progresschecker.model.person.Phone;
@@ -171,6 +173,10 @@ public class EditCommandSystemTest extends ProgressCheckerSystemTest {
         /* Case: invalid email -> rejected */
         assertCommandFailure(EditCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased()
                 + INVALID_EMAIL_DESC, Email.MESSAGE_EMAIL_CONSTRAINTS);
+
+        /* Case: invalid username -> rejected */
+        assertCommandFailure(EditCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased()
+                + INVALID_USERNAME_DESC, GithubUsername.MESSAGE_USERNAME_CONSTRAINTS);
 
         /* Case: invalid major -> rejected */
         /*assertCommandFailure(EditCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased() + INVALID_MAJOR_DESC,

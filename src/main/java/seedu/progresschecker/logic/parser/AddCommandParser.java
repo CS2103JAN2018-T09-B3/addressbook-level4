@@ -6,6 +6,7 @@ import static seedu.progresschecker.logic.parser.CliSyntax.PREFIX_MAJOR;
 import static seedu.progresschecker.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.progresschecker.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.progresschecker.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.progresschecker.logic.parser.CliSyntax.PREFIX_USERNAME;
 import static seedu.progresschecker.logic.parser.CliSyntax.PREFIX_YEAR;
 
 import java.util.Set;
@@ -15,6 +16,7 @@ import seedu.progresschecker.commons.exceptions.IllegalValueException;
 import seedu.progresschecker.logic.commands.AddCommand;
 import seedu.progresschecker.logic.parser.exceptions.ParseException;
 import seedu.progresschecker.model.person.Email;
+import seedu.progresschecker.model.person.GithubUsername;
 import seedu.progresschecker.model.person.Major;
 import seedu.progresschecker.model.person.Name;
 import seedu.progresschecker.model.person.Person;
@@ -46,11 +48,12 @@ public class AddCommandParser implements Parser<AddCommand> {
             Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME)).get();
             Phone phone = ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE)).get();
             Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL)).get();
+            GithubUsername username = ParserUtil.parseUsername(argMultimap.getValue(PREFIX_USERNAME)).get();
             Major major = ParserUtil.parseMajor(argMultimap.getValue(PREFIX_MAJOR)).get();
             Year year = ParserUtil.parseYear(argMultimap.getValue(PREFIX_YEAR)).get();
             Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
 
-            Person person = new Person(name, phone, email, major, year, tagList);
+            Person person = new Person(name, phone, email, username, major, year, tagList);
 
             return new AddCommand(person);
         } catch (IllegalValueException ive) {
