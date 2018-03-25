@@ -105,6 +105,18 @@ allTests.dependsOn guiTests
 allTests.dependsOn nonGuiTests
 
 test {
+    exclude 'seedu/progresschecker/ui/BrowserPanelTest.class'
+    exclude 'seedu/progresschecker/ui/PersonListPanelTest.class'
+    exclude 'seedu/progresschecker/ui/ResultDisplayTest.class'
+    exclude 'systemtests/AddCommandSystemTest.class'
+    exclude 'systemtests/ClearCommandSystemTest.class'
+    exclude 'systemtests/DeleteCommandSystemTest.class'
+    exclude 'systemtests/EditCommandSystemTest.class'
+    exclude 'systemtests/ErrorDialogGuiTest.class'
+    exclude 'systemtests/FindCommandSystemTest.class'
+    exclude 'systemtests/HelpCommandSystemTest.class'
+    exclude 'systemtests/SelectCommandSystemTest.class'
+
     systemProperty 'testfx.setup.timeout', '60000'
 
     /*
