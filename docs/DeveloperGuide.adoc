@@ -16,7 +16,7 @@ By: `Team T09-B3`      Since: `Feb 2018`      Licence: `MIT`
 
 == Setting up
 
-There are some requirements you will need to set up before getting started in contributing to ProgressChecker. Below lists the important key elements you will have to configure.
+There are some things you will need to set up before getting started in contributing to ProgressChecker. Below lists the important key elements you will have to configure.
 
 === Prerequisites
 

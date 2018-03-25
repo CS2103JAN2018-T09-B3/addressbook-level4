@@ -21,7 +21,7 @@ ProgressChecker is for those who *prefer to use a desktop app for managing conta
 
 == Quick Start
 
-Getting started with ProgressChecker is as easy as downloading and launching the software in a couple of clicks! Listed below are the important steps that you will need to get started:
+Getting started with ProgressChecker is as easy as downloading and launching the software in a couple of clicks! Listed below are the important steps that you will need to follow to get started:
 
 .  Ensure you have Java version `1.8.0_60` or later installed in your Computer.
 +
