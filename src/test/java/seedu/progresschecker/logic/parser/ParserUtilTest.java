@@ -153,7 +153,7 @@ public class ParserUtilTest {
 
     @Test
     public void parseUsername_validValueWithoutWhitespace_returnsUsername() throws Exception {
-        Name expectedUsername = new Name(VALID_USERNAME);
+        GithubUsername expectedUsername = new GithubUsername(VALID_USERNAME);
         assertEquals(expectedUsername, ParserUtil.parseUsername(VALID_USERNAME));
         assertEquals(Optional.of(expectedUsername), ParserUtil.parseUsername(Optional.of(VALID_USERNAME)));
     }

@@ -37,6 +37,7 @@ public class EditPersonDescriptorBuilder {
         descriptor.setName(person.getName());
         descriptor.setPhone(person.getPhone());
         descriptor.setEmail(person.getEmail());
+        descriptor.setUsername(person.getUsername());
         descriptor.setMajor(person.getMajor());
         descriptor.setYear(person.getYear());
         descriptor.setTags(person.getTags());

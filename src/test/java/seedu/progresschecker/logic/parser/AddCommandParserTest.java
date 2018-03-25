@@ -45,6 +45,7 @@ import org.junit.Test;
 
 import seedu.progresschecker.logic.commands.AddCommand;
 import seedu.progresschecker.model.person.Email;
+import seedu.progresschecker.model.person.GithubUsername;
 import seedu.progresschecker.model.person.Major;
 import seedu.progresschecker.model.person.Name;
 import seedu.progresschecker.model.person.Person;
@@ -171,8 +172,8 @@ public class AddCommandParserTest {
 
         // invalid username
         assertParseFailure(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + INVALID_USERNAME_DESC
-                        + MAJOR_DESC_BOB + YEAR_DESC_BOB + TAG_DESC_HUSBAND + TAG_DESC_FRIEND,
-                Email.MESSAGE_EMAIL_CONSTRAINTS);
+                + MAJOR_DESC_BOB + YEAR_DESC_BOB + TAG_DESC_HUSBAND + TAG_DESC_FRIEND,
+                GithubUsername.MESSAGE_USERNAME_CONSTRAINTS);
 
         // invalid major
         assertParseFailure(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + USERNAME_DESC_BOB
