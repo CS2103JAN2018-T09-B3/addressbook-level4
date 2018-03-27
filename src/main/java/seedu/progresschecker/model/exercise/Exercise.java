@@ -18,7 +18,8 @@ public class Exercise {
     /**
      * Every field must be present and not null.
      */
-    public Exercise(QuestionIndex questionIndex, QuestionType questionType, Question question, StudentAnswer studentAnswer, ModelAnswer modelAnswer) {
+    public Exercise(QuestionIndex questionIndex, QuestionType questionType, Question question,
+                    StudentAnswer studentAnswer, ModelAnswer modelAnswer) {
         requireAllNonNull(questionIndex, questionType, question);
         this.questionIndex = questionIndex;
         this.questionType = questionType;
