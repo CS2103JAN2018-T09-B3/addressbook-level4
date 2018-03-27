@@ -2,12 +2,13 @@ package seedu.progresschecker.ui;
 
 import java.util.logging.Logger;
 
+import org.fxmisc.easybind.EasyBind;
+
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
-import org.fxmisc.easybind.EasyBind;
 import seedu.progresschecker.commons.core.LogsCenter;
 import seedu.progresschecker.model.exercise.Exercise;
 
@@ -30,7 +31,7 @@ public class ExerciseListPanel extends UiPart<Region> {
 
     private void setConnections(ObservableList<Exercise> exerciseList) {
         ObservableList<ExerciseCard> mappedList = EasyBind.map(
-                exerciseList, (exercise) -> new ExerciseCard(exercise);
+                exerciseList, (exercise) -> new ExerciseCard(exercise));
         exerciseListView.setItems(mappedList);
         exerciseListView.setCellFactory(listView -> new ExerciseListViewCell());
     }

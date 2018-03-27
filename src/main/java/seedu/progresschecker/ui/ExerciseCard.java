@@ -13,7 +13,7 @@ public class ExerciseCard extends UiPart<Region> {
     private static final String FXML = "ExerciseListCard.fxml";
 
     public final Exercise exercise;
-    
+
     @FXML
     private Label questionIndex;
     @FXML
