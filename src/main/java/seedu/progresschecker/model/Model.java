@@ -3,6 +3,7 @@ package seedu.progresschecker.model;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
+import seedu.progresschecker.model.exercise.Exercise;
 import seedu.progresschecker.model.person.Person;
 import seedu.progresschecker.model.person.exceptions.DuplicatePersonException;
 import seedu.progresschecker.model.person.exceptions.PersonNotFoundException;
@@ -47,5 +48,8 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredPersonList(Predicate<Person> predicate);
+
+    /** Returns an unmodifiable view of the filtered exercise list */
+    ObservableList<Exercise> getFilteredExerciseList();
 
 }
