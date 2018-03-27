@@ -11,6 +11,8 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import javafx.collections.ObservableList;
+import seedu.progresschecker.model.exercise.Exercise;
+import seedu.progresschecker.model.exercise.UniqueExerciseList;
 import seedu.progresschecker.model.person.Person;
 import seedu.progresschecker.model.person.UniquePersonList;
 import seedu.progresschecker.model.person.exceptions.DuplicatePersonException;
@@ -26,6 +28,7 @@ public class ProgressChecker implements ReadOnlyProgressChecker {
 
     private final UniquePersonList persons;
     private final UniqueTagList tags;
+    private final UniqueExerciseList exercises;
 
     /*
      * The 'unusual' code block below is an non-static initialization block, sometimes used to avoid duplication
@@ -37,6 +40,7 @@ public class ProgressChecker implements ReadOnlyProgressChecker {
     {
         persons = new UniquePersonList();
         tags = new UniqueTagList();
+        exercises = new UniqueExerciseList();
     }
 
     public ProgressChecker() {}
@@ -181,6 +185,13 @@ public class ProgressChecker implements ReadOnlyProgressChecker {
         return tags.asObservableList();
     }
 
+    //@@author iNekox3
+    @Override
+    public ObservableList<Exercise> getExerciseList() {
+        return exercises.asObservableList();
+    }
+
+    //@@author
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
