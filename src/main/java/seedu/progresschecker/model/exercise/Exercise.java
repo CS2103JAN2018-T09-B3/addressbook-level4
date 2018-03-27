@@ -1,42 +1,53 @@
 package seedu.progresschecker.model.exercise;
 
-import static java.util.Objects.requireNonNull;
+import static seedu.progresschecker.commons.util.CollectionUtil.requireAllNonNull;
 
 //@@author iNekox3
 /**
  * Represents an Exercise in the ProgressChecker.
+ * Guarantees: details are present and not null, field values are validated.
  */
 public class Exercise {
 
-    public final int questionIndex;
-    public final String questionType;
-    public final String question;
-    public final String studentAnswer;
-    public final String modelAnswer;
+    private final QuestionIndex questionIndex;
+    private final QuestionType questionType;
+    private final Question question;
+    private final StudentAnswer studentAnswer;
+    private final ModelAnswer modelAnswer;
 
     /**
-     * Constructs an {@code Exercise}.
-     *
-     * @param questionIndex A valid question index.
-     * @param questionType A valid question type.
-     * @param question A string of any characters.
-     * @param modelAnswer A string o any characters.
+     * Every field must be present and not null.
      */
-    public Tag(int questionIndex, String questionType, String question, String modelAnswer) {
-        requireNonNull(questionIndex);
-        requireNonNull(questionType);
-        requireNonNull(question);
-        
+    public Exercise(QuestionIndex questionIndex, QuestionType questionType, Question question, StudentAnswer studentAnswer, ModelAnswer modelAnswer) {
+        requireAllNonNull(questionIndex, questionType, question);
         this.questionIndex = questionIndex;
         this.questionType = questionType;
         this.question = question;
-        this.studentAnswer = "";
+        this.studentAnswer = studentAnswer;
         this.modelAnswer = modelAnswer;
     }
 
-    /**
-     * Format exercise as text for viewing.
-     */
+    public QuestionIndex getQuestionIndex() {
+        return questionIndex;
+    }
+
+    public QuestionType getQuestionType() {
+        return questionType;
+    }
+
+    public Question getQuestion() {
+        return question;
+    }
+
+    public StudentAnswer getStudentAnswer() {
+        return studentAnswer;
+    }
+
+    public ModelAnswer getModelAnswer() {
+        return modelAnswer;
+    }
+
+    @Override
     public String toString() {
         return "Q" + questionIndex + " " + question + "\n\n"
                 + "Your Answer: " + studentAnswer + "\n\n"
