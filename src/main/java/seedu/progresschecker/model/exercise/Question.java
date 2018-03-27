@@ -13,7 +13,7 @@ public class Question {
     /**
      * Constructs a {@code Question}.
      *
-     * @param question A valid question.
+     * @param question A question of any word and character.
      */
     public Question(String question) {
         requireNonNull(question);
