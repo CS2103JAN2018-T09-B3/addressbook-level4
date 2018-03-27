@@ -12,7 +12,7 @@ public class QuestionType {
     public static final String MESSAGE_TYPE_CONSTRAINTS =
             "Type can only be 'text' or 'choice'";
     public static final String TYPE_VALIDATION_REGEX = "text|choice";
-    public final String type;
+    public final String value;
 
     /**
      * Constructs a {@code QuestionType}.
@@ -22,7 +22,7 @@ public class QuestionType {
     public QuestionType(String type) {
         requireNonNull(type);
         checkArgument(isValidType(type), MESSAGE_TYPE_CONSTRAINTS);
-        this.type = type;
+        this.value = type;
     }
 
     /**
@@ -34,6 +34,6 @@ public class QuestionType {
 
     @Override
     public String toString() {
-        return type;
+        return value;
     }
 }

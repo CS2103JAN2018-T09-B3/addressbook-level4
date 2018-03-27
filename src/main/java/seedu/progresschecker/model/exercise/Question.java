@@ -8,7 +8,7 @@ import static java.util.Objects.requireNonNull;
  */
 public class Question {
 
-    public final String question;
+    public final String value;
 
     /**
      * Constructs a {@code Question}.
@@ -17,11 +17,11 @@ public class Question {
      */
     public Question(String question) {
         requireNonNull(question);
-        this.question = question;
+        this.value = question;
     }
 
     @Override
     public String toString() {
-        return question;
+        return value;
     }
 }
