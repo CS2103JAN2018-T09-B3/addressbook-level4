@@ -1127,13 +1127,13 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`* * *` |user |see the list of completed/incomplete learning outcomes of my teammates |help to remind my teammate of the task or know which task to offer help with if they are having difficulties
 
-|`* * *` |user |list issues (tasks) on GitHub |to easily inform my teammates of my upcoming plans even before I send any pull requests to the team's repository
+|`* * *` |user |list issues (tasks) on GitHub |easily inform my teammates of my upcoming plans even before I send any pull requests to the team's repository
 
-|`* * *` |user |assign issues (tasks) to my teammates |to track who is doing what
+|`* * *` |user |assign issues (tasks) to my teammates |track who is doing what
 
-|`* * *` |user |see the issues (tasks) listed on GitHub |to easily know the upcoming plans of my teammates even before they send any pull requests to the team's repository
+|`* * *` |user |see the issues (tasks) listed on GitHub |easily know the upcoming plans of my teammates even before they send any pull requests to the team's repository
 
-|`* * *` |user |close issues (tasks) on GitHub |to easily inform my teammates of a completed task if no particular pull requests closes it
+|`* * *` |user |close issues (tasks) on GitHub |easily inform my teammates of a completed task if no particular pull requests closes it
 
 |`* *` |user |see the timeline showing the learning progress of me and my teammates |make sure everyone is on track
 
