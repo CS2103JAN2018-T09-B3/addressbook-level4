@@ -18,7 +18,7 @@ public class ViewTaskListCommandParser implements Parser<ViewTaskListCommand> {
      */
     public ViewTaskListCommand parse(String args) throws ParseException {
         try {
-            String title = ParserUtil.parseTitle(args);
+            String title = ParserUtil.parseTaskTitle(args);
             return new ViewTaskListCommand(title);
         } catch (IllegalValueException ive) {
             throw new ParseException(

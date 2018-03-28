@@ -62,12 +62,12 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String title} into a {@code String}.
+     * Parses a {@code String Title} into a {@code String}.
      * Leading and trailing whitespaces will be trimmed.
      *
-     * @throws IllegalValueException if the given {@code title} is invalid.
+     * @throws IllegalValueException if the given {@code Title} is invalid.
      */
-    public static String parseTitle(String title) throws IllegalValueException {
+    public static String parseTaskTitle(String title) throws IllegalValueException {
         requireNonNull(title);
         String trimmedTitle = title.trim();
         if (title.length() > MAX_TITLE_LENGTH) {
