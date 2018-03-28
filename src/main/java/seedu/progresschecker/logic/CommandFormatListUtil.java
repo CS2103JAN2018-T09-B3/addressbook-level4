@@ -16,6 +16,7 @@ import seedu.progresschecker.logic.commands.SelectCommand;
 import seedu.progresschecker.logic.commands.SortCommand;
 import seedu.progresschecker.logic.commands.UndoCommand;
 import seedu.progresschecker.logic.commands.ViewCommand;
+import seedu.progresschecker.logic.commands.ViewTaskListCommand;
 
 /**
  * Initialises and returns a list which contains different command formats
@@ -46,6 +47,8 @@ public final class CommandFormatListUtil {
         commandFormatList.add(UndoCommand.COMMAND_WORD);
         commandFormatList.add(SortCommand.COMMAND_WORD);
         commandFormatList.add(ViewCommand.COMMAND_FORMAT);
+        commandFormatList.add(ViewTaskListCommand.COMMAND_FORMAT);
+
 
         //sorting the commandFormatList
         Collections.sort(commandFormatList);

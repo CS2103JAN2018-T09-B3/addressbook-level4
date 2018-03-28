@@ -16,7 +16,7 @@ public class MyTaskList {
 
     public static final String AUTHORIZE_FAILURE = "Failed to authorize tasks api client credentials";
     public static final String ADD_FAILURE = "Failed to add new task list to account";
-    public static final String LOAD_FAILURE = "Failed to load existing task lists";
+    public static final String LOAD_FAILURE = "Failed to load this task list (might be wrong title)";
 
     /**
      * Creates a new task list with title {@code String} and adds to the current list of task lists
@@ -47,9 +47,9 @@ public class MyTaskList {
      * Finds the task list with title {@code String} from the current list of task lists
      *
      * @param listTitle title of the task list we look for
-     * @return the task list instance
+     * @return the URL of the task list instance
      */
-    public static TaskList searchTaskList(String listTitle) throws CommandException {
+    public static String searchTaskList(String listTitle) throws CommandException {
         TaskList taskList = null;
 
         ConnectTasksApi connection = new ConnectTasksApi();
@@ -72,6 +72,6 @@ public class MyTaskList {
             throw new CommandException(LOAD_FAILURE);
         }
 
-        return taskList;
+        return taskList.getSelfLink();
     }
 }
