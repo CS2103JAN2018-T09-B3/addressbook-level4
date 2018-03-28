@@ -3,6 +3,7 @@ package seedu.progresschecker.model;
 import static java.util.Objects.requireNonNull;
 import static seedu.progresschecker.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.io.IOException;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
@@ -12,6 +13,7 @@ import javafx.collections.transformation.FilteredList;
 import seedu.progresschecker.commons.core.ComponentManager;
 import seedu.progresschecker.commons.core.LogsCenter;
 import seedu.progresschecker.commons.events.model.ProgressCheckerChangedEvent;
+import seedu.progresschecker.model.issues.Issue;
 import seedu.progresschecker.model.person.Person;
 import seedu.progresschecker.model.person.exceptions.DuplicatePersonException;
 import seedu.progresschecker.model.person.exceptions.PersonNotFoundException;
@@ -73,6 +75,11 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     @Override
+    public synchronized void createIssueOnGitHub(Issue issue) throws IOException {
+        progressChecker.createIssueOnGitHub(issue);
+        indicateProgressCheckerChanged();
+    }
+    @Override
     public synchronized void sort() {
         progressChecker.sort();
         indicateProgressCheckerChanged();
@@ -102,6 +109,14 @@ public class ModelManager extends ComponentManager implements Model {
     public void updateFilteredPersonList(Predicate<Person> predicate) {
         requireNonNull(predicate);
         filteredPersons.setPredicate(predicate);
+    }
+
+    @Override
+    public void uploadPhoto(Person target, String path)
+            throws DuplicatePersonException, PersonNotFoundException, IOException {
+        progressChecker.uploadPhoto(target, path);
+        updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+        indicateProgressCheckerChanged();
     }
 
     @Override
