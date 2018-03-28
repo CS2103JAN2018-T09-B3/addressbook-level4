@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 import javafx.collections.ObservableList;
 import seedu.progresschecker.model.exercise.Exercise;
 import seedu.progresschecker.model.exercise.UniqueExerciseList;
+import seedu.progresschecker.model.exercise.exceptions.DuplicateExerciseException;
 import seedu.progresschecker.model.person.Person;
 import seedu.progresschecker.model.person.UniquePersonList;
 import seedu.progresschecker.model.person.exceptions.DuplicatePersonException;
@@ -63,6 +64,12 @@ public class ProgressChecker implements ReadOnlyProgressChecker {
         this.tags.setTags(tags);
     }
 
+    //@@author iNekox3
+    public void setExercises(List<Exercise> exercises) throws DuplicateExerciseException {
+        this.exercises.setExercises(exercises);
+    }
+
+    //@@author
     /**
      * Resets the existing data of this {@code ProgressChecker} with {@code newData}.
      */
@@ -166,9 +173,25 @@ public class ProgressChecker implements ReadOnlyProgressChecker {
     public void addTag(Tag t) throws UniqueTagList.DuplicateTagException {
         tags.add(t);
     }
+    
+    //// exercise-level operations
+
+    //@@author iNekox3
+    /**
+     * Adds an exercise to the ProgressChecker.
+     *
+     * @throws DuplicateExerciseException if an equivalent exercise already exists.
+     */
+    public void addExercise(Exercise e) throws DuplicateExerciseException {
+        Exercise exercise = new Exercise(
+                e.getQuestionIndex(), e.getQuestionType(), e.getQuestion(),
+                e.getStudentAnswer(), e.getModelAnswer());
+        exercises.add(exercise);
+    }
 
     //// util methods
 
+    //@@author
     @Override
     public String toString() {
         return persons.asObservableList().size() + " persons, " + tags.asObservableList().size() +  " tags";
