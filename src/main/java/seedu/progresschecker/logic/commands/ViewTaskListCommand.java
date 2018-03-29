@@ -88,7 +88,7 @@ public class ViewTaskListCommand extends Command {
             out.print("<!DOCTYPE html>\n" + "<html>\n" + "<body>\n");
             out.print("<h1>" + listName + "</h1>\n" + "<dl>\n");
 
-            for (int i = 0; i < (size-2); i++) {
+            for (int i = 0; i < (size - 2); i++) {
                 Task task = list.get(i);
                 out.print("    <dt>" + task.getTitle() + "</dt>\n");
                 out.print("    <dd>Deadline: " + task.getDue() + "</dd>\n");
