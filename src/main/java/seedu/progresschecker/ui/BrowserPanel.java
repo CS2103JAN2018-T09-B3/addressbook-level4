@@ -61,8 +61,12 @@ public class BrowserPanel extends UiPart<Region> {
         loadPage(MODULE_PAGE_URL + OUTCOMES_PAGE_PATH + index + OUTCOMES_PAGE_DOCUMENT);
     }
 
+    /**
+     * Loads the HTML file which contains task information.
+     */
     public void loadTaskPage(String url) {
-        loadPage(url);
+        URL defaultPage = MainApp.class.getResource(url);
+        loadPage(defaultPage.toExternalForm());
     }
 
     public void loadPage(String url) {
