@@ -11,6 +11,7 @@ import seedu.progresschecker.logic.commands.AddCommand;
 import seedu.progresschecker.logic.commands.AddDefaultTasksCommand;
 import seedu.progresschecker.logic.commands.ClearCommand;
 import seedu.progresschecker.logic.commands.Command;
+import seedu.progresschecker.logic.commands.CreateIssue;
 import seedu.progresschecker.logic.commands.DeleteCommand;
 import seedu.progresschecker.logic.commands.EditCommand;
 import seedu.progresschecker.logic.commands.ExitCommand;
@@ -22,7 +23,9 @@ import seedu.progresschecker.logic.commands.RedoCommand;
 import seedu.progresschecker.logic.commands.SelectCommand;
 import seedu.progresschecker.logic.commands.SortCommand;
 import seedu.progresschecker.logic.commands.UndoCommand;
+import seedu.progresschecker.logic.commands.UploadCommand;
 import seedu.progresschecker.logic.commands.ViewCommand;
+import seedu.progresschecker.logic.commands.ViewTaskListCommand;
 import seedu.progresschecker.logic.parser.exceptions.ParseException;
 
 /**
@@ -57,6 +60,10 @@ public class ProgressCheckerParser {
         case AddDefaultTasksCommand.COMMAND_ALIAS:
             return new AddDefaultTasksCommand(DEFAULT_LIST_TITLE);
 
+        case ViewTaskListCommand.COMMAND_WORD:
+        case ViewTaskListCommand.COMMAND_ALIAS:
+            return new ViewTaskListCommandParser().parse(arguments);
+
         case AddCommand.COMMAND_WORD:
         case AddCommand.COMMAND_ALIAS:
             return new AddCommandParser().parse(arguments);
@@ -73,9 +80,17 @@ public class ProgressCheckerParser {
         case DeleteCommand.COMMAND_ALIAS:
             return new DeleteCommandParser().parse(arguments);
 
+        case UploadCommand.COMMAND_WORD:
+        case UploadCommand.COMMAND_ALIAS:
+            return new UploadCommandParser().parse(arguments);
+
         case ClearCommand.COMMAND_WORD:
         case ClearCommand.COMMAND_ALIAS:
             return new ClearCommand();
+
+        case CreateIssue.COMMAND_WORD:
+        case CreateIssue.COMMAND_ALIAS:
+            return new CreateIssueParser().parse(arguments);
 
         case FindCommand.COMMAND_WORD:
         case FindCommand.COMMAND_ALIAS:
