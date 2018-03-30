@@ -10,9 +10,11 @@ import static seedu.progresschecker.logic.parser.CliSyntax.PREFIX_TITLE;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.Set;
 
 import seedu.progresschecker.commons.core.index.Index;
 import seedu.progresschecker.commons.util.CollectionUtil;
@@ -86,10 +88,11 @@ public class EditIssueCommand extends Command {
         assert issueToEdit != null;
 
         Title updatedTitle = editIssueDescriptor.getTitle().orElse(issueToEdit.getTitle());
-        List<Assignees> updatedAssignees = editIssueDescriptor.getAssignees().orElse(issueToEdit.getAssignees());
+        Set<Assignees> updatedAssignees = editIssueDescriptor.getAssignees()
+                .orElse(new HashSet<>(issueToEdit.getAssignees()));
         Milestone updatedMilestone = editIssueDescriptor.getMilestone().orElse(issueToEdit.getMilestone());
         Body updatedBody = editIssueDescriptor.getBody().orElse(issueToEdit.getBody());
-        List<Labels> updatedLabels = editIssueDescriptor.getLabels().orElse(issueToEdit.getLabelsList());
+        Set<Labels> updatedLabels = editIssueDescriptor.getLabels().orElse(new HashSet<>(issueToEdit.getLabelsList()));
 
         List<Assignees> updatedAssigneesList = new ArrayList<>(updatedAssignees);
         List<Labels> updatedLabelsList = new ArrayList<>(updatedLabels);
@@ -122,10 +125,10 @@ public class EditIssueCommand extends Command {
      */
     public static class EditIssueDescriptor {
         private Title title;
-        private List<Assignees> assignees;
+        private Set<Assignees> assignees;
         private Milestone milestone;
         private Body body;
-        private List<Labels> labels;
+        private Set<Labels> labels;
 
         public EditIssueDescriptor() {}
 
@@ -161,8 +164,8 @@ public class EditIssueCommand extends Command {
          * Sets {@code assignees} to this object's {@code assignees}.
          * A defensive copy of {@code assignees} is used internally.
          */
-        public void setAssignees(List<Assignees> assignees) {
-            this.assignees = (assignees != null) ? new ArrayList<>(assignees) : null;
+        public void setAssignees(Set<Assignees> assignees) {
+            this.assignees = (assignees != null) ? new HashSet<>(assignees) : null;
         }
 
         /**
@@ -170,8 +173,8 @@ public class EditIssueCommand extends Command {
          * if modification is attempted.
          * Returns {@code Optional#empty()} if {@code labels} is null.
          */
-        public Optional<List<Assignees>> getAssignees() {
-            return (assignees != null) ? Optional.of(Collections.unmodifiableList(assignees)) : Optional.empty();
+        public Optional<Set<Assignees>> getAssignees() {
+            return (assignees != null) ? Optional.of(Collections.unmodifiableSet(assignees)) : Optional.empty();
         }
 
         public void setMilestone(Milestone milestone) {
@@ -194,8 +197,8 @@ public class EditIssueCommand extends Command {
          * Sets {@code labels} to this object's {@code labels}.
          * A defensive copy of {@code labels} is used internally.
          */
-        public void setLabels(List<Labels> labels) {
-            this.labels = (labels != null) ? new ArrayList<>(labels) : null;
+        public void setLabels(Set<Labels> labels) {
+            this.labels = (labels != null) ? new HashSet<>(labels) : null;
         }
 
         /**
@@ -203,8 +206,8 @@ public class EditIssueCommand extends Command {
          * if modification is attempted.
          * Returns {@code Optional#empty()} if {@code labels} is null.
          */
-        public Optional<List<Labels>> getLabels() {
-            return (labels != null) ? Optional.of(Collections.unmodifiableList(labels)) : Optional.empty();
+        public Optional<Set<Labels>> getLabels() {
+            return (labels != null) ? Optional.of(Collections.unmodifiableSet(labels)) : Optional.empty();
         }
 
         @Override
