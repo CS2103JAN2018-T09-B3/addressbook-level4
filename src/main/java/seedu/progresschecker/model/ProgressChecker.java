@@ -237,7 +237,7 @@ public class ProgressChecker implements ReadOnlyProgressChecker {
     public void addTag(Tag t) throws UniqueTagList.DuplicateTagException {
         tags.add(t);
     }
-    
+
     //// exercise-level operations
 
     //@@author iNekox3

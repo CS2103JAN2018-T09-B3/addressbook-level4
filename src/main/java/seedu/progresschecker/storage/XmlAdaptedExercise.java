@@ -70,7 +70,9 @@ public class XmlAdaptedExercise {
      */
     public Exercise toModelType() throws IllegalValueException {
         if (this.questionIndex == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, QuestionIndex.class.getSimpleName()));
+            throw new IllegalValueException(
+                    String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    QuestionIndex.class.getSimpleName()));
         }
         if (!QuestionIndex.isValidIndex(this.questionIndex)) {
             throw new IllegalValueException(QuestionIndex.MESSAGE_INDEX_CONSTRAINTS);
@@ -78,7 +80,9 @@ public class XmlAdaptedExercise {
         final QuestionIndex questionIndex = new QuestionIndex(this.questionIndex);
 
         if (this.questionType == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, QuestionType.class.getSimpleName()));
+            throw new IllegalValueException(
+                    String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    QuestionType.class.getSimpleName()));
         }
         if (!QuestionType.isValidType(this.questionType)) {
             throw new IllegalValueException(QuestionType.MESSAGE_TYPE_CONSTRAINTS);
@@ -86,17 +90,23 @@ public class XmlAdaptedExercise {
         final QuestionType questionType = new QuestionType(this.questionIndex);
 
         if (this.question == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Question.class.getSimpleName()));
+            throw new IllegalValueException(
+                    String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    Question.class.getSimpleName()));
         }
         final Question question = new Question(this.question);
 
         if (this.studentAnswer == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, StudentAnswer.class.getSimpleName()));
+            throw new IllegalValueException(
+                    String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    StudentAnswer.class.getSimpleName()));
         }
         final StudentAnswer studentAnswer = new StudentAnswer(this.studentAnswer);
 
         if (this.modelAnswer == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, ModelAnswer.class.getSimpleName()));
+            throw new IllegalValueException(
+                    String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    ModelAnswer.class.getSimpleName()));
         }
         final ModelAnswer modelAnswer = new ModelAnswer(this.modelAnswer);
 
