@@ -35,4 +35,14 @@ public interface Storage extends ProgressCheckerStorage, UserPrefsStorage {
      * Raises {@link DataSavingExceptionEvent} if there was an error during saving.
      */
     void handleProgressCheckerChangedEvent(ProgressCheckerChangedEvent abce);
+
+    //@@author iNekox3
+    @Override
+    String getExercisesFilePath();
+
+    @Override
+    void setExercisesFilePath(String filePath);
+
+    @Override
+    Optional<ReadOnlyProgressChecker> readExercises(int index) throws DataConversionException, IOException;
 }
