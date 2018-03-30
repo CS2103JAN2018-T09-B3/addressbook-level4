@@ -22,9 +22,11 @@ public class XmlProgressCheckerStorage implements ProgressCheckerStorage {
     private static final Logger logger = LogsCenter.getLogger(XmlProgressCheckerStorage.class);
 
     private String filePath;
+    private String filePathExercises;
 
-    public XmlProgressCheckerStorage(String filePath) {
+    public XmlProgressCheckerStorage(String filePath, String filePathExercises) {
         this.filePath = filePath;
+        this.filePathExercises = filePathExercises;
     }
 
     public String getProgressCheckerFilePath() {
@@ -77,6 +79,45 @@ public class XmlProgressCheckerStorage implements ProgressCheckerStorage {
         File file = new File(filePath);
         FileUtil.createIfMissing(file);
         XmlFileStorage.saveDataToFile(file, new XmlSerializableProgressChecker(progressChecker));
+    }
+
+    //@@author iNekox3
+    public String getExercisesFilePath() {
+        return filePathExercises;
+    }
+
+    public void setExercisesFilePath(String filePath) {
+        this.filePathExercises = filePath;
+    }
+
+    @Override
+    public Optional<ReadOnlyProgressChecker> readExercises(int index) throws DataConversionException, IOException {
+        return readExercises(filePath, index);
+    }
+
+    /**
+     * Similar to {@link #readProgressChecker()}
+     * @param filePath location of the data. Cannot be null
+     * @throws DataConversionException if the file is not in the correct format.
+     */
+    public Optional<ReadOnlyProgressChecker> readExercises(String filePath, int index) throws DataConversionException,
+            FileNotFoundException {
+        requireNonNull(filePath);
+
+        File exercisesFile = new File(filePath);
+
+        if (!exercisesFile.exists()) {
+            logger.info("Exercises file "  + exercisesFile + " not found");
+            return Optional.empty();
+        }
+
+        XmlSerializableProgressChecker xmlProgressChecker = XmlFileStorage.loadDataFromSaveFile(new File(filePath));
+        try {
+            return Optional.of(xmlProgressChecker.toModelType());
+        } catch (IllegalValueException ive) {
+            logger.info("Illegal values found in " + exercisesFile + ": " + ive.getMessage());
+            throw new DataConversionException(ive);
+        }
     }
 
 }
