@@ -12,6 +12,7 @@ public class UserPrefs {
     private GuiSettings guiSettings;
     private String progressCheckerFilePath = "data/progresschecker.xml";
     private String progressCheckerName = "MyProgressChecker";
+    private String exercisesFilePath = "data/week3.xml";
 
     public UserPrefs() {
         this.setGuiSettings(500, 500, 0, 0);
@@ -43,6 +44,10 @@ public class UserPrefs {
 
     public void setProgressCheckerName(String progressCheckerName) {
         this.progressCheckerName = progressCheckerName;
+    }
+
+    public String getExercisesFilePath() {
+        return exercisesFilePath;
     }
 
     @Override
