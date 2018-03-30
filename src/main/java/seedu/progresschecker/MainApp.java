@@ -62,7 +62,7 @@ public class MainApp extends Application {
         UserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(config.getUserPrefsFilePath());
         userPrefs = initPrefs(userPrefsStorage);
         ProgressCheckerStorage progressCheckerStorage = new XmlProgressCheckerStorage(
-                userPrefs.getProgressCheckerFilePath());
+                userPrefs.getProgressCheckerFilePath(), userPrefs.getExercisesFilePath());
         storage = new StorageManager(progressCheckerStorage, userPrefsStorage);
 
         initLogging(config);

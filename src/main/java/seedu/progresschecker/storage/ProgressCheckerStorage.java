@@ -60,6 +60,7 @@ public interface ProgressCheckerStorage {
     /**
      * @see #getExercisesFilePath()
      */
-    Optional<ReadOnlyProgressChecker> readExercises(String filePath, int index) throws DataConversionException, IOException;
+    Optional<ReadOnlyProgressChecker> readExercises(String filePath, int index)
+            throws DataConversionException, IOException;
 
 }
