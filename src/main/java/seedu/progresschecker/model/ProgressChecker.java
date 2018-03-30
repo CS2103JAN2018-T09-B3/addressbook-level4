@@ -238,9 +238,9 @@ public class ProgressChecker implements ReadOnlyProgressChecker {
         tags.add(t);
     }
 
+    //@@author iNekox3
     //// exercise-level operations
 
-    //@@author iNekox3
     /**
      * Adds an exercise to the ProgressChecker.
      *
@@ -253,9 +253,9 @@ public class ProgressChecker implements ReadOnlyProgressChecker {
         exercises.add(exercise);
     }
 
+    //@@author
     //// util methods
 
-    //@@author
     @Override
     public String toString() {
         return persons.asObservableList().size() + " persons, " + tags.asObservableList().size() +  " tags";
