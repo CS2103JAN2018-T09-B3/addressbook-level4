@@ -5,7 +5,6 @@ import static seedu.progresschecker.commons.core.Messages.MESSAGE_INVALID_COMMAN
 import seedu.progresschecker.commons.core.index.Index;
 import seedu.progresschecker.commons.exceptions.IllegalValueException;
 import seedu.progresschecker.logic.commands.CloseIssueCommand;
-import seedu.progresschecker.logic.commands.ViewCommand;
 import seedu.progresschecker.logic.parser.exceptions.ParseException;
 
 /**
@@ -24,7 +23,7 @@ public class CloseIssueCommandParser implements Parser<CloseIssueCommand> {
             return new CloseIssueCommand(index);
         } catch (IllegalValueException ive) {
             throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, ViewCommand.MESSAGE_USAGE));
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, CloseIssueCommand.MESSAGE_USAGE));
         }
     }
 }

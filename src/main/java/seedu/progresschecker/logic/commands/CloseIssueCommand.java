@@ -14,15 +14,15 @@ import seedu.progresschecker.logic.commands.exceptions.CommandException;
  */
 public class CloseIssueCommand extends Command {
 
-    public static final String COMMAND_WORD = "-Issue";
-    public static final String COMMAND_ALIAS = "ci";
+    public static final String COMMAND_WORD = "-issue";
+    public static final String COMMAND_ALIAS = "cli";
     public static final String COMMAND_FORMAT = COMMAND_WORD + " ISSUE-INDEX";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + "Parameters: ISSUE_INDEX (must be a positive valid index number)"
-            + "Example: " + COMMAND_WORD + " 2";
+            + "\nParameters: ISSUE_INDEX (must be a positive valid index number)"
+            + "Example: \n" + COMMAND_WORD + " 2";
 
-    public static final String MESSAGE_SUCCESS = "Issue %1$s closed successfully";
+    public static final String MESSAGE_SUCCESS = "Issue #%1$s closed successfully";
 
     private final String repoName = new String("AdityaA1998/samplerepo-pr-practice");
     private final String userLogin = new String("anminkang");
