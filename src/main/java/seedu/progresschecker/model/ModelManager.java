@@ -140,6 +140,7 @@ public class ModelManager extends ComponentManager implements Model {
                 && filteredPersons.equals(other.filteredPersons);
     }
 
+    //@@author iNekox3
     //=========== Filtered Exercise List Accessors =============================================================
 
     /**

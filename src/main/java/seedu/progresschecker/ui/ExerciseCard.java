@@ -5,6 +5,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.Region;
 import seedu.progresschecker.model.exercise.Exercise;
 
+//@@author iNekox3
 /**
  * An UI component that displays information of an {@code Exercise}.
  */
