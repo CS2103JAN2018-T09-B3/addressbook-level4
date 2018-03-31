@@ -20,6 +20,7 @@ import seedu.progresschecker.logic.commands.HelpCommand;
 import seedu.progresschecker.logic.commands.HistoryCommand;
 import seedu.progresschecker.logic.commands.ListCommand;
 import seedu.progresschecker.logic.commands.RedoCommand;
+import seedu.progresschecker.logic.commands.ReopenIssueCommand;
 import seedu.progresschecker.logic.commands.SelectCommand;
 import seedu.progresschecker.logic.commands.SortCommand;
 import seedu.progresschecker.logic.commands.UndoCommand;
@@ -126,6 +127,10 @@ public class ProgressCheckerParser {
         case ViewCommand.COMMAND_WORD:
         case ViewCommand.COMMAND_ALIAS:
             return new ViewCommandParser().parse(arguments);
+
+        case ReopenIssueCommand.COMMAND_WORD:
+        case ReopenIssueCommand.COMMAND_ALIAS:
+            return new ReopenIssueCommandParser().parse(arguments);
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
