@@ -29,7 +29,6 @@ public class ExerciseCard extends UiPart<Region> {
         super(FXML);
         this.exercise = exercise;
         questionIndex.setText(exercise.getQuestionIndex().value);
-        questionType.setText(exercise.getQuestionType().value);
         question.setText(exercise.getQuestion().value);
         studentAnswer.setText(exercise.getStudentAnswer().value);
         modelAnswer.setText(exercise.getModelAnswer().value);
