@@ -90,30 +90,4 @@ public class StorageManager extends ComponentManager implements Storage {
         }
     }
 
-    //@@author iNekox3
-    // ================ Exercises methods ==============================
-
-    @Override
-    public String getExercisesFilePath() {
-        return progressCheckerStorage.getExercisesFilePath();
-    }
-
-    @Override
-    public void setExercisesFilePath(String filePath) {
-        progressCheckerStorage.setExercisesFilePath(filePath);
-    }
-
-    @Override
-    public Optional<ReadOnlyProgressChecker> readExercises(int index) throws DataConversionException, IOException {
-        return readExercises(progressCheckerStorage.getProgressCheckerFilePath(), index);
-    }
-
-    @Override
-    public Optional<ReadOnlyProgressChecker> readExercises(String filePath, int index)
-            throws DataConversionException, IOException {
-        filePath += index + ".xml";
-        logger.fine("Attempting to read data from file: " + filePath);
-        return progressCheckerStorage.readProgressChecker(filePath);
-    }
-
 }

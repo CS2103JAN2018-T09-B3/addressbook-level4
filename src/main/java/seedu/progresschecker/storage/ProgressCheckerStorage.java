@@ -41,26 +41,4 @@ public interface ProgressCheckerStorage {
      */
     void saveProgressChecker(ReadOnlyProgressChecker progressChecker, String filePath) throws IOException;
 
-    //@@author iNekox3
-    /**
-     * Returns the file path of the data file.
-     */
-    String getExercisesFilePath();
-
-    void setExercisesFilePath(String filePath);
-
-    /**
-     * Returns exercises data as a {@link ReadOnlyProgressChecker}.
-     *   Returns {@code Optional.empty()} if storage file is not found.
-     * @throws DataConversionException if the data in storage is not in the expected format.
-     * @throws IOException if there was any problem when reading from the storage.
-     */
-    Optional<ReadOnlyProgressChecker> readExercises(int index) throws DataConversionException, IOException;
-
-    /**
-     * @see #getExercisesFilePath()
-     */
-    Optional<ReadOnlyProgressChecker> readExercises(String filePath, int index)
-            throws DataConversionException, IOException;
-
 }
