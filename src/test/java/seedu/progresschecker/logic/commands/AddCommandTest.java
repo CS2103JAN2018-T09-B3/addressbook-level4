@@ -16,6 +16,7 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import javafx.collections.ObservableList;
+import seedu.progresschecker.commons.core.index.Index;
 import seedu.progresschecker.logic.CommandHistory;
 import seedu.progresschecker.logic.UndoRedoStack;
 import seedu.progresschecker.logic.commands.exceptions.CommandException;
@@ -106,6 +107,11 @@ public class AddCommandTest {
         @Override
         public void addPerson(Person person) throws DuplicatePersonException {
             fail("This method should not be called.");
+        }
+
+        @Override
+        public void reopenIssueOnGithub(Index index) throws IOException {
+            fail("This method should not be called");
         }
 
         @Override
