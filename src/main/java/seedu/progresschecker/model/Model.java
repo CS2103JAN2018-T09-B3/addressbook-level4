@@ -5,6 +5,7 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.progresschecker.commons.core.index.Index;
+import seedu.progresschecker.logic.commands.exceptions.CommandException;
 import seedu.progresschecker.model.issues.Issue;
 import seedu.progresschecker.model.person.Person;
 import seedu.progresschecker.model.person.exceptions.DuplicatePersonException;
@@ -36,7 +37,7 @@ public interface Model {
     void createIssueOnGitHub(Issue issue) throws IOException;
 
     /** reopen issue on github */
-    void reopenIssueOnGithub(Index index) throws IOException;
+    void reopenIssueOnGithub(Index index) throws IOException, CommandException;
 
     /**
      * Replaces the given person {@code target} with {@code editedPerson}.

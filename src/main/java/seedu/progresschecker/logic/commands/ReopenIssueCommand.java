@@ -11,7 +11,7 @@ import seedu.progresschecker.logic.commands.exceptions.CommandException;
  */
 public class ReopenIssueCommand extends Command {
 
-    public static final String COMMAND_WORD = "reopenIssue";
+    public static final String COMMAND_WORD = "reopenissue";
     public static final String COMMAND_ALIAS = "ri";
     public static final String COMMAND_FORMAT = COMMAND_WORD + " ISSUE-INDEX";
 
