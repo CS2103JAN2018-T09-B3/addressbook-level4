@@ -46,13 +46,13 @@
                  </rowConstraints>
                   <children>
                      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Q" GridPane.rowIndex="4" />
-                  <Label fx:id="questionIndex" styleClass="cell_small_label" text="\questionIndex" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <Label fx:id="questionIndex" styleClass="cell_small_label" text="\$questionIndex" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Question: " />
-                  <Label fx:id="question" styleClass="cell_small_label" text="\question" GridPane.columnIndex="1" />
+                  <Label fx:id="question" styleClass="cell_small_label" text="\$question" GridPane.columnIndex="1" />
                      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Answer: " GridPane.rowIndex="3" />
-                  <Label fx:id="studentAnswer" styleClass="cell_small_label" text="\studentAnswer" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Label fx:id="studentAnswer" styleClass="cell_small_label" text="\$studentAnswer" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Suggested Answer: " GridPane.rowIndex="1" />
-                  <Label fx:id="modelAnswer" styleClass="cell_small_label" text="\modelAnswer" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label fx:id="modelAnswer" styleClass="cell_small_label" text="\$modelAnswer" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   </children>
                </GridPane>
           </VBox>
