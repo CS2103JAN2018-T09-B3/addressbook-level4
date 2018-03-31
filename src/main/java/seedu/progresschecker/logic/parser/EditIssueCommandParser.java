@@ -8,6 +8,7 @@ import static seedu.progresschecker.logic.parser.CliSyntax.PREFIX_LABEL;
 import static seedu.progresschecker.logic.parser.CliSyntax.PREFIX_MILESTONE;
 import static seedu.progresschecker.logic.parser.CliSyntax.PREFIX_TITLE;
 
+import java.io.IOException;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Optional;
@@ -16,6 +17,7 @@ import java.util.Set;
 import seedu.progresschecker.commons.core.index.Index;
 import seedu.progresschecker.commons.exceptions.IllegalValueException;
 import seedu.progresschecker.logic.commands.EditIssueCommand;
+import seedu.progresschecker.logic.commands.exceptions.CommandException;
 import seedu.progresschecker.logic.parser.exceptions.ParseException;
 import seedu.progresschecker.model.issues.Assignees;
 import seedu.progresschecker.model.issues.Labels;
@@ -23,7 +25,7 @@ import seedu.progresschecker.model.issues.Labels;
 /**
  * Parses input arguments and creates a new EditIssueCommand object
  */
-public class EditIssueCommandParser {
+public class EditIssueCommandParser implements Parser<EditIssueCommand> {
 
     /**
      * Parses the given {@code String} of arguments in the context of the EditIssueCommand
@@ -62,7 +64,13 @@ public class EditIssueCommandParser {
             throw new ParseException(EditIssueCommand.MESSAGE_NOT_EDITED);
         }
 
-        return new EditIssueCommand(index, editIssueDescriptor);
+        try {
+            return new EditIssueCommand(index, editIssueDescriptor);
+        } catch (CommandException ce) {
+            throw new ParseException(EditIssueCommand.MESSAGE_NOT_EDITED);
+        } catch (IOException ie) {
+            throw new ParseException(EditIssueCommand.MESSAGE_NOT_EDITED);
+        }
     }
 
     /**

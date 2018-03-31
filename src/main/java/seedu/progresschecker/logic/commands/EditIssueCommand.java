@@ -8,6 +8,7 @@ import static seedu.progresschecker.logic.parser.CliSyntax.PREFIX_MILESTONE;
 import static seedu.progresschecker.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.progresschecker.logic.parser.CliSyntax.PREFIX_TITLE;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
@@ -16,6 +17,13 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 
+import org.kohsuke.github.GHIssue;
+import org.kohsuke.github.GHLabel;
+import org.kohsuke.github.GHRepository;
+import org.kohsuke.github.GHUser;
+import org.kohsuke.github.GitHub;
+
+import seedu.progresschecker.commons.core.Messages;
 import seedu.progresschecker.commons.core.index.Index;
 import seedu.progresschecker.commons.util.CollectionUtil;
 import seedu.progresschecker.logic.commands.exceptions.CommandException;
@@ -56,6 +64,10 @@ public class EditIssueCommand extends Command {
     public static final String MESSAGE_EDIT_ISSUE_SUCCESS = "Issue #1$s was successfully edited.";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
 
+    private final String repoName = new String("AdityaA1998/samplerepo-pr-practice");
+    private final String userLogin = new String("anminkang");
+    private final String userAuthentication = new String("aditya2018");
+
     private final Index index;
     private final EditIssueCommand.EditIssueDescriptor editIssueDescriptor;
 
@@ -66,12 +78,14 @@ public class EditIssueCommand extends Command {
      * @param index of the issue on github that is to be edited
      * @param editIssueDescriptor details to edit the issue with
      */
-    public EditIssueCommand(Index index, EditIssueCommand.EditIssueDescriptor editIssueDescriptor) {
+    public EditIssueCommand(Index index, EditIssueCommand.EditIssueDescriptor editIssueDescriptor)
+            throws CommandException, IOException {
         requireNonNull(index);
         requireNonNull(editIssueDescriptor);
 
         this.index = index;
         this.editIssueDescriptor = new EditIssueCommand.EditIssueDescriptor(editIssueDescriptor);
+        preprocess();
     }
 
     @Override
@@ -79,6 +93,38 @@ public class EditIssueCommand extends Command {
         return new CommandResult("CHECK");
     }
 
+    /**
+     * Prepdfef
+     * @throws CommandException is thrown when invalid issue index is used
+     * @throws IOException
+     */
+    private void preprocess() throws CommandException, IOException {
+        GitHub github = GitHub.connectUsingPassword(userLogin, userAuthentication);
+        GHRepository repository = github.getRepository(repoName);
+        if (repository.getIssue(index.getOneBased()) == null) {
+            throw new CommandException(Messages.MESSAGE_INVALID_ISSUE_DISPLAYED_INDEX);
+        }
+
+        GHIssue issue = repository.getIssue(index.getOneBased());
+        List<GHUser> gitAssigneeList = issue.getAssignees();
+        ArrayList<GHLabel> gitLabelsList = new ArrayList<>(issue.getLabels());
+        List<Assignees> assigneesList = new ArrayList<>();
+        List<Labels> labelsList = new ArrayList<>();
+
+        for (int i = 0; i < gitAssigneeList.size(); i++) {
+            assigneesList.add(new Assignees(gitAssigneeList.get(i).getName()));
+        }
+
+        for (int i = 0; i < labelsList.size(); i++) {
+            labelsList.add(new Labels(gitLabelsList.get(i).getName()));
+        }
+
+        issueToEdit = new Issue(new Title(issue.getTitle()), assigneesList,
+                new Milestone(issue.getMilestone().getTitle()),
+                new Body(issue.getBody()), labelsList);
+        editedIssue = createEditedIssue(issueToEdit, editIssueDescriptor);
+
+    }
     /**
      * Creates and returns a {@code Issue} with the details of {@code issueToEdit}
      * edited with {@code editIssueDescriptor}.
