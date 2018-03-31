@@ -87,7 +87,7 @@ public class XmlAdaptedExercise {
         if (!QuestionType.isValidType(this.questionType)) {
             throw new IllegalValueException(QuestionType.MESSAGE_TYPE_CONSTRAINTS);
         }
-        final QuestionType questionType = new QuestionType(this.questionIndex);
+        final QuestionType questionType = new QuestionType(this.questionType);
 
         if (this.question == null) {
             throw new IllegalValueException(
