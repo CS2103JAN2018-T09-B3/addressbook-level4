@@ -2,12 +2,9 @@ package seedu.progresschecker.logic.commands;
 
 import java.io.IOException;
 
-import org.kohsuke.github.GHIssue;
-import org.kohsuke.github.GHRepository;
-import org.kohsuke.github.GitHub;
-
 import seedu.progresschecker.commons.core.index.Index;
 import seedu.progresschecker.logic.commands.exceptions.CommandException;
+
 
 /**
  * Close an issue on github
@@ -23,6 +20,7 @@ public class CloseIssueCommand extends Command {
             + "Example: \n" + COMMAND_WORD + " 2";
 
     public static final String MESSAGE_SUCCESS = "Issue #%1$s closed successfully";
+    public static final String MESSAGE_FAILURE = "Issue wasn't closed. Enter correct index number.";
 
     private final String repoName = new String("AdityaA1998/samplerepo-pr-practice");
     private final String userLogin = new String("anminkang");
@@ -37,12 +35,9 @@ public class CloseIssueCommand extends Command {
     @Override
     public CommandResult execute() throws CommandException {
         try {
-            GitHub github = GitHub.connectUsingPassword(userLogin, userAuthentication);
-            GHRepository repository = github.getRepository(repoName);
-            GHIssue issue = repository.getIssue(targetIndex.getOneBased());
-            issue.close();
+            model.closeIssueOnGithub(targetIndex);
         } catch (IOException ie) {
-            throw new CommandException("NOT CLOSED");
+            throw new CommandException(MESSAGE_FAILURE);
         }
 
         return new CommandResult(String.format(MESSAGE_SUCCESS, targetIndex.getOneBased()));
