@@ -82,22 +82,28 @@ public class SampleDataUtil {
     public static Exercise[] getSampleExercises() {
         return new Exercise[] {
             new Exercise(new QuestionIndex("3.1.1"), new QuestionType("choice"),
-                new Question("Choose the correct statements\n" +
-                    "\n" +
-                    "a. Refactoring can improve understandability\n" +
-                    "b. Refactoring can uncover bugs\n" +
-                    "c. Refactoring can result in better performance\n" +
-                    "d. Refactoring can change the number of methods/classes"),
+                new Question("Choose the correct statements\n"
+                    + "\n"
+                    + "a. Refactoring can improve understandability\n"
+                    + "b. Refactoring can uncover bugs\n"
+                    + "c. Refactoring can result in better performance\n"
+                    + "d. Refactoring can change the number of methods/classes"),
                 new StudentAnswer(""),
-                new ModelAnswer("a b c d. (a, b, c) Although the primary aim of refactoring is to improve internal code structure, there are other secondary benefits. (d) Some refactorings result in adding/removing methods/classes.")),
+                new ModelAnswer("a b c d. (a, b, c) Although the primary aim of refactoring is to improve"
+                    + "internal code structure, there are other secondary benefits. (d) Some refactorings"
+                    + "result in adding/removing methods/classes.")),
             new Exercise(new QuestionIndex("3.1.2"), new QuestionType("text"),
-                new Question("Do you agree with the following statement? Justify your answer.\n" +
-                    "\n" +
-                    "Statement: Whenever we refactor code to fix bugs, we need not do regression testing if the bug fix was minor."),
+                new Question("Do you agree with the following statement? Justify your answer.\n"
+                    + "\n"
+                    + "Statement: Whenever we refactor code to fix bugs,"
+                    + "we need not do regression testing if the bug fix was minor."),
                 new StudentAnswer(""),
-                new ModelAnswer("DISAGREE. Even a minor change can have major repercussions on the system. We MUST do regression testing after each change, no matter how minor it is. Fixing bugs is technically not refactoring.")),
+                new ModelAnswer("DISAGREE. Even a minor change can have major repercussions on the system."
+                    + "We MUST do regression testing after each change, no matter how minor it is."
+                    + "Fixing bugs is technically not refactoring.")),
             new Exercise(new QuestionIndex("3.1.3"), new QuestionType("text"),
-                new Question("Explain what is refactoring and why it is not the same as rewriting, bug fixing, or adding features."),
+                new Question("Explain what is refactoring and "
+                    + "why it is not the same as rewriting, bug fixing, or adding features."),
                 new StudentAnswer(""),
                 new ModelAnswer(""))
         };
