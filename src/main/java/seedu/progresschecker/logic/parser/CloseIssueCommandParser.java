@@ -13,8 +13,8 @@ import seedu.progresschecker.logic.parser.exceptions.ParseException;
 public class CloseIssueCommandParser implements Parser<CloseIssueCommand> {
 
     /**
-     * Parses the given {@code String} of arguments in the context of the ViewCommand
-     * and returns an ViewCommand object for execution.
+     * Parses the given {@code String} of arguments in the context of the CloseIssueCommand
+     * and returns an CloseIssueCommand object for execution.
      * @throws ParseException if the user input does not conform the expected format
      */
     public CloseIssueCommand parse(String args) throws ParseException {

@@ -22,10 +22,6 @@ public class CloseIssueCommand extends Command {
     public static final String MESSAGE_SUCCESS = "Issue #%1$s closed successfully";
     public static final String MESSAGE_FAILURE = "Issue wasn't closed. Enter correct index number.";
 
-    private final String repoName = new String("AdityaA1998/samplerepo-pr-practice");
-    private final String userLogin = new String("anminkang");
-    private final String userAuthentication = new String("aditya2018");
-
     private final Index targetIndex;
 
     public CloseIssueCommand(Index targetIndex) {
