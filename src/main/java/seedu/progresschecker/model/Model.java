@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
-import seedu.progresschecker.model.exercise.Exercise;
 import seedu.progresschecker.commons.core.index.Index;
+import seedu.progresschecker.model.exercise.Exercise;
 import seedu.progresschecker.model.issues.Issue;
 import seedu.progresschecker.model.person.Person;
 import seedu.progresschecker.model.person.exceptions.DuplicatePersonException;
