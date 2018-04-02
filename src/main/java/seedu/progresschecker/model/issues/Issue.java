@@ -21,7 +21,7 @@ public class Issue {
      * Every field must be present and not null.
      */
     public Issue(Title title, List<Assignees> assigneesList, Milestone milestone, Body body, List<Labels> labelsList) {
-        requireAllNonNull(title, assigneesList, milestone, body);
+        requireAllNonNull(title);
         this.title = title;
         this.assigneesList = assigneesList;
         this.milestone = milestone;
