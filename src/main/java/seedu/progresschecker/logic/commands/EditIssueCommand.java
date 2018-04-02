@@ -60,7 +60,7 @@ public class EditIssueCommand extends Command {
             + PREFIX_TITLE + "Make a new attribute "
             + PREFIX_MILESTONE + "v1.3";
 
-    public static final String MESSAGE_EDIT_ISSUE_SUCCESS = "Issue #1$s was successfully edited.";
+    public static final String MESSAGE_EDIT_ISSUE_SUCCESS = "Issue #%d was successfully edited.";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_ISSUE_INVALID = "Issue doesn't exist, enter correct index";
 
