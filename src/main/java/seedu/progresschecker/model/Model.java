@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
+import seedu.progresschecker.commons.core.index.Index;
 import seedu.progresschecker.model.issues.Issue;
 import seedu.progresschecker.model.person.Person;
 import seedu.progresschecker.model.person.exceptions.DuplicatePersonException;
@@ -43,6 +44,13 @@ public interface Model {
      */
     void updatePerson(Person target, Person editedPerson)
             throws DuplicatePersonException, PersonNotFoundException;
+
+    /**
+     * Replaces the fields in Issue {@code index} with {@code editedIssue}.
+     *
+     * @throws IOException if while updating the issue there is some problem in authentication
+     */
+    void updateIssue(Index index, Issue editedIssue) throws IOException;
 
     /** Returns an unmodifiable view of the filtered person list */
     ObservableList<Person> getFilteredPersonList();

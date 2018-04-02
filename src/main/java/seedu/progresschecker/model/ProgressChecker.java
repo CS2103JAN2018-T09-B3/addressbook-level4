@@ -20,6 +20,7 @@ import org.kohsuke.github.GHUser;
 import org.kohsuke.github.GitHub;
 
 import javafx.collections.ObservableList;
+import seedu.progresschecker.commons.core.index.Index;
 import seedu.progresschecker.model.issues.Assignees;
 import seedu.progresschecker.model.issues.Issue;
 import seedu.progresschecker.model.issues.Labels;
@@ -174,6 +175,26 @@ public class ProgressChecker implements ReadOnlyProgressChecker {
         // This can cause the tags master list to have additional tags that are not tagged to any person
         // in the person list.
         persons.setPerson(target, syncedEditedPerson);
+    }
+
+    /**
+     * Replaces the given person {@code target} in the list with {@code editedPerson}.
+     * {@code ProgressChecker}'s tag list will be updated with the tags of {@code editedPerson}.
+     *
+     * @throws DuplicatePersonException if updating the person's details causes the person to be equivalent to
+     *      another existing person in the list.
+     * @throws PersonNotFoundException if {@code target} could not be found in the list.
+     *
+     * @see #syncWithMasterTagList(Person)
+     */
+    public void updateIssue(Index index, Issue editedIssue) throws IOException {
+        requireNonNull(editedIssue);
+        GitHub github = GitHub.connectUsingPassword(userLogin, userAuthentication);
+        GHRepository repository = github.getRepository(repoName);
+        GHIssue toEdit = repository.getIssue(index.getOneBased());
+        if (editedIssue.getTitle() != null) {
+            toEdit.setTitle(editedIssue.getTitle().toString());
+        }
     }
 
     /**

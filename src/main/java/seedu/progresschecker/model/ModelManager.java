@@ -12,6 +12,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.progresschecker.commons.core.ComponentManager;
 import seedu.progresschecker.commons.core.LogsCenter;
+import seedu.progresschecker.commons.core.index.Index;
 import seedu.progresschecker.commons.events.model.ProgressCheckerChangedEvent;
 import seedu.progresschecker.model.issues.Issue;
 import seedu.progresschecker.model.person.Person;
@@ -91,6 +92,14 @@ public class ModelManager extends ComponentManager implements Model {
         requireAllNonNull(target, editedPerson);
 
         progressChecker.updatePerson(target, editedPerson);
+        indicateProgressCheckerChanged();
+    }
+
+    @Override
+    public void updateIssue(Index index, Issue editedIssue) throws IOException {
+        requireAllNonNull(index, editedIssue);
+
+        progressChecker.updateIssue(index, editedIssue);
         indicateProgressCheckerChanged();
     }
 

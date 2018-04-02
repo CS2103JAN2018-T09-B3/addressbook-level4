@@ -23,7 +23,6 @@ import org.kohsuke.github.GHRepository;
 import org.kohsuke.github.GHUser;
 import org.kohsuke.github.GitHub;
 
-import seedu.progresschecker.commons.core.Messages;
 import seedu.progresschecker.commons.core.index.Index;
 import seedu.progresschecker.commons.util.CollectionUtil;
 import seedu.progresschecker.logic.commands.exceptions.CommandException;
@@ -38,7 +37,7 @@ import seedu.progresschecker.model.issues.Title;
  * Edits the details of an existing issue on Github.
  */
 public class EditIssueCommand extends Command {
-    public static final String COMMAND_WORD = "editIssue";
+    public static final String COMMAND_WORD = "editissue";
     public static final String COMMAND_ALIAS = "edI";
     public static final String COMMAND_FORMAT = COMMAND_WORD + " " + "INDEX "
             + "[" + PREFIX_TITLE + "TITLE] "
@@ -63,6 +62,7 @@ public class EditIssueCommand extends Command {
 
     public static final String MESSAGE_EDIT_ISSUE_SUCCESS = "Issue #1$s was successfully edited.";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
+    public static final String MESSAGE_ISSUE_INVALID = "Issue doesn't exist, enter correct index";
 
     private final String repoName = new String("AdityaA1998/samplerepo-pr-practice");
     private final String userLogin = new String("anminkang");
@@ -90,7 +90,12 @@ public class EditIssueCommand extends Command {
 
     @Override
     public CommandResult execute() throws CommandException {
-        return new CommandResult("CHECK");
+        try {
+            model.updateIssue(index, editedIssue);
+        } catch (IOException io) {
+            throw  new CommandException(io.getLocalizedMessage());
+        }
+        return new CommandResult(String.format(MESSAGE_EDIT_ISSUE_SUCCESS, index.getOneBased()));
     }
 
     /**
@@ -101,11 +106,12 @@ public class EditIssueCommand extends Command {
     private void preprocess() throws CommandException, IOException {
         GitHub github = GitHub.connectUsingPassword(userLogin, userAuthentication);
         GHRepository repository = github.getRepository(repoName);
-        if (repository.getIssue(index.getOneBased()) == null) {
-            throw new CommandException(Messages.MESSAGE_INVALID_ISSUE_DISPLAYED_INDEX);
+        GHIssue issue;
+        try {
+            issue = repository.getIssue(index.getOneBased());
+        } catch (IOException ie) {
+            throw new CommandException("Issue doesn't exist, enter correct index");
         }
-
-        GHIssue issue = repository.getIssue(index.getOneBased());
         List<GHUser> gitAssigneeList = issue.getAssignees();
         ArrayList<GHLabel> gitLabelsList = new ArrayList<>(issue.getLabels());
         List<Assignees> assigneesList = new ArrayList<>();
