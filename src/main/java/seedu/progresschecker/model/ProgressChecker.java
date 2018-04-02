@@ -147,12 +147,14 @@ public class ProgressChecker implements ReadOnlyProgressChecker {
             listOfLabels.add(labelsList.get(ct).toString());
         }
 
-        //GHMilestone check = repository.getMilestone(1);
-        GHMilestone check = repository.getMilestone(getMilestone.get(i.getMilestone()));
         GHIssue createdIssue = issueBuilder.create();
+        //GHMilestone check = repository.getMilestone(1);
+        if (i.getMilestone() != null) {
+            GHMilestone check = repository.getMilestone(getMilestone.get(i.getMilestone()));
+            createdIssue.setMilestone(check);
+        }
         createdIssue.setAssignees(listOfUsers);
         createdIssue.setLabels(listOfLabels.toArray(new String[0]));
-        createdIssue.setMilestone(check);
     }
 
     /**
