@@ -15,6 +15,8 @@ import seedu.progresschecker.commons.core.LogsCenter;
 import seedu.progresschecker.commons.core.index.Index;
 import seedu.progresschecker.commons.events.model.ProgressCheckerChangedEvent;
 import seedu.progresschecker.model.exercise.Exercise;
+import seedu.progresschecker.model.exercise.exceptions.DuplicateExerciseException;
+import seedu.progresschecker.model.exercise.exceptions.ExerciseNotFoundException;
 import seedu.progresschecker.model.issues.Issue;
 import seedu.progresschecker.model.person.Person;
 import seedu.progresschecker.model.person.exceptions.DuplicatePersonException;
@@ -104,6 +106,17 @@ public class ModelManager extends ComponentManager implements Model {
         indicateProgressCheckerChanged();
     }
 
+    //@@author iNekox3
+    @Override
+    public void updateExercise(Exercise target, Exercise editedExercise)
+            throws ExerciseNotFoundException {
+        requireAllNonNull(target, editedExercise);
+
+        progressChecker.updateExercise(target, editedExercise);
+        indicateProgressCheckerChanged();
+    }
+
+    //@@author
     //=========== Filtered Person List Accessors =============================================================
 
     /**
@@ -157,6 +170,12 @@ public class ModelManager extends ComponentManager implements Model {
     @Override
     public ObservableList<Exercise> getFilteredExerciseList() {
         return FXCollections.unmodifiableObservableList(filteredExercises);
+    }
+
+    @Override
+    public void updateFilteredExerciseList(Predicate<Exercise> predicate) {
+        requireNonNull(predicate);
+        filteredExercises.setPredicate(predicate);
     }
 
 }
