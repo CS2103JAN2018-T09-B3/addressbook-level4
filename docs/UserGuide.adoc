@@ -104,7 +104,7 @@ Examples:
 
 Creates an issue on github in the team repo +
 Format: `+issue ti/TITLE [a/ASSIGNEES]... [ms/MILESTONE] [b/BODY] [l/LABELS]...` +
-`OR` +
+OR +
 `ci ti/TITLE [a/ASSIGNEES]... [ms/MILESTONE] [b/BODY] [l/LABELS]...`
 
 [TIP]
@@ -114,7 +114,6 @@ An issue can have more than one assignees and labels.
 Examples:
 
 * `+issue ti/complete issue a/johndoe ms/v1.1 b/CS2103T is a software engineering module l/type.task l/CS2103T`
-
 * `+issue ti/TestIssue`
 * `ci ti/Issue with only body b/test body l/type.test`
 
@@ -433,6 +432,16 @@ OR `a n/NAME p/PHONE_NUMBER e/EMAIL m/MAJOR y/YEAR [t/TAG]...` +
 e.g. `add n/James Ho p/22224444 e/jamesho@example.com m/Computer Science y/2 t/friend t/colleague`
 * *Answer* : `answer INDEX ANSWER` +
 e.g. `answer 2.1.1`
+* *Create issue* : `+issue ti/TITLE [a/ASSIGNEES]... [ms/MILESTONE] [b/BODY] [l/LABELS]...` +
+                   OR +
+                   `ci ti/TITLE [a/ASSIGNEES]... [ms/MILESTONE] [b/BODY] [l/LABELS]...` +
+e.g. `+issue ti/complete issue a/johndoe ms/v1.1 b/CS2103T is a software engineering module l/type.task l/CS2103T`
+* *Close issue* : `-issue INDEX` OR `cli INDEX` +
+e.g. `-issue 3` +
+OR `cli 1`
+* *Reopen issue* : `reopenissue INDEX` OR `ri INDEX` +
+e.g. `reopenissue 3` +
+OR `ri 1`
 * *Clear* : `clear` OR `c`
 * *Complete* : `complete INDEX` +
 e.g. `complete 2.1`
