@@ -33,6 +33,13 @@ public class QuestionIndex {
         return test.matches(INDEX_VALIDATION_REGEX);
     }
 
+    /**
+     * Returns the question number in the whole question index.
+     */
+    public int getQuestionNumber() {
+        return Integer.parseInt(value.split(".")[2]);
+    }
+
     @Override
     public String toString() {
         return value;
