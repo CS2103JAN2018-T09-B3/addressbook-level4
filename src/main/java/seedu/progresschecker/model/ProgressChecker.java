@@ -185,8 +185,8 @@ public class ProgressChecker implements ReadOnlyProgressChecker {
             throw new CommandException("Issue is already open");
         }
     }
-  
-    /**  
+
+    /**
      * closes an issue on github
      *
      * @throws IOException if the index mentioned is not valid or he's closed
