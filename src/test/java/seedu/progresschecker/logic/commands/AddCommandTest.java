@@ -23,10 +23,13 @@ import seedu.progresschecker.logic.commands.exceptions.CommandException;
 import seedu.progresschecker.model.Model;
 import seedu.progresschecker.model.ProgressChecker;
 import seedu.progresschecker.model.ReadOnlyProgressChecker;
+import seedu.progresschecker.model.exercise.Exercise;
 import seedu.progresschecker.model.issues.Issue;
 import seedu.progresschecker.model.person.Person;
 import seedu.progresschecker.model.person.exceptions.DuplicatePersonException;
 import seedu.progresschecker.model.person.exceptions.PersonNotFoundException;
+import seedu.progresschecker.model.photo.PhotoPath;
+import seedu.progresschecker.model.photo.exceptions.DuplicatePhotoException;
 import seedu.progresschecker.testutil.PersonBuilder;
 
 public class AddCommandTest {
@@ -105,8 +108,18 @@ public class AddCommandTest {
         }
 
         @Override
+        public void closeIssueOnGithub(Index index) throws IOException {
+            fail("This method should not be called");
+        }
+
+        @Override
         public void addPerson(Person person) throws DuplicatePersonException {
             fail("This method should not be called.");
+        }
+
+        @Override
+        public void reopenIssueOnGithub(Index index) throws IOException, CommandException {
+            fail("This method should not be called");
         }
 
         @Override
@@ -149,13 +162,24 @@ public class AddCommandTest {
 
         @Override
         public void uploadPhoto(Person target, String path)
-                throws DuplicatePersonException, PersonNotFoundException, IOException {
+                throws DuplicatePersonException, PersonNotFoundException {
             fail("This method should not be called.");
         }
 
         @Override
         public void updateIssue(Index index, Issue editedIssue) throws IOException {
             fail("This method should not be called");
+        }
+
+        @Override
+        public void addPhoto(PhotoPath photoPath) throws DuplicatePhotoException {
+            fail("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<Exercise> getFilteredExerciseList() {
+            fail("This method should not be called.");
+            return null;
         }
     }
 

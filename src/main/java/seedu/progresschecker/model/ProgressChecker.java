@@ -14,6 +14,7 @@ import java.util.stream.Collectors;
 
 import org.kohsuke.github.GHIssue;
 import org.kohsuke.github.GHIssueBuilder;
+import org.kohsuke.github.GHIssueState;
 import org.kohsuke.github.GHMilestone;
 import org.kohsuke.github.GHRepository;
 import org.kohsuke.github.GHUser;
@@ -21,6 +22,10 @@ import org.kohsuke.github.GitHub;
 
 import javafx.collections.ObservableList;
 import seedu.progresschecker.commons.core.index.Index;
+import seedu.progresschecker.logic.commands.exceptions.CommandException;
+import seedu.progresschecker.model.exercise.Exercise;
+import seedu.progresschecker.model.exercise.UniqueExerciseList;
+import seedu.progresschecker.model.exercise.exceptions.DuplicateExerciseException;
 import seedu.progresschecker.model.issues.Assignees;
 import seedu.progresschecker.model.issues.Issue;
 import seedu.progresschecker.model.issues.Labels;
@@ -30,6 +35,9 @@ import seedu.progresschecker.model.person.Person;
 import seedu.progresschecker.model.person.UniquePersonList;
 import seedu.progresschecker.model.person.exceptions.DuplicatePersonException;
 import seedu.progresschecker.model.person.exceptions.PersonNotFoundException;
+import seedu.progresschecker.model.photo.PhotoPath;
+import seedu.progresschecker.model.photo.UniquePhotoList;
+import seedu.progresschecker.model.photo.exceptions.DuplicatePhotoException;
 import seedu.progresschecker.model.tag.Tag;
 import seedu.progresschecker.model.tag.UniqueTagList;
 
@@ -44,7 +52,9 @@ public class ProgressChecker implements ReadOnlyProgressChecker {
     private final String userAuthentication = new String("aditya2018");
 
     private final UniquePersonList persons;
+    private final UniquePhotoList photos;
     private final UniqueTagList tags;
+    private final UniqueExerciseList exercises;
 
     /*
      * The 'unusual' code block below is an non-static initialization block, sometimes used to avoid duplication
@@ -56,6 +66,8 @@ public class ProgressChecker implements ReadOnlyProgressChecker {
     {
         persons = new UniquePersonList();
         tags = new UniqueTagList();
+        photos = new UniquePhotoList();
+        exercises = new UniqueExerciseList();
     }
 
     public ProgressChecker() {}
@@ -78,6 +90,12 @@ public class ProgressChecker implements ReadOnlyProgressChecker {
         this.tags.setTags(tags);
     }
 
+    //@@author iNekox3
+    public void setExercises(List<Exercise> exercises) throws DuplicateExerciseException {
+        this.exercises.setExercises(exercises);
+    }
+
+    //@@author
     /**
      * Resets the existing data of this {@code ProgressChecker} with {@code newData}.
      */
@@ -90,8 +108,11 @@ public class ProgressChecker implements ReadOnlyProgressChecker {
 
         try {
             setPersons(syncedPersonList);
+            setExercises(newData.getExerciseList());
         } catch (DuplicatePersonException e) {
             throw new AssertionError("ProgressChecker should not have duplicate persons");
+        } catch (DuplicateExerciseException e) {
+            throw new AssertionError("ProgressChecker should not have duplicate exercises");
         }
     }
 
@@ -102,6 +123,15 @@ public class ProgressChecker implements ReadOnlyProgressChecker {
     public void sort() {
         requireNonNull(persons);
         persons.sort();
+    }
+
+    /**
+     * Adds a new uploaded photo path to the the list of profile photos
+     * @param photoPath of a new uploaded photo
+     * @throws DuplicatePhotoException if there already exists the same photo path
+     */
+    public void addPhotoPath(PhotoPath photoPath) throws DuplicatePhotoException {
+        photos.add(photoPath);
     }
 
     //// person-level operations
@@ -183,6 +213,37 @@ public class ProgressChecker implements ReadOnlyProgressChecker {
 
     /**
      * Replaces the given issue at {@code index} from github with {@code editedPerson}.
+     * reopens an issue on github
+     *
+     * @throws IOException if the index mentioned is not valid or he's closed
+     */
+    public void reopenIssueOnGithub(Index index) throws IOException, CommandException {
+        GitHub github = GitHub.connectUsingPassword(userLogin, userAuthentication);
+        GHRepository repository = github.getRepository(repoName);
+        GHIssue issue = repository.getIssue(index.getOneBased());
+        if (issue.getState() == GHIssueState.OPEN) {
+            throw new CommandException("Issue is already open");
+        }
+    }
+
+    /**
+     * closes an issue on github
+     *
+     * @throws IOException if the index mentioned is not valid or he's closed
+     */
+    public void closeIssueOnGithub(Index index) throws IOException, CommandException {
+        GitHub github = GitHub.connectUsingPassword(userLogin, userAuthentication);
+        GHRepository repository = github.getRepository(repoName);
+        GHIssue issue = repository.getIssue(index.getOneBased());
+        if (issue.getState() == GHIssueState.CLOSED) {
+            throw new CommandException("This issue is already closed");
+        }
+        issue.close();
+    }
+
+    /**
+     * Replaces the given person {@code target} in the list with {@code editedPerson}.
+     * {@code ProgressChecker}'s tag list will be updated with the tags of {@code editedPerson}.
      *
      * @throws IOException if there is any problem in git authentication or parameter
      *
@@ -255,11 +316,13 @@ public class ProgressChecker implements ReadOnlyProgressChecker {
     }
 
     /**
-     * Uploads {@code Image} from the {@code path} offered
-     * @throws IOException if the {@code image} is not found
+     * Uploads the profile photo path of target person
+     * @param target
+     * @param path
+     * @throws PersonNotFoundException
+     * @throws DuplicatePersonException
      */
-    public void uploadPhoto(Person target, String path)
-            throws DuplicatePersonException, PersonNotFoundException {
+    public void uploadPhoto(Person target, String path) throws PersonNotFoundException, DuplicatePersonException {
         Person tempPerson = target;
         target.updatePhoto(path);
         persons.setPerson(tempPerson, target);
@@ -271,6 +334,22 @@ public class ProgressChecker implements ReadOnlyProgressChecker {
         tags.add(t);
     }
 
+    //@@author iNekox3
+    //// exercise-level operations
+
+    /**
+     * Adds an exercise to the ProgressChecker.
+     *
+     * @throws DuplicateExerciseException if an equivalent exercise already exists.
+     */
+    public void addExercise(Exercise e) throws DuplicateExerciseException {
+        Exercise exercise = new Exercise(
+                e.getQuestionIndex(), e.getQuestionType(), e.getQuestion(),
+                e.getStudentAnswer(), e.getModelAnswer());
+        exercises.add(exercise);
+    }
+
+    //@@author
     //// util methods
 
     @Override
@@ -289,6 +368,13 @@ public class ProgressChecker implements ReadOnlyProgressChecker {
         return tags.asObservableList();
     }
 
+    //@@author iNekox3
+    @Override
+    public ObservableList<Exercise> getExerciseList() {
+        return exercises.asObservableList();
+    }
+
+    //@@author
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
