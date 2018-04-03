@@ -14,6 +14,6 @@
     <Label fx:id="question" text="\$question"/>
     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Answer: "/>
     <Label fx:id="studentAnswer" styleClass="cell_small_label" text="\$studentAnswer"/>
-    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Suggested Answer: "/>
-    <Label fx:id="modelAnswer" text="\$modelAnswer"/>
+    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Suggested Answer: " styleClass="model-answer"/>
+    <Label fx:id="modelAnswer" text="\$modelAnswer" styleClass="model-answer"/>
 </VBox>

@@ -393,3 +393,7 @@
 .exercises-panel .label {
     -fx-text-fill: black !important;
 }
+
+.model-answer {
+    -fx-opacity: 0;
+}
