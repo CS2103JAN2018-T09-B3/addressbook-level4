@@ -110,24 +110,31 @@ public class EditIssueCommand extends Command {
         try {
             issue = repository.getIssue(index.getOneBased());
         } catch (IOException ie) {
-            throw new CommandException("Issue doesn't exist, enter correct index");
+            throw new CommandException(MESSAGE_ISSUE_INVALID);
         }
         List<GHUser> gitAssigneeList = issue.getAssignees();
         ArrayList<GHLabel> gitLabelsList = new ArrayList<>(issue.getLabels());
         List<Assignees> assigneesList = new ArrayList<>();
         List<Labels> labelsList = new ArrayList<>();
+        Milestone existingMilestone = null;
+        Body existingBody = new Body("");
+
+        if (issue.getMilestone() == null) {
+            existingMilestone = null;
+        } else {
+            existingMilestone = new Milestone(issue.getMilestone().getTitle());
+        }
 
         for (int i = 0; i < gitAssigneeList.size(); i++) {
-            assigneesList.add(new Assignees(gitAssigneeList.get(i).getName()));
+            assigneesList.add(new Assignees(gitAssigneeList.get(i).getLogin()));
         }
 
         for (int i = 0; i < labelsList.size(); i++) {
             labelsList.add(new Labels(gitLabelsList.get(i).getName()));
         }
 
-        issueToEdit = new Issue(new Title(issue.getTitle()), assigneesList,
-                new Milestone(issue.getMilestone().getTitle()),
-                new Body(issue.getBody()), labelsList);
+        issueToEdit = new Issue(new Title(issue.getTitle()), assigneesList, existingMilestone,
+                existingBody, labelsList);
         editedIssue = createEditedIssue(issueToEdit, editIssueDescriptor);
 
     }
