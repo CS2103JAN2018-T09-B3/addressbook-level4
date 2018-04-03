@@ -24,6 +24,7 @@ import seedu.progresschecker.commons.core.index.Index;
 import seedu.progresschecker.model.exercise.Exercise;
 import seedu.progresschecker.model.exercise.UniqueExerciseList;
 import seedu.progresschecker.model.exercise.exceptions.DuplicateExerciseException;
+import seedu.progresschecker.model.exercise.exceptions.ExerciseNotFoundException;
 import seedu.progresschecker.model.issues.Assignees;
 import seedu.progresschecker.model.issues.Issue;
 import seedu.progresschecker.model.issues.Labels;
@@ -267,6 +268,20 @@ public class ProgressChecker implements ReadOnlyProgressChecker {
                 e.getQuestionIndex(), e.getQuestionType(), e.getQuestion(),
                 e.getStudentAnswer(), e.getModelAnswer());
         exercises.add(exercise);
+    }
+
+    /**
+     * Replaces the given exercise {@code target} in the list with {@code editedExercise}.
+     *
+     * @throws ExerciseNotFoundException if {@code target} could not be found in the list.
+     *
+     * @see #syncWithMasterTagList(Person)
+     */
+    public void updateExercise(Exercise target, Exercise editedExercise)
+            throws ExerciseNotFoundException {
+        requireNonNull(editedExercise);
+
+        exercises.setExercise(target, editedExercise);
     }
 
     //@@author
