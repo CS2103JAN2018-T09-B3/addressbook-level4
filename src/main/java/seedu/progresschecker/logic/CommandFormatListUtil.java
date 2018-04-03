@@ -5,6 +5,7 @@ import java.util.Collections;
 
 import seedu.progresschecker.logic.commands.AddCommand;
 import seedu.progresschecker.logic.commands.ClearCommand;
+import seedu.progresschecker.logic.commands.CloseIssueCommand;
 import seedu.progresschecker.logic.commands.CreateIssue;
 import seedu.progresschecker.logic.commands.DeleteCommand;
 import seedu.progresschecker.logic.commands.EditCommand;
@@ -54,6 +55,7 @@ public final class CommandFormatListUtil {
         commandFormatList.add(ViewTaskListCommand.COMMAND_FORMAT);
         commandFormatList.add(CreateIssue.COMMAND_FORMAT);
         commandFormatList.add(ReopenIssueCommand.COMMAND_FORMAT);
+        commandFormatList.add(CloseIssueCommand.COMMAND_FORMAT);
 
         //sorting the commandFormatList
         Collections.sort(commandFormatList);
