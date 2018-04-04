@@ -14,7 +14,7 @@ public class QuestionIndex {
     public static final int QUESTION_NUMBER_INDEX = 2;
 
     public static final String MESSAGE_INDEX_CONSTRAINTS =
-            "Indices can only contain numbers, and should be in the format of"
+            "Indices can only contain numbers, and should be in the format of "
             + "SECTION NUMBER.PART NUMBER.QUESTION NUMBER";
     public static final String INDEX_VALIDATION_REGEX = "([2-9]|1[0-3])\\.([0-9]|[0-9]{2})\\.([0-9]|[0-9]{2})";
     public final String value;
