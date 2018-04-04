@@ -52,6 +52,7 @@ public class ParserUtil {
         return Index.fromOneBased(Integer.parseInt(trimmedIndex));
     }
 
+    //@@author EdwardKSG
     /**
      * Parses {@code String} into an {@code int} and returns it. Leading and trailing whitespaces will be
      * trimmed.
@@ -79,6 +80,7 @@ public class ParserUtil {
         return Index.fromOneBased(Integer.parseInt(trimmedIndex));
     }
 
+    //@@author EdwardKSG
     /**
      * Parses a {@code String Title} into a {@code String}.
      * Leading and trailing whitespaces will be trimmed.
@@ -285,6 +287,7 @@ public class ParserUtil {
         return phone.isPresent() ? Optional.of(parsePhone(phone.get())) : Optional.empty();
     }
 
+    //@@author EdwardKSG
     /**
      * Parses a {@code String major} into an {@code Major}.
      * Leading and trailing whitespaces will be trimmed.
@@ -300,6 +303,7 @@ public class ParserUtil {
         return new Major(trimmedMajor);
     }
 
+    //@@author EdwardKSG
     /**
      * Parses a {@code Optional<String> major} into an {@code Optional<Major>} if {@code major} is present.
      * See header comment of this class regarding the use of {@code Optional} parameters.
@@ -309,6 +313,7 @@ public class ParserUtil {
         return major.isPresent() ? Optional.of(parseMajor(major.get())) : Optional.empty();
     }
 
+    //@@author EdwardKSG
     /**
      * Parses a {@code String year} into an {@code Year}.
      * Leading and trailing whitespaces will be trimmed.
@@ -324,6 +329,7 @@ public class ParserUtil {
         return new Year(trimmedYear);
     }
 
+    //@@author EdwardKSG
     /**
      * Parses a {@code Optional<String> year} into an {@code Optional<Year>} if {@code year} is present.
      * See header comment of this class regarding the use of {@code Optional} parameters.
