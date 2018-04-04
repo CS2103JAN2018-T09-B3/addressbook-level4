@@ -11,6 +11,7 @@ import com.google.api.services.tasks.model.TaskList;
 import com.google.api.services.tasks.model.TaskLists;
 import com.google.api.services.tasks.model.Tasks;
 
+import java.util.List;
 import seedu.progresschecker.logic.apisetup.ConnectTasksApi;
 import seedu.progresschecker.logic.commands.exceptions.CommandException;
 
@@ -21,7 +22,7 @@ import seedu.progresschecker.logic.commands.exceptions.CommandException;
 public class MyTask {
 
     public static final String AUTHORIZE_FAILURE = "Failed to authorize tasks api client credentials";
-    public static final String LOAD_FAILURE = "Failed to load this task list (might be wrong title)";
+    public static final String LOAD_FAILURE = "Failed to load this task list";
     public static final String DATE_FORMAT = "MM/dd/yyyy HH:mm";
     public static final String COMPLETED = "completed";
     public static final String NEEDS_ACTION = "needsAction";
@@ -121,12 +122,13 @@ public class MyTask {
     }
 
     /**
-     * Marks the task with title {@code String} in the tasklist with title {@code String} as completed
+     * Marks the task with title {@code String} in the tasklist with ID {@code String} as completed
      *
-     * @param taskTitle title of the task we look for
-     * @param listTitle the title of the list to which the task belongs
+     * @param index title of the task we look for
+     * @param listId the identifier of the list to which the task belongs
+     * @return title the title of the task with index {@code int}
      */
-    public static void completeTask(String taskTitle, String listTitle) throws CommandException {
+    public static String completeTask(int index, String listId) throws CommandException {
         ConnectTasksApi connection = new ConnectTasksApi();
 
         try {
@@ -138,24 +140,18 @@ public class MyTask {
         com.google.api.services.tasks.Tasks service = connection.getTasksService();
 
         try {
-            TaskLists taskLists = service.tasklists().list().execute();
-            TaskList taskList = taskLists.getItems().stream()
-                    .filter(t -> t.getTitle().equals(listTitle))
-                    .findFirst()
-                    .orElse(null);
-
-            Tasks tasks = service.tasks().list(taskList.getId()).execute();
-            Task task = tasks.getItems().stream()
-                    .filter(t -> t.getTitle().equals(taskTitle))
-                    .findFirst()
-                    .orElse(null);
+            Tasks tasks = service.tasks().list(listId).execute();
+            List<Task> list = tasks.getItems();
+            Task task = list.get(index-1);
 
             task.setStatus(COMPLETED);
             task = service.tasks().update(
-                    taskList.getId(),
+                    listId,
                     task.getId(),
                     task
             ).execute();
+
+            return task.getTitle();
 
         } catch (IOException ioe) {
             throw new CommandException(LOAD_FAILURE);
@@ -163,12 +159,13 @@ public class MyTask {
     }
 
     /**
-     * Marks the task with title {@code String} in the tasklist with title {@code String} as incompleted
+     * Marks the task with title {@code String} in the tasklist with ID {@code String} as incompleted
      *
-     * @param taskTitle title of the task we look for
-     * @param listTitle the title of the list to which the task belongs
+     * @param index title of the task we look for
+     * @param listId the identifier of the list to which the task belongs
+     * @return title the title of the task with index {@code int}
      */
-    public static void incompleteTask(String taskTitle, String listTitle) throws CommandException {
+    public static String undoTask(int index, String listId) throws CommandException {
         ConnectTasksApi connection = new ConnectTasksApi();
 
         try {
@@ -180,24 +177,19 @@ public class MyTask {
         com.google.api.services.tasks.Tasks service = connection.getTasksService();
 
         try {
-            TaskLists taskLists = service.tasklists().list().execute();
-            TaskList taskList = taskLists.getItems().stream()
-                    .filter(t -> t.getTitle().equals(listTitle))
-                    .findFirst()
-                    .orElse(null);
+            Tasks tasks = service.tasks().list(listId).execute();
+            List<Task> list = tasks.getItems();
+            Task task = list.get(index-1);
 
-            Tasks tasks = service.tasks().list(taskList.getId()).execute();
-            Task task = tasks.getItems().stream()
-                    .filter(t -> t.getTitle().equals(taskTitle))
-                    .findFirst()
-                    .orElse(null);
-
+            task.setCompleted(null);
             task.setStatus(NEEDS_ACTION);
             task = service.tasks().update(
-                    taskList.getId(),
+                    listId,
                     task.getId(),
                     task
             ).execute();
+
+            return task.getTitle();
 
         } catch (IOException ioe) {
             throw new CommandException(LOAD_FAILURE);

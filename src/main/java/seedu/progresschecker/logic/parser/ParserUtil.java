@@ -53,6 +53,19 @@ public class ParserUtil {
     }
 
     /**
+     * Parses {@code String} into an {@code int} and returns it. Leading and trailing whitespaces will be
+     * trimmed.
+     * @throws IllegalValueException if the specified index is invalid (not non-zero unsigned integer).
+     */
+    public static int parseTaskIndex(String index) throws IllegalValueException {
+        String trimmedIndex = index.trim();
+        if (!StringUtil.isNonZeroUnsignedInteger(trimmedIndex)) {
+            throw new IllegalValueException(MESSAGE_INVALID_INDEX);
+        }
+        return Integer.parseInt(trimmedIndex);
+    }
+
+    /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
      * trimmed.
      * @throws IllegalValueException if the specified index is invalid (not non-zero unsigned integer

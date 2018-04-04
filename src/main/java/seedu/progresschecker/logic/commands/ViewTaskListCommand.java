@@ -31,8 +31,9 @@ public class ViewTaskListCommand extends Command {
 
     public static final String COMMAND_WORD = "viewtask";
     public static final String COMMAND_ALIAS = "vt";
+    public static final String DATA_FOLDER = "data/";
     public static final String TASK_PAGE = "tasklist.html";
-    public static final String FILE_FAILURE = "Something wrong with the file system.";
+    public static final String FILE_FAILURE = "Something is wrong with the file system.";
     public static final String COMMAND_FORMAT = COMMAND_WORD + "TASKLIST-TITLE";
     public static final String MESSAGE_TITLE_CONSTRAINTS = "The title of a task list should not exceed "
             + "49 characters (as specified by Google Task.";
@@ -50,8 +51,17 @@ public class ViewTaskListCommand extends Command {
 
     @Override
     public CommandResult execute() throws CommandException {
+        updateView();
+        return new CommandResult(String.format(MESSAGE_SUCCESS, DEFAULT_LIST_TITLE));
+    }
+
+    /**
+     * Updates the HTML file and refresh the browser panel
+     * @throws CommandException
+     */
+    public static void updateView() throws CommandException {
         List<Task> list = MyTaskList.searchTaskListById(DEFAULT_LIST_ID);
-        File htmlFile = new File("data/" + TASK_PAGE);
+        File htmlFile = new File(DATA_FOLDER + TASK_PAGE);
         writeToHtml(list, htmlFile);
         try {
             EventsCenter.getInstance().post(new LoadTaskEvent(readFile(htmlFile.getAbsolutePath(),
@@ -59,7 +69,6 @@ public class ViewTaskListCommand extends Command {
         } catch (IOException ioe) {
             throw new CommandException(FILE_FAILURE);
         }
-        return new CommandResult(String.format(MESSAGE_SUCCESS, DEFAULT_LIST_TITLE));
     }
 
 
@@ -69,7 +78,7 @@ public class ViewTaskListCommand extends Command {
      * @param list task list serialized in a java List.
      * @param file File object of the html file.
      */
-    void writeToHtml(List<Task> list, File file) throws CommandException {
+    public static void writeToHtml(List<Task> list, File file) throws CommandException {
         int size = list.size();
 
         try {
@@ -95,7 +104,7 @@ public class ViewTaskListCommand extends Command {
                 out.print("    <dt style=\"font-family:verdana; color:antiquewhite;\">"
                         + (i + 1) + ". " + task.getTitle() + "</dt>\n");
                 out.print("    <dd style=\"font-family:verdana; color:white;\">Due: &nbsp;&nbsp;&nbsp;"
-                        + task.getDue() + "</dd>\n");
+                        + task.getDue().toString().substring(0,10) + "</dd>\n");
                 String status = task.getStatus();
                 if (status.length() >= 11) {
                     out.print("    <dd style=\"font-family:verdana; color:red;\">Status:   "
