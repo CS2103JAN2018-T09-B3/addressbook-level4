@@ -14,6 +14,7 @@ import java.util.stream.Collectors;
 
 import org.kohsuke.github.GHIssue;
 import org.kohsuke.github.GHIssueBuilder;
+import org.kohsuke.github.GHIssueState;
 import org.kohsuke.github.GHMilestone;
 import org.kohsuke.github.GHRepository;
 import org.kohsuke.github.GHUser;
@@ -21,6 +22,7 @@ import org.kohsuke.github.GitHub;
 
 import javafx.collections.ObservableList;
 import seedu.progresschecker.commons.core.index.Index;
+import seedu.progresschecker.logic.commands.exceptions.CommandException;
 import seedu.progresschecker.model.exercise.Exercise;
 import seedu.progresschecker.model.exercise.UniqueExerciseList;
 import seedu.progresschecker.model.exercise.exceptions.DuplicateExerciseException;
@@ -33,6 +35,9 @@ import seedu.progresschecker.model.person.Person;
 import seedu.progresschecker.model.person.UniquePersonList;
 import seedu.progresschecker.model.person.exceptions.DuplicatePersonException;
 import seedu.progresschecker.model.person.exceptions.PersonNotFoundException;
+import seedu.progresschecker.model.photo.PhotoPath;
+import seedu.progresschecker.model.photo.UniquePhotoList;
+import seedu.progresschecker.model.photo.exceptions.DuplicatePhotoException;
 import seedu.progresschecker.model.tag.Tag;
 import seedu.progresschecker.model.tag.UniqueTagList;
 
@@ -47,6 +52,7 @@ public class ProgressChecker implements ReadOnlyProgressChecker {
     private final String userAuthentication = new String("aditya2018");
 
     private final UniquePersonList persons;
+    private final UniquePhotoList photos;
     private final UniqueTagList tags;
     private final UniqueExerciseList exercises;
 
@@ -60,6 +66,7 @@ public class ProgressChecker implements ReadOnlyProgressChecker {
     {
         persons = new UniquePersonList();
         tags = new UniqueTagList();
+        photos = new UniquePhotoList();
         exercises = new UniqueExerciseList();
     }
 
@@ -118,6 +125,15 @@ public class ProgressChecker implements ReadOnlyProgressChecker {
         persons.sort();
     }
 
+    /**
+     * Adds a new uploaded photo path to the the list of profile photos
+     * @param photoPath of a new uploaded photo
+     * @throws DuplicatePhotoException if there already exists the same photo path
+     */
+    public void addPhotoPath(PhotoPath photoPath) throws DuplicatePhotoException {
+        photos.add(photoPath);
+    }
+
     //// person-level operations
 
     /**
@@ -171,14 +187,31 @@ public class ProgressChecker implements ReadOnlyProgressChecker {
     }
 
     /**
+     * reopens an issue on github
+     *
+     * @throws IOException if the index mentioned is not valid or he's closed
+     */
+    public void reopenIssueOnGithub(Index index) throws IOException, CommandException {
+        GitHub github = GitHub.connectUsingPassword(userLogin, userAuthentication);
+        GHRepository repository = github.getRepository(repoName);
+        GHIssue issue = repository.getIssue(index.getOneBased());
+        if (issue.getState() == GHIssueState.OPEN) {
+            throw new CommandException("Issue is already open");
+        }
+    }
+
+    /**
      * closes an issue on github
      *
      * @throws IOException if the index mentioned is not valid or he's closed
      */
-    public void closeIssueOnGithub(Index index) throws IOException {
+    public void closeIssueOnGithub(Index index) throws IOException, CommandException {
         GitHub github = GitHub.connectUsingPassword(userLogin, userAuthentication);
         GHRepository repository = github.getRepository(repoName);
         GHIssue issue = repository.getIssue(index.getOneBased());
+        if (issue.getState() == GHIssueState.CLOSED) {
+            throw new CommandException("This issue is already closed");
+        }
         issue.close();
     }
 
@@ -238,11 +271,13 @@ public class ProgressChecker implements ReadOnlyProgressChecker {
     }
 
     /**
-     * Uploads {@code Image} from the {@code path} offered
-     * @throws IOException if the {@code image} is not found
+     * Uploads the profile photo path of target person
+     * @param target
+     * @param path
+     * @throws PersonNotFoundException
+     * @throws DuplicatePersonException
      */
-    public void uploadPhoto(Person target, String path)
-            throws DuplicatePersonException, PersonNotFoundException {
+    public void uploadPhoto(Person target, String path) throws PersonNotFoundException, DuplicatePersonException {
         Person tempPerson = target;
         target.updatePhoto(path);
         persons.setPerson(tempPerson, target);
