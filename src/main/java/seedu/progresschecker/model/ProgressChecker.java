@@ -172,6 +172,8 @@ public class ProgressChecker implements ReadOnlyProgressChecker {
         persons.setPerson(target, syncedEditedPerson);
     }
 
+    //@@author adityaa1998
+
     //issue-level operations
 
     /**
@@ -279,6 +281,8 @@ public class ProgressChecker implements ReadOnlyProgressChecker {
         toEdit.setAssignees(listOfUsers);
         toEdit.setLabels(listOfLabels.toArray(new String[0]));
     }
+
+    //@@author
 
     /**
      *  Updates the master tag list to include tags in {@code person} that are not in the list.

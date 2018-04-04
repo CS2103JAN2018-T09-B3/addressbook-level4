@@ -36,6 +36,8 @@ public interface Model {
     /** Sorts the persons in ProgressChecker according to their names in alphabetical order */
     void sort();
 
+    //@@author adityaa1998
+
     /** creates an issue on github */
     void createIssueOnGitHub(Issue issue) throws IOException;
 
@@ -46,6 +48,15 @@ public interface Model {
     void closeIssueOnGithub(Index index) throws IOException, CommandException;
 
     /**
+     * Replaces the fields in Issue {@code index} with {@code editedIssue}.
+     *
+     * @throws IOException if while updating the issue there is some problem in authentication
+     */
+    void updateIssue(Index index, Issue editedIssue) throws IOException;
+
+    //@@author adityaa1998
+
+    /**
      * Replaces the given person {@code target} with {@code editedPerson}.
      *
      * @throws DuplicatePersonException if updating the person's details causes the person to be equivalent to
@@ -54,13 +65,6 @@ public interface Model {
      */
     void updatePerson(Person target, Person editedPerson)
             throws DuplicatePersonException, PersonNotFoundException;
-
-    /**
-     * Replaces the fields in Issue {@code index} with {@code editedIssue}.
-     *
-     * @throws IOException if while updating the issue there is some problem in authentication
-     */
-    void updateIssue(Index index, Issue editedIssue) throws IOException;
 
     /** Returns an unmodifiable view of the filtered person list */
     ObservableList<Person> getFilteredPersonList();

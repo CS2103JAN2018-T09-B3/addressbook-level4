@@ -33,6 +33,7 @@ import seedu.progresschecker.model.issues.Labels;
 import seedu.progresschecker.model.issues.Milestone;
 import seedu.progresschecker.model.issues.Title;
 
+//@@author adityaa1998
 /**
  * Edits the details of an existing issue on Github.
  */
