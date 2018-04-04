@@ -54,7 +54,7 @@ public interface Model {
      */
     void updateIssue(Index index, Issue editedIssue) throws IOException;
 
-    //@@author adityaa1998
+    //@@author
 
     /**
      * Replaces the given person {@code target} with {@code editedPerson}.
