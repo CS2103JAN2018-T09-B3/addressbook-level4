@@ -255,7 +255,6 @@ public class ProgressChecker implements ReadOnlyProgressChecker {
         GHIssue toEdit = repository.getIssue(index.getOneBased());
 
         List<Assignees> assigneesList = editedIssue.getAssignees();
-        String chee = assigneesList.get(0).toString();
         List<Labels> labelsList = editedIssue.getLabelsList();
 
         ArrayList<GHUser> listOfUsers = new ArrayList<>();
