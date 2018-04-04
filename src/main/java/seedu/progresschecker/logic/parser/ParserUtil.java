@@ -239,6 +239,7 @@ public class ParserUtil {
         return body.isPresent() ? Optional.of(parseBody(body.get())) : Optional.empty();
     }
 
+    //@@author EdwardKSG
     /**
      * Parses a {@code String username} into a {@code GithubUsername}.
      * Leading and trailing whitespaces will be trimmed.
@@ -264,6 +265,7 @@ public class ParserUtil {
         requireNonNull(username);
         return username.isPresent() ? Optional.of(parseUsername(username.get())) : Optional.empty();
     }
+    //@@author
 
     /**
      * Parses a {@code String phone} into a {@code Phone}.
