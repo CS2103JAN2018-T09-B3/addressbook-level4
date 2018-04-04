@@ -5,10 +5,8 @@ import static seedu.progresschecker.model.Model.PREDICATE_SHOW_ALL_EXERCISES;
 
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 
 import seedu.progresschecker.commons.core.Messages;
-import seedu.progresschecker.commons.util.CollectionUtil;
 import seedu.progresschecker.logic.commands.exceptions.CommandException;
 import seedu.progresschecker.model.exercise.Exercise;
 import seedu.progresschecker.model.exercise.ModelAnswer;
@@ -30,8 +28,8 @@ public class AnswerCommand extends UndoableCommand {
     public static final String COMMAND_ALIAS = "ans";
     public static final String COMMAND_FORMAT = COMMAND_WORD + " QUESTION-INDEX" + " ANSWER";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Answer an exercise"
-            + "identified by the index number shown"
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Answer an exercise "
+            + "identified by the index number shown. "
             + "Existing answer will be overwritten by the input value.\n"
             + "Parameters: INDEX (must be in the format of WEEK.SECTION.QUESTION number "
             + "where WEEK range from " + MIN_WEEK_NUMBER + " to " + MAX_WEEK_NUMBER + ") "
@@ -42,21 +40,20 @@ public class AnswerCommand extends UndoableCommand {
     public static final String MESSAGE_EDIT_EXERCISE_SUCCESS = "Answered Exercise: %1$s";
 
     private final QuestionIndex questionIndex;
-    private final EditExerciseDescriptor editExerciseDescriptor;
+    private final StudentAnswer studentAnswer;
 
     private Exercise exerciseToEdit;
     private Exercise editedExercise;
 
     /**
      * @param questionIndex of the question in the filtered exercise list to edit
-     * @param editExerciseDescriptor details to edit the exericse with
+     * @param studentAnswer answer to edit the exercise with
      */
-    public AnswerCommand(QuestionIndex questionIndex, EditExerciseDescriptor editExerciseDescriptor) {
+    public AnswerCommand(QuestionIndex questionIndex, StudentAnswer studentAnswer) {
         requireNonNull(questionIndex);
-        requireNonNull(editExerciseDescriptor);
 
         this.questionIndex = questionIndex;
-        this.editExerciseDescriptor = new EditExerciseDescriptor(editExerciseDescriptor);
+        this.studentAnswer = studentAnswer;
     }
 
     @Override
@@ -78,30 +75,25 @@ public class AnswerCommand extends UndoableCommand {
             throw new CommandException(Messages.MESSAGE_INVALID_EXERCISE_INDEX);
         }
 
-        exerciseToEdit = exerciseList.get(questionIndex.getQuestionNumber());
-        editedExercise = createEditedExercise(exerciseToEdit, editExerciseDescriptor);
+        exerciseToEdit = exerciseList.get(questionIndex.getQuestionNumber()-1);
+        editedExercise = createEditedExercise(exerciseToEdit, studentAnswer);
     }
 
     /**
-     * Creates and returns a {@code Person} with the details of {@code personToEdit}
-     * edited with {@code editPersonDescriptor}.
+     * Creates and returns a {@code Exercise} with the details of {@code exerciseToEdit}
+     * edited with {@code editExerciseDescriptor}.
      */
-    private static Exercise createEditedExercise(Exercise exerciseToEdit, EditExerciseDescriptor editExerciseDescriptor) {
+    private static Exercise createEditedExercise(Exercise exerciseToEdit, StudentAnswer studentAnswer) {
         assert exerciseToEdit != null;
 
-        QuestionIndex updatedQuestionIndex = editExerciseDescriptor.getQuestionIndex()
-                .orElse(exerciseToEdit.getQuestionIndex());
-        QuestionType updatedQuestionType = editExerciseDescriptor.getQuestionType()
-                .orElse(exerciseToEdit.getQuestionType());
-        Question updatedQuestion = editExerciseDescriptor.getQuestion()
-                .orElse(exerciseToEdit.getQuestion());
-        StudentAnswer updatedStudentAnswer = editExerciseDescriptor.getStudentAnswer()
-                .orElse(exerciseToEdit.getStudentAnswer());
-        ModelAnswer updatedModelAnswer = editExerciseDescriptor.getModelAnswer()
-                .orElse(exerciseToEdit.getModelAnswer());
+        QuestionIndex questionIndex = exerciseToEdit.getQuestionIndex();
+        QuestionType questionType = exerciseToEdit.getQuestionType();
+        Question question = exerciseToEdit.getQuestion();
+        StudentAnswer updatedStudentAnswer = studentAnswer;
+        ModelAnswer modelAnswer = exerciseToEdit.getModelAnswer();
 
-        return new Exercise(updatedQuestionIndex, updatedQuestionType, updatedQuestion,
-                updatedStudentAnswer, updatedModelAnswer);
+        return new Exercise(questionIndex, questionType, question,
+                updatedStudentAnswer, modelAnswer);
     }
 
     @Override
@@ -112,110 +104,15 @@ public class AnswerCommand extends UndoableCommand {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof EditCommand)) {
+        if (!(other instanceof AnswerCommand)) {
             return false;
         }
 
         // state check
         AnswerCommand e = (AnswerCommand) other;
         return questionIndex.equals(e.questionIndex)
-                && editExerciseDescriptor.equals(e.editExerciseDescriptor)
+                && studentAnswer.equals(e.studentAnswer)
                 && Objects.equals(exerciseToEdit, e.exerciseToEdit);
     }
 
-    /**
-     * Stores the details to edit the exercise with. Each non-empty field value will replace the
-     * corresponding field value of the exercise.
-     */
-    public static class EditExerciseDescriptor {
-        private QuestionIndex questionIndex;
-        private QuestionType questionType;
-        private Question question;
-        private StudentAnswer studentAnswer;
-        private ModelAnswer modelAnswer;
-
-        public EditExerciseDescriptor() {}
-
-        /**
-         * Copy constructor.
-         * A defensive copy of {@code tags} is used internally.
-         */
-        public EditExerciseDescriptor(EditExerciseDescriptor toCopy) {
-            setQuestionIndex(toCopy.questionIndex);
-            setQuestionType(toCopy.questionType);
-            setQuestion(toCopy.question);
-            setStudentAnswer(toCopy.studentAnswer);
-            setModelAnswer(toCopy.modelAnswer);
-        }
-
-        /**
-         * Returns true if at least one field is edited.
-         */
-        public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(this.questionIndex, this.questionType, this.question,
-                    this.studentAnswer, this.modelAnswer);
-        }
-
-        public void setQuestionIndex(QuestionIndex questionIndex) {
-            this.questionIndex = questionIndex;
-        }
-
-        public Optional<QuestionIndex> getQuestionIndex() {
-            return Optional.ofNullable(questionIndex);
-        }
-
-        public void setQuestionType(QuestionType questionType) {
-            this.questionType = questionType;
-        }
-
-        public Optional<QuestionType> getQuestionType() {
-            return Optional.ofNullable(questionType);
-        }
-
-        public void setQuestion(Question question) {
-            this.question = question;
-        }
-
-        public Optional<Question> getQuestion() {
-            return Optional.ofNullable(question);
-        }
-
-        public void setStudentAnswer(StudentAnswer studentAnswer) {
-            this.studentAnswer = studentAnswer;
-        }
-
-        public Optional<StudentAnswer> getStudentAnswer() {
-            return Optional.ofNullable(studentAnswer);
-        }
-
-        public void setModelAnswer(ModelAnswer modelAnswer) {
-            this.modelAnswer = modelAnswer;
-        }
-
-        public Optional<ModelAnswer> getModelAnswer() {
-            return Optional.ofNullable(modelAnswer);
-        }
-
-        @Override
-        public boolean equals(Object other) {
-            // short circuit if same object
-            if (other == this) {
-                return true;
-            }
-
-            // instanceof handles nulls
-            if (!(other instanceof EditExerciseDescriptor)) {
-                return false;
-            }
-
-            // state check
-            EditExerciseDescriptor e = (EditExerciseDescriptor) other;
-
-            return getQuestionIndex().equals(e.getQuestionIndex())
-                    && getQuestionType().equals(e.getQuestionType())
-                    && getQuestion().equals(e.getQuestion())
-                    && getStudentAnswer().equals(e.getStudentAnswer())
-                    && getModelAnswer().equals(e.getModelAnswer());
-        }
-    }
 }
