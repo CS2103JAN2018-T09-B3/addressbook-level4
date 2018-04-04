@@ -100,9 +100,9 @@ public class EditIssueCommand extends Command {
     }
 
     /**
-     * Prepdfef
+     * Preprocess data for existing issue
      * @throws CommandException is thrown when invalid issue index is used
-     * @throws IOException
+     * @throws IOException when the authentication fails
      */
     private void preprocess() throws CommandException, IOException {
         GitHub github = GitHub.connectUsingPassword(userLogin, userAuthentication);
