@@ -4,27 +4,27 @@ import static seedu.progresschecker.commons.core.Messages.MESSAGE_INVALID_COMMAN
 
 import seedu.progresschecker.commons.core.index.Index;
 import seedu.progresschecker.commons.exceptions.IllegalValueException;
-import seedu.progresschecker.logic.commands.CloseIssueCommand;
+import seedu.progresschecker.logic.commands.ReopenIssueCommand;
 import seedu.progresschecker.logic.parser.exceptions.ParseException;
 
 //@@author adityaa1998
 /**
  * Parses input arguments and creates a new CloseIssueCommand object
  */
-public class CloseIssueCommandParser implements Parser<CloseIssueCommand> {
+public class ReopenIssueCommandParser implements Parser<ReopenIssueCommand> {
 
     /**
-     * Parses the given {@code String} of arguments in the context of the CloseIssueCommand
-     * and returns an CloseIssueCommand object for execution.
+     * Parses the given {@code String} of arguments in the context of the ReopenIssueCommand
+     * and returns an ReopenIssueCommand object for execution.
      * @throws ParseException if the user input does not conform the expected format
      */
-    public CloseIssueCommand parse(String args) throws ParseException {
+    public ReopenIssueCommand parse(String args) throws ParseException {
         try {
             Index index = ParserUtil.parseIndex(args);
-            return new CloseIssueCommand(index);
+            return new ReopenIssueCommand(index);
         } catch (IllegalValueException ive) {
             throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, CloseIssueCommand.MESSAGE_USAGE));
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, ReopenIssueCommand.MESSAGE_USAGE));
         }
     }
 }
