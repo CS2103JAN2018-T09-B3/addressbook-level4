@@ -3,11 +3,15 @@ package seedu.progresschecker.model.exercise;
 import static java.util.Objects.requireNonNull;
 import static seedu.progresschecker.commons.util.AppUtil.checkArgument;
 
+import java.util.regex.Pattern;
+
 //@@author iNekox3
 /**
  * Represents an Exercise's question index in the ProgressChecker.
  */
 public class QuestionIndex {
+
+    public static final int QUESTION_NUMBER_INDEX = 2;
 
     public static final String MESSAGE_INDEX_CONSTRAINTS =
             "Indices can only contain numbers, and should be in the format of"
@@ -37,7 +41,7 @@ public class QuestionIndex {
      * Returns the question number in the whole question index.
      */
     public int getQuestionNumber() {
-        return Integer.parseInt(value.split(".")[2]);
+        return Integer.parseInt(value.split(Pattern.quote("."))[QUESTION_NUMBER_INDEX]);
     }
 
     @Override
