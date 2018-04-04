@@ -20,6 +20,7 @@ import seedu.progresschecker.commons.util.FileUtil;
 import seedu.progresschecker.logic.commands.exceptions.CommandException;
 import seedu.progresschecker.model.task.MyTaskList;
 
+//@@author EdwardKSG
 /**
  * View the web view of a particular TaskList (with the name provided).
  */
@@ -94,15 +95,29 @@ public class ViewTaskListCommand extends Command {
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter out = new PrintWriter(bw);
 
-            out.print("<!DOCTYPE html>\n" + "<html>\n" + "<body>\n");
-            out.print("<h1>" + listName + "</h1>\n" + "<dl>\n");
+            out.print("<!DOCTYPE html>\n" + "<html>\n"
+                    + "<body style=\"background-color:grey;\">\n");
+            out.print("<h1 style=\"font-family:verdana; color:white\">"
+                    + listName + "</h1>\n" + "<hr />\n" + "<dl>\n");
 
-            for (int i = 0; i < (size - 2); i++) {
+            for (int i = 0; i < size; i++) {
                 Task task = list.get(i);
-                out.print("    <dt>" + task.getTitle() + "</dt>\n");
-                out.print("    <dd>Deadline: " + task.getDue() + "</dd>\n");
-                out.print("    <dd>Status: " + task.getStatus() + "</dd>\n");
-                out.print("    <dd>PS: " + task.getNotes() + "</dd>\n");
+                out.print("    <dt style=\"font-family:verdana; color:antiquewhite;\">"
+                        + (i + 1) + ". " + task.getTitle() + "</dt>\n");
+                out.print("    <dd style=\"font-family:verdana; color:white;\">Due: &nbsp;&nbsp;&nbsp;"
+                        + task.getDue() + "</dd>\n");
+                String status = task.getStatus();
+                if (status.length() >= 11) {
+                    out.print("    <dd style=\"font-family:verdana; color:red;\">Status:   "
+                            + task.getStatus() + "</dd>\n");
+                } else {
+                    out.print("    <dd style=\"font-family:verdana; color:darkseagreen;\">Status: "
+                            + task.getStatus() + "</dd>\n");
+                }
+
+                out.print("    <dd style=\"font-family:verdana; color:white;\">Notes: &nbsp;&nbsp;&nbsp;"
+                        + task.getNotes() + "</dd>\n");
+                out.print("    <hr />\n");
 
             }
 
