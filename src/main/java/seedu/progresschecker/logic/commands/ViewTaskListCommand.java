@@ -104,7 +104,7 @@ public class ViewTaskListCommand extends Command {
                 out.print("    <dt style=\"font-family:verdana; color:antiquewhite;\">"
                         + (i + 1) + ". " + task.getTitle() + "</dt>\n");
                 out.print("    <dd style=\"font-family:verdana; color:white;\">Due: &nbsp;&nbsp;&nbsp;"
-                        + task.getDue().toString().substring(0,10) + "</dd>\n");
+                        + task.getDue().toString().substring(0, 10) + "</dd>\n");
                 String status = task.getStatus();
                 if (status.length() >= 11) {
                     out.print("    <dd style=\"font-family:verdana; color:red;\">Status:   "

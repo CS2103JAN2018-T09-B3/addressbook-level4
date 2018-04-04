@@ -3,7 +3,6 @@ package seedu.progresschecker.logic.commands;
 import static java.util.Objects.requireNonNull;
 
 import static seedu.progresschecker.logic.commands.AddDefaultTasksCommand.DEFAULT_LIST_ID;
-import static seedu.progresschecker.model.task.MyTask.completeTask;
 import static seedu.progresschecker.model.task.MyTask.undoTask;
 
 import seedu.progresschecker.logic.commands.exceptions.CommandException;

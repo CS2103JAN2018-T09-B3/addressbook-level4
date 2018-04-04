@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import com.google.api.client.util.DateTime;
 import com.google.api.services.tasks.model.Task;
@@ -11,7 +12,6 @@ import com.google.api.services.tasks.model.TaskList;
 import com.google.api.services.tasks.model.TaskLists;
 import com.google.api.services.tasks.model.Tasks;
 
-import java.util.List;
 import seedu.progresschecker.logic.apisetup.ConnectTasksApi;
 import seedu.progresschecker.logic.commands.exceptions.CommandException;
 
@@ -142,7 +142,7 @@ public class MyTask {
         try {
             Tasks tasks = service.tasks().list(listId).execute();
             List<Task> list = tasks.getItems();
-            Task task = list.get(index-1);
+            Task task = list.get(index - 1);
 
             task.setStatus(COMPLETED);
             task = service.tasks().update(
@@ -179,7 +179,7 @@ public class MyTask {
         try {
             Tasks tasks = service.tasks().list(listId).execute();
             List<Task> list = tasks.getItems();
-            Task task = list.get(index-1);
+            Task task = list.get(index - 1);
 
             task.setCompleted(null);
             task.setStatus(NEEDS_ACTION);
