@@ -83,6 +83,36 @@ public class MyTaskList {
     }
 
     /**
+     * Finds the task list with ID {@code String} from the current list of task lists
+     *
+     * @param listId title of the task list we look for
+     * @return the List instances containing all tasks in the specified task list
+     */
+    public static List<Task> searchTaskListById(String listId) throws CommandException {
+        List<Task> list = null;
+
+        ConnectTasksApi connection = new ConnectTasksApi();
+
+        try {
+            connection.authorize();
+        } catch (Exception e) {
+            throw new CommandException(AUTHORIZE_FAILURE);
+        }
+
+        com.google.api.services.tasks.Tasks service = connection.getTasksService();
+
+        try {
+
+            Tasks tasks = service.tasks().list(listId).execute();
+            list = tasks.getItems();
+        } catch (IOException ioe) {
+            throw new CommandException(LOAD_FAILURE);
+        }
+
+        return list;
+    }
+
+    /**
      * Changes the name of task list with id {@code String} to {@code String}
      *
      * @param listId identifier of the target task list whose name will be changed

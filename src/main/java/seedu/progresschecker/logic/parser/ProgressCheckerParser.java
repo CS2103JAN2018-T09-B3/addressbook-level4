@@ -63,7 +63,7 @@ public class ProgressCheckerParser {
 
         case ViewTaskListCommand.COMMAND_WORD:
         case ViewTaskListCommand.COMMAND_ALIAS:
-            return new ViewTaskListCommandParser().parse(arguments);
+            return new ViewTaskListCommand();
 
         case AddCommand.COMMAND_WORD:
         case AddCommand.COMMAND_ALIAS:

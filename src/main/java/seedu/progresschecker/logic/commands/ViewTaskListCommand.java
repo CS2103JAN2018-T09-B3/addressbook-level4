@@ -1,5 +1,8 @@
 package seedu.progresschecker.logic.commands;
 
+import static seedu.progresschecker.logic.commands.AddDefaultTasksCommand.DEFAULT_LIST_ID;
+import static seedu.progresschecker.logic.commands.AddDefaultTasksCommand.DEFAULT_LIST_TITLE;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -29,7 +32,6 @@ public class ViewTaskListCommand extends Command {
     public static final String COMMAND_WORD = "viewtask";
     public static final String COMMAND_ALIAS = "vt";
     public static final String TASK_PAGE = "tasklist.html";
-    public static final String DEFAULT_TASK_PAGE = "/nulltasklist.html";
     public static final String FILE_FAILURE = "Something wrong with the file system.";
     public static final String COMMAND_FORMAT = COMMAND_WORD + "TASKLIST-TITLE";
     public static final String MESSAGE_TITLE_CONSTRAINTS = "The title of a task list should not exceed "
@@ -42,19 +44,13 @@ public class ViewTaskListCommand extends Command {
             + "Parameters: TASKLIST-TITLE (max "
             + MAX_TITLE_LENGTH
             + " characters)\n"
-            + "Example: " + COMMAND_WORD + " CS2103 LOs";
+            + "Example: " + COMMAND_WORD;
 
     public static final String MESSAGE_SUCCESS = "Viewing task list: %1$s";
 
-    private final String listName;
-
-    public ViewTaskListCommand(String name) {
-        this.listName = name;
-    }
-
     @Override
     public CommandResult execute() throws CommandException {
-        List<Task> list = MyTaskList.searchTaskList(listName);
+        List<Task> list = MyTaskList.searchTaskListById(DEFAULT_LIST_ID);
         File htmlFile = new File("data/" + TASK_PAGE);
         writeToHtml(list, htmlFile);
         try {
@@ -63,15 +59,9 @@ public class ViewTaskListCommand extends Command {
         } catch (IOException ioe) {
             throw new CommandException(FILE_FAILURE);
         }
-        return new CommandResult(String.format(MESSAGE_SUCCESS, listName));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, DEFAULT_LIST_TITLE));
     }
 
-    @Override
-    public boolean equals(Object other) {
-        return other == this // short circuit if same object
-                || (other instanceof ViewTaskListCommand // instanceof handles nulls
-                && this.listName.equals(((ViewTaskListCommand) other).listName)); // state check
-    }
 
     /**
      * Writes the loaded task list to an html file.Loads the tasks.
@@ -98,7 +88,7 @@ public class ViewTaskListCommand extends Command {
             out.print("<!DOCTYPE html>\n" + "<html>\n"
                     + "<body style=\"background-color:grey;\">\n");
             out.print("<h1 style=\"font-family:verdana; color:white\">"
-                    + listName + "</h1>\n" + "<hr />\n" + "<dl>\n");
+                    + DEFAULT_LIST_TITLE + "</h1>\n" + "<hr />\n" + "<dl>\n");
 
             for (int i = 0; i < size; i++) {
                 Task task = list.get(i);
@@ -115,7 +105,7 @@ public class ViewTaskListCommand extends Command {
                             + task.getStatus() + "</dd>\n");
                 }
 
-                out.print("    <dd style=\"font-family:verdana; color:white;\">Notes: &nbsp;&nbsp;&nbsp;"
+                out.print("    <dd style=\"font-family:verdana; color:white;\">Notes: &nbsp;&nbsp;"
                         + task.getNotes() + "</dd>\n");
                 out.print("    <hr />\n");
 
