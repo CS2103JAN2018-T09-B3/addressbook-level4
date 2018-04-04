@@ -90,17 +90,16 @@ public class AddCommandParserTest {
                         + USERNAME_DESC_BOB + MAJOR_DESC_BOB + YEAR_DESC_BOB + TAG_DESC_FRIEND,
                 new AddCommand(expectedPerson));
 
-        //@@author EdwardKSG
         // multiple majors - last major accepted
         assertParseSuccess(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + USERNAME_DESC_BOB
                 + MAJOR_DESC_AMY + MAJOR_DESC_BOB + YEAR_DESC_BOB + TAG_DESC_FRIEND,
                 new AddCommand(expectedPerson));
 
-        //@@author EdwardKSG
         // multiple years - last year accepted
         assertParseSuccess(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + USERNAME_DESC_BOB
                 + MAJOR_DESC_BOB + YEAR_DESC_AMY + YEAR_DESC_BOB + TAG_DESC_FRIEND,
                 new AddCommand(expectedPerson));
+        //@@author
 
         // multiple tags - all accepted
         Person expectedPersonMultipleTags = new PersonBuilder().withName(VALID_NAME_BOB).withPhone(VALID_PHONE_BOB)
@@ -144,15 +143,14 @@ public class AddCommandParserTest {
         assertParseFailure(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + VALID_USERNAME_BOB
                 + MAJOR_DESC_BOB + YEAR_DESC_BOB, expectedMessage);
 
-        //@@author EdwardKSG
         // missing major prefix
         assertParseFailure(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + USERNAME_DESC_BOB
                 + VALID_MAJOR_BOB + YEAR_DESC_BOB, expectedMessage);
 
-        //@@author EdwardKSG
         // missing year prefix
         assertParseFailure(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + USERNAME_DESC_BOB
                 + MAJOR_DESC_BOB + VALID_YEAR_BOB, expectedMessage);
+        //@@author
 
         // all prefixes missing
         assertParseFailure(parser, VALID_NAME_BOB + VALID_PHONE_BOB + VALID_EMAIL_BOB + VALID_USERNAME_BOB
@@ -182,17 +180,16 @@ public class AddCommandParserTest {
                 + MAJOR_DESC_BOB + YEAR_DESC_BOB + TAG_DESC_HUSBAND + TAG_DESC_FRIEND,
                 GithubUsername.MESSAGE_USERNAME_CONSTRAINTS);
 
-        //@@author EdwardKSG
         // invalid major
         assertParseFailure(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + USERNAME_DESC_BOB
                 + INVALID_MAJOR_DESC + YEAR_DESC_BOB + TAG_DESC_HUSBAND + TAG_DESC_FRIEND,
                 Major.MESSAGE_MAJOR_CONSTRAINTS);
 
-        //@@author EdwardKSG
         // invalid year
         assertParseFailure(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + USERNAME_DESC_BOB
                 + MAJOR_DESC_BOB + INVALID_YEAR_DESC + TAG_DESC_HUSBAND + TAG_DESC_FRIEND,
                 Year.MESSAGE_YEAR_CONSTRAINTS);
+        //@@author
 
         // invalid tag
         assertParseFailure(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + USERNAME_DESC_BOB
