@@ -87,8 +87,10 @@ public class AnswerCommand extends UndoableCommand {
             }
         }
 
-        if (!isFound) throw new CommandException(String.format(
-                Messages.MESSAGE_INVALID_EXERCISE_INDEX, questionIndex.toString()));
+        if (!isFound) {
+            throw new CommandException(String.format(
+                    Messages.MESSAGE_INVALID_EXERCISE_INDEX, questionIndex.toString()));
+        }
     }
 
     /**

@@ -16,7 +16,6 @@ import seedu.progresschecker.commons.core.index.Index;
 import seedu.progresschecker.commons.events.model.ProgressCheckerChangedEvent;
 import seedu.progresschecker.logic.commands.exceptions.CommandException;
 import seedu.progresschecker.model.exercise.Exercise;
-import seedu.progresschecker.model.exercise.exceptions.DuplicateExerciseException;
 import seedu.progresschecker.model.exercise.exceptions.ExerciseNotFoundException;
 import seedu.progresschecker.model.issues.Issue;
 import seedu.progresschecker.model.person.Person;
