@@ -24,19 +24,19 @@ public class AnswerCommandParser implements Parser<AnswerCommand> {
      */
     public AnswerCommand parse(String args) throws ParseException {
         requireNonNull(args);
-        String[] content = args.trim().split(" ", 2);
-
-        QuestionIndex questionIndex;
-        
         try {
+            String[] content = args.trim().split(" ", 2);
+
+            QuestionIndex questionIndex;
             questionIndex = ParserUtil.parseQuestionIndex(content[QUESTION_INDEX_INDEX]);
+            StudentAnswer studentAnswer = ParserUtil.parseStudentAnswer(content[ANSWER_INDEX]);
+
+            return new AnswerCommand(questionIndex, studentAnswer);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AnswerCommand.MESSAGE_USAGE));
         } catch (IllegalValueException ive) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AnswerCommand.MESSAGE_USAGE));
         }
-
-        StudentAnswer studentAnswer = ParserUtil.parseStudentAnswer(content[ANSWER_INDEX]);
-
-        return new AnswerCommand(questionIndex, studentAnswer);
     }
 
 }
