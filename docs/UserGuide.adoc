@@ -353,19 +353,6 @@ Examples:
 * `list`
 * `l`
 
-=== Newly adding the default task list: `newtasklist OR nl`
-
-Adds the default task list to Google account +
-Format: `newtasklist OR nl`
-
-[TIP]
-Only the command word. No parameters at all.
-
-Examples:
-
-* `newtasklist`
-* `nl`
-
 // tag::undoredo[]
 === Redoing the previously undone command : `redo OR r`
 
