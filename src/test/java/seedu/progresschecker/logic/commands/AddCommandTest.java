@@ -24,6 +24,9 @@ import seedu.progresschecker.model.Model;
 import seedu.progresschecker.model.ProgressChecker;
 import seedu.progresschecker.model.ReadOnlyProgressChecker;
 import seedu.progresschecker.model.exercise.Exercise;
+import seedu.progresschecker.model.exercise.QuestionIndex;
+import seedu.progresschecker.model.exercise.StudentAnswer;
+import seedu.progresschecker.model.exercise.exceptions.DuplicateExerciseException;
 import seedu.progresschecker.model.issues.Issue;
 import seedu.progresschecker.model.person.Person;
 import seedu.progresschecker.model.person.exceptions.DuplicatePersonException;
@@ -177,9 +180,19 @@ public class AddCommandTest {
         }
 
         @Override
+        public void updateExercise(Exercise target, Exercise editedExercise) {
+            fail("This method should not be called.");
+        }
+
+        @Override
         public ObservableList<Exercise> getFilteredExerciseList() {
             fail("This method should not be called.");
             return null;
+        }
+
+        @Override
+        public void updateFilteredExerciseList(Predicate<Exercise> predicate) {
+            fail("This method should not be called.");
         }
     }
 
