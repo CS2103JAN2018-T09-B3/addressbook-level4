@@ -6,14 +6,22 @@
 <?import javafx.scene.text.Text?>
 
 <!--@@author iNekox3-->
-<VBox id="cardPane" fx:id="cardPane" prefHeight="140.0" prefWidth="380.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<VBox id="cardPane" fx:id="cardPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
     <padding>
         <Insets bottom="5" left="15" right="5" top="5" />
     </padding>
-    <Label fx:id="questionIndex" text="\$questionIndex" />
-    <Label fx:id="question" text="\$question"/>
-    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Answer: "/>
-    <Label fx:id="studentAnswer" styleClass="cell_small_label" text="\$studentAnswer"/>
-    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Suggested Answer: " styleClass="model-answer"/>
-    <Label fx:id="modelAnswer" text="\$modelAnswer" styleClass="model-answer"/>
+    <VBox prefWidth="325.0">
+        <children>
+            <Label fx:id="questionIndex" text="\$questionIndex" wrapText="true"/>
+            <Label fx:id="question" text="\$question" wrapText="true"/>
+            <Text />
+
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Answer: "/>
+            <Label fx:id="studentAnswer" styleClass="cell_small_label" text="\$studentAnswer" wrapText="true"/>
+            <Text />
+
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Suggested Answer: " styleClass="model-answer"/>
+            <Label fx:id="modelAnswer" text="\$modelAnswer" styleClass="model-answer" wrapText="true"/>
+        </children>
+    </VBox>
 </VBox>
