@@ -425,9 +425,13 @@
 }
 
 .exercises-panel .label {
-    -fx-text-fill: black !important;
+    -fx-text-fill: white !important;
 }
 
-.model-answer {
+.exercise .label {
+    -fx-text-fill: white;
+}
+
+.hide-text {
     -fx-opacity: 0;
 }
