@@ -64,19 +64,31 @@ public class AnswerCommand extends UndoableCommand {
             throw new AssertionError("The target exercise cannot be missing");
         }
         model.updateFilteredExerciseList(PREDICATE_SHOW_ALL_EXERCISES);
-        return new CommandResult(String.format(MESSAGE_EDIT_EXERCISE_SUCCESS, editedExercise));
+        return new CommandResult(String.format(MESSAGE_EDIT_EXERCISE_SUCCESS, questionIndex));
     }
 
+    //TODO: store mapping of questionIndex to exercise's index in exerciseList in a separate data structure
     @Override
     protected void preprocessUndoableCommand() throws CommandException {
         List<Exercise> exerciseList = model.getFilteredExerciseList();
+        boolean isFound = false;
 
         if (!questionIndex.isValidIndex(questionIndex.toString())) {
-            throw new CommandException(Messages.MESSAGE_INVALID_EXERCISE_INDEX);
+            throw new CommandException(String.format(
+                    Messages.MESSAGE_INVALID_EXERCISE_INDEX, questionIndex.toString()));
         }
 
-        exerciseToEdit = exerciseList.get(questionIndex.getQuestionNumber()-1);
-        editedExercise = createEditedExercise(exerciseToEdit, studentAnswer);
+        for (Exercise e : exerciseList) {
+            if (e.getQuestionIndex().toString().equals(questionIndex.toString())) {
+                exerciseToEdit = exerciseList.get(exerciseList.indexOf(e));
+                editedExercise = createEditedExercise(exerciseToEdit, studentAnswer);
+                isFound = true;
+                break;
+            }
+        }
+
+        if (!isFound) throw new CommandException(String.format(
+                Messages.MESSAGE_INVALID_EXERCISE_INDEX, questionIndex.toString()));
     }
 
     /**
