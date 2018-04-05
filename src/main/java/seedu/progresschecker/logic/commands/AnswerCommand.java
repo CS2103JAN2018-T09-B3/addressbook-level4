@@ -23,7 +23,7 @@ import seedu.progresschecker.model.exercise.exceptions.ExerciseNotFoundException
 public class AnswerCommand extends UndoableCommand {
     public static final int MIN_WEEK_NUMBER = 2;
     public static final int MAX_WEEK_NUMBER = 13;
-    
+
     public static final String COMMAND_WORD = "answer";
     public static final String COMMAND_ALIAS = "ans";
     public static final String COMMAND_FORMAT = COMMAND_WORD + " QUESTION-INDEX" + " ANSWER";

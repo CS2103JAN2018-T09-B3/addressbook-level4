@@ -16,7 +16,7 @@ public class AnswerCommandParser implements Parser<AnswerCommand> {
 
     private static final int QUESTION_INDEX_INDEX = 0;
     private static final int ANSWER_INDEX = 1;
-    
+
     /**
      * Parses the given {@code String} of arguments in the context of the AnswerCommand
      * and returns an AnswerCommand object for execution.

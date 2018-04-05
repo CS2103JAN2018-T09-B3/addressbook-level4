@@ -419,7 +419,7 @@ public class ParserUtil {
     public static StudentAnswer parseStudentAnswer(String studentAnswer) {
         requireNonNull(studentAnswer);
         String trimmedStudentAnswer = studentAnswer.trim();
-        
+
         return new StudentAnswer(trimmedStudentAnswer);
     }
 }
