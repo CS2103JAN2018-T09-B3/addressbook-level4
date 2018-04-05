@@ -5,12 +5,15 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.progresschecker.commons.core.index.Index;
+import seedu.progresschecker.logic.commands.exceptions.CommandException;
 import seedu.progresschecker.model.exercise.Exercise;
 import seedu.progresschecker.model.exercise.exceptions.ExerciseNotFoundException;
 import seedu.progresschecker.model.issues.Issue;
 import seedu.progresschecker.model.person.Person;
 import seedu.progresschecker.model.person.exceptions.DuplicatePersonException;
 import seedu.progresschecker.model.person.exceptions.PersonNotFoundException;
+import seedu.progresschecker.model.photo.PhotoPath;
+import seedu.progresschecker.model.photo.exceptions.DuplicatePhotoException;
 
 /**
  * The API of the Model component.
@@ -37,11 +40,25 @@ public interface Model {
     /** Sorts the persons in ProgressChecker according to their names in alphabetical order */
     void sort();
 
+    //@@author adityaa1998
+
     /** creates an issue on github */
     void createIssueOnGitHub(Issue issue) throws IOException;
 
+    /** reopen issue on github */
+    void reopenIssueOnGithub(Index index) throws IOException, CommandException;
+
     /** closes an issue issue on github */
-    void closeIssueOnGithub(Index index) throws IOException;
+    void closeIssueOnGithub(Index index) throws IOException, CommandException;
+
+    /**
+     * Replaces the fields in Issue {@code index} with {@code editedIssue}.
+     *
+     * @throws IOException if while updating the issue there is some problem in authentication
+     */
+    void updateIssue(Index index, Issue editedIssue) throws IOException;
+
+    //@@author
 
     /**
      * Replaces the given person {@code target} with {@code editedPerson}.
@@ -83,6 +100,8 @@ public interface Model {
     //@@author
     /** Uploads the given photo with given path */
     void uploadPhoto(Person target, String path)
-            throws DuplicatePersonException, PersonNotFoundException, IOException;
+            throws PersonNotFoundException, DuplicatePersonException;
 
+    /** Adds a new uploaded photo path */
+    void addPhoto(PhotoPath photoPath) throws DuplicatePhotoException;
 }

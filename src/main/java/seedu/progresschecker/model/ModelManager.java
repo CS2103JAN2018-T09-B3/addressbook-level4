@@ -14,6 +14,7 @@ import seedu.progresschecker.commons.core.ComponentManager;
 import seedu.progresschecker.commons.core.LogsCenter;
 import seedu.progresschecker.commons.core.index.Index;
 import seedu.progresschecker.commons.events.model.ProgressCheckerChangedEvent;
+import seedu.progresschecker.logic.commands.exceptions.CommandException;
 import seedu.progresschecker.model.exercise.Exercise;
 import seedu.progresschecker.model.exercise.exceptions.DuplicateExerciseException;
 import seedu.progresschecker.model.exercise.exceptions.ExerciseNotFoundException;
@@ -21,6 +22,8 @@ import seedu.progresschecker.model.issues.Issue;
 import seedu.progresschecker.model.person.Person;
 import seedu.progresschecker.model.person.exceptions.DuplicatePersonException;
 import seedu.progresschecker.model.person.exceptions.PersonNotFoundException;
+import seedu.progresschecker.model.photo.PhotoPath;
+import seedu.progresschecker.model.photo.exceptions.DuplicatePhotoException;
 
 /**
  * Represents the in-memory model of the ProgressChecker data.
@@ -80,8 +83,9 @@ public class ModelManager extends ComponentManager implements Model {
         indicateProgressCheckerChanged();
     }
 
+    //@author adityaa1998
     @Override
-    public synchronized void closeIssueOnGithub(Index index) throws IOException {
+    public synchronized void closeIssueOnGithub(Index index) throws IOException, CommandException {
         progressChecker.closeIssueOnGithub(index);
         indicateProgressCheckerChanged();
     }
@@ -91,11 +95,21 @@ public class ModelManager extends ComponentManager implements Model {
         progressChecker.createIssueOnGitHub(issue);
         indicateProgressCheckerChanged();
     }
+    //@@author
+
     @Override
     public synchronized void sort() {
         progressChecker.sort();
         indicateProgressCheckerChanged();
     }
+
+    //@@author adityaa1998
+    @Override
+    public synchronized void reopenIssueOnGithub(Index index) throws IOException, CommandException {
+        progressChecker.reopenIssueOnGithub(index);
+        indicateProgressCheckerChanged();
+    }
+    //@@author
 
     @Override
     public void updatePerson(Person target, Person editedPerson)
@@ -116,7 +130,16 @@ public class ModelManager extends ComponentManager implements Model {
         indicateProgressCheckerChanged();
     }
 
+    //@@author adityaa1998
+    @Override
+    public void updateIssue(Index index, Issue editedIssue) throws IOException {
+        requireAllNonNull(index, editedIssue);
+
+        progressChecker.updateIssue(index, editedIssue);
+        indicateProgressCheckerChanged();
+    }
     //@@author
+
     //=========== Filtered Person List Accessors =============================================================
 
     /**
@@ -134,13 +157,21 @@ public class ModelManager extends ComponentManager implements Model {
         filteredPersons.setPredicate(predicate);
     }
 
+    //@@author Livian1107
     @Override
     public void uploadPhoto(Person target, String path)
-            throws DuplicatePersonException, PersonNotFoundException, IOException {
+            throws PersonNotFoundException, DuplicatePersonException {
         progressChecker.uploadPhoto(target, path);
         updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         indicateProgressCheckerChanged();
     }
+
+    @Override
+    public void addPhoto(PhotoPath photoPath) throws DuplicatePhotoException {
+        progressChecker.addPhotoPath(photoPath);
+        indicateProgressCheckerChanged();
+    }
+    //@@author
 
     @Override
     public boolean equals(Object obj) {

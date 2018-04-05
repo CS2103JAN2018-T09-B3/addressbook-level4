@@ -56,6 +56,7 @@ public class Person {
         return email;
     }
 
+    //@@author EdwardKSG
     public GithubUsername getUsername() {
         return username;
     }
@@ -67,9 +68,14 @@ public class Person {
     public Year getYear() {
         return year;
     }
+    //@@author
 
     public String getPhotoPath() {
         return photoPath;
+    }
+
+    public String getDefaultPath() {
+        return defaultPath;
     }
 
     /**
