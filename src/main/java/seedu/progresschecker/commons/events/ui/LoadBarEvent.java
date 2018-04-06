@@ -6,12 +6,12 @@ import seedu.progresschecker.commons.events.BaseEvent;
 /**
  * Represents a page change in the Browser Panel
  */
-public class LoadTaskEvent extends BaseEvent {
+public class LoadBarEvent extends BaseEvent {
 
 
     public final String content;
 
-    public LoadTaskEvent(String content) {
+    public LoadBarEvent(String content) {
         this.content = content;
     }
 
