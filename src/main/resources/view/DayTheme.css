@@ -36,8 +36,25 @@
     -fx-background-color: #8064a7;
 }
 
-.exercise-header {
-    -fx-text-fill: black;
+.exercise .question-number {
+    -fx-text-fill: white;
+    -fx-background-color: #fc6d5f;
+    -fx-padding: 0 6 0 6;
+    -fx-border-radius: 2;
+    -fx-background-radius: 2;
+    -fx-font-size: 16;
+}
+
+.exercise .label .answered {
+    -fx-background-color: #31b282;
+}
+
+.exercise .question {
+    -fx-text-fill: #00b7ee;
+}
+
+.show-text {
+    -fx-opacity: 1;
 }
 
 .hide-text {
