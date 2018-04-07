@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
@@ -12,11 +13,13 @@
     </padding>
     <VBox prefWidth="325.0" styleClass="exercise">
         <children>
-            <Label fx:id="questionIndex" text="\$questionIndex" wrapText="true"/>
+            <Label fx:id="questionIndex" text="\$questionIndex" wrapText="true" styleClass="question-number"/>
             <Label fx:id="question" text="\$question" wrapText="true"/>
             <Text/>
+            <Separator/>
+            <Text/>
 
-            <Label text="Your Answer: " styleClass="exercise-header"/>
+            <Label text="Your Answer: "/>
             <Label fx:id="studentAnswer" text="\$studentAnswer" wrapText="true"/>
             <Text/>
 
