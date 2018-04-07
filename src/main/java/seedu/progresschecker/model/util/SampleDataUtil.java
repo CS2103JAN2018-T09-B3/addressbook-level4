@@ -84,6 +84,7 @@ public class SampleDataUtil {
             // week 11
             new Exercise(new QuestionIndex("11.1.1"), new QuestionType("choice"),
                 new Question("What is the main difference between a class diagram and and an OO domain model?\n"
+                        + "\n"
                         + "a. One is about the problem domain while the other is about the solution domain.\n"
                         + "b. One has more classes than the other.\n"
                         + "c. One shows more details than the other.\n"
