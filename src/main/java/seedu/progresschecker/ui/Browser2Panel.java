@@ -21,12 +21,12 @@ public class Browser2Panel extends UiPart<Region> {
 
     public static final String DEFAULT_PAGE = "default.html";
 
-    private static final String FXML = "BrowserPanel.fxml";
+    private static final String FXML = "Browser2Panel.fxml";
 
     private final Logger logger = LogsCenter.getLogger(this.getClass());
 
     @FXML
-    private WebView browser;
+    private WebView browser2;
 
     public Browser2Panel() {
         super(FXML);
@@ -39,7 +39,7 @@ public class Browser2Panel extends UiPart<Region> {
     }
 
     public void loadPage(String url) {
-        Platform.runLater(() -> browser.getEngine().load(url));
+        Platform.runLater(() -> browser2.getEngine().load(url));
     }
 
     /**
@@ -59,14 +59,14 @@ public class Browser2Panel extends UiPart<Region> {
     }
 
     public void loadPageViaString(String content) {
-        Platform.runLater(() -> browser.getEngine().loadContent(content));
+        Platform.runLater(() -> browser2.getEngine().loadContent(content));
     }
 
     /**
      * Frees resources allocated to the browser.
      */
     public void freeResources() {
-        browser = null;
+        browser2 = null;
     }
 
     @Subscribe

@@ -55,8 +55,8 @@
                  <!-- @@author EdwardKSG -->
                  <SplitPane id="taskPane" fx:id="taskPane" dividerPositions="0.2" orientation="VERTICAL" VBox.vgrow="ALWAYS">
                   <items>
-                     <StackPane id="browser2" fx:id="browser2Placeholder"  prefHeight="40.0" />
-                     <StackPane id="browser" fx:id="browserPlaceholder" prefHeight="160.0" />
+                     <StackPane fx:id="browser2Placeholder"  prefHeight="40.0" />
+                     <StackPane fx:id="browserPlaceholder" prefHeight="160.0" />
                   </items>
                  </SplitPane>
                  <!-- @@author -->

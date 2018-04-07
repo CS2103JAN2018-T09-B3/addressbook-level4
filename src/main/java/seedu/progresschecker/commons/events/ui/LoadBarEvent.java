@@ -4,7 +4,7 @@ import seedu.progresschecker.commons.events.BaseEvent;
 
 //@@author EdwardKSG
 /**
- * Represents a page change in the Browser Panel
+ * Represents a page change in the second Browser Panel which shows the progress bar.
  */
 public class LoadBarEvent extends BaseEvent {
 
