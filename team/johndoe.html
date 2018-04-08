@@ -226,140 +226,6 @@ The <code>undo</code> command fails as there are no undoable commands executed p
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">Saving the data</a></h3>
-<div class="paragraph">
-<p>Progress Checker data are saved in the hard disk automatically after any command that changes the data.<br>
-There is no need to save manually.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="faq"><a class="link" href="#faq">FAQ</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>You may encounter some questions related to other aspects of ProgressChecker other than the commands. This section list some frequently asked questions that you may find useful.</p>
-</div>
-<div class="paragraph">
-<p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
-<strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Progress Checker folder.<br></p>
-</div>
-<div class="paragraph">
-<p><strong>Q</strong>: Will the command work if I type in capital letters?<br>
-<strong>A</strong>: Yes. The commands are case-insenstive.<br></p>
-</div>
-<div class="paragraph">
-<p><strong>Q</strong>: Will the app keep all information the same with the time I close it when I open the app the other time?<br>
-<strong>A</strong>: All data are saved in the hard disk automatically after any command that changes the data. As long as the user doesn&#8217;t change the data file, the content will be the same when user open the app next time.<br></p>
-</div>
-<div class="paragraph">
-<p><strong>Q</strong>: How to close the app?<br>
-<strong>A</strong>: Either click the 'x' button on the screen or type command <code>exit</code>.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="command-summary"><a class="link" href="#command-summary">Command Summary</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>If you&#8217;re looking for a quick reference list of commands without all the details, the section below summarises all the available commands.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Add</strong> : <code>add n/NAME p/PHONE_NUMBER e/EMAIL m/MAJOR y/YEAR [t/TAG]&#8230;&#8203;</code><br>
-OR <code>a n/NAME p/PHONE_NUMBER e/EMAIL m/MAJOR y/YEAR [t/TAG]&#8230;&#8203;</code><br>
-e.g. <code>add n/James Ho p/22224444 e/jamesho@example.com m/Computer Science y/2 t/friend t/colleague</code></p>
-</li>
-<li>
-<p><strong>Answer</strong> : <code>answer INDEX ANSWER</code><br>
-e.g. <code>answer 2.1.1</code></p>
-</li>
-<li>
-<p><strong>Create issue</strong> : <code>+issue ti/TITLE [a/ASSIGNEES]&#8230;&#8203; [ms/MILESTONE] [b/BODY] [l/LABELS]&#8230;&#8203;</code><br>
-                   OR<br>
-                   <code>ci ti/TITLE [a/ASSIGNEES]&#8230;&#8203; [ms/MILESTONE] [b/BODY] [l/LABELS]&#8230;&#8203;</code><br>
-e.g. <code>+issue ti/complete issue a/johndoe ms/v1.1 b/CS2103T is a software engineering module l/type.task l/CS2103T</code></p>
-</li>
-<li>
-<p><strong>Close issue</strong> : <code>-issue INDEX</code> OR <code>cli INDEX</code><br>
-e.g. <code>-issue 3</code><br>
-OR <code>cli 1</code></p>
-</li>
-<li>
-<p><strong>Reopen issue</strong> : <code>reopenissue INDEX</code> OR <code>ri INDEX</code><br>
-e.g. <code>reopenissue 3</code><br>
-OR <code>ri 1</code></p>
-</li>
-<li>
-<p><strong>Clear</strong> : <code>clear</code> OR <code>c</code></p>
-</li>
-<li>
-<p><strong>Complete</strong> : <code>complete INDEX</code><br>
-e.g. <code>complete 2.1</code></p>
-</li>
-<li>
-<p><strong>Delete</strong> : <code>delete INDEX</code> OR <code>d INDEX</code><br>
-e.g. <code>delete 3</code></p>
-</li>
-<li>
-<p><strong>Edit</strong> : <code>edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [m/MAJOR] [y/YEAR] [t/TAG]&#8230;&#8203;</code><br>
-OR <code>ed INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [m/MAJOR] [y/YEAR] [t/TAG]&#8230;&#8203;</code><br>
-e.g. <code>edit 2 n/James Lee e/jameslee@example.com</code></p>
-</li>
-<li>
-<p><strong>Exit</strong> : <code>exit</code> OR <code>e</code></p>
-</li>
-<li>
-<p><strong>Find</strong> : <code>find KEYWORD [MORE_KEYWORDS]</code><br>
-e.g. <code>find James Jake</code></p>
-</li>
-<li>
-<p><strong>Help</strong> : <code>help</code> OR <code>h</code></p>
-</li>
-<li>
-<p><strong>History</strong> : <code>history</code></p>
-</li>
-<li>
-<p><strong>List</strong> : <code>list</code> Or <code>l</code></p>
-</li>
-<li>
-<p><strong>Newtasklist</strong> : <code>newtasklist</code> OR <code>nl</code></p>
-</li>
-<li>
-<p><strong>Redo</strong> : <code>redo</code> OR <code>r</code></p>
-</li>
-<li>
-<p><strong>Refresh</strong> : <code>refresh</code> OR <code>rf</code></p>
-</li>
-<li>
-<p><strong>Search</strong> : <code>search KEYWORD [MORE_KEYWORDS]</code><br>
-e.g. <code>search James Jake</code></p>
-</li>
-<li>
-<p><strong>Select</strong> : <code>select INDEX</code> OR <code>s INDEX</code><br>
-e.g.<code>select 2</code></p>
-</li>
-<li>
-<p><strong>Sort</strong> : <code>sort</code></p>
-</li>
-<li>
-<p><strong>Theme</strong> : <code>theme</code> OR <code>t</code></p>
-</li>
-<li>
-<p><strong>Undo</strong> : <code>undo</code> OR <code>u</code></p>
-</li>
-<li>
-<p><strong>View</strong> : <code>view INDEX</code> OR <code>v INDEX</code><br>
-e.g. <code>view 5</code><br>
-<br></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Back to <a href="#Introduction">[Introduction]</a></p>
-</div>
 </div>
 </div>
 <div class="sect1">
@@ -689,7 +555,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-08 14:47:16 UTC
+Last updated 2018-04-08 14:56:23 UTC
 </div>
 </div>
 </body>

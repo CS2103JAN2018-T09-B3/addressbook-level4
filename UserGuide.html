@@ -29,7 +29,7 @@
 <li><a href="#Features">3. Features</a>
 <ul class="sectlevel2">
 <li><a href="#adding-a-teammate-code-add-or-a-code">3.1. Adding a teammate: <code>add OR a</code></a></li>
-<li><a href="#answering-and-saving-an-exercise-code-answer-code-code-since-v1-4rc-code">3.2. Answering and saving an exercise : <code>answer</code> <code>[since v1.4rc]</code></a></li>
+<li><a href="#answering-and-saving-an-exercise-code-answer-code-code-since-v1-4r-code">3.2. Answering and saving an exercise : <code>answer</code> <code>[since v1.4r]</code></a></li>
 <li><a href="#logging-into-github-code-gitlogin-or-gl-code">3.3. Logging into Github: <code>gitlogin OR gl</code></a></li>
 <li><a href="#creating-an-issue-on-github-code-issue-or-ci-code">3.4. Creating an issue on Github: <code>+issue OR ci</code></a></li>
 <li><a href="#closing-an-issue-on-github-code-issue-or-cli-code">3.5. Closing an issue on Github: <code>-issue OR cli</code></a></li>
@@ -52,7 +52,8 @@
 <li><a href="#sorting-all-teammates-code-sort-code">3.22. Sorting all teammates : <code>sort</code></a></li>
 <li><a href="#toggling-theme-code-theme-or-t-code-code-coming-in-v2-0-code">3.23. Toggling theme : <code>theme OR t</code> <code>[coming in v2.0]</code></a></li>
 <li><a href="#undoing-previous-command-code-undo-or-u-code">3.24. Undoing previous command : <code>undo OR u</code></a></li>
-<li><a href="#saving-the-data">3.25. Saving the data</a></li>
+<li><a href="#viewing-a-different-tab-code-view-or-v-code">3.25. Viewing a different tab : <code>view OR v</code></a></li>
+<li><a href="#saving-the-data">3.26. Saving the data</a></li>
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
@@ -257,7 +258,7 @@ A teammate can have any number of tags (including 0)
 </div>
 </div>
 <div class="sect2">
-<h3 id="answering-and-saving-an-exercise-code-answer-code-code-since-v1-4rc-code"><a class="link" href="#answering-and-saving-an-exercise-code-answer-code-code-since-v1-4rc-code">3.2. Answering and saving an exercise : <code>answer</code> <code>[since v1.4rc]</code></a></h3>
+<h3 id="answering-and-saving-an-exercise-code-answer-code-code-since-v1-4r-code"><a class="link" href="#answering-and-saving-an-exercise-code-answer-code-code-since-v1-4r-code">3.2. Answering and saving an exercise : <code>answer</code> <code>[since v1.4r]</code></a></h3>
 <div class="paragraph">
 <p>Answer an exercise based off the given question number.<br>
 Format: <code>answer INDEX ANSWER</code></p>
@@ -1024,7 +1025,41 @@ The <code>undo</code> command fails as there are no undoable commands executed p
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.25. Saving the data</a></h3>
+<h3 id="viewing-a-different-tab-code-view-or-v-code"><a class="link" href="#viewing-a-different-tab-code-view-or-v-code">3.25. Viewing a different tab : <code>view OR v</code></a></h3>
+<div class="paragraph">
+<p>Change the tab view to show either profiles, tasks, or exercises.<br>
+Format: <code>view TYPE OR v TYPE</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Change the tab view to specified <code>TYPE</code>.</p>
+</li>
+<li>
+<p>The type refers to the tab name.</p>
+</li>
+<li>
+<p>The tab name must be <code>profile</code>, <code>task</code>, or <code>exercise</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>view exercise</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.26. Saving the data</a></h3>
 <div class="paragraph">
 <p>Progress Checker data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
@@ -1148,8 +1183,8 @@ e.g.<code>select 2</code></p>
 <p><strong>Undo</strong> : <code>undo</code> OR <code>u</code></p>
 </li>
 <li>
-<p><strong>View</strong> : <code>view INDEX</code> OR <code>v INDEX</code><br>
-e.g. <code>view 5</code><br>
+<p><strong>View</strong> : <code>view TYPE</code> OR <code>v TYPE</code><br>
+e.g. <code>view exercise</code><br>
 <br></p>
 </li>
 </ul>
@@ -1162,7 +1197,7 @@ e.g. <code>view 5</code><br>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-08 14:47:16 UTC
+Last updated 2018-04-08 14:56:23 UTC
 </div>
 </div>
 </body>
