@@ -12,6 +12,11 @@
 <?import javafx.scene.layout.VBox?>
 
 <VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <stylesheets>
+        <URL value="@DayTheme.css" />
+        <URL value="@Extensions.css" />
+    </stylesheets>
+
         <MenuBar fx:id="menuBar" VBox.vgrow="NEVER">
           <Menu mnemonicParsing="false" text="File">
             <MenuItem mnemonicParsing="false" onAction="#handleExit" text="Exit" />
@@ -47,13 +52,21 @@
             <StackPane fx:id="personListPanelPlaceholder" VBox.vgrow="ALWAYS" />
           </VBox>
             <!-- @@author Livian1107 -->
-         <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
+         <TabPane fx:id="tabPlaceholder" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
            <tabs>
-             <Tab text="Profile" />
+             <Tab fx:id="profilePlaceholder" text="Profile" />
              <Tab text="Task">
-                 <StackPane fx:id="browserPlaceholder"/>
+             <!-- @@author -->
+                 <!-- @@author EdwardKSG -->
+                 <SplitPane id="taskPane" fx:id="taskPane" dividerPositions="0.2" orientation="VERTICAL" VBox.vgrow="ALWAYS">
+                  <items>
+                     <StackPane fx:id="browser2Placeholder"  prefHeight="40.0" />
+                     <StackPane fx:id="browserPlaceholder" prefHeight="160.0" />
+                  </items>
+                 </SplitPane>
+                 <!-- @@author -->
              </Tab>
-               <Tab text="Exercise">
+               <Tab fx:id="exercisePlaceholder" text="Exercise">
                    <StackPane fx:id="exerciseListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
                </Tab>
            </tabs>
