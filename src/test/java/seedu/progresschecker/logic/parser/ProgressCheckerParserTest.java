@@ -6,7 +6,6 @@ import static org.junit.Assert.fail;
 import static seedu.progresschecker.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.progresschecker.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.progresschecker.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
-import static seedu.progresschecker.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
 import static seedu.progresschecker.testutil.TypicalTabTypes.TYPE_EXERCISE;
 
 import java.util.Arrays;

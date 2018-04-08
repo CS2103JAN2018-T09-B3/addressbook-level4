@@ -4,6 +4,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static seedu.progresschecker.testutil.TypicalTabTypes.TYPE_EXERCISE;
 import static seedu.progresschecker.testutil.TypicalTabTypes.TYPE_TASK;
+
 import org.junit.Test;
 
 //@@author iNekox3
