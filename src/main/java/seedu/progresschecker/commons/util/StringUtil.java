@@ -6,8 +6,6 @@ import static seedu.progresschecker.commons.util.AppUtil.checkArgument;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 
-import seedu.progresschecker.logic.commands.ViewCommand;
-
 /**
  * Helper functions for handling strings.
  */
