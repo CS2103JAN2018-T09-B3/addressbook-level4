@@ -35,6 +35,8 @@ public class MainWindow extends UiPart<Region> {
 
     private static final String FXML = "MainWindow.fxml";
     private static final String ICON = "/images/progress_checker_32.png";
+    private static final String DARK_THEME = "view/DarkTheme.css";
+    private static final String DAY_THEME = "view/DayTheme.css";
     private static final int MIN_HEIGHT = 600;
     private static final int MIN_WIDTH = 450;
 
@@ -45,6 +47,7 @@ public class MainWindow extends UiPart<Region> {
 
     // Independent Ui parts residing in this Ui container
     private BrowserPanel browserPanel;
+    private Browser2Panel browser2Panel;
     private ExerciseListPanel exerciseListPanel;
     private PersonListPanel personListPanel;
     private Config config;
@@ -52,6 +55,9 @@ public class MainWindow extends UiPart<Region> {
 
     @FXML
     private StackPane browserPlaceholder;
+
+    @FXML
+    private StackPane browser2Placeholder;
 
     @FXML
     private StackPane commandBoxPlaceholder;
@@ -150,6 +156,9 @@ public class MainWindow extends UiPart<Region> {
         browserPanel = new BrowserPanel();
         browserPlaceholder.getChildren().add(browserPanel.getRoot());
 
+        browser2Panel = new Browser2Panel();
+        browser2Placeholder.getChildren().add(browser2Panel.getRoot());
+
         exerciseListPanel = new ExerciseListPanel(logic.getFilteredExerciseList());
         exerciseListPanelPlaceholder.getChildren().add(exerciseListPanel.getRoot());
 
@@ -210,7 +219,7 @@ public class MainWindow extends UiPart<Region> {
     @FXML
     public void handleNightTheme() {
         Scene scene = primaryStage.getScene();
-        scene.getStylesheets().setAll("view/DarkTheme.css");
+        scene.getStylesheets().setAll(DARK_THEME);
         primaryStage.setScene(scene);
         show();
     }
@@ -221,7 +230,7 @@ public class MainWindow extends UiPart<Region> {
     @FXML
     public void handleDayTheme() {
         Scene scene = primaryStage.getScene();
-        scene.getStylesheets().setAll("view/DayTheme.css");
+        scene.getStylesheets().setAll(DAY_THEME);
         primaryStage.setScene(scene);
         show();
     }
@@ -245,6 +254,7 @@ public class MainWindow extends UiPart<Region> {
 
     void releaseResources() {
         browserPanel.freeResources();
+        browser2Panel.freeResources();
     }
 
     @Subscribe
