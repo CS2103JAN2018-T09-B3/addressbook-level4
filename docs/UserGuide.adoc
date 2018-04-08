@@ -100,7 +100,7 @@ Examples:
 * `add n/Betsy Crowe t/friend e/betsycrowe@example.com m/Computer Engineering p/1234567 y/3 t/criminal`
 * `a n/Betsy Crowe t/friend e/betsycrowe@example.com m/Information Security y/2 p/1234567 t/criminal`
 
-// tag::answer[] 
+// tag::answer[]
 === Answering and saving an exercise : `answer` `[since v1.4r]`
 
 Answer an exercise based off the given question number. +
@@ -472,7 +472,7 @@ The `undo` command fails as there are no undoable commands executed previously.
 `u` (reverses the `delete 1` command)
 // end::undoredo[]
 
-// tag::view[] 
+// tag::view[]
 === Viewing a different tab : `view OR v`
 
 Change the tab view to show either profiles, tasks, or exercises. +
