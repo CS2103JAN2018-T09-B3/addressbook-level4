@@ -52,13 +52,13 @@
             <StackPane fx:id="personListPanelPlaceholder" VBox.vgrow="ALWAYS" />
           </VBox>
             <!-- @@author Livian1107 -->
-         <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
+         <TabPane fx:id="tabPlaceholder" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
            <tabs>
-             <Tab text="Profile" />
-             <Tab text="Task">
+             <Tab fx:id="profilePlaceholder" text="Profile" />
+             <Tab fx:id="taskPlaceholder" text="Task">
                  <StackPane fx:id="browserPlaceholder"/>
              </Tab>
-               <Tab text="Exercise">
+               <Tab fx:id="exercisePlaceholder" text="Exercise">
                    <StackPane fx:id="exerciseListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
                </Tab>
            </tabs>
