@@ -898,13 +898,16 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 <p>The Upload command will allow users to upload their preferred image to replace the default profile photo.</p>
 </div>
 <div class="paragraph">
-<p>Upload can be undoable. The following diagram shows the inheritance diagram for upload command:</p>
+<p>The valid photo to be upload will be copies from local path inside resources folder under /images/contact. The name of the file will be renamed according to the time that the photo is uploaded.</p>
+</div>
+<div class="paragraph">
+<p>Upload can be undoable. The diagram below shows how the <code>EventsCenter</code> reacts to <code>uploadPhoto</code> event.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/LogicCommandClassDiagram.png" alt="LogicCommandClassDiagram" width="800">
+<img src="images/SDforUploadPhoto.png" alt="SDforUploadPhoto" width="800">
 </div>
-<div class="title">Figure 19. Structure of Commands in the Logic Component</div>
+<div class="title">Figure 19. Component Interactions for <code>uploadPhoto</code> Command</div>
 </div>
 <div class="paragraph">
 <p>UploadCommand is implemented this way:</p>
@@ -914,14 +917,17 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">UploadCommand</span> <span class="directive">extends</span> UndoableCommand {
     <span class="annotation">@Override</span>
     <span class="directive">public</span> CommandResult executeUndoableCommand() <span class="directive">throws</span> CommandException {
-        requireNonNull(model);
+        requireNonNull(personToUpdate);
         <span class="keyword">try</span> {
-            model.uploadPhoto(toUpload);
+            model.addPhoto(photoPath);
+            model.uploadPhoto(personToUpdate, savePath);
             <span class="keyword">return</span> <span class="keyword">new</span> CommandResult(MESSAGE_SUCCESS);
-        } <span class="keyword">catch</span> (<span class="exception">FileNotFoundException</span> e) {
-            <span class="keyword">throw</span> <span class="keyword">new</span> CommandException(MESSAGE_IMAGE_NOT_FOUND);
-        } <span class="keyword">catch</span> (<span class="exception">IOException</span> e) {
-            <span class="keyword">throw</span> <span class="keyword">new</span> CommandException(<span class="string"><span class="delimiter">&quot;</span><span class="content">Caught IOException!</span><span class="delimiter">&quot;</span></span>);
+        } <span class="keyword">catch</span> (PersonNotFoundException pnfe) {
+            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">AssertionError</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">The target person cannot be missing</span><span class="delimiter">&quot;</span></span>);
+        } <span class="keyword">catch</span> (DuplicatePhotoException e) {
+            <span class="keyword">throw</span> <span class="keyword">new</span> CommandException(MESSAGE_IMAGE_DUPLICATE);
+        } <span class="keyword">catch</span> (DuplicatePersonException e) {
+            <span class="keyword">throw</span> <span class="keyword">new</span> CommandException(MESSAGE_IMAGE_DUPLICATE);
         }
     }
 }</code></pre>
@@ -934,7 +940,40 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If the path is invalid or the image cannot be found, the upload will not be successful. User will be asked to write the correct path to image again. Users are allowed to reload the image if they want to update the profile photo.
+Users are allowed to reload the image if they want to update the profile photo.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Here is the code to copy the photo from local path inside resources folder.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="predefined-type">String</span> copyLocalPhoto(<span class="predefined-type">String</span> localPath) <span class="directive">throws</span> <span class="exception">IOException</span> {
+    <span class="predefined-type">File</span> localFile = <span class="keyword">new</span> <span class="predefined-type">File</span>(localPath);
+    <span class="predefined-type">String</span> newPath = createSavePath(localPath);
+    <span class="keyword">if</span> (!localFile.exists()) {
+        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">FileNotFoundException</span>(MESSAGE_LOCAL_PATH_CONSTRAINTS);
+    }
+    createSavedPhoto(newPath);
+    <span class="keyword">try</span> {
+        copyFile(localPath, newPath);
+    } <span class="keyword">catch</span> (<span class="exception">IOException</span> e) {
+        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">IOException</span>(MESSAGE_COPY_FAIL);
+    }
+    <span class="keyword">return</span> newPath;
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If the local path is invalid or the image cannot be found, the upload will not be successful. The extension of the file can only be 'jpg', 'jpeg' or 'png'. User will be asked to write the correct path to image again.
 </td>
 </tr>
 </table>
@@ -2577,7 +2616,7 @@ for <code>RemarkCommandParser</code>.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">view my to-do learning outcomes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">view my to-do <a href="#learning outcomes">learning outcomes</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">know all the weekly deliverables and not miss them out</p></td>
 </tr>
 <tr>
@@ -2601,7 +2640,7 @@ for <code>RemarkCommandParser</code>.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">see the list of completed/incomplete learning outcomes of my teammates</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">see the list of completed/incomplete <a href="#learning outcomes">learning outcomes</a> of my teammates</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">help to remind my teammate of the task or know which task to offer help with if they are having difficulties</p></td>
 </tr>
 <tr>
@@ -3186,19 +3225,23 @@ for <code>RemarkCommandParser</code>.</p>
 </dd>
 <dt class="hdlist1"><a id="GUI"></a> GUI</dt>
 <dd>
-<p>Graphical User Interface</p>
+<p>Graphical User Interface.</p>
+</dd>
+<dt class="hdlist1"><a id="Learning-Outcomes"></a> Learning Outcomes</dt>
+<dd>
+<p>Exercises that need to be done through github for module CS2103/T.</p>
 </dd>
 <dt class="hdlist1"><a id="mainstream-os"></a> Mainstream OS</dt>
 <dd>
-<p>Windows, Linux, Unix, OS-X</p>
+<p>Windows, Linux, Unix, OS-X.</p>
 </dd>
 <dt class="hdlist1"><a id="private-contact-detail"></a> Private contact detail</dt>
 <dd>
-<p>A contact detail that is not meant to be shared with others</p>
+<p>A contact detail that is not meant to be shared with others.</p>
 </dd>
 <dt class="hdlist1"><a id="sequence-diagram"></a> Sequence Diagram</dt>
 <dd>
-<p>A sequence diagram shows object interactions shown in time sequence.</p>
+<p>A <a href="#sequence diagram">sequence diagram</a> shows object interactions shown in time sequence.</p>
 </dd>
 </dl>
 </div>
@@ -3311,13 +3354,16 @@ Expected: Similar to previous.</p>
 <div class="paragraph">
 <p><em>{ more test cases &#8230;&#8203; }</em></p>
 </div>
+<div class="paragraph">
+<p>Back to <a href="#setting-up">TOP</a></p>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-08 22:19:10 UTC
+Last updated 2018-04-09 03:56:10 UTC
 </div>
 </div>
 </body>
