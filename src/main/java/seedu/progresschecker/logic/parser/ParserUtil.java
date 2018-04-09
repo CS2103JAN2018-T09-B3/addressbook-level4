@@ -43,6 +43,8 @@ public class ParserUtil {
 
     public static final String MESSAGE_INVALID_INDEX = "Index is not a non-zero unsigned integer.";
     public static final String MESSAGE_INVALID_TAB_TYPE = "Given type must be 'profile', 'task', or 'exercise'";
+    public static final String MESSAGE_INVALID_WEEK_NUMBER = "Given week number must be between the range 2 to 12"
+            + " (boundary numbers inclusive).";
     public static final String MESSAGE_INSUFFICIENT_PARTS = "Number of parts must be more than 1.";
 
     /**
@@ -74,16 +76,26 @@ public class ParserUtil {
 
     //@@author iNekox3
     /**
-     * Parses {@code type} into a {@code String} and returns it. Leading and trailing whitespaces will be
+     * Parses {@code type} into a {@code String[]} and returns it. Leading and trailing whitespaces will be
      * trimmed.
-     * @throws IllegalValueException if the specified type is invalid (not of string "profile", "task", or "exercise").
+     * @throws IllegalValueException if the specified type is invalid, that is:
+     * i. type is not of string "profile", "task", or "exercise".
+     * ii. type is of "exercise" and comes with an index specified
+     *     in which the index does not fall between the accepted range.
      */
-    public static String parseTabType(String type) throws IllegalValueException {
+    public static String[] parseTabType(String type) throws IllegalValueException {
         String trimmedType = type.trim();
-        if (!trimmedType.equals("profile") && !trimmedType.equals("task") && !trimmedType.equals("exercise")) {
-            throw new IllegalValueException(MESSAGE_INVALID_TAB_TYPE);
+        String[] trimmedTypeArray = trimmedType.split(" ");
+        if (trimmedTypeArray.length > 1 && trimmedTypeArray[0].equals("exercise")) {
+            if (!StringUtil.isWithinRange(trimmedTypeArray[1])) {
+                throw new IllegalValueException(MESSAGE_INVALID_WEEK_NUMBER);
+            }
+        } else {
+            if (!trimmedType.equals("profile") && !trimmedType.equals("task") && !trimmedType.equals("exercise")) {
+                throw new IllegalValueException(MESSAGE_INVALID_TAB_TYPE);
+            }
         }
-        return trimmedType;
+        return trimmedTypeArray;
     }
 
     //@@author EdwardKSG
