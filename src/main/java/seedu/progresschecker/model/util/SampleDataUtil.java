@@ -496,7 +496,7 @@ public class SampleDataUtil {
                 new StudentAnswer(""),
                 new ModelAnswer("When the system is highly-coupled, the risk of regressions is higher too  "
                         + "e.g. when component A is modified, all components ‘coupled’ to component A "
-                        + "risk ‘unintended behavioral changes’.\n"),
+                        + "risk ‘unintended behavioral changes’.\n")),
             new Exercise(new QuestionIndex("8.4.2"), new QuestionType("text"),
                 new Question("Discuss the relationship between coupling and testability.\n"),
                 new StudentAnswer(""),
@@ -886,8 +886,7 @@ public class SampleDataUtil {
                         + "c. The Unified process is actually a process framework rather than a fixed process.\n"
                         + "d. The Unified process can be iterative and incremental"),
                 new StudentAnswer(""),
-                new ModelAnswer("a c d. Although UP was created by the same three amigos who created UML, "
-                        + "the UP does not require UML.")),
+                new ModelAnswer("a c d. Although UP was created by the same three amigos who created UML, "))
         };
     }
 
