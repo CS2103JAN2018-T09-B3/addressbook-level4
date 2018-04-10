@@ -76,18 +76,26 @@ public class ViewTaskListCommand extends Command {
     public void updateView() throws CommandException {
         List<Task> list = TaskListUtil.searchTaskListById(DEFAULT_LIST_ID);
         List<Task> filteredList = new LinkedList<Task>();
+        List<Integer> indexList = new LinkedList<Integer>();
         if (targetWeek >= 1 && targetWeek <= 13) {
+            int count = 1;
             for (Task task : list) {
                 if (task.getTitle().contains("LO[W"+targetWeek)) {
                     filteredList.add(task);
+                    indexList.add(count);
                 }
+                count++;
             }
         } else {
             filteredList = list;
+            int size = list.size();
+            for (int i=1; i<=size; i++) {
+                indexList.add(i);
+            }
         }
 
         File htmlFile = new File(DATA_FOLDER + TASK_PAGE);
-        int progressInt = writeToHtml(filteredList, htmlFile);
+        int progressInt = writeToHtml(filteredList, indexList, htmlFile);
         File htmlBarFile = new File(DATA_FOLDER + BAR_PAGE);
         writeToHtmlBar(progressInt, htmlBarFile);
         File htmlCheckerFile = new File(DATA_FOLDER + CHECKER_PAGE);
@@ -108,10 +116,12 @@ public class ViewTaskListCommand extends Command {
      * Writes the loaded task list to an html file. Loads the tasks.
      *
      * @param list task list serialized in a java List.
+     * @param indexList stores the corresponding index in the full list (the current showing list is a filtered
+     *                  result.
      * @param file File object of the html file.
      * @return progressInt the percentage of task completed (without the "%" sign)
      */
-    int writeToHtml(List<Task> list, File file) throws CommandException {
+    int writeToHtml(List<Task> list, List<Integer> indexList, File file) throws CommandException {
         double countCompleted = 0;
         double countIncomp = 0;
 
@@ -137,8 +147,9 @@ public class ViewTaskListCommand extends Command {
 
             for (int i = 0; i < size; i++) {
                 Task task = list.get(i);
+                int index = indexList.get(i);
                 out.print("    <dt style=\"font-family:verdana; color:antiquewhite;\">"
-                        + (i + 1) + ". " + task.getTitle() + "</dt>\n");
+                        + index + ". " + task.getTitle() + "</dt>\n");
                 out.print("    <dd style=\"font-family:verdana; color:white;\">&#9888; &nbsp;"
                         + task.getDue().toString().substring(0, 10) + "</dd>\n");
                 String status = task.getStatus();

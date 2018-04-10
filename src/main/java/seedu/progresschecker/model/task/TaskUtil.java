@@ -70,7 +70,7 @@ public class TaskUtil {
     }
 
     /**
-     * Creates a task with title {@code String} to the tasklist with title {@code String}
+     * Creates a task with title {@code String} to the tasklist with ID {@code String}
      *
      * @param taskTitle title of the task we want to create
      * @param listId the identifier of the list to which the task will be added
