@@ -362,7 +362,8 @@ public class SampleDataUtil {
                         + "b. The application admin should be able to view a log of user activities.\n"
                         + "c. The source code should be open source.\n"
                         + "d. A course should be able to have up to 2000 students.\n"
-                        + "e. As a student user, I can view details of my team members so that I can know who they are.\n"
+                        + "e. As a student user, I can view details of my team members "
+                        + "so that I can know who they are.\n"
                         + "f. The user interface should be intuitive enough for users who are not IT-savvy.\n"
                         + "g. The product is offered as a free online service."),
                 new StudentAnswer(""),

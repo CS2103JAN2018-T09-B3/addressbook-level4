@@ -42,8 +42,7 @@ public class ViewCommand extends Command {
         if (!isToggleExerciseByWeek) {
             EventsCenter.getInstance().post(new TabLoadChangedEvent(type));
             return new CommandResult(String.format(MESSAGE_SUCCESS_TAB, type));
-        }
-        else {
+        } else {
             model.updateFilteredExerciseList(exercise -> exercise.getQuestionIndex().getWeekNumber() == weekNumber);
             EventsCenter.getInstance().post(new TabLoadChangedEvent(type));
             return new CommandResult(String.format(MESSAGE_SUCCESS_WEEK, weekNumber));
