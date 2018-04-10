@@ -3,8 +3,9 @@ package seedu.progresschecker.logic.commands;
 import static java.util.Objects.requireNonNull;
 
 import static seedu.progresschecker.logic.commands.AddDefaultTasksCommand.DEFAULT_LIST_ID;
-import static seedu.progresschecker.model.task.MyTask.completeTask;
+import static seedu.progresschecker.model.task.TaskUtil.completeTask;
 
+import javafx.util.Pair;
 import seedu.progresschecker.logic.commands.exceptions.CommandException;
 
 //@@author EdwardKSG
@@ -27,8 +28,9 @@ public class CompleteTaskCommand extends Command {
             + "Parameters: INDEX (an index in the task list)\n "
             + "Example: " + COMMAND_WORD;
 
-    public static final String MESSAGE_SUCCESS = "Completed task list: %1$s";
-    public static final String COMPLETE_FAILURE = "Failed to mark it as completed. Index: %1$s";
+    public static final String MESSAGE_SUCCESS = "Keep it up! Completed task: %1$s";
+    public static final String MESSAGE_NO_ACTION = "This task is already completed: %1$s";
+    public static final String COMPLETE_FAILURE = "Error. Failed to mark it as completed. Index: %1$s";
 
     private int index;
 
@@ -43,7 +45,16 @@ public class CompleteTaskCommand extends Command {
     @Override
     public CommandResult execute() throws CommandException {
         try {
-            String title = completeTask(index, DEFAULT_LIST_ID);
+            Pair<Integer, String> result = completeTask(index, DEFAULT_LIST_ID);
+
+            String titleWithCode = result.getValue();     // full file name
+            String[] parts = titleWithCode.split("&#"); // String array, each element is text between dots
+
+            String title = parts[0];
+
+            if(result.getKey()==0) {
+                return new CommandResult(String.format(MESSAGE_NO_ACTION, index + ". " + title));
+            }
 
             ViewTaskListCommand view = new ViewTaskListCommand();
             view.updateView();

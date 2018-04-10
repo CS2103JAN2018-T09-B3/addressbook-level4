@@ -23,7 +23,7 @@ import seedu.progresschecker.commons.events.ui.LoadTaskEvent;
 import seedu.progresschecker.commons.events.ui.TabLoadChangedEvent;
 import seedu.progresschecker.commons.util.FileUtil;
 import seedu.progresschecker.logic.commands.exceptions.CommandException;
-import seedu.progresschecker.model.task.MyTaskList;
+import seedu.progresschecker.model.task.TaskListUtil;
 
 //@@author EdwardKSG
 /**
@@ -65,7 +65,7 @@ public class ViewTaskListCommand extends Command {
      * @throws CommandException
      */
     public void updateView() throws CommandException {
-        List<Task> list = MyTaskList.searchTaskListById(DEFAULT_LIST_ID);
+        List<Task> list = TaskListUtil.searchTaskListById(DEFAULT_LIST_ID);
         File htmlFile = new File(DATA_FOLDER + TASK_PAGE);
         int progressInt = writeToHtml(list, htmlFile);
         File htmlBarFile = new File(DATA_FOLDER + BAR_PAGE);

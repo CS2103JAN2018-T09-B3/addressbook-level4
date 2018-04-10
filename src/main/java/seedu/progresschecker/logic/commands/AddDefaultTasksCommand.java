@@ -2,11 +2,11 @@ package seedu.progresschecker.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
-import static seedu.progresschecker.model.task.MyTask.createTask;
-import static seedu.progresschecker.model.task.MyTaskList.clearTaskList;
-import static seedu.progresschecker.model.task.MyTaskList.copyTaskList;
-import static seedu.progresschecker.model.task.MyTaskList.createTaskList;
-import static seedu.progresschecker.model.task.MyTaskList.setTaskListTitle;
+import static seedu.progresschecker.model.task.TaskUtil.createTask;
+import static seedu.progresschecker.model.task.TaskListUtil.clearTaskList;
+import static seedu.progresschecker.model.task.TaskListUtil.copyTaskList;
+import static seedu.progresschecker.model.task.TaskListUtil.createTaskList;
+import static seedu.progresschecker.model.task.TaskListUtil.setTaskListTitle;
 
 import java.io.BufferedReader;
 import java.io.InputStream;

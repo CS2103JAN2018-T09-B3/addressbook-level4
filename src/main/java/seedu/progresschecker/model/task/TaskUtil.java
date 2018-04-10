@@ -12,6 +12,7 @@ import com.google.api.services.tasks.model.TaskList;
 import com.google.api.services.tasks.model.TaskLists;
 import com.google.api.services.tasks.model.Tasks;
 
+import javafx.util.Pair;
 import seedu.progresschecker.logic.apisetup.ConnectTasksApi;
 import seedu.progresschecker.logic.commands.exceptions.CommandException;
 
@@ -19,7 +20,7 @@ import seedu.progresschecker.logic.commands.exceptions.CommandException;
 /**
  * Include customized methods (based on Google Tasks API) to manipulate tasks.
  */
-public class MyTask {
+public class TaskUtil {
 
     public static final String AUTHORIZE_FAILURE = "Failed to authorize tasks api client credentials";
     public static final String LOAD_FAILURE = "Failed to load this task list";
@@ -122,13 +123,14 @@ public class MyTask {
     }
 
     /**
-     * Marks the task with title {@code String} in the tasklist with ID {@code String} as completed
+     * Marks the task with index {@code int index} in the tasklist with ID {@code String listId} as completed
      *
      * @param index title of the task we look for
      * @param listId the identifier of the list to which the task belongs
-     * @return title the title of the task with index {@code int}
+     * @return result whether this command made any change of the task list (0 means no change) and
+     * the title of the task with index {@code int}
      */
-    public static String completeTask(int index, String listId) throws CommandException {
+    public static Pair<Integer, String> completeTask(int index, String listId) throws CommandException {
         ConnectTasksApi connection = new ConnectTasksApi();
 
         try {
@@ -140,18 +142,25 @@ public class MyTask {
         com.google.api.services.tasks.Tasks service = connection.getTasksService();
 
         try {
+            int changed = 0;
             Tasks tasks = service.tasks().list(listId).execute();
             List<Task> list = tasks.getItems();
             Task task = list.get(index - 1);
 
-            task.setStatus(COMPLETED);
+            if (!task.getStatus().equals(COMPLETED)) {
+                task.setStatus(COMPLETED);
+                changed = 1;
+            }
+
             task = service.tasks().update(
                     listId,
                     task.getId(),
                     task
             ).execute();
 
-            return task.getTitle();
+            Pair<Integer, String> result = new Pair<Integer, String>(changed, task.getTitle());
+
+            return result;
 
         } catch (IOException ioe) {
             throw new CommandException(LOAD_FAILURE);
@@ -163,9 +172,10 @@ public class MyTask {
      *
      * @param index title of the task we look for
      * @param listId the identifier of the list to which the task belongs
-     * @return title the title of the task with index {@code int}
+     * @return result whether this command made any change of the task list (0 means no change) and
+     * the title of the task with index {@code int}
      */
-    public static String undoTask(int index, String listId) throws CommandException {
+    public static Pair<Integer, String> undoTask(int index, String listId) throws CommandException {
         ConnectTasksApi connection = new ConnectTasksApi();
 
         try {
@@ -177,19 +187,26 @@ public class MyTask {
         com.google.api.services.tasks.Tasks service = connection.getTasksService();
 
         try {
+            int changed = 0;
             Tasks tasks = service.tasks().list(listId).execute();
             List<Task> list = tasks.getItems();
             Task task = list.get(index - 1);
 
-            task.setCompleted(null);
-            task.setStatus(NEEDS_ACTION);
+            if (!task.getStatus().equals(NEEDS_ACTION)) {
+                task.setCompleted(null);
+                task.setStatus(NEEDS_ACTION);
+                changed = 1;
+            }
+
             task = service.tasks().update(
                     listId,
                     task.getId(),
                     task
             ).execute();
 
-            return task.getTitle();
+            Pair<Integer, String> result = new Pair<Integer, String>(changed, task.getTitle());
+
+            return result;
 
         } catch (IOException ioe) {
             throw new CommandException(LOAD_FAILURE);
