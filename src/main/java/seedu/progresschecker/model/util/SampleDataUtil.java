@@ -153,66 +153,105 @@ public class SampleDataUtil {
                 new ModelAnswer("No suggested answer.")),
 
             // week 3
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
+            new Exercise(new QuestionIndex("3.1.1"), new QuestionType("choice"),
+                new Question("Choose the correct statements\n"
+                        + "\n"
+                        + " a. Refactoring can improve understandability\n"
+                        + " b. Refactoring can uncover bugs\n"
+                        + " c. Refactoring can result in better performance\n"
+                        + " d. Refactoring can change the number of methods/classes"),
                 new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
+                new ModelAnswer("a b c d. (a, b, c) Although the primary aim of refactoring "
+                        + "is to improve internal code structure, there are other secondary benefits. "
+                        + "(d) Some refactorings result in adding/removing methods/classes.")),
+            new Exercise(new QuestionIndex("3.1.2"), new QuestionType("text"),
+                new Question("Do you agree with the following statement? Justify your answer.\n"
+                        + "\n"
+                        + "Statement: Whenever we refactor code to fix bugs, "
+                        + "we need not do regression testing if the bug fix was minor."),
                 new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
+                new ModelAnswer("DISAGREE. Even a minor change can have major repercussions on the system. "
+                        + "We MUST do regression testing after each change, no matter how minor it is. "
+                        + "Fixing bugs is technically not refactoring.")),
+            new Exercise(new QuestionIndex("3.1.3"), new QuestionType("text"),
+                new Question("Explain what is refactoring and why it is not the same as rewriting, "
+                        + "bug fixing, or adding features."),
                 new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
+                new ModelAnswer("No suggested answer.")),
+            new Exercise(new QuestionIndex("3.1.4"), new QuestionType("choice"),
+                new Question("‘Extract method’ and ‘Inline method’ refactorings\n"
+                        + "\n"
+                        + "a. are opposites of each other.\n"
+                        + "b. sounds like opposites but they are not."),
                 new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
+                new ModelAnswer("a.")),
+            new Exercise(new QuestionIndex("3.2.1"), new QuestionType("choice"),
+                new Question("What is the recommended approach regarding coding standards?\n"
+                        + "\n"
+                        + "a. Each developer should find a suitable coding standard and follow it in their coding.\n"
+                        + "b. A developer should understand the importance of following a coding standard. "
+                        + "However, there is no need to follow one.\n"
+                        + "c. A developer should find out the coding standards currently used by the project "
+                        + "and follow that closely.\n"
+                        + "d. Coding standards are lame. Real programmers develop their own individual styles."),
                 new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
+                new ModelAnswer("c.")),
+            new Exercise(new QuestionIndex("3.2.2"), new QuestionType("text"),
+                new Question("What is the aim of using a coding standard? How does it help?"),
                 new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
+                new ModelAnswer("No suggested answer.")),
+            new Exercise(new QuestionIndex("3.2.3"), new QuestionType("choice"),
+                new Question("According to the given Java coding standard, which one of these is not a good name?\n"
+                        + "\n"
+                        + "a. integer variable name: totalPeople\n"
+                        + "b. boolean variable name: checkWeight\n"
+                        + "c. method name (returns integer): getPeopleCount\n"
+                        + "d. method name (returns boolean): isValidAddress\n"
+                        + "e. String variable name: description"),
                 new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
+                new ModelAnswer("b. checkWeight is an action. "
+                        + "Naming variables as actions makes the code harder to follow. "
+                        + "isWeightValid may be a better name.")),
+            new Exercise(new QuestionIndex("3.3.1"), new QuestionType("choice"),
+                new Question("Putting all details in one place can create lengthy methods, "
+                        + "but it is preferred over creating many small methods "
+                        + "because it makes the code easier to understand.\n"
+                        + "\n"
+                        + "a. True\n"
+                        + "b. False"),
                 new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
+                new ModelAnswer("b. False. If you are using abstraction properly, "
+                        + "you DON’T need to see all details to understand something. "
+                        + "The whole point of using abstraction is to be able to understand things "
+                        + "without knowing as little details as possible. "
+                        + "This is why we recommend single level of abstraction per method and top-down coding.")),
+            new Exercise(new QuestionIndex("3.3.2"), new QuestionType("choice"),
+                new Question("What are the drawbacks of trying to optimize code too soon?\n"
+                        + "\n"
+                        + "a. We may not know which parts are the real performance bottleneck\n"
+                        + "b. When we optimize code manually, it becomes harder for the compiler to optimize\n"
+                        + "c. Optimizing can complicate code\n"
+                        + "d. Optimizing can lead to more error-prone code"),
                 new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
+                new ModelAnswer("All.")),
+            new Exercise(new QuestionIndex("3.3.3"), new QuestionType("choice"),
+                new Question("This is a common saying among programmers\n"
+                        + "\n"
+                        + "a. Make it fast, make it right, make it work\n"
+                        + "b. Make it work, make it right, make it fast\n"
+                        + "c. Make it fast, make it right, now make it faster"),
                 new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
+                new ModelAnswer("b.")),
+            new Exercise(new QuestionIndex("3.6.1"), new QuestionType("choice"),
+                new Question("In general, comments should describe,\n"
+                        + "\n"
+                        + "a. WHAT the code does\n"
+                        + "b. WHY the code does something\n"
+                        + "c. HOW the code does something"),
                 new StudentAnswer(""),
-                new ModelAnswer("")),
+                new ModelAnswer("a b. How the code does something should be apparent from the code itself. "
+                        + "However, comments can help the reader in describing WHAT and WHY aspects of the code.")),
             new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
-                new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
-                new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
-                new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
-                new StudentAnswer(""),
-                new ModelAnswer("")),
 
             // week 4
             new Exercise(new QuestionIndex(""), new QuestionType(""),
