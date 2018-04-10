@@ -15,7 +15,8 @@ public class ExerciseBuilder {
 
     public static final String DEFAULT_QUESTION_INDEX = "11.1.1";
     public static final String DEFAULT_QUESTION_TYPE = "choice";
-    public static final String DEFAULT_QUESTION = "What is the main difference between a class diagram and and an OO domain model?\n"
+    public static final String DEFAULT_QUESTION = "What is the main difference between"
+            + "a class diagram and and an OO domain model?\n"
             + "a. One is about the problem domain while the other is about the solution domain.\n"
             + "b. One has more classes than the other.\n"
             + "c. One shows more details than the other.\n"
