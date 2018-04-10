@@ -736,66 +736,86 @@ public class SampleDataUtil {
                         + "but fail acceptance tests.")),
                 
             // week 10
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
+            new Exercise(new QuestionIndex("10.1.1"), new QuestionType("choice"),
+                new Question("Pick the odd one out.\n"
+                        + "\n"
+                        + "a. Law of Demeter.\n"
+                        + "b. Don’t add people to a late project.\n"
+                        + "c. Don’t talk to strangers.\n"
+                        + "d. Principle of least knowledge.\n"
+                        + "e. Coupling."),
                 new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
+                new ModelAnswer("b. Law of Demeter, which aims to reduce coupling, "
+                        + "is also known as ‘Don’t talk to strangers’ and ‘Principle of least knowledge’.")),
+            new Exercise(new QuestionIndex("10.1.2"), new QuestionType("text"),
+                new Question("Do the Brook’s Law apply to a school project? Justify."),
                 new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
+                new ModelAnswer("Yes. Adding a new student to a project team "
+                        + "can result in a slow-down of the project for a short period. "
+                        + "This is because the new member needs time to learn the project "
+                        + "and existing members will have to spend time helping the new guy get up to speed. "
+                        + "If the project is already behind schedule and near a deadline, "
+                        + "this could delay the delivery even further.")),
+            new Exercise(new QuestionIndex("10.1.3"), new QuestionType("choice"),
+                new Question("Which one of these (all attributed to Fred Brooks, "
+                        + "the author of the famous SE book The Mythical Man-Month), is called the Brook’s law?\n"
+                        + "\n"
+                        + " a. All programmers are optimists.\n"
+                        + " b. Good judgement comes from experience, and experience comes from bad judgement.\n"
+                        + " c. The bearing of a child takes nine months, no matter how many women are assigned.\n"
+                        + " d. Adding more manpower to an already late project makes it even later."),
                 new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
+                new ModelAnswer("d.")),
+            new Exercise(new QuestionIndex("10.3.1"), new QuestionType("choice"),
+                new Question("Which one of these describes the ‘software design patterns’ concept best?\n"
+                        + "\n"
+                        + " a. Designs that appear repetitively in software.\n"
+                        + " b. Elegant solutions to recurring problems in software design.\n"
+                        + " c. Architectural styles used in applications.\n"
+                        + " d. Some good design techniques proposed by the Gang of Four"),
                 new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
+                new ModelAnswer("b.")),
+            new Exercise(new QuestionIndex("10.3.2"), new QuestionType("choice"),
+                new Question("When we describe a pattern, we must also specify anti-patterns.\n"
+                        + "\n"
+                        + "a. True\n"
+                        + "b. False"),
                 new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
+                new ModelAnswer("b. False. Anti-patterns are related to patterns, "
+                        + "but they are not a ‘must have’ component of a pattern description.")),
+            new Exercise(new QuestionIndex("10.3.3"), new QuestionType("choice"),
+                new Question("We use the Singleton pattern when\n"
+                        + "\n"
+                        + "a. we want an a class with a private constructor.\n"
+                        + "b. we want a single class to hold all functionality of the system.\n"
+                        + "c. we want a class with no more than one instance.\n"
+                        + "d. we want to hide internal structure of a component from its clients."),
                 new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
+                new ModelAnswer("c.")),
+            new Exercise(new QuestionIndex("10.4.1"), new QuestionType("choice"),
+                new Question("Choose correct statements about software frameworks.\n"
+                        + "\n"
+                        + "a. They follow the hollywood principle, otherwise known as ‘inversion of control’\n"
+                        + "b. They come with full or partial implementation.\n"
+                        + "c. They are more concrete than patterns or principles.\n"
+                        + "d. They are often configurable.\n"
+                        + "e. They are reuse mechanisms.\n"
+                        + "f. They are similar to reusable libraries but bigger."),
                 new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
+                new ModelAnswer("a b c d e. While both libraries and frameworks are reuse mechanisms, "
+                        + "and both more concrete than principles and patterns, "
+                        + "libraries differ from frameworks in some key ways. "
+                        + "One of them is the ‘inversion of control’ used by frameworks but not libraries. "
+                        + "Furthermore, frameworks do not have to be bigger than libraries all the time.")),
+            new Exercise(new QuestionIndex("10.4.2"), new QuestionType("choice"),
+                new Question("Which one of these are frameworks ?\n"
+                        + "\n"
+                        + "a. JUnit\n"
+                        + "b. Eclipse\n"
+                        + "c. Drupal\n"
+                        + "d. Ruby on Rails"),
                 new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
-                new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
-                new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
-                new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
-                new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
-                new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
-                new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
-                new StudentAnswer(""),
-                new ModelAnswer("")),
+                new ModelAnswer("All. These are frameworks.")),
                 
             // week 11
             new Exercise(new QuestionIndex("11.1.1"), new QuestionType("choice"),
@@ -868,8 +888,6 @@ public class SampleDataUtil {
                 new StudentAnswer(""),
                 new ModelAnswer("a c d. Although UP was created by the same three amigos who created UML, "
                         + "the UP does not require UML.")),
-
-                // week 12
         };
     }
 
