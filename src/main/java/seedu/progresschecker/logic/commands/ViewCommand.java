@@ -55,6 +55,6 @@ public class ViewCommand extends Command {
                 || (other instanceof ViewCommand // instanceof handles nulls
                 && this.type.equals(((ViewCommand) other).type)) // state check
                 && this.weekNumber == ((ViewCommand) other).weekNumber
-                && (this.isWeekToggle && ((ViewCommand) other).isWeekToggle);
+                && this.isWeekToggle == ((ViewCommand) other).isWeekToggle;
     }
 }
