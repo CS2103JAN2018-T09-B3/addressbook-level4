@@ -570,66 +570,170 @@ public class SampleDataUtil {
                         + "This is often done using polymorphism.")),
                 
             // week 9
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
+            new Exercise(new QuestionIndex("9.2.1"), new QuestionType("choice"),
+                new Question("Which one of these is least related to how OO programs achieve polymorphism?\n"
+                        + "\n"
+                        + "a. substitutability\n"
+                        + "b. dynamic binding\n"
+                        + "c. operation overloading\n"
+                        + "d. interfaces\n"
+                        + "e. abstract classes"),
                 new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
+                new ModelAnswer("c. Operation overriding is the one that is related, not operation overloading. "
+                        + "Interfaces and abstract classes, although not required, "
+                        + "can be used in achieving polymorphism.")),
+            new Exercise(new QuestionIndex("9.2.2"), new QuestionType("choice"),
+                new Question("Top-down design is better than bottom-up design.\n"
+                        + "\n"
+                        + "a. True\n"
+                        + "b. False"),
                 new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
+                new ModelAnswer("b. False. Not necessarily. It depends on the situation. "
+                        + "Bottom-up design may be preferable when there are lot of existing components "
+                        + "we want to reuse.")),
+            new Exercise(new QuestionIndex("9.2.3"), new QuestionType("choice"),
+                new Question("Agile design camp expects the design to change over the product’s lifetime.\n"
+                        + "\n"
+                        + "a. True\n"
+                        + "b. False"),
                 new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
+                new ModelAnswer("a. True. Yes, that is why they do not believe in spending too much time "
+                        + "creating a detailed and full design at the very beginning. "
+                        + "However, the architecture is expected to remain relatively stable "
+                        + "even in the agile design approach.")),
+            new Exercise(new QuestionIndex("9.2.4"), new QuestionType("choice"),
+                new Question("If a subclass imposes more restrictive conditions than its parent class, "
+                        + "it violates Liskov Substitution Principle.\n"
+                        + "\n"
+                        + "a. True\n"
+                        + "b. False"),
                 new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
+                new ModelAnswer("a. True. If the subclass is more restrictive than the parent class, "
+                        + "code that worked with the parent class may not work with the child class. "
+                        + "Hence, the substitutability does not exist and LSP has been violated.")),
+            new Exercise(new QuestionIndex("9.2.5"), new QuestionType("choice"),
+                new Question("Which of these statements is true about the Dependency Inversion Principle.\n"
+                        + "\n"
+                        + "a. It can complicate the design/implementation by introducing extra abstractions, "
+                        + "but it has some benefits.\n"
+                        + "b. It is often used during testing, to replace dependencies with mocks.\n"
+                        + "c. It reduces dependencies in a design.\n"
+                        + "d. It advocates making higher level classes to depend on lower level classes."),
                 new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
+                new ModelAnswer("a. Replacing dependencies with mocks is Dependency Injection, not DIP. "
+                        + "DIP does not reduce dependencies, rather, it changes the direction of dependencies. "
+                        + "Yes, it can introduce extra abstractions "
+                        + "but often the benefit can outweigh the extra complications.")),
+            new Exercise(new QuestionIndex("9.3.1"), new QuestionType("choice"),
+                new Question("Bidirectional associations, if not implemented properly, "
+                        + "can result in referential integrity violations.\n"
+                        + "\n"
+                        + "a. True\n"
+                        + "b. False"),
                 new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
+                new ModelAnswer("a. True. Bidirectional associations require two objects to link to each other. "
+                        + "When one of these links is not consistent with the other, "
+                        + "we have a referential integrity violation.")),
+            new Exercise(new QuestionIndex("9.3.2"), new QuestionType("choice"),
+                new Question("Defensive programming,\n"
+                        + "\n"
+                        + "a. can make the program slower.\n"
+                        + "b. can make the code longer.\n"
+                        + "c. can make the code more complex.\n"
+                        + "d. can make the code less susceptible to misuse.\n"
+                        + "e. can require extra effort."),
                 new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
+                new ModelAnswer("All. Defensive programming requires a more checks, "
+                        + "possibly making the code longer, more complex, and possibly slower. "
+                        + "Use it only when benefits outweigh costs, which is often.")),
+            new Exercise(new QuestionIndex("9.3.3"), new QuestionType("choice"),
+                new Question("Which statements are correct?\n"
+                        + "\n"
+                        + "a. It is not natively supported by Java and C++.\n"
+                        + "b. It is an alternative to OOP.\n"
+                        + "c. It assumes the caller of a method is responsible for "
+                        + "ensuring all preconditions are met."),
                 new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
+                new ModelAnswer("a c. DbC is not an alternative to OOP. We can use DbC in an OOP solution.")),
+            new Exercise(new QuestionIndex("9.4.1"), new QuestionType("choice"),
+                new Question("Choose correct statements about API documentation.\n"
+                        + "\n"
+                        + "a. They are useful for both developers who use the API "
+                        + "and developers who maintain the API implementation.\n"
+                        + "b. There are tools that can generate API documents from code comments.\n"
+                        + "d. API documentation may contain code examples."),
                 new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
+                new ModelAnswer("All.")),
+            new Exercise(new QuestionIndex("9.4.2"), new QuestionType("choice"),
+                new Question("It is recommended for developer documents,\n"
+                        + "\n"
+                        + "a. to have separate sections for each type of diagrams "
+                        + "such as class diagrams, sequence diagrams, use case diagrams etc.\n"
+                        + "b. to give a high priority to comprehension too, not stop at comprehensiveness only."),
                 new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
+                new ModelAnswer("b. (a) Use diagrams when they help to understand the text descriptions. "
+                        + "Text and diagrams should be used in tandem. "
+                        + "Having separate sections for each diagram type is a sign of generating diagrams "
+                        + "for the sake of having them.\n"
+                        + "\n"
+                        + "(b) Both are important, but lengthy, complete, accurate yet hard to understand documents "
+                        + "are not that useful.")),
+            new Exercise(new QuestionIndex("9.5.1"), new QuestionType("choice"),
+                new Question("Which of these gives us the highest intensity of testing?\n"
+                        + "\n"
+                        + " a. 100% statement coverage\n"
+                        + " b. 100% path coverage\n"
+                        + " c. 100% branch coverage\n"
+                        + " d. 100% condition coverage"),
                 new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
+                new ModelAnswer("b. 100% path coverage implies all possible execution paths "
+                        + "through the SUT have been tested. This is essentially ‘exhaustive testing’. "
+                        + "While this is very hard to achieve for a non-trivial SUT, "
+                        + "it technically gives us the highest intensity of testing. "
+                        + "If all tests pass at 100% path coverage, the SUT code can be considered ‘bug free’. "
+                        + "However, note that path coverage does not include paths that are missing from the code "
+                        + "altogether because the programmer left them out by mistake.")),
+            new Exercise(new QuestionIndex("9.5.2"), new QuestionType("choice"),
+                new Question("In TDD, we write all the test cases before we start writing functional code.\n"
+                        + "\n"
+                        + "a. True\n"
+                        + "b. False"),
                 new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
+                new ModelAnswer("b. False. No, not all. We proceed in small steps, "
+                        + "writing tests and functional code in tandem, "
+                        + "but writing the test before we write the corresponding functional code.")),
+            new Exercise(new QuestionIndex("9.5.3"), new QuestionType("choice"),
+                new Question("Testing tools such as Junit require us to follow TDD.\n"
+                        + "\n"
+                        + "a. True\n"
+                        + "b. False"),
                 new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
+                new ModelAnswer("b. False. They can be used for TDD, but they can be used without TDD too.")),
+            new Exercise(new QuestionIndex("9.6.1"), new QuestionType("choice"),
+                new Question("GUI testing is usually easier than API testing because "
+                        + "it doesn’t require any extra coding.\n"
+                        + "\n"
+                        + "a. True\n"
+                        + "b. False"),
                 new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
+                new ModelAnswer("b. False.")),
+            new Exercise(new QuestionIndex("9.6.2"), new QuestionType("choice"),
+                new Question("Choose the correct statements about system testing and acceptance testing.\n"
+                        + "\n"
+                        + "a. Both system testing and acceptance testing typically involve the whole system.\n"
+                        + "b. System testing is typically more extensive than acceptance testing.\n"
+                        + "c. System testing can include testing for non-functional qualities.\n"
+                        + "d. Acceptance testing typically has more user involvement than system testing.\n"
+                        + "e. In smaller projects, the developers may do system testing as well, "
+                        + "in addition to developer testing.\n"
+                        + "f. If system testing is adequately done, we need not do acceptance testing."),
                 new StudentAnswer(""),
-                new ModelAnswer("")),
+                new ModelAnswer("a b c d e. (b) is correct because system testing can aim to cover all "
+                        + "specified behaviors and can even go beyond the system specification. "
+                        + "Therefore, system testing is typically more extensive than acceptance testing.\n"
+                        + "\n"
+                        + "(f) is incorrect because it is possible for a system to pass system tests "
+                        + "but fail acceptance tests.")),
                 
             // week 10
             new Exercise(new QuestionIndex(""), new QuestionType(""),
