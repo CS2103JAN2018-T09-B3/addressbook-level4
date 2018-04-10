@@ -63,7 +63,8 @@ public class AnswerCommand extends UndoableCommand {
         } catch (ExerciseNotFoundException enfe) {
             throw new AssertionError("The target exercise cannot be missing");
         }
-        model.updateFilteredExerciseList(PREDICATE_SHOW_ALL_EXERCISES);
+        model.updateFilteredExerciseList(exercise -> exercise.getQuestionIndex().getWeekNumber()
+                == editedExercise.getQuestionIndex().getWeekNumber());
         return new CommandResult(String.format(MESSAGE_EDIT_EXERCISE_SUCCESS, questionIndex));
     }
 
