@@ -329,7 +329,7 @@ public class SampleDataUtil {
                         + "How can it lead to merge conflicts?"),
                 new StudentAnswer(""),
                 new ModelAnswer("No suggested answer.")),
-                
+
             // week 5
             new Exercise(new QuestionIndex("5.4.1"), new QuestionType("choice"),
                 new Question("Which of these are suitable as class-level variables?\n"
@@ -380,7 +380,7 @@ public class SampleDataUtil {
                         + " d. They are a good way to eliminate bad ideas."),
                 new StudentAnswer(""),
                 new ModelAnswer("b.")),
-                
+
             // week 6
             new Exercise(new QuestionIndex("6.1.1"), new QuestionType("text"),
                 new Question("Discuss pros and cons of developers testing their own code."),
@@ -425,7 +425,7 @@ public class SampleDataUtil {
                         + "d. An abstract class cannot be instantiated."),
                 new StudentAnswer(""),
                 new ModelAnswer("b c d. A concrete class cannot contain even a single abstract method.")),
-                
+
             // week 7
             new Exercise(new QuestionIndex("7.2.1"), new QuestionType("choice"),
                 new Question("Choose the correct statement\n"
@@ -489,7 +489,7 @@ public class SampleDataUtil {
                         + "d. project collaboration"),
                 new StudentAnswer(""),
                 new ModelAnswer("b.")),
-                
+
             // week 8
             new Exercise(new QuestionIndex("8.4.1"), new QuestionType("text"),
                 new Question("Explain the link (if any) between regressions and coupling."),
@@ -568,7 +568,7 @@ public class SampleDataUtil {
                         + "but the SUT depends on other components. Using dependency injection, "
                         + "we can substitute those other components with test-friendly stubs. "
                         + "This is often done using polymorphism.")),
-                
+
             // week 9
             new Exercise(new QuestionIndex("9.2.1"), new QuestionType("choice"),
                 new Question("Which one of these is least related to how OO programs achieve polymorphism?\n"
@@ -734,7 +734,7 @@ public class SampleDataUtil {
                         + "\n"
                         + "(f) is incorrect because it is possible for a system to pass system tests "
                         + "but fail acceptance tests.")),
-                
+
             // week 10
             new Exercise(new QuestionIndex("10.1.1"), new QuestionType("choice"),
                 new Question("Pick the odd one out.\n"
@@ -816,7 +816,7 @@ public class SampleDataUtil {
                         + "d. Ruby on Rails"),
                 new StudentAnswer(""),
                 new ModelAnswer("All. These are frameworks.")),
-                
+
             // week 11
             new Exercise(new QuestionIndex("11.1.1"), new QuestionType("choice"),
                 new Question("What is the main difference between a class diagram and and an OO domain model?\n"
