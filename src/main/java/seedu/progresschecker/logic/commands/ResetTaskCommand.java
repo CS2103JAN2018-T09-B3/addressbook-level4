@@ -56,7 +56,7 @@ public class ResetTaskCommand extends Command {
                 return new CommandResult(String.format(MESSAGE_NO_ACTION, index + ". " + title));
             }
 
-            ViewTaskListCommand view = new ViewTaskListCommand();
+            ViewTaskListCommand view = new ViewTaskListCommand(0);
             view.updateView();
 
             return new CommandResult(String.format(MESSAGE_SUCCESS, index + ". " + title));

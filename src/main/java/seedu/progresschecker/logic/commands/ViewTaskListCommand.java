@@ -13,6 +13,7 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.LinkedList;
 import java.util.List;
 
 import com.google.api.services.tasks.model.Task;
@@ -45,14 +46,22 @@ public class ViewTaskListCommand extends Command {
             + "49 characters (as specified by Google Task.";
     public static final String TASK_TAB = "task";
     public static final int MAX_TITLE_LENGTH = 49;
+    public static final int MAX_WEEK = 13;
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             // TODO: change description and parameter range when appropriate
-            + ": View the default task list.\n"
-            + "Parameters: No parameters\n"
-            + "Example: " + COMMAND_WORD;
+            + ": View tasks in the default task list, filtered to show only tasks at the input week.\n"
+            + "Parameters: WEEK (must be an integer ranging from 1 to 13, or an asterisk (*) "
+            + "which means all weeks\n"
+            + "Example: " + COMMAND_WORD + "3";
 
     public static final String MESSAGE_SUCCESS = "Viewing task list: %1$s";
+
+    private final int targetWeek;
+
+    public ViewTaskListCommand(int targetWeek) {
+        this.targetWeek = targetWeek;
+    }
 
     @Override
     public CommandResult execute() throws CommandException {
@@ -66,8 +75,19 @@ public class ViewTaskListCommand extends Command {
      */
     public void updateView() throws CommandException {
         List<Task> list = TaskListUtil.searchTaskListById(DEFAULT_LIST_ID);
+        List<Task> filteredList = new LinkedList<Task>();
+        if (targetWeek >= 1 && targetWeek <= 13) {
+            for (Task task : list) {
+                if (task.getTitle().contains("LO[W"+targetWeek)) {
+                    filteredList.add(task);
+                }
+            }
+        } else {
+            filteredList = list;
+        }
+
         File htmlFile = new File(DATA_FOLDER + TASK_PAGE);
-        int progressInt = writeToHtml(list, htmlFile);
+        int progressInt = writeToHtml(filteredList, htmlFile);
         File htmlBarFile = new File(DATA_FOLDER + BAR_PAGE);
         writeToHtmlBar(progressInt, htmlBarFile);
         File htmlCheckerFile = new File(DATA_FOLDER + CHECKER_PAGE);
