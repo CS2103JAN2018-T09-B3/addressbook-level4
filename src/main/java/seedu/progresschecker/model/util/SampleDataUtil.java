@@ -491,66 +491,83 @@ public class SampleDataUtil {
                 new ModelAnswer("b.")),
                 
             // week 8
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
+            new Exercise(new QuestionIndex("8.4.1"), new QuestionType("text"),
+                new Question("Explain the link (if any) between regressions and coupling."),
                 new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
+                new ModelAnswer("When the system is highly-coupled, the risk of regressions is higher too  "
+                        + "e.g. when component A is modified, all components ‘coupled’ to component A "
+                        + "risk ‘unintended behavioral changes’.\n"),
+            new Exercise(new QuestionIndex("8.4.2"), new QuestionType("text"),
+                new Question("Discuss the relationship between coupling and testability.\n"),
                 new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
+                new ModelAnswer("Coupling decreases testability because if the SUT is coupled to many other components "
+                        + "it becomes difficult to test the SUI in isolation of its dependencies.")),
+            new Exercise(new QuestionIndex("8.4.3"), new QuestionType("choice"),
+                new Question("Choose the correct statements.\n"
+                        + "\n"
+                        + "a. As coupling increases, testability decreases.\n"
+                        + "b. As coupling increases, the risk of regression increases.\n"
+                        + "c. As coupling increases, the value of automated regression testing increases.\n"
+                        + "d. As coupling increases, integration becomes easier as everything is connected together.\n"
+                        + "e. As coupling increases, maintainability decreases."),
                 new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
+                new ModelAnswer("a b c e. High coupling means either more components require to be integrated at once "
+                        + "in a big-bang fashion (increasing the risk of things going wrong) or more drivers "
+                        + "and stubs are required when integrating incrementally.")),
+            new Exercise(new QuestionIndex("8.4.4"), new QuestionType("choice"),
+                new Question("Which of these indicate a coupling between components A and B?\n"
+                        + "\n"
+                        + "a. component A has access to internal structure of component B.\n"
+                        + "b. component A and B are written by the same developer.\n"
+                        + "c. component A calls component B.\n"
+                        + "d. component A receives an object of component B as a parameter.\n"
+                        + "e. component A inherits from component B.\n"
+                        + "f. components A and B have to follow the same data format or communication protocol."),
                 new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
+                new ModelAnswer("a c d e f. Being written by the same developer does not imply a coupling.")),
+            new Exercise(new QuestionIndex("8.4.5"), new QuestionType("choice"),
+                new Question("“Only the GUI class should interact with the user. "
+                        + "The GUI class should only concern itself with user interactions”. "
+                        + "This statement follows from,\n"
+                        + "\n"
+                        + "a. A software design should promote separation of concerns in a design.\n"
+                        + "b. A software design should increase cohesion of its components.\n"
+                        + "c. A software design should follow single responsibility principle."),
                 new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
+                new ModelAnswer("a b c. By making ‘user interaction’ GUI class’ sole responsibility, "
+                        + "we increase its cohesion. This is also in line with separation of concerns "
+                        + "(i.e., we separated the concern of user interaction) "
+                        + "and single responsibility principle (GUI class has only one responsibility).")),
+            new Exercise(new QuestionIndex("8.4.6"), new QuestionType("choice"),
+                new Question("Which of these is closest to the meaning of the open-closed principle?\n"
+                        + "\n"
+                        + "a. We should be able to change a software module’s behavior without modifying its code.\n"
+                        + "b. A software module should remain open to modification as long as possible.\n"
+                        + "c. A software module should be open to modification and closed to extension.\n"
+                        + "d. Open source software rocks. Closed source software sucks."),
                 new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
+                new ModelAnswer("a. Please refer the handout for the definition of OCP.")),
+            new Exercise(new QuestionIndex("8.7.1"), new QuestionType("choice"),
+                new Question("Stubs help us to test a component in isolation from its dependencies.\n"
+                        + "\n"
+                        + "a. True\n"
+                        + "b. False"),
                 new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
+                new ModelAnswer("a. True.")),
+            new Exercise(new QuestionIndex("8.7.2"), new QuestionType("choice"),
+                new Question("Choose correct statement about dependency injection\n"
+                        + "\n"
+                        + "a. It is a technique for increasing dependencies\n"
+                        + "b. It is useful for unit testing\n"
+                        + "c. It can be done using polymorphism\n"
+                        + "d. It can be used to substitute a component with a stub"),
                 new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
-                new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
-                new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
-                new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
-                new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
-                new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
-                new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
-                new StudentAnswer(""),
-                new ModelAnswer("")),
+                new ModelAnswer("b c d. "
+                        + "It is a technique we can use to substitute an existing dependency with another, "
+                        + "not increase dependencies. It is useful when you want to test a component in isolation "
+                        + "but the SUT depends on other components. Using dependency injection, "
+                        + "we can substitute those other components with test-friendly stubs. "
+                        + "This is often done using polymorphism.")),
                 
             // week 9
             new Exercise(new QuestionIndex(""), new QuestionType(""),
