@@ -427,66 +427,68 @@ public class SampleDataUtil {
                 new ModelAnswer("b c d. A concrete class cannot contain even a single abstract method.")),
                 
             // week 7
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
+            new Exercise(new QuestionIndex("7.2.1"), new QuestionType("choice"),
+                new Question("Choose the correct statement\n"
+                        + "\n"
+                        + "a. The architecture of a system should be simple enough "
+                        + "for all team members to understand it.\n"
+                        + "b. The architecture is primarily a high-level design of the system.\n"
+                        + "c. The architecture is usually decided by the project manager.\n"
+                        + "d. The architecture can contain details private to a component."),
                 new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
+                new ModelAnswer("a b. Not (c) because architecture is usually designed by the Architect. "
+                        + "Not (d) because ... private details of elements—details having to do solely "
+                        + "with internal implementation—are not architectural.")),
+            new Exercise(new QuestionIndex("7.3.1"), new QuestionType("choice"),
+                new Question("Choose the correct statements\n"
+                        + "\n"
+                        + "a. A software component can have an API.\n"
+                        + "b. Any method of a class is part of its API.\n"
+                        + "c. Private methods of a class are not part of its API.\n"
+                        + "d. The API forms the contract between the component developer and the component user.\n"
+                        + "e. Sequence diagrams can be used to show how components interact "
+                        + "with each other via APIs."),
                 new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
+                new ModelAnswer("a c d e. (b) is incorrect because private methods cannot be a part of the API.")),
+            new Exercise(new QuestionIndex("7.3.2"), new QuestionType("choice"),
+                new Question("Defining component APIs early is useful for developing components in parallel.\n"
+                        + "\n"
+                        + "a. True\n"
+                        + "b. False"),
                 new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
+                new ModelAnswer("a. True. Yes, once we know the precise behavior expected of each component, "
+                        + "we can start developing them in parallel.\n")),
+            new Exercise(new QuestionIndex("7.6.1"), new QuestionType("choice"),
+                new Question("A Calculator program crashes with an ‘assertion failure’ message "
+                        + "when you try to find the square root of a negative number.\n"
+                        + "\n"
+                        + "a. This is a correct use of assertions.\n"
+                        + "b. The application should have terminated with an exception instead.\n"
+                        + "c. The program has a bug.\n"
+                        + "d. All statements above are incorrect."),
                 new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
+                new ModelAnswer("c. An assertion failure indicates a bug in the code. "
+                        + "(b) is not acceptable because of the word \"terminated\". "
+                        + "The application should not fail at all for this input. "
+                        + "But it could have used an exception to handle the situation internally.")),
+            new Exercise(new QuestionIndex("7.6.2"), new QuestionType("choice"),
+                new Question("Which statements are correct?\n"
+                        + "\n"
+                        + " a. Use assertions to indicate the programmer messed up; "
+                        + "Use exceptions to indicate the user or the environment messed up.\n"
+                        + " b. Use exceptions to indicate the programmer messed up; "
+                        + "Use assertions to indicate the user or the environment messed up."),
                 new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
+                new ModelAnswer("a.")),
+            new Exercise(new QuestionIndex("7.8.1"), new QuestionType("choice"),
+                new Question("Gradle_is used used for,\n"
+                        + "\n"
+                        + "a. better revision control\n"
+                        + "b. build automation\n"
+                        + "c. UML diagramming\n"
+                        + "d. project collaboration"),
                 new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
-                new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
-                new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
-                new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
-                new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
-                new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
-                new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
-                new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
-                new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
-                new StudentAnswer(""),
-                new ModelAnswer("")),
+                new ModelAnswer("b.")),
                 
             // week 8
             new Exercise(new QuestionIndex(""), new QuestionType(""),
