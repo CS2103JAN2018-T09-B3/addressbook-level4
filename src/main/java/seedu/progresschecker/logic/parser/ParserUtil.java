@@ -86,15 +86,18 @@ public class ParserUtil {
     public static String[] parseTabType(String type) throws IllegalValueException {
         String trimmedType = type.trim();
         String[] trimmedTypeArray = trimmedType.split(" ");
-        if (trimmedTypeArray.length > 1 && trimmedTypeArray[0].equals("exercise")) {
-            if (!StringUtil.isWithinRange(trimmedTypeArray[1])) {
-                throw new IllegalValueException(MESSAGE_INVALID_WEEK_NUMBER);
-            }
-        } else {
-            if (!trimmedType.equals("profile") && !trimmedType.equals("task") && !trimmedType.equals("exercise")) {
-                throw new IllegalValueException(MESSAGE_INVALID_TAB_TYPE);
-            }
+        if (!trimmedTypeArray[0].equals("profile")
+                && !trimmedTypeArray[0].equals("task")
+                && !trimmedTypeArray[0].equals("exercise")) {
+            throw new IllegalValueException(MESSAGE_INVALID_TAB_TYPE);
         }
+
+        if (trimmedTypeArray.length > 1
+                && trimmedTypeArray[0].equals("exercise")
+                && !StringUtil.isWithinRange(trimmedTypeArray[1])) {
+            throw new IllegalValueException(MESSAGE_INVALID_WEEK_NUMBER);
+        }
+
         return trimmedTypeArray;
     }
 
@@ -482,6 +485,7 @@ public class ParserUtil {
         return new QuestionIndex(trimmedQuestionIndex);
     }
 
+    //@@author iNekox3
     /**
      * Parses a {@code String studentAnswer} into a {@code StudentAnswer}.
      * Leading and trailing whitespaces will be trimmed.
