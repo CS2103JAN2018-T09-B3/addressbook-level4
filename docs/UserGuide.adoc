@@ -259,7 +259,7 @@ You can answer an exercise based on the question index. Your answer will be save
 *Format:* `answer INDEX ANSWER`
 
 [TIP]
-If you accidentally overwrite your answer to an exercise, you can undo the change as this is an undoable command! Check out the <<Undoing previous command,undo>> and <<Redoing the previously undone command,redo>> commands on how you can achieve this.
+If you accidentally overwrite your answer to an exercise, you can undo the change as this is an undoable command! Check out the <<undoing-previous-command-code-undo-code-or-code-u-code,undo>> and <<redoing-the-previously-undone-command-code-redo-code-or-code-r-code,redo>> commands on how you can achieve this.
 
 ====
 *Notes:*
@@ -668,8 +668,10 @@ ri 1
 |
 
 |*View tab*
-|`view TYPE` OR `v TYPE`
-|view exercise
+|`view TYPE` OR `v TYPE` OR `view exercise WEEK_NUMBER`
+|view task +
+view exercise +
+view exercise 5
 
 |*View task*
 |`viewtask OR vt`
