@@ -24,7 +24,7 @@ public class ViewCommand extends Command {
     public static final String MESSAGE_SUCCESS_WEEK = "Viewing week %1$s's exercises";
 
     public static final int MIN_WEEK_NUMBER = 2;
-    public static final int MAX_WEEK_NUMBER = 12;
+    public static final int MAX_WEEK_NUMBER = 11;
 
     private final String type;
     private final int weekNumber;
