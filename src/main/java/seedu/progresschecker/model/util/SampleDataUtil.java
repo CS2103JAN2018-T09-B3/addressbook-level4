@@ -251,69 +251,84 @@ public class SampleDataUtil {
                 new StudentAnswer(""),
                 new ModelAnswer("a b. How the code does something should be apparent from the code itself. "
                         + "However, comments can help the reader in describing WHAT and WHY aspects of the code.")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
 
             // week 4
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
+            new Exercise(new QuestionIndex("4.1.1"), new QuestionType("choice"),
+                new Question("Choose the correct statements about models.\n"
+                        + "\n"
+                        + "a. Models are abstractions.\n"
+                        + "b. Models can be used for communication.\n"
+                        + "c. Models can be used for analysis of a problem.\n"
+                        + "d. Generating models from code is useless.\n"
+                        + "e. Models can be used as blueprints for generating code."),
                 new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
+                new ModelAnswer("a b c e. Models generated from code can be used for understanding, analysing, "
+                        + "and communicating about the code.")),
+            new Exercise(new QuestionIndex("4.1.2"), new QuestionType("text"),
+                new Question("Explain how models (e.g. UML diagrams) can be used in a class project."),
                 new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
+                new ModelAnswer("No suggested answer.")),
+            new Exercise(new QuestionIndex("4.2.1"), new QuestionType("choice"),
+                new Question("A) Choose the correct statements\n"
+                        + "\n"
+                        + "a. OO is a programming paradigm\n"
+                        + "b. OO guides us in how to structure the solution\n"
+                        + "c. OO is mainly an abstraction mechanism\n"
+                        + "d. OO is a programming language\n"
+                        + "e. OO is modeled after how the objects in real world work"),
                 new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
+                new ModelAnswer("a b c e. While many languages support the OO paradigm, OO is not a language itself.")),
+            new Exercise(new QuestionIndex("4.2.2"), new QuestionType("choice"),
+                new Question("Choose the correct statements\n"
+                        + "\n"
+                        + "a. Java and C++ are OO languages\n"
+                        + "b. C language follows the Functional Programming paradigm\n"
+                        + "c. Java can be used to write procedural code\n"
+                        + "d. Prolog follows the Logic Programming paradigm"),
                 new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
+                new ModelAnswer("a c d. C follows the procedural paradigm. "
+                        + "Yes, we can write procedural code using OO languages e.g., AddressBook-level1.")),
+            new Exercise(new QuestionIndex("4.2.3"), new QuestionType("choice"),
+                new Question("OO is a higher level mechanism than the procedural paradigm.\n"
+                        + "\n"
+                        + "a. True\n"
+                        + "b. False"),
                 new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
+                new ModelAnswer("a. True. Procedural languages work at simple data structures (e.g., integers, arrays) "
+                        + "and functions level. Because an object is an abstraction over data+related functions, "
+                        + "OO works at a higher level.")),
+            new Exercise(new QuestionIndex("4.2.4"), new QuestionType("choice"),
+                new Question("Choose the correct statement\n"
+                        + "\n"
+                        + "a. An object is an encapsulation because it packages data and behavior into one bundle.\n"
+                        + "b. An object is an encapsulation because it lets us think in terms of higher level concepts "
+                        + "such as Students rather than student-related functions and data separately."),
                 new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
+                new ModelAnswer("a. The second statement should be: An object is an abstraction encapsulation "
+                        + "because it lets ...")),
+            new Exercise(new QuestionIndex("4.5.1"), new QuestionType("choice"),
+                new Question("Which are benefits of exceptions?\n"
+                        + "+\n"
+                        + " a. Exceptions allow us to separate normal code from error handling code.\n"
+                        + " b. Exceptions can prevent problems that happen in the environment.\n"
+                        + " c. Exceptions allow us to handle in one location an error raised in another location."),
                 new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
+                new ModelAnswer("a c. Exceptions cannot prevent problems in the environment. "
+                        + "They can only be used to handle and recover from such problems.")),
+            new Exercise(new QuestionIndex("4.6.1"), new QuestionType("text"),
+                new Question("Show (in UML notation) an enumeration called WeekDay "
+                        + "to use when the value can only be Monday ... Friday."),
                 new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
+                new ModelAnswer("No suggested answer.")),
+            new Exercise(new QuestionIndex("4.7.1"), new QuestionType("text"),
+                new Question("In the context of RCS, what is the branching? What is the need for branching?"),
                 new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
+                new ModelAnswer("No suggested answer.")),
+            new Exercise(new QuestionIndex("4.7.2"), new QuestionType("text"),
+                new Question("In the context of RCS, what is the merging branches? "
+                        + "How can it lead to merge conflicts?"),
                 new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
-                new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
-                new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
-                new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
-                new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
-                new StudentAnswer(""),
-                new ModelAnswer("")),
+                new ModelAnswer("No suggested answer.")),
                 
             // week 5
             new Exercise(new QuestionIndex(""), new QuestionType(""),
