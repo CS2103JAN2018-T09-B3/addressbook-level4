@@ -382,66 +382,49 @@ public class SampleDataUtil {
                 new ModelAnswer("b.")),
                 
             // week 6
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
+            new Exercise(new QuestionIndex("6.1.1"), new QuestionType("text"),
+                new Question("Discuss pros and cons of developers testing their own code."),
                 new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
+                new ModelAnswer("Pros:\n"
+                        + "\n"
+                        + "Can be done early (the earlier we find a bug, the cheaper it is to fix).\n"
+                        + "Can be done at lower levels, for examples, at operation and class level "
+                        + "(testers usually test the system at UI level).\n"
+                        + "It is possible to do more thorough testing because "
+                        + "developers know the expected external behavior "
+                        + "as well as the internal structure of the component.\n"
+                        + "It forces developers to take responsibility for their own work "
+                        + "(they cannot claim that \"testing is the job of the testers\").\n"
+                        + "\n"
+                        + "Cons:\n"
+                        + "\n"
+                        + "A developer may unconsciously test only situations that he knows to work "
+                        + "(i.e. test it too 'gently').\n"
+                        + "A developer may be blind to his own mistakes"
+                        + "(if he did not consider a certain combination of input while writing code, "
+                        + "it is possible for him to miss it again during testing).\n"
+                        + "A developer may have misunderstood what the SUT is supposed to do in the first place.\n"
+                        + "A developer may lack the testing expertise.")),
+            new Exercise(new QuestionIndex("6.1.2"), new QuestionType("choice"),
+                new Question("The cost of fixing a bug goes down as we reach the product release.\n"
+                        + "\n"
+                        + "a. True\n"
+                        + "b. False"),
                 new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
+                new ModelAnswer("b. False. The cost goes up over time.")),
+            new Exercise(new QuestionIndex("6.1.3"), new QuestionType("text"),
+                new Question("Explain why early testing by developers is important."),
                 new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
+                new ModelAnswer("No suggested answer.")),
+            new Exercise(new QuestionIndex("6.4.1"), new QuestionType("choice"),
+                new Question("Choose the correct statements about abstract classes and concrete classes.\n"
+                        + "\n"
+                        + "a. A concrete class can contain an abstract method.\n"
+                        + "b. An abstract class can contain concrete methods.\n"
+                        + "c. An abstract class need not contain any concrete methods.\n"
+                        + "d. An abstract class cannot be instantiated."),
                 new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
-                new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
-                new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
-                new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
-                new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
-                new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
-                new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
-                new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
-                new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
-                new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
-                new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
-                new StudentAnswer(""),
-                new ModelAnswer("")),
+                new ModelAnswer("b c d. A concrete class cannot contain even a single abstract method.")),
                 
             // week 7
             new Exercise(new QuestionIndex(""), new QuestionType(""),
