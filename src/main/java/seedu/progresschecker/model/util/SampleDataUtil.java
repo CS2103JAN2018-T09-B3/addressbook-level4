@@ -331,66 +331,55 @@ public class SampleDataUtil {
                 new ModelAnswer("No suggested answer.")),
                 
             // week 5
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
+            new Exercise(new QuestionIndex("5.4.1"), new QuestionType("choice"),
+                new Question("Which of these are suitable as class-level variables?\n"
+                        + "\n"
+                        + "a. system: multi-player Pac Man game, Class: Player, variable: totalScore\n"
+                        + "b. system: eLearning system, class: Course, variable: totalStudents\n"
+                        + "c. system: ToDo manager, class: Task, variable: totalPendingTasks\n"
+                        + "d. system: any, class: ArrayList, variable: total "
+                        + "(i.e., total items in a given ArrayList object)"),
                 new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
+                new ModelAnswer("c. totalPendingTasks should not be managed by individual Task objects "
+                        + "and therefore suitable to be maintained as a class-level variable. "
+                        + "The other variables should be managed at instance level "
+                        + "as their value varies from instance to instance. "
+                        + "e.g., totalStudents for one Course object will differ from totalStudents of another.")),
+            new Exercise(new QuestionIndex("5.6.1"), new QuestionType("choice"),
+                new Question("Which one of these is recommended not to use in UML diagrams "
+                        + "because it adds more confusion than clarity?\n"
+                        + "\n"
+                        + "a. Composition symbol\n"
+                        + "b. Aggregation symbol"),
                 new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
+                new ModelAnswer("b.")),
+            new Exercise(new QuestionIndex("5.8.1"), new QuestionType("choice"),
+                new Question("Given below are some requirements of TEAMMATES "
+                        + "(an online peer evaluation system for education). "
+                        + "Which one of these are non-functional requirements?\n"
+                        + "\n"
+                        + "a. The response to any use action should become visible within 5 seconds.\n"
+                        + "b. The application admin should be able to view a log of user activities.\n"
+                        + "c. The source code should be open source.\n"
+                        + "d. A course should be able to have up to 2000 students.\n"
+                        + "e. As a student user, I can view details of my team members so that I can know who they are.\n"
+                        + "f. The user interface should be intuitive enough for users who are not IT-savvy.\n"
+                        + "g. The product is offered as a free online service."),
                 new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
+                new ModelAnswer("a c d f g. (b) are (e) are functions available for a specific user types. "
+                        + "Therefore, they are functional requirements. "
+                        + "(a), (c), (d), (f) and (g) are either constraints on functionality "
+                        + "or constraints on how the project is done, "
+                        + "both of which are considered non-functional requirements.")),
+            new Exercise(new QuestionIndex("5.9.1"), new QuestionType("choice"),
+                new Question("What is the key characteristic about brainstorming?\n"
+                        + "\n"
+                        + " a. There should be at least 5 participants.\n"
+                        + " b. All ideas are welcome. There are no bad ideas.\n"
+                        + " c. Only the best people in the team should take part.\n"
+                        + " d. They are a good way to eliminate bad ideas."),
                 new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
-                new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
-                new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
-                new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
-                new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
-                new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
-                new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
-                new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
-                new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
-                new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
-                new StudentAnswer(""),
-                new ModelAnswer("")),
-            new Exercise(new QuestionIndex(""), new QuestionType(""),
-                new Question(""),
-                new StudentAnswer(""),
-                new ModelAnswer("")),
+                new ModelAnswer("b.")),
                 
             // week 6
             new Exercise(new QuestionIndex(""), new QuestionType(""),
