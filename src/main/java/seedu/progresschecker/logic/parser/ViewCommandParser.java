@@ -22,12 +22,12 @@ public class ViewCommandParser implements Parser<ViewCommand> {
             String[] typeArray = ParserUtil.parseTabType(args);
             String type = typeArray[0];
             int weekNumber = -1;
-            boolean isWeekToggle = false;
+            boolean isToggleExerciseByWeek = false;
             if (typeArray.length > 1) {
                 weekNumber = Integer.parseInt(typeArray[1]);
-                isWeekToggle = true;
+                isToggleExerciseByWeek = true;
             }
-            return new ViewCommand(type, weekNumber, isWeekToggle);
+            return new ViewCommand(type, weekNumber, isToggleExerciseByWeek);
         } catch (IllegalValueException ive) {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, ViewCommand.MESSAGE_USAGE));
