@@ -23,8 +23,8 @@
             <Label fx:id="studentAnswer" text="\$studentAnswer" wrapText="true"/>
             <Text/>
 
-            <Label text="Suggested Answer: " styleClass="exercise-header, hide-text"/>
-            <Label fx:id="modelAnswer" text="\$modelAnswer" wrapText="true" styleClass="hide-text"/>
+            <Label fx:id="modelAnswerHeader" styleClass="exercise-header, suggested-answer"/>
+            <Label fx:id="modelAnswer" text="\$modelAnswer" wrapText="true" styleClass="suggested-answer"/>
         </children>
     </VBox>
 </VBox>
