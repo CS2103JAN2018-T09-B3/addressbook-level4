@@ -83,7 +83,7 @@ public class StringUtil {
      */
     public static boolean isWithinRange(String s) {
         requireNonNull(s);
-        
+
         try {
             int value = Integer.parseInt(s);
             return value >= ViewCommand.MIN_WEEK_NUMBER && value <= ViewCommand.MAX_WEEK_NUMBER;
