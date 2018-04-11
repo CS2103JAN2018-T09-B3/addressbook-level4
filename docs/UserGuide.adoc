@@ -269,6 +269,7 @@ You can answer an exercise based off the given question number with your answer 
 
 === Issue Tracker
 
+//tag::issues[]
 ==== Github logging in: `gitlogin` OR `gl`
 
 You can login with your Github account and prepare to work with the issues in your team repo. +
@@ -326,7 +327,7 @@ You can reopen the certain issue on github when you want to work on it. +
 
 * `reopenissue 1`
 * `reopenissue 3`
-
+//end::issues[]
 === Task List
 
 ==== New TODO list by dafault: `newtasklist` OR `nl`
