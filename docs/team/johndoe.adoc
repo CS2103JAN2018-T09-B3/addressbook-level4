@@ -1,4 +1,4 @@
-= Koh Yee Ru - Project Portfolio
+= John Doe - Project Portfolio
 :imagesDir: ../images
 :stylesDir: ../stylesheets
 
@@ -8,33 +8,39 @@
 
 == Overview
 
-ProgressChecker is *a desktop application for CS2103/T students to have a centralized hub that tracks their learning progress and project development* throughout the module. The current release is meant to be used alongside with CS2103/T module website. ProgressChecker has a JavaFX GUI, but users will interact with it via CLI for efficiency.
+ProgressChecker is a desktop ProgressChecker application used for teaching Software Engineering principles. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.
 
 == Summary of contributions
 
-* *Major enhancement*: added *the ability to view and answer weekly exercises taken from CS2103/T module website*
-** *What it does:* allows students to view exercises by week and save their answers down for it. Answers are stored automatically and loaded the next time the software runs.
-** *Justification:* this feature solves a significant issue that students faced: they can't find the exercises easily in the website, or save their answers down directly for that matter
-** *Highlights:* This enhancement touches on all 4 components in the code base. It required an in-depth analysis of the existing architecture on how each components work with one another in order to implement it in an optimal way.
-** *Credits:* Much of the implementation was heavily inspired by the existing code base that has originally implemented the listing, modifying and storing of persons.
+* *Major enhancement*: added *the ability to undo/redo previous commands*
+** What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.
+** Justification: This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.
+** Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.
+** Credits: _{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}_
 
-* *Minor enhancement*: added a view command that allows the user to navigate between different window tabs of information
+* *Minor enhancement*: added a history command that allows the user to navigate to previous commands using up/down keys.
 
-* *Code contributed*: [https://github.com/CS2103JAN2018-T09-B3/main/blob/master/collated/functional/iNekox3.md[Functional code]] [https://github.com/CS2103JAN2018-T09-B3/main/blob/master/collated/test/iNekox3.md[Test code]]
+* *Code contributed*: [https://github.com[Functional code]] [https://github.com[Test code]] _{give links to collated code files}_
 
 * *Other contributions*:
 
 ** Project management:
-*** Managed listing of type.epic and type.stories issues on issue tracker to kickstart the team's type.task issues managment
-*** Tracked and made sure pull requests and their relevant issues are assigned the correct milestone and have been closed accordingly
+*** Managed releases `v1.3` - `v1.5rc` (3 releases) on GitHub
 ** Enhancements to existing features:
-*** Updated tags in PersonCard to have differing colors https://github.com/CS2103JAN2018-T09-B3/main/pull/2[#2]
+*** Updated the GUI color scheme (Pull requests https://github.com[#33], https://github.com[#34])
+*** Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests https://github.com[#36], https://github.com[#38])
 ** Documentation:
-*** Added prefaces to User and Developer Guide for each section https://github.com/CS2103JAN2018-T09-B3/main/pull/124[#124]
-*** Contributed to User Stories and Use Cases https://github.com/CS2103JAN2018-T09-B3/main/pull/76[#76] https://github.com/CS2103JAN2018-T09-B3/main/pull/4[#4]
+*** Did cosmetic tweaks to existing contents of the User Guide: https://github.com[#14]
 ** Community:
-*** Pull requests reviewed (with non-trivial review comments): https://github.com/CS2103JAN2018-T09-B3/main/pull/209[#209] https://github.com/CS2103JAN2018-T09-B3/main/pull/100[#100] https://github.com/CS2103JAN2018-T09-B3/main/pull/17[#17]
-*** Reported bugs and suggestions for other teams in the class https://github.com/CS2103JAN2018-W14-B1/main/issues/139[#139] https://github.com/CS2103JAN2018-W14-B1/main/issues/137[#137]
+*** PRs reviewed (with non-trivial review comments): https://github.com[#12], https://github.com[#32], https://github.com[#19], https://github.com[#42]
+*** Contributed to forum discussions (examples:  https://github.com[1], https://github.com[2], https://github.com[3], https://github.com[4])
+*** Reported bugs and suggestions for other teams in the class (examples:  https://github.com[1], https://github.com[2], https://github.com[3])
+*** Some parts of the history feature I added was adopted by several other class mates (https://github.com[1], https://github.com[2])
+** Tools:
+*** Integrated a third party library (Natty) to the project (https://github.com[#42])
+*** Integrated a new Github plugin (CircleCI) to the team repo
+
+_{you can add/remove categories in the list above}_
 
 == Contributions to the User Guide
 
