@@ -89,7 +89,7 @@ public class ParserUtil {
         if (!trimmedTypeArray[0].equals("profile")
                 && !trimmedTypeArray[0].equals("task")
                 && !trimmedTypeArray[0].equals("exercise")
-                && !trimmedTypeArray[0].equals("issues") {
+                && !trimmedTypeArray[0].equals("issues")) {
             throw new IllegalValueException(MESSAGE_INVALID_TAB_TYPE);
         }
 
