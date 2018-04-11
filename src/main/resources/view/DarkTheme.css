@@ -1,6 +1,6 @@
 .background {
     -fx-background-color: derive(#1d1d1d, 20%);
-    background-color: #383838; /* Used in the default.html file */
+    background-color: #383838;
 }
 
 .label {
@@ -27,16 +27,50 @@
 .text-field {
     -fx-font-size: 12pt;
     -fx-font-family: "Segoe UI Semibold";
+    -fx-text-fill: white;
+    -fx-opacity: 1;
+}
+
+.tab-pane .tab-header-area .tab-header-background {
+    -fx-opacity: 0;
 }
 
 .tab-pane {
+    -fx-tab-min-width:90px;
     -fx-padding: 0 0 0 1;
+}
+
+.tab{
+    -fx-background-insets: 0 1 0 1,0,0
 }
 
 .tab-pane .tab-header-area {
     -fx-padding: 0 0 0 0;
     -fx-min-height: 0;
     -fx-max-height: 0;
+    -fx-background-color: #3c3c3c;
+}
+
+.tab-pane .tab:selected
+{
+    -fx-background-color: #3c3c3c;
+}
+
+.tab-pane .tab
+{
+    -fx-background-color: derive(#1d1d1d, 90%);
+}
+
+.tab .tab-label {
+    -fx-alignment: CENTER;
+    -fx-text-fill: silver;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+.tab:selected .tab-label {
+    -fx-alignment: CENTER;
+    -fx-text-fill: white;
 }
 
 .table-view {
@@ -372,4 +406,32 @@
 
 #tags .purple {
     -fx-background-color: #8064a7;
+}
+
+.exercises-panel {
+    -fx-background-color: derive(#1d1d1d, 20%);
+    -fx-font-family: "Segoe UI Light";
+    -fx-font-size: 13pt;
+    -fx-text-fill: white;
+    -fx-border: none;
+}
+
+.exercises-panel .content {
+    -fx-background-color: derive(#1d1d1d, 20%);
+}
+
+.exercises-panel:focused .content {
+    -fx-background-color: derive(#1d1d1d, 20%);
+}
+
+.exercises-panel .label {
+    -fx-text-fill: white !important;
+}
+
+.exercise .label {
+    -fx-text-fill: white;
+}
+
+.hide-text {
+    -fx-opacity: 0;
 }

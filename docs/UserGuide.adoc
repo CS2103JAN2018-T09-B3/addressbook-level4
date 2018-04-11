@@ -11,15 +11,35 @@ ifdef::env-github[]
 :tip-caption: :bulb:
 :note-caption: :information_source:
 endif::[]
-:repoURL: https://github.com/CS2103JAN2018-T09-B3/addressbook-level4
+:repoURL: https://github.com/CS2103JAN2018-T09-B3/main
+:ext-relative: DeveloperGuide.adoc
 
-By: `Team T09-B3`      Since: `Jun 2016`      Licence: `MIT`
+By: `Team T09-B3`      Since: `Feb 2018`      Licence: `MIT`
 
 == Introduction
 
-AddressBook Level 4 (AB4) is for those who *prefer to use a desktop app for managing contacts*. More importantly, AB4 is *optimized for those who prefer to work with a Command Line Interface* (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB4 can get your contact management tasks done faster than traditional GUI apps. Interested? Jump to the <<Quick Start>> to get started. Enjoy!
+=== About the App
+
+ProgressChecker is for *students* who *prefer to use a desktop app* to keep track of their learning progress throughout the certain module. (Current version is available for CS2103/T) +
+
+For the current version, students can add their teammates into the app. They can create a new task list through google task. By default, app will display all the link:DeveloperGuide.adoc#Learning-Outcomes[Learning Outcomes] for this week in the task list. Students can use this task list to track their weekly homework and the progress of the project.
+
+More importantly, ProgressChecker is *optimized for students who prefer to work with a Command Line Interface* (CLI) while still having the benefits of a Graphical User Interface (GUI).
+If you can type fast, ProgressChecker can get your learning outcome tasks done faster than traditional GUI apps. +
+
+Interested? Jump to the <<Quick Start,Quick Start>> to get started. Enjoy!
+
+=== Icons Meaning
+
+[TIP]
+Tip
+
+[NOTE]
+Note
 
 == Quick Start
+
+Getting started with ProgressChecker is as easy as downloading and launching the software in a couple of clicks! Listed below are the important *steps* that you will need to follow to get started:
 
 .  Ensure you have Java version `1.8.0_60` or later installed in your Computer.
 +
@@ -27,211 +47,311 @@ AddressBook Level 4 (AB4) is for those who *prefer to use a desktop app for mana
 Having any Java 8 version is not enough. +
 This app will not work with earlier versions of Java 8.
 +
-.  Download the latest `addressbook.jar` link:{repoURL}/releases[here].
-.  Copy the file to the folder you want to use as the home folder for your Address Book.
+.  Download the latest `progresschecker.jar` link:{repoURL}/releases[here].
+.  Copy the file to the folder you want to use as the home folder for your ProgressChecker.
 .  Double-click the file to start the app. The GUI should appear in a few seconds.
 +
 image::Ui.png[width="790"]
 +
+[NOTE]
+====
+The viewing of learning outcomes and exercises are not ready yet! Currently, only some of week 11's exercises are reflected.
+====
++
 .  Type the command in the command box and press kbd:[Enter] to execute it. +
 e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 .  Some example commands you can try:
++
+[TIP]
+You can type a command and press `Tab` to auto bring out all the command parameters.
 
 * *`list`* : lists all contacts
+
 * **`add`**`n/John Doe p/98765432 e/johnd@example.com m/Computer Science y/2` : adds a contact named `John Doe` to the Address Book. He is in his 2nd year majoring in computer engineering.
-* **`delete`**`3` : deletes the 3rd contact shown in the current list
+
+* **`+issue`**`ti/TestIssue` : creates an issue on github in the team repo
+
+* *`nl`* : adds the default TODO list
+
+* *`vt`* : views the TODO list
+
+* **`ct`**`3` : mark task No.3 as completed
+
+* **`rt`**`3` : reset task No.3 as incompleted
+
+* **`ans`**`11.1.1 sample answer` : answer exercise 11.1.1 with `sample answer`
+
 * *`exit`* : exits the app
 
-.  Refer to <<Features>> for details of each command.
+.  Refer to <<Features,Features>> for details of each command.
 
 [[Features]]
 == Features
+
+You may find having to learn a large new number of commands rather intimidating. The section below specifies all the commands in details with examples to help you overcome that learning curve and let you make the best out of ProgressChecker.
 
 ====
 *Command Format*
 
 * The commands are case-insensitive. However, for simplicity all the examples have the commands in lower case.
+* You can auto-complete any command by pressing tab key.
 * Words in `UPPER_CASE` are the parameters to be supplied by the user e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
 * Items in square brackets are optional e.g `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
 * Items with `…`​ after them can be used multiple times including zero times e.g. `[t/TAG]...` can be used as `{nbsp}` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
 * Parameters can be in any order e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
 ====
 
-=== Viewing help : `help OR h`
+=== Adding a teammate: `add` OR `a`
 
-Format: `help OR h`
-
-=== Adding a person: `add OR a`
-
-Adds a person to the address book +
-Format: `add n/NAME p/PHONE_NUMBER e/EMAIL m/MAJOR y/YEAR [t/TAG]...` +
-        `OR` +
-       `a n/NAME p/PHONE_NUMBER e/EMAIL m/MAJOR y/YEAR [t/TAG]...`
+Adds a teammate to the ProgressChecker. +
+*Format:* `add n/NAME p/PHONE_NUMBER e/EMAIL m/MAJOR y/YEAR [t/TAG]...` +
+OR +
+`a n/NAME p/PHONE_NUMBER e/EMAIL m/MAJOR y/YEAR [t/TAG]...`
 
 [TIP]
-A person can have any number of tags (including 0)
+A teammate can have any number of tags (including 0)
 
-Examples:
+*Examples:*
 
 * `add n/John Doe p/98765432 e/johnd@example.com m/Computer Science y/2`
 * `a n/John Doe p/98765432 e/johnd@example.com m/Computer Science y/2`
 * `add n/Betsy Crowe t/friend e/betsycrowe@example.com m/Computer Engineering p/1234567 y/3 t/criminal`
 * `a n/Betsy Crowe t/friend e/betsycrowe@example.com m/Information Security y/2 p/1234567 t/criminal`
 
-=== Listing all persons : `list OR l`
+// tag::answer[]
+=== Answering and saving an exercise : `answer` `[since v1.4r]`
 
-Shows a list of all persons in the address book. +
-Format: `list OR l`
-
-=== Sorting all persons : `sort`
-
-Sorts all persons in the address book with their names in alphabetical order. +
-Format: `sort`
-
-=== Editing a person : `edit OR e`
-
-Edits an existing person in the address book. +
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]...` +
-`e INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]...`
+Answer an exercise based off the given question number. +
+*Format:* `answer INDEX ANSWER`
 
 ****
-* Edits the person at the specified `INDEX`. The index refers to the index number shown in the last person listing. The index *must be a positive integer* 1, 2, 3, ...
-* At least one of the optional fields must be provided.
-* Existing values will be updated to the input values.
-* When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.
-* You can remove all the person's tags by typing `t/` without specifying any tags after it.
+*Instructions:*
+
+* Answer an exercise at the specified `INDEX`.
+* The index refers to the question number.
+* The index must be of format `section number`.`question number`, 2.1.1, 3.2.5, 6.1.7
 ****
+
+*Examples:*
+
+* `answer 2.1.1 Procedural languages work at simple data structures and functions level`
+// end::answer[]
+
+=== Clearing all entries : `clear` OR `c`
+
+Clear all information inside the ProgressChecker. +
+*Format:* `clear` OR `c`
+
+*Examples:*
+
+* `clear`
+* `c`
+
+=== Closing an issue on Github: `-issue` OR `cli`
+
+Closes an issue on github. +
+*Format:* `-issue INDEX` OR `cli INDEX`
+
+[TIP]
+`INDEX` refers to the #INDEX of an issue on github
+
+*Examples:*
+
+* `-issue 1`
+* `cli 3`
+
+=== Completing a task: `complete` OR `ct`
+
+Mark a task as completed. +
+*Format:* `complete INDEX` OR `ct INDEX`
+
+****
+*Instructions:*
+
+* Mark the task with index number `INDEX` as completed.
+* The index refers to the index number shown in the most recent listing.
+* The index *must be a positive integer* 1, 2, 3, ...
+****
+
+[TIP]
+The command requires Internet connection. You may be brought to a login page in your browser. Please do not close the tab without accepting/declining request,
+otherwise the application will hang.
 
 Examples:
 
-* `edit 1 p/91234567 e/johndoe@example.com` +
-Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
-* `edit 2 n/Betsy Crower t/` +
-Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
+* `complete 3`
+* `ct 3`
 
-=== Locating persons by name: `find OR search`
+=== Creating an issue on Github: `+issue` OR `ci`
 
-Finds persons whose names contain any of the given keywords. +
-Format: `find KEYWORD [MORE_KEYWORDS] OR search KEYWORD {MORE_KEYWORDS]`
+Creates an issue on github in the team repo. +
+*Format:* `+issue ti/TITLE [a/ASSIGNEES]... [ms/MILESTONE] [b/BODY] [l/LABELS]...` +
+OR +
+`ci ti/TITLE [a/ASSIGNEES]... [ms/MILESTONE] [b/BODY] [l/LABELS]...`
+
+[TIP]
+An issue has only 'title' field as compulsory. Rest are all optional. +
+An issue can have more than one assignees and labels.
+
+*Examples:*
+
+* `+issue ti/complete issue a/johndoe ms/v1.1 b/CS2103T is a software engineering module l/type.task l/CS2103T`
+* `+issue ti/TestIssue`
+* `ci ti/Issue with only body b/test body l/type.test`
+
+=== Deleting a teammate : `delete` OR `d`
+
+Deletes the specified teammate from the ProgressChecker. +
+*Format:* `delete INDEX` OR `d INDEX`
 
 ****
+*Instructions:*
+
+* Deletes the teammate at the specified `INDEX`.
+* The index refers to the index number shown in the most recent listing.
+* The index *must be a positive integer* 1, 2, 3, ...
+****
+
+*Examples:*
+
+* `list` +
+`delete 2` +
+Deletes the 2nd teammate in the ProgressChecker.
+* `find Betsy` +
+`d 1` +
+Deletes the 1st teammate in the results of the `find` command.
+
+=== Editing a teammate : `edit` OR `ed`
+
+Edits an existing teammate in the ProgressChecker. +
+*Format:* `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]...` +
+OR +
+`ed INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]...`
+
+****
+*Instructions:*
+
+* Edits the teammate at the specified `INDEX`. The index refers to the index number shown in the last teammate listing. The index *must be a positive integer* 1, 2, 3, ...
+* At least one of the optional fields must be provided.
+* Existing values will be updated to the input values.
+* When editing tags, the existing tags of the teammate will be removed i.e adding of tags is not cumulative.
+* You can remove all the teammate's tags by typing `t/` without specifying any tags after it.
+****
+
+*Examples:*
+
+* `edit 1 p/91234567 e/johndoe@example.com` +
+Edits the phone number and email address of the 1st teammate to be `91234567` and `johndoe@example.com` respectively.
+* `edit 2 n/Betsy Crower t/` +
+Edits the name of the 2nd teammate to be `Betsy Crower` and clears all existing tags.
+
+=== Exiting the program : `exit` OR `e`
+
+Exits the program. +
+*Format:* `exit` OR `e`
+
+*Examples:*
+
+* `exit`
+* `e`
+
+=== Finding/Searching teammates by the keywords of name: `find` OR `search`
+
+Finds teammates whose names contain any of the given keywords. +
+*Format:* `find KEYWORD [MORE_KEYWORDS] OR search KEYWORD [MORE_KEYWORDS]`
+
+****
+*Instructions:*
+
 * The search is case insensitive. e.g `hans` will match `Hans`
 * The search is dynamic. As the user types alphabets, the results will be shown without the need to press enter key
 * The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
 * Only the name is searched.
 * Only full words will be matched e.g. `Han` will not match `Hans`
-* Persons matching at least one keyword will be returned (i.e. `OR` search). e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
+* Teammates matching at least one keyword will be returned (i.e. `OR` search). e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
 ****
 
-Examples:
+*Examples:*
 
 * `find John` +
 Returns `john` and `John Doe`
 * `search Betsy Tim John` +
-Returns any person having names `Betsy`, `Tim`, or `John`
+Returns any teammate having names `Betsy`, `Tim`, or `John`
 
-=== Deleting a person : `delete or d`
+=== Github logging in: `gitlogin` OR `gl`
 
-Deletes the specified person from the address book. +
-Format: `delete INDEX OR d INDEX`
+Creates an issue on github in the team repo. +
+*Format:* `gitlogin gu/USERNAME pc/PASSWORD r/REPO` +
+OR +
+`gl gu/USERNAME pc/PASSWORD r/REPOSITORY`
 
-****
-* Deletes the person at the specified `INDEX`.
-* The index refers to the index number shown in the most recent listing.
-* The index *must be a positive integer* 1, 2, 3, ...
-****
+[TIP]
+Your git details are not saved in our app for sercurity reasons. Hence, you will need to login everytime you start the software. +
+You need to login and mention the repo where you need to create/edit issues.
 
-Examples:
+*Examples:*
 
-* `list` +
-`delete 2` +
-Deletes the 2nd person in the address book.
-* `find Betsy` +
-`d 1` +
-Deletes the 1st person in the results of the `find` command.
+* `gitlogin gu/johndoe pc/dummy123 r/CS2103T/main`
 
-=== Selecting a person : `select OR s`
+=== Helping user with User Guide : `help` OR `h`
 
-Selects the person identified by the index number used in the last person listing. +
-Format: `select INDEX OR s INDEX`
-
-****
-* Selects the person and loads the Google search page the person at the specified `INDEX`.
-* The index refers to the index number shown in the most recent listing.
-* The index *must be a positive integer* `1, 2, 3, ...`
-****
+Displays the User Guide. +
+*Format:* `help` OR `h`
 
 Examples:
 
-* `list` +
-`select 2` +
-Selects the 2nd person in the address book.
-* `find Betsy` +
-`s 1` +
-Selects the 1st person in the results of the `find` command.
+* `help`
+* `h`
 
-=== Change view to a specific week : `view`
-
-Change the browser view to display contents identified by the week number.
-Format: `view INDEX`
-
-****
-* View the contents such as learning outcomes and practices of the week at the specified `INDEX`.
-* The index refers to the school week number.
-* The index *must be a positive integer* in the *range of 2 to 13* `2, 3, ..., 13`
-****
-
-Examples:
-
-* `view 2`
-
-=== Listing entered commands : `history`
+=== History viewing the list of entered commands : `history`
 
 Lists all the commands that you have entered in reverse chronological order. +
-Format: `history`
+*Format:* `history`
 
 [NOTE]
 ====
 Pressing the kbd:[&uarr;] and kbd:[&darr;] arrows will display the previous and next input respectively in the command box.
 ====
 
+*Example:*
+
+* `history`
+
+=== Listing all teammates : `list` OR `l`
+
+Shows a list of all teammates in the ProgressChecker. +
+*Format:* `list` OR `l`
+
+*Examples:*
+
+* `list`
+* `l`
+
+=== New TODO list by dafault: `newtasklist` OR `nl`
+
+Adds the default TODO list to the ProgressChecker and your Google Tasks. +
+*Format:* `newtasklist` OR `nl`
+
+[TIP]
+The command requires Internet connection. You may be brought to a login page in your browser. Please do not close the tab without accepting/declining request,
+otherwise the application will hang.
+
+*Examples:*
+
+* `newtasklist`
+* `nl`
+
 // tag::undoredo[]
-=== Undoing previous command : `undo OR u`
-
-Restores the address book to the state before the previous _undoable_ command was executed. +
-Format: `undo OR u`
-
-[NOTE]
-====
-Undoable commands: those commands that modify the address book's content (`add`, `delete`, `edit` and `clear`).
-====
-
-Examples:
-
-* `delete 1` +
-`list` +
-`u` (reverses the `delete 1` command) +
-
-* `select 1` +
-`list` +
-`undo` +
-The `undo` command fails as there are no undoable commands executed previously.
-
-* `delete 1` +
-`clear` +
-`undo` (reverses the `clear` command) +
-`u` (reverses the `delete 1` command) +
-
-=== Redoing the previously undone command : `redo OR r`
+=== Redoing the previously undone command : `redo` OR `r`
 
 Reverses the most recent `undo` command. +
-Format: `redo OR r`
+*Format:* `redo` OR `r`
 
-Examples:
+*Examples:*
 
 * `delete 1` +
 `undo` (reverses the `delete 1` command) +
-`redo` (reapplies the `delete 1` command) +
+`redo` (reapplies the `delete 1` command)
 
 * `delete 1` +
 `r` +
@@ -242,54 +362,293 @@ The `redo` command fails as there are no `undo` commands executed previously.
 `undo` (reverses the `clear` command) +
 `undo` (reverses the `delete 1` command) +
 `r` (reapplies the `delete 1` command) +
-`redo` (reapplies the `clear` command) +
+`redo` (reapplies the `clear` command)
 // end::undoredo[]
 
-=== Clearing all entries : `clear OR c`
+=== Refreshing the content : `refresh` OR `rf` `[coming in v2.0]`
 
-Clears all entries from the address book. +
-Format: `clear OR c`
+Refreshes the program to update its content. +
+*Format:* `refresh`
 
-=== Exiting the program : `exit OR e`
+*Examples:*
 
-Exits the program. +
-Format: `exit OR e`
+* `refresh`
+* `rf`
+
+=== Reopening an issue on Github: `reopenissue` OR `ri`
+
+Reopens an issue on github. +
+*Format:* `reopenissue INDEX` OR `ri INDEX`
+
+[TIP]
+`INDEX` refers to the #INDEX of an issue on github
+
+*Examples:*
+
+* `reopenissue 1`
+* `reopenissue 3`
+
+=== Resetting a task as incompleted: `reset` OR `rt`
+
+Reset a task as incompleted. +
+*Format:* `reset INDEX` OR `rt INDEX`
+
+****
+*Instructions:*
+
+* Reset the task with index number `INDEX` as incompleted.
+* The index refers to the index number shown in the most recent listing.
+* The index *must be a positive integer* 1, 2, 3, ...
+****
+
+[TIP]
+The command requires Internet connection. You may be brought to a login page in your browser. Please do not close the tab without accepting/declining request,
+otherwise the application will hang.
+
+*Examples:*
+
+* `reset 3`
+* `rt 3`
+
+=== Selecting a teammate : `select` OR `s`
+
+Selects the teammate identified by the index number used in the last teammate listing. +
+*Format:* `select INDEX` OR `s INDEX`
+
+****
+*Instructions:*
+
+* Selects the teammate and loads the Google search page the teammate at the specified `INDEX`.
+* The index refers to the index number shown in the most recent listing.
+* The index *must be a positive integer* `1, 2, 3, ...`
+****
+
+*Examples:*
+
+* `list` +
+`select 2` +
+Selects the 2nd teammate in the ProgressChecker.
+* `find Betsy` +
+`s 1` +
+Selects the 1st teammate in the results of the `find` command.
+
+=== Sorting all teammates : `sort`
+
+Sorts all teammates in the ProgressChecker with their names in alphabetical order. +
+*Format:* `sort`
+
+*Example:*
+
+* `sort`
+
+=== Toggling theme : `theme` OR `t`
+
+Toggle between a light and dark theme. +
+*Format:* `theme` OR `t`
+
+*Examples:*
+
+* `theme`
+* `t`
+
+// tag::undoredo[]
+=== Undoing previous command : `undo` OR `u`
+
+Restores the ProgressChecker to the state before the previous _undoable_ command was executed. +
+*Format:* `undo` OR `u`
+
+[NOTE]
+====
+Undoable commands: those commands that modify the ProgressChecker's content (`add`, `delete`, `edit` and `clear`).
+====
+
+*Examples:*
+
+* `delete 1` +
+`list` +
+`u` (reverses the `delete 1` command)
+
+* `select 1` +
+`list` +
+`undo` +
+The `undo` command fails as there are no undoable commands executed previously.
+
+* `delete 1` +
+`clear` +
+`undo` (reverses the `clear` command) +
+`u` (reverses the `delete 1` command)
+// end::undoredo[]
+
+// tag::view[]
+=== Viewing a different tab : `view` OR `v`
+
+Change the tab view to show either profiles, tasks, or exercises. +
+*Format:* `view TYPE` OR `v TYPE`
+
+****
+*Instructions:*
+
+* Change the tab view to specified `TYPE`.
+* The type refers to the tab name.
+* The tab name must be `profile`, `task`, or `exercise`.
+****
+
+*Examples:*
+
+* `view exercise`
+// end::view[]
+
+=== Viewing the default TODO list: `viewtask` OR `vt`
+
+Dispays the current default TODO list to the browser panel in ProgressChecker. +
+*Format:* `viewtask` OR `vt`
+
+[TIP]
+The command requires Internet connection. You may be brought to a login page in your browser. Please do not close the tab without accepting/declining request,
+otherwise the application will hang.
+
+*Examples:*
+
+* `viewtask`
+* `vt`
 
 === Saving the data
 
-Address book data are saved in the hard disk automatically after any command that changes the data. +
+Progress Checker data are saved in the hard disk automatically after any command that changes the data. +
 There is no need to save manually.
-
-// tag::dataencryption[]
-=== Encrypting data files `[coming in v2.0]`
-
-_{explain how the user can enable/disable data encryption}_
-// end::dataencryption[]
 
 == FAQ
 
+You may encounter some questions related to other aspects of ProgressChecker other than the commands. This section list some frequently asked questions that you may find useful.
+
 *Q*: How do I transfer my data to another Computer? +
-*A*: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Address Book folder.
+*A*: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Progress Checker folder. +
+
+*Q*: Will the command work if I type in capital letters? +
+*A*: Yes. The commands are case-insenstive. +
+
+*Q*: Will the app keep all information the same with the time I close it when I open the app the other time? +
+*A*: All data are saved in the hard disk automatically after any command that changes the data. As long as the user doesn't change the data file, the content will be the same when user open the app next time. +
+
+*Q*: How to close the app? +
+*A*: Either click the 'x' button on the screen or type command `exit`.
 
 == Command Summary
 
-* *Add* `add n/NAME p/PHONE_NUMBER e/EMAIL m/MAJOR y/YEAR [t/TAG]...` +
-`a n/NAME p/PHONE_NUMBER e/EMAIL m/MAJOR y/YEAR [t/TAG]...`
-e.g. `add n/James Ho p/22224444 e/jamesho@example.com m/Computer Science y/2 t/friend t/colleague`
-* *Clear* : `clear OR c`
-* *Delete* : `delete INDEX OR d INDEX` +
-e.g. `delete 3`
-* *Edit* : `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [m/MAJOR] [y/YEAR] [t/TAG]... OR e INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [m/MAJOR] [y/YEAR] [t/TAG]...` +
-e.g. `edit 2 n/James Lee e/jameslee@example.com`
-* *Find* : `find KEYWORD [MORE_KEYWORDS] OR search KEYWORD {MORE_KEYWORDS]` +
-e.g. `search James Jake` +
-`find James Jake`
-* *List* : `list`
-* *Help* : `help OR h`
-* *Select* : `select INDEX OR s INDEX` +
-e.g.`select 2`
-* *View* : `view INDEX` +
-e.g. `view 5`
-* *History* : `history`
-* *Undo* : `undo OR u`
-* *Redo* : `redo OR r`
+If you're looking for a quick reference list of commands without all the details, the section below summarises all the available commands.
+
+|===
+|Function | Command | Example
+|*Add*
+|`add n/NAME p/PHONE_NUMBER e/EMAIL m/MAJOR y/YEAR [t/TAG]...` +
+OR `a n/NAME p/PHONE_NUMBER e/EMAIL m/MAJOR y/YEAR [t/TAG]...`
+|add n/James Ho p/22224444 e/jamesho@example.com m/Computer Science y/2 t/friend t/colleague
+
+|*Answer*
+|`answer INDEX ANSWER`
+|answer 2.1.1
+
+|*Clear*
+|`clear` OR `c`
+|
+
+|*Close issue*
+|`-issue INDEX` OR `cli INDEX`
+|-issue 3 +
+cli 1
+
+|*Complete*
+|`complete INDEX`
+|complete 2.1
+
+|*Create issue*
+|`+issue ti/TITLE [a/ASSIGNEES]... [ms/MILESTONE] [b/BODY] [l/LABELS]...` +
+                   OR +
+                   `ci ti/TITLE [a/ASSIGNEES]... [ms/MILESTONE] [b/BODY] [l/LABELS]...`
+|+issue ti/complete issue a/johndoe ms/v1.1 b/CS2103T is a software engineering module l/type.task l/CS2103T
+
+|*Delete*
+|`delete INDEX` OR `d INDEX`
+|delete 3
+
+|*Edit*
+|`edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [m/MAJOR] [y/YEAR] [t/TAG]...` +
+OR `ed INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [m/MAJOR] [y/YEAR] [t/TAG]...`
+|edit 2 n/James Lee e/jameslee@example.com
+
+|*Exit*
+|`exit` OR `e`
+|
+
+|*Find*
+|`find KEYWORD [MORE_KEYWORDS]`
+|find James Jake
+
+|*Help*
+|`help` OR `h`
+|
+
+|*History*
+|`history`
+|
+
+|*List*
+|`list` Or `l`
+|
+
+|*Log in to Github*
+|`gitlogin OR gl`
+|
+
+|*Newtasklist*
+|`newtasklist` OR `nl`
+|
+
+|*Redo*
+|`redo` OR `r`
+|
+
+|*Refresh*
+|`refresh` OR `rf`
+|
+
+|*Reopen issue*
+|`reopenissue INDEX` OR `ri INDEX`
+|reopenissue 3 +
+ri 1
+
+|*Reset a task*
+|`reset OR rt`
+|
+
+|*Search*
+|`search KEYWORD [MORE_KEYWORDS]`
+|search James Jake
+
+|*Select*
+|`select INDEX` OR `s INDEX`
+|select 2
+
+|*Sort*
+|`sort`
+|
+
+|*Theme*
+|`theme` OR `t`
+|
+
+|*Undo*
+|`undo` OR `u`
+|
+
+|*View tab*
+|`view TYPE` OR `v TYPE`
+|view exercise
+
+|*View task*
+|`viewtask OR vt`
+|
+
+|===
+{sp}+
+Back to the <<Introduction,TOP>>
