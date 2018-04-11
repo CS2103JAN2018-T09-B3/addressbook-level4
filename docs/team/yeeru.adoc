@@ -8,21 +8,21 @@
 
 == Overview
 
-ProgressChecker is a desktop application for CS2103/T students to have a centralized hub that tracks their learning progress and project development throughout the module. The current release is meant to be used alongside with CS2103/T module website. In ProgressChecker, students are able to:
+ProgressChecker is *a desktop application for CS2103/T students to have a centralized hub that tracks their learning progress and project development* throughout the module. The current release is meant to be used alongside with CS2103/T module website. In ProgressChecker, students are able to:
 
 - store their team members' details as contacts
 - view what weekly learning outcomes they are required to complete and mark them as complete
 - view weekly exercises taken from CS2103/T module website and store their answers locally
 - manage GitHub issue trackers from their organization repository
 
-ProgressChecker has a JAVAFX GUI, but users will interact with it via CLI for efficiency.
+ProgressChecker has a JavaFX GUI, but users will interact with it via CLI for efficiency.
 
 == Summary of contributions
 
 * *Major enhancement*: added *the ability to view and answer weekly exercises taken from CS2103/T module website*
-** *What it does:* allows the student to quickly view all the exercises of a particular week and write their answers down for it. Answers are stored automatically and loaded the next time the software runs again.
-** *Justification:* This feature solves a significant issue that all students will encounter when using the module website: they can't easily find the exercises, or save their answers down directly for that matter as a means for ease of future reference.
-** *Highlights:* This enhancement touches on all 4 components in the code base. It required an in-depth analysis of the existing architecture and how each components work with one another in order to implement it in an optimal way.
+** *What it does:* allows the student to quickly view all the exercises of a particular week and save their answers down for it. Answers are stored automatically and loaded the next time the software runs again.
+** *Justification:* This feature solves a significant issue that all students will encounter when using the module website: they can't find the exercises easily in the nest collapsibles, or save their answers down directly for that matter as a means for ease of future reference.
+** *Highlights:* This enhancement touches on all 4 components in the code base, that is logic, model, storage, and UI. It required an in-depth analysis of the existing architecture and how each components work with one another in order to implement it in an optimal way.
 ** *Credits:* Much of the implementation was heavily inspired by the existing code base that has originally implemented the listing, modifying and storing of persons.
 
 * *Minor enhancement*: added a view command that allows the user to navigate between different window tabs of information
@@ -32,20 +32,19 @@ ProgressChecker has a JAVAFX GUI, but users will interact with it via CLI for ef
 * *Other contributions*:
 
 ** Project management:
-*** Managed releases `v1.3` - `v1.5rc` (3 releases) on GitHub
+*** Created all the necessary issue labels such as `type.epic`, `type.stories`, `type.task`, `status.ongoing`, `priority.high` so on and so forth
+*** Managed listing of type.epic and type.stories issues on issue tracker to kickstart the team's type.task issues managment
+*** Tracked and made sure pull requests and their relevant issues are assigned the correct milestone and have been closed accordingly
 ** Enhancements to existing features:
 *** Updated tags in PersonCard to have differing colors https://github.com/CS2103JAN2018-T09-B3/main/pull/2[#2]
 ** Documentation:
-*** Added prefaces to https://github.com/CS2103JAN2018-T09-B3/main/pull/124[#124]
-*** Contributed to User Stories and Use Cases
+*** Updated README description with initial mock UI https://github.com/CS2103JAN2018-T09-B3/main/pull/61[#61] https://github.com/CS2103JAN2018-T09-B3/main/pull/33[#33]
+*** Added prefaces to User and Developer Guide for each section https://github.com/CS2103JAN2018-T09-B3/main/pull/124[#124]
+*** Contributed to User Stories and Use Cases https://github.com/CS2103JAN2018-T09-B3/main/pull/76[#76] https://github.com/CS2103JAN2018-T09-B3/main/pull/4[#4]
+*** Minor reformatting in User and Developer Guide https://github.com/CS2103JAN2018-T09-B3/main/pull/159[#159] https://github.com/CS2103JAN2018-T09-B3/main/pull/143[#143]
 ** Community:
-*** PRs reviewed (with non-trivial review comments): https://github.com[#12], https://github.com[#32], https://github.com[#19], https://github.com[#42]
-*** Reported bugs and suggestions for other teams in the class (examples:  https://github.com[1], https://github.com[2], https://github.com[3])
-** Tools:
-*** Integrated a third party library (Natty) to the project (https://github.com[#42])
-*** Integrated a new Github plugin (CircleCI) to the team repo
-
-_{you can add/remove categories in the list above}_
+*** Pull requests reviewed (with non-trivial review comments): https://github.com/CS2103JAN2018-T09-B3/main/pull/209[#209] https://github.com/CS2103JAN2018-T09-B3/main/pull/142[#142] https://github.com/CS2103JAN2018-T09-B3/main/pull/100[#100] https://github.com/CS2103JAN2018-T09-B3/main/pull/57[#57] https://github.com/CS2103JAN2018-T09-B3/main/pull/17[#17]
+*** Reported bugs and suggestions for other teams in the class https://github.com/CS2103JAN2018-W14-B1/main/issues/139[#139] https://github.com/CS2103JAN2018-W14-B1/main/issues/137[#137] https://github.com/CS2103JAN2018-W14-B1/main/issues/133[#133]
 
 == Contributions to the User Guide
 
