@@ -14,7 +14,7 @@ import seedu.progresschecker.logic.commands.ClearCommand;
 import seedu.progresschecker.logic.commands.CloseIssueCommand;
 import seedu.progresschecker.logic.commands.Command;
 import seedu.progresschecker.logic.commands.CompleteTaskCommand;
-import seedu.progresschecker.logic.commands.CreateIssue;
+import seedu.progresschecker.logic.commands.CreateIssueCommand;
 import seedu.progresschecker.logic.commands.DeleteCommand;
 import seedu.progresschecker.logic.commands.EditCommand;
 import seedu.progresschecker.logic.commands.EditIssueCommand;
@@ -22,6 +22,7 @@ import seedu.progresschecker.logic.commands.ExitCommand;
 import seedu.progresschecker.logic.commands.FindCommand;
 import seedu.progresschecker.logic.commands.GitLoginCommand;
 import seedu.progresschecker.logic.commands.GoToTaskUrlCommand;
+import seedu.progresschecker.logic.commands.GitLogoutCommand;
 import seedu.progresschecker.logic.commands.HelpCommand;
 import seedu.progresschecker.logic.commands.HistoryCommand;
 import seedu.progresschecker.logic.commands.ListCommand;
@@ -116,8 +117,8 @@ public class ProgressCheckerParser {
         case ClearCommand.COMMAND_ALIAS:
             return new ClearCommand();
 
-        case CreateIssue.COMMAND_WORD:
-        case CreateIssue.COMMAND_ALIAS:
+        case CreateIssueCommand.COMMAND_WORD:
+        case CreateIssueCommand.COMMAND_ALIAS:
             return new CreateIssueParser().parse(arguments);
 
         case FindCommand.COMMAND_WORD:
@@ -166,6 +167,10 @@ public class ProgressCheckerParser {
         case GitLoginCommand.COMMAND_WORD:
         case GitLoginCommand.COMMAND_ALIAS:
             return new GitLoginCommandParser().parse(arguments);
+
+        case GitLogoutCommand.COMMAND_WORD:
+        case GitLogoutCommand.COMMAND_ALIAS:
+            return new GitLogoutCommand();
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
