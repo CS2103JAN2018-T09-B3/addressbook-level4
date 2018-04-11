@@ -13,8 +13,8 @@ ProgressChecker is *a desktop application for CS2103/T students to have a centra
 == Summary of contributions
 
 * *Major enhancement*: added *the ability to view and answer weekly exercises taken from CS2103/T module website*
-** *What it does:* allows the student to quickly view exercises by week and save their answers down for it. Answers are stored automatically and loaded the next time the software runs again.
-** *Justification:* this feature solves a significant issue that students faced when using the module website: they can't find the exercises easily, or save their answers down directly for that matter as a means for ease of future reference.
+** *What it does:* allows students to view exercises by week and save their answers down for it. Answers are stored automatically and loaded the next time the software runs.
+** *Justification:* this feature solves a significant issue that students faced: they can't find the exercises easily in the website, or save their answers down directly for that matter
 ** *Highlights:* This enhancement touches on all 4 components in the code base. It required an in-depth analysis of the existing architecture on how each components work with one another in order to implement it in an optimal way.
 ** *Credits:* Much of the implementation was heavily inspired by the existing code base that has originally implemented the listing, modifying and storing of persons.
 
