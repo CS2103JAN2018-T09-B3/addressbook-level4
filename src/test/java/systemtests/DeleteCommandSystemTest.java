@@ -3,6 +3,7 @@ package systemtests;
 import static org.junit.Assert.assertTrue;
 import static seedu.progresschecker.commons.core.Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX;
 import static seedu.progresschecker.logic.commands.DeleteCommand.MESSAGE_DELETE_PERSON_SUCCESS;
+import static seedu.progresschecker.logic.parser.ParserUtil.MESSAGE_INVALID_INDEX_OR_FORMAT;
 import static seedu.progresschecker.testutil.TestUtil.getLastIndex;
 import static seedu.progresschecker.testutil.TestUtil.getMidIndex;
 import static seedu.progresschecker.testutil.TestUtil.getPerson;
@@ -23,7 +24,7 @@ import seedu.progresschecker.model.person.exceptions.PersonNotFoundException;
 public class DeleteCommandSystemTest extends ProgressCheckerSystemTest {
 
     private static final String MESSAGE_INVALID_DELETE_COMMAND_FORMAT =
-            String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE);
+            String.format(MESSAGE_INVALID_INDEX_OR_FORMAT, DeleteCommand.MESSAGE_USAGE);
 
     @Test
     public void delete() {
