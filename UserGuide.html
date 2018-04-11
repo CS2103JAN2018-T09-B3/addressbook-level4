@@ -49,7 +49,7 @@
 </li>
 <li><a href="#exercise">3.3. Exercise</a>
 <ul class="sectlevel3">
-<li><a href="#answering-and-saving-an-exercise-code-answer-code-code-since-v1-4r-code">3.3.1. Answering and saving an exercise : <code>answer</code> <code>[since v1.4r]</code></a></li>
+<li><a href="#answering-an-exercise-code-answer-code-code-since-v1-4r-code">3.3.1. Answering an exercise : <code>answer</code> <code>[since v1.4r]</code></a></li>
 </ul>
 </li>
 <li><a href="#issue-tracker">3.4. Issue Tracker</a>
@@ -262,7 +262,7 @@ You can type a command and press <code>Tab</code> to auto bring out all the comm
 </ul>
 </div>
 <div class="paragraph">
-<p>Refer to <a href="#Default">below</a> for details of each command.</p>
+<p>Refer to <a href="#general">below</a> for details of each command.</p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -319,8 +319,12 @@ You can type a command and press <code>Tab</code> to auto bring out all the comm
 <div class="sect3">
 <h4 id="viewing-a-different-tab-code-view-code-or-code-v-code"><a class="link" href="#viewing-a-different-tab-code-view-code-or-code-v-code">3.2.2. Viewing a different tab : <code>view</code> OR <code>v</code></a></h4>
 <div class="paragraph">
-<p>You can change the tab view to show either profiles, tasks, or exercises window.<br>
+<p>You can change the tab view to show either <code>Profile</code>, <code>Task</code>, or <code>Exercise</code>.<br>
 <strong>Format:</strong> <code>view TYPE</code> OR <code>v TYPE</code></p>
+</div>
+<div class="paragraph">
+<p>By default, the exercise tab shows exercises from the latest available school week. You can view the exercises in other weeks as well.<br>
+<strong>Format:</strong> <code>view exercise WEEK_NUMBER</code> OR <code>v exercise WEEK_NUMBER</code></p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -330,13 +334,10 @@ You can type a command and press <code>Tab</code> to auto bring out all the comm
 <div class="ulist">
 <ul>
 <li>
-<p>You can change the tab view to specified <code>TYPE</code>.</p>
+<p><code>TYPE</code> refers to the tab names you see in the GUI: <code>profile</code>, <code>task</code> or <code>exercise</code>.</p>
 </li>
 <li>
-<p>The type refers to the tab name.</p>
-</li>
-<li>
-<p>The tab name must be <code>profile</code>, <code>task</code>, or <code>exercise</code>.</p>
+<p><code>WEEK_NUMBER</code> refers to the school week number and <strong>must be a positive integer</strong> in the <strong>range of 2 to 11</strong> <code>2, 3, &#8230;&#8203;, 11</code></p>
 </li>
 </ul>
 </div>
@@ -348,7 +349,13 @@ You can type a command and press <code>Tab</code> to auto bring out all the comm
 <div class="ulist">
 <ul>
 <li>
+<p><code>view task</code></p>
+</li>
+<li>
 <p><code>view exercise</code></p>
+</li>
+<li>
+<p><code>view exercise 5</code></p>
 </li>
 </ul>
 </div>
@@ -387,7 +394,7 @@ You can type a command and press <code>Tab</code> to auto bring out all the comm
 <div class="ulist">
 <ul>
 <li>
-<p>Undoable commands: those commands that modify the ProgressChecker&#8217;s content (<code>add</code>, <code>delete</code>, <code>edit</code> and <code>clear</code>).</p>
+<p>Undoable commands: those commands that modify the ProgressChecker&#8217;s content (<code>add</code>, <code>answer</code>, <code>delete</code>, <code>edit</code> and <code>clear</code>).</p>
 </li>
 </ul>
 </div>
@@ -543,10 +550,22 @@ You can press the <kbd>&uarr;</kbd> and <kbd>&darr;</kbd> arrows. The previous a
 <div class="sect2">
 <h3 id="exercise"><a class="link" href="#exercise">3.3. Exercise</a></h3>
 <div class="sect3">
-<h4 id="answering-and-saving-an-exercise-code-answer-code-code-since-v1-4r-code"><a class="link" href="#answering-and-saving-an-exercise-code-answer-code-code-since-v1-4r-code">3.3.1. Answering and saving an exercise : <code>answer</code> <code>[since v1.4r]</code></a></h4>
+<h4 id="answering-an-exercise-code-answer-code-code-since-v1-4r-code"><a class="link" href="#answering-an-exercise-code-answer-code-code-since-v1-4r-code">3.3.1. Answering an exercise : <code>answer</code> <code>[since v1.4r]</code></a></h4>
 <div class="paragraph">
-<p>You can answer an exercise based off the given question number with your answer and save the answer.<br>
+<p>You can answer an exercise based on the question index. Your answer will be saved automatically upon answering.<br>
 <strong>Format:</strong> <code>answer INDEX ANSWER</code></p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+If you accidentally overwrite your answer to an exercise, you can undo the change as this is an undoable command! Check out the <a href="#undoing-previous-command-code-undo-code-or-code-u-code">undo</a> and <a href="#redoing-the-previously-undone-command-code-redo-code-or-code-r-code">redo</a> commands on how you can achieve this.
+</td>
+</tr>
+</table>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -556,13 +575,19 @@ You can press the <kbd>&uarr;</kbd> and <kbd>&darr;</kbd> arrows. The previous a
 <div class="ulist">
 <ul>
 <li>
-<p>You can answer an exercise at the specified <code>INDEX</code>.</p>
-</li>
-<li>
-<p>The index refers to the question number.</p>
-</li>
-<li>
-<p>The index must be of format <code>section number</code>.<code>question number</code>, 2.1.1, 3.2.5, 6.1.7</p>
+<p><code>INDEX</code> refers to the question index shown in the GUI and it must be of the format <code>WEEK_NUMBER</code>.<code>SECTION_NUMBER</code>.<code>QUESTION_NUMBER</code>, e.g. 2.1.1, 3.2.5, 6.1.7</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+An exercise&#8217;s <code>SECTION_NUMBER</code> is directly adopted from <a href="https://nus-cs2103-ay1718s2.github.io/website/index.html">CS2103/T&#8217;s website</a>.
+</td>
+</tr>
+</table>
+</div>
 </li>
 </ul>
 </div>
@@ -1379,8 +1404,10 @@ ri 1</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>View tab</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>view TYPE</code> OR <code>v TYPE</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">view exercise</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>view TYPE</code> OR <code>v TYPE</code> OR <code>view exercise WEEK_NUMBER</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">view task<br>
+view exercise<br>
+view exercise 5</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>View task</strong></p></td>
@@ -1397,7 +1424,7 @@ ri 1</p></td>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-11 17:49:13 UTC
+Last updated 2018-04-11 18:11:25 UTC
 </div>
 </div>
 </body>
