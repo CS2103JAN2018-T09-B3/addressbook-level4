@@ -333,7 +333,7 @@ You can reopen the certain issue on github when you want to work on it. +
 You can logout of github after logging in. +
 
 [TIP]
-You will get an error message if you try to logout before logging in. 
+You will get an error message if you try to logout before logging in.
 
 *Examples:*
 
