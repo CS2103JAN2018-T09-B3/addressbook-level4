@@ -45,6 +45,7 @@ public class ViewTaskListCommand extends Command {
     public static final String MESSAGE_TITLE_CONSTRAINTS = "The title of a task list should not exceed "
             + "49 characters (as specified by Google Task.";
     public static final String TASK_TAB = "task";
+    public static final String NOTE_TOKEN = "checkurl";
     public static final int MAX_TITLE_LENGTH = 49;
     public static final int MAX_WEEK = 13;
 
@@ -146,50 +147,88 @@ public class ViewTaskListCommand extends Command {
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter out = new PrintWriter(bw);
 
-            out.print("<!DOCTYPE html>\n" + "<html>\n"
-                    + "<body style=\"background-color:grey;\">\n");
+            out.print("<!DOCTYPE html>\n"
+                    + "<html lang=\"en\">\n"
+                    + "<head>\n"
+                    + "    <title>Task List</title>\n"
+                    + "    <meta charset=\"utf-8\">\n"
+                    + "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n"
+                    + "    <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7"
+                    + "/css/bootstrap.min.css\">\n"
+                    + "    <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1"
+                    + "/jquery.min.js\"></script>\n"
+                    + "    <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7"
+                    + "/js/bootstrap.min.js\"></script>\n"
+                    + "</head>\n"
+                    + "<body  style=\"background-color:grey;\">"
+                    + "<div class=\"container\"  style=\"background-color:grey;\">");
             if (targetWeek > 0) {
-                out.print("<h1 style=\"font-family:verdana; color:white\">&#9764;"
-                        + DEFAULT_LIST_TITLE + "  Week: " + targetWeek + "&#9764;</h1>\n" + "<hr />\n" + "<dl>\n");
+                out.print("<h2 style=\"font-family:verdana; color:white\">"
+                        + DEFAULT_LIST_TITLE + "  Week: " + targetWeek + "</h2>\n<br>\n");
             } else {
-                out.print("<h1 style=\"font-family:verdana; color:white\">&#9764;"
-                        + DEFAULT_LIST_TITLE + "&#9764;</h1>\n" + "<hr />\n" + "<dl>\n");
+                out.print("<h2 style=\"font-family:verdana; color:white\">"
+                        + DEFAULT_LIST_TITLE + "</h2>\n<br>\n");
             }
 
             for (int i = 0; i < size; i++) {
                 Task task = list.get(i);
                 int index = indexList.get(i);
-                out.print("    <dt style=\"font-family:verdana; color:antiquewhite;\">"
-                        + index + ". " + task.getTitle() + "</dt>\n");
-                out.print("    <dd style=\"font-family:verdana; color:white;\">&#9888; &nbsp;"
-                        + task.getDue().toString().substring(0, 10) + "</dd>\n");
+
                 String status = task.getStatus();
+                String notesWithUrl = task.getNotes();
+                String[] parts = notesWithUrl.split(NOTE_TOKEN);
+
+                String notes = parts[0];
+                String url = parts[1];
+
                 if (status.length() >= 11) {
-                    out.print("    <dd style=\"font-family:verdana; color:red;\">&#9873; &nbsp;"
-                            + "Please work on it! " + "&#9744;</dd>\n");
+                    out.print("        <div class=\"panel panel-danger\">\n"
+                            + "            <div class=\"panel-heading\">"
+                            + index + ". " + task.getTitle() + "</div>\n"
+                            + "            <div class=\"panel-body\">\n"
+                            + "                <dd style=\"font-family:verdana; color:black;\">&#9888; &nbsp;"
+                            + task.getDue().toString().substring(0, 10) + "</dd>\n"
+                            + "                <dd style=\"font-family:verdana; color:red;\">&#9873;"
+                            + " &nbsp;Please work on it :) &#9744;</dd>\n");
                     countIncomp++;
                 } else {
-                    out.print("    <dd style=\"font-family:verdana; color:darkseagreen;\">&#9873; &nbsp;"
-                            + "Completed! " + "&#9745;</dd>\n");
+                    out.print("        <div class=\"panel panel-success\">\n"
+                            + "            <div class=\"panel-heading\">"
+                            + index + ". " + task.getTitle() + "</div>\n"
+                            + "            <div class=\"panel-body\">\n"
+                            + "                <dd style=\"font-family:verdana; color:black;\">&#9888; &nbsp;"
+                            + task.getDue().toString().substring(0, 10) + "</dd>\n"
+                            + "                <dd style=\"font-family:verdana; color:darkseagreen;\">&#9873;"
+                            + " &nbsp;Completed! &#9745;</dd>\n");
                     countCompleted++;
                 }
 
-                out.print("    <dd style=\"font-family:verdana; color:white;\">&#9998; &nbsp;"
-                        + task.getNotes() + "</dd>\n");
-                out.print("    <hr />\n");
-
+                out.print("                <dd style=\"font-family:verdana; color:black;\">&#9998; &nbsp;"
+                        + notes + "</dd>\n"
+                        + "                <p><a href=\""
+                        + url
+                        + "\">"
+                        + url
+                        + "</a></p>\n"
+                        + "            </div>\n"
+                        + "        </div>\n");
             }
+
+            out.print("    </div>\n"
+                    + "</div>\n"
+                    + "\n");
 
             double percent = countCompleted / (countCompleted + countIncomp);
             int progressInt = (int) (percent * 100);
-            String progress = progressInt + "%";
+            String progressDevision = (int) countCompleted + "/" + (int) (countCompleted + countIncomp);
 
             out.print("</dl>\n");
 
-            out.print("<h2 style=\"font-family:verdana; color:white\">" + "You have completed " + progress
+            out.print("<h2 style=\"font-family:verdana; color:white\">" + "You have completed " + progressDevision
                     + " !" + "</h2>");
 
-            out.print("</body>\n" + "</html>\n");
+            out.print("</body>\n"
+                    + "</html>");
 
             out1.close();
             out.close();
