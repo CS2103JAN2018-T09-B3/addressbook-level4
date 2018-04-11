@@ -1,0 +1,72 @@
+= Koh Yee Ru - Project Portfolio
+:imagesDir: ../images
+:stylesDir: ../stylesheets
+
+== PROJECT: ProgressChecker
+
+---
+
+== Overview
+
+ProgressChecker is a desktop application for CS2103/T students to have a centralized hub that tracks their learning progress and project development throughout the module. The current release is meant to be used alongside with CS2103/T module website. In ProgressChecker, students are able to:
+
+- store their team members' details as contacts
+- view what weekly learning outcomes they are required to complete and mark them as complete
+- view weekly exercises taken from CS2103/T module website and store their answers locally
+- manage GitHub issue trackers from their organization repository
+
+ProgressChecker has a JAVAFX GUI, but users will interact with it via CLI for efficiency.
+
+== Summary of contributions
+
+* *Major enhancement*: added *the ability to view and answer weekly exercises taken from CS2103/T module website*
+** *What it does:* allows the student to quickly view all the exercises of a particular week and write their answers down for it. Answers are stored automatically and loaded the next time the software runs again.
+** *Justification:* This feature solves a significant issue that all students will encounter when using the module website: they can't easily find the exercises, or save their answers down directly for that matter as a means for ease of future reference.
+** *Highlights:* This enhancement touches on all 4 components in the code base. It required an in-depth analysis of the existing architecture and how each components work with one another in order to implement it in an optimal way.
+** *Credits:* Much of the implementation was heavily inspired by the existing code base that has originally implemented the listing, modifying and storing of persons.
+
+* *Minor enhancement*: added a view command that allows the user to navigate between different window tabs of information
+
+* *Code contributed*: [https://github.com/CS2103JAN2018-T09-B3/main/blob/master/collated/functional/iNekox3.md[Functional code]] [https://github.com/CS2103JAN2018-T09-B3/main/blob/master/collated/test/iNekox3.md[Test code]]
+
+* *Other contributions*:
+
+** Project management:
+*** Managed releases `v1.3` - `v1.5rc` (3 releases) on GitHub
+** Enhancements to existing features:
+*** Updated tags in PersonCard to have differing colors https://github.com/CS2103JAN2018-T09-B3/main/pull/2[#2]
+** Documentation:
+*** Added prefaces to https://github.com/CS2103JAN2018-T09-B3/main/pull/124[#124]
+*** Contributed to User Stories and Use Cases
+** Community:
+*** PRs reviewed (with non-trivial review comments): https://github.com[#12], https://github.com[#32], https://github.com[#19], https://github.com[#42]
+*** Reported bugs and suggestions for other teams in the class (examples:  https://github.com[1], https://github.com[2], https://github.com[3])
+** Tools:
+*** Integrated a third party library (Natty) to the project (https://github.com[#42])
+*** Integrated a new Github plugin (CircleCI) to the team repo
+
+_{you can add/remove categories in the list above}_
+
+== Contributions to the User Guide
+
+
+|===
+|_Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users._
+|===
+
+include::../UserGuide.adoc[tag=undoredo]
+
+== Contributions to the Developer Guide
+
+|===
+|_Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project._
+|===
+
+include::../DeveloperGuide.adoc[tag=undoredo]
+
+
+== PROJECT: PowerPointLabs
+
+---
+
+_{Optionally, you may include other projects in your portfolio.}_
