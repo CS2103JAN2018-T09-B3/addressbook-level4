@@ -20,7 +20,7 @@ public class CompleteTaskCommand extends Command {
     public static final String TASK_PAGE = "tasklist.html";
     public static final String FILE_FAILURE = "Something is wrong with the file system.";
     public static final String COMMAND_FORMAT = COMMAND_WORD + "INDEX";
-    public static final String MESSAGE_TITLE_CONSTRAINTS = "The index should be an index in the task list displayed"
+    public static final String MESSAGE_INDEX_CONSTRAINTS = "The index should be an index in the task list displayed"
             + "to you. It must be an integer that does not exceed the number of tasks in the list.";
     public static final int DUMMY_WEEK = 0;
 

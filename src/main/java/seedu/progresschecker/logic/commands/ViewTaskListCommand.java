@@ -2,6 +2,7 @@ package seedu.progresschecker.logic.commands;
 
 import static seedu.progresschecker.logic.commands.AddDefaultTasksCommand.DEFAULT_LIST_ID;
 import static seedu.progresschecker.logic.commands.AddDefaultTasksCommand.DEFAULT_LIST_TITLE;
+import static seedu.progresschecker.model.task.TaskUtil.NOTE_TOKEN;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -45,7 +46,6 @@ public class ViewTaskListCommand extends Command {
     public static final String MESSAGE_TITLE_CONSTRAINTS = "The title of a task list should not exceed "
             + "49 characters (as specified by Google Task.";
     public static final String TASK_TAB = "task";
-    public static final String NOTE_TOKEN = "checkurl";
     public static final int MAX_TITLE_LENGTH = 49;
     public static final int MAX_WEEK = 13;
 
@@ -300,7 +300,8 @@ public class ViewTaskListCommand extends Command {
     }
 
     /**
-     * Writes an html file to involve both the progress bar and task list (the file is for backup purposes.
+     * Writes an html file to involve both the progress bar and task list (the file is for backup,
+     * preview and debugging purposes.
      *
      * @param file File object of the html file.
      */

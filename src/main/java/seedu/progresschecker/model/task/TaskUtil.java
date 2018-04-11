@@ -29,6 +29,8 @@ public class TaskUtil {
     public static final String COMPLETED = "completed";
     public static final String NEEDS_ACTION = "needsAction";
     public static final int ERROR_NUMBER = -1;
+    public static final String ERROR_STRING = "";
+    public static final String NOTE_TOKEN = "checkurl";
 
 
     /**
@@ -144,7 +146,7 @@ public class TaskUtil {
         com.google.api.services.tasks.Tasks service = connection.getTasksService();
 
         try {
-            int changed = 0;
+            int isChanged = 0;
             Tasks tasks = service.tasks().list(listId).execute();
             List<Task> list = tasks.getItems();
             if (list.size() < index) {
@@ -155,7 +157,7 @@ public class TaskUtil {
 
             if (!task.getStatus().equals(COMPLETED)) {
                 task.setStatus(COMPLETED);
-                changed = 1;
+                isChanged = 1;
             }
 
             task = service.tasks().update(
@@ -164,7 +166,7 @@ public class TaskUtil {
                     task
             ).execute();
 
-            Pair<Integer, String> result = new Pair<Integer, String>(changed, task.getTitle());
+            Pair<Integer, String> result = new Pair<Integer, String>(isChanged, task.getTitle());
 
             return result;
 
@@ -174,7 +176,7 @@ public class TaskUtil {
     }
 
     /**
-     * Marks the task with title {@code String} in the tasklist with ID {@code String} as incompleted
+     * Marks the task with index {@code int index} in the tasklist with ID {@code String listId} as incompleted
      *
      * @param index title of the task we look for
      * @param listId the identifier of the list to which the task belongs
@@ -193,7 +195,7 @@ public class TaskUtil {
         com.google.api.services.tasks.Tasks service = connection.getTasksService();
 
         try {
-            int changed = 0;
+            int isChanged = 0;
             Tasks tasks = service.tasks().list(listId).execute();
             List<Task> list = tasks.getItems();
             if (list.size() < index) {
@@ -205,7 +207,7 @@ public class TaskUtil {
             if (!task.getStatus().equals(NEEDS_ACTION)) {
                 task.setCompleted(null);
                 task.setStatus(NEEDS_ACTION);
-                changed = 1;
+                isChanged = 1;
             }
 
             task = service.tasks().update(
@@ -214,8 +216,48 @@ public class TaskUtil {
                     task
             ).execute();
 
-            Pair<Integer, String> result = new Pair<Integer, String>(changed, task.getTitle());
+            Pair<Integer, String> result = new Pair<Integer, String>(isChanged, task.getTitle());
 
+            return result;
+
+        } catch (IOException ioe) {
+            throw new CommandException(LOAD_FAILURE);
+        }
+    }
+
+    /**
+     * Retrieve the URL of task with index {@code int index} in the tasklist with ID {@code String listId}
+     *
+     * @param index title of the task we look for
+     * @param listId the identifier of the list to which the task belongs
+     * @return the URL of task with index {@code int index} in the tasklist with ID {@code String listId}
+     * or error if index is out of bound. and the title of the task with index {@code int}
+     */
+    public static Pair<String, String> getTaskUrl(int index, String listId) throws CommandException {
+        ConnectTasksApi connection = new ConnectTasksApi();
+
+        try {
+            connection.authorize();
+        } catch (Exception e) {
+            throw new CommandException(AUTHORIZE_FAILURE);
+        }
+
+        com.google.api.services.tasks.Tasks service = connection.getTasksService();
+
+        try {
+            Tasks tasks = service.tasks().list(listId).execute();
+            List<Task> list = tasks.getItems();
+            if (list.size() < index) {
+                Pair<String, String> result = new Pair<String, String>(ERROR_STRING, ERROR_STRING);
+                return result;
+            }
+            Task task = list.get(index - 1);
+
+            String title = task.getTitle();
+            String notesWithUrl = task.getNotes();
+            String[] parts = notesWithUrl.split(NOTE_TOKEN);
+
+            Pair<String, String> result = new Pair<String, String>(parts[1], title);
             return result;
 
         } catch (IOException ioe) {

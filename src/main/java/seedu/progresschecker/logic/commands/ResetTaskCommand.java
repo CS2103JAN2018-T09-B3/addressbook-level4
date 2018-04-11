@@ -21,7 +21,7 @@ public class ResetTaskCommand extends Command {
     public static final String TASK_PAGE = "tasklist.html";
     public static final String FILE_FAILURE = "Something is wrong with the file system.";
     public static final String COMMAND_FORMAT = COMMAND_WORD + "INDEX";
-    public static final String MESSAGE_TITLE_CONSTRAINTS = "The index should be an index in the task list displayed"
+    public static final String MESSAGE_INDEX_CONSTRAINTS = "The index should be an index in the task list displayed"
             + "to you. It must be an integer that does not exceed the number of tasks in the list.";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
@@ -29,9 +29,9 @@ public class ResetTaskCommand extends Command {
             + "Parameters: INDEX (an index in the task list)\n "
             + "Example: " + COMMAND_WORD + 1;
 
-    public static final String MESSAGE_SUCCESS = "Reset task list: %1$s";
+    public static final String MESSAGE_SUCCESS = "Reset task: %1$s";
     public static final String MESSAGE_NO_ACTION = "This task is not completed yet: %1$s";
-    public static final String RESET_FAILURE = "Failed to mark it as incompleted. Index: %1$s";
+    public static final String RESET_FAILURE = "Error. Failed to mark it as incompleted. Index: %1$s";
 
     private int index;
 
