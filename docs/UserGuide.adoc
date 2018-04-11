@@ -633,6 +633,10 @@ OR `ed INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [m/MAJOR] [y/YEAR] [t/TAG]...`
 |`gitlogin OR gl`
 |
 
+|*Log out of Github*
+|`gitlogout OR glo`
+|
+
 |*Newtasklist*
 |`newtasklist` OR `nl`
 |
