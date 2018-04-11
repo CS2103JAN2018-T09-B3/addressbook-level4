@@ -12,7 +12,6 @@ import static seedu.progresschecker.testutil.TypicalPersons.KEYWORD_MATCHING_MEI
 
 import org.junit.Test;
 
-import seedu.progresschecker.commons.core.Messages;
 import seedu.progresschecker.commons.core.index.Index;
 import seedu.progresschecker.logic.commands.DeleteCommand;
 import seedu.progresschecker.logic.commands.RedoCommand;
