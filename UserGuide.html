@@ -957,9 +957,9 @@ An issue can have more than one assignees and labels.
 <h4 id="adding-a-teammate-code-add-code-or-code-a-code"><a class="link" href="#adding-a-teammate-code-add-code-or-code-a-code">3.6.1. Adding a teammate: <code>add</code> OR <code>a</code></a></h4>
 <div class="paragraph">
 <p>You can add the contact information of a new teammate to the ProgressChecker.<br>
-<strong>Format:</strong> <code>add n/NAME p/PHONE_NUMBER e/EMAIL m/MAJOR y/YEAR g/GITHUB_USERNAME [t/TAG]&#8230;&#8203;</code><br>
+<strong>Format:</strong> <code>add n/NAME p/PHONE_NUMBER e/EMAIL g/GITHUB_USERNAME m/MAJOR y/YEAR [t/TAG]&#8230;&#8203;</code><br>
 OR<br>
-<code>a n/NAME p/PHONE_NUMBER e/EMAIL m/MAJOR y/YEAR g/GITHUB_USERNAME [t/TAG]&#8230;&#8203;</code></p>
+<code>a n/NAME p/PHONE_NUMBER e/EMAIL g/GITHUB_USERNAME m/MAJOR y/YEAR [t/TAG]&#8230;&#8203;</code></p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -979,16 +979,16 @@ A teammate can have any number of tags (including 0)
 <div class="ulist">
 <ul>
 <li>
-<p><code>add n/John Doe p/98765432 e/johnd@example.com m/Computer Science y/2 g/johndoe</code></p>
+<p><code>add n/John Doe p/98765432 e/johnd@example.com g/johndoeGithub m/Computer Science y/2</code></p>
 </li>
 <li>
-<p><code>a n/John Doe p/98765432 e/johnd@example.com m/Computer Science y/2 g/johndoe</code></p>
+<p><code>a n/John Doe p/98765432 e/johnd@example.com g/johndoeGithub m/Computer Science y/2</code></p>
 </li>
 <li>
-<p><code>add n/Betsy Crowe t/friend e/betsycrowe@example.com m/Computer Engineering p/1234567 y/3 g/betsycrowe t/criminal</code></p>
+<p><code>add n/Betsy Crowe t/friend e/betsycrowe@example.com g/betsycroweGithub m/Computer Engineering p/1234567 y/3 t/criminal</code></p>
 </li>
 <li>
-<p><code>a n/Betsy Crowe t/friend e/betsycrowe@example.com m/Information Security y/2 p/1234567 g/betsycrowe t/criminal</code></p>
+<p><code>a n/Betsy Crowe t/friend e/betsycrowe@example.com g/betsycroweGithub m/Information Security y/2 p/1234567 t/criminal</code></p>
 </li>
 </ul>
 </div>
@@ -997,9 +997,9 @@ A teammate can have any number of tags (including 0)
 <h4 id="editing-a-teammate-code-edit-code-or-code-ed-code"><a class="link" href="#editing-a-teammate-code-edit-code-or-code-ed-code">3.6.2. Editing a teammate : <code>edit</code> OR <code>ed</code></a></h4>
 <div class="paragraph">
 <p>You can edit the information of the certain existing teammate in the ProgressChecker.<br>
-<strong>Format:</strong> <code>edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [m/MAJOR] [y/YEAR] [g/GITHUB_USERNAME] [t/TAG]&#8230;&#8203;</code><br>
+<strong>Format:</strong> <code>edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [g/GITHUB_USERNAME] [m/MAJOR] [y/YEAR] [t/TAG]&#8230;&#8203;</code><br>
 OR<br>
-<code>ed INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [m/MAJOR] [y/YEAR] [g/GITHUB_USERNAME] [t/TAG]&#8230;&#8203;</code></p>
+<code>ed INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [g/GITHUB_USERNAME] [m/MAJOR] [y/YEAR] [t/TAG]&#8230;&#8203;</code></p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -1273,9 +1273,9 @@ There is no need to save manually.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Add</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>add n/NAME p/PHONE_NUMBER e/EMAIL m/MAJOR y/YEAR [t/TAG]&#8230;&#8203;</code><br>
-OR <code>a n/NAME p/PHONE_NUMBER e/EMAIL m/MAJOR y/YEAR [t/TAG]&#8230;&#8203;</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">add n/James Ho p/22224444 e/jamesho@example.com m/Computer Science y/2 t/friend t/colleague</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>add n/NAME p/PHONE_NUMBER e/EMAIL g/USERNAME m/MAJOR y/YEAR [t/TAG]&#8230;&#8203;</code><br>
+OR <code>a n/NAME p/PHONE_NUMBER e/EMAIL g/USERNAME m/MAJOR y/YEAR [t/TAG]&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add n/James Ho p/22224444 e/jamesho@example.com g/JamesGithub m/Computer Science y/2 t/friend t/colleague</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Answer</strong></p></td>
@@ -1424,7 +1424,7 @@ view exercise 5</p></td>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-11 18:19:49 UTC
+Last updated 2018-04-11 18:45:45 UTC
 </div>
 </div>
 </body>
