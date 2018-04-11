@@ -17,8 +17,8 @@ This portfolio is to collect and combine my contribution towards the development
 * *Major enhancement*: added *the ability to track issues on github*
 ** What it does: allows the teammates in a project to track issues on the team repository on github from the ProgressChecker application.
 ** Justification: This feature improves the teammate's efficiency to manage issues on github by giving him the ability to create, edit, close issues with minimal effort and concentrate on bigger problems. This way users can easily manage issues on github with a few key strokes, and without having to go through the complications of using a GUI.
-** Highlights: This enhancement makes use of the complete software architecture by touching upon all the four design components. This enhancement needed addition of many new commands, some which are : `gitlogin`, `createissue`, `editissue`, `closeissue`.  
-** Credits: Development of this feature made of use of the http://github-api.kohsuke.org/[Github Java API](org.eclipse.egit.github.core).  
+** Highlights: This enhancement makes use of the complete software architecture by touching upon all the four design components. This enhancement needed addition of many new commands, some which are : `gitlogin`, `createissue`, `editissue`, `closeissue`.
+** Credits: Development of this feature made of use of the http://github-api.kohsuke.org/[Github Java API](org.eclipse.egit.github.core).
 
 * *Minor enhancement*: Added a dynamic search feature which dynamically filters the contact list of a user without the user having to press enter every time.
 
