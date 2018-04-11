@@ -106,7 +106,7 @@ public class ViewTaskListCommand extends Command {
                 }
                 count++;
             }
-        } else if (targetWeek == ALL_WEEK){
+        } else if (targetWeek == ALL_WEEK) {
             filteredList = list;
             int size = list.size();
             for (int i = 1; i <= size; i++) {
