@@ -66,7 +66,13 @@ public class ViewTaskListCommand extends Command {
     @Override
     public CommandResult execute() throws CommandException {
         updateView();
-        return new CommandResult(String.format(MESSAGE_SUCCESS, DEFAULT_LIST_TITLE));
+
+        if (targetWeek > 0) {
+            return new CommandResult(String.format(MESSAGE_SUCCESS,
+                    DEFAULT_LIST_TITLE + "  Week: " + targetWeek));
+        } else {
+            return new CommandResult(String.format(MESSAGE_SUCCESS, DEFAULT_LIST_TITLE));
+        }
     }
 
     /**
@@ -77,10 +83,10 @@ public class ViewTaskListCommand extends Command {
         List<Task> list = TaskListUtil.searchTaskListById(DEFAULT_LIST_ID);
         List<Task> filteredList = new LinkedList<Task>();
         List<Integer> indexList = new LinkedList<Integer>();
-        if (targetWeek >= 1 && targetWeek <= 13) {
+        if (targetWeek > 0) {
             int count = 1;
             for (Task task : list) {
-                if (task.getTitle().contains("LO[W"+targetWeek)) {
+                if (task.getTitle().contains("LO[W" + targetWeek)) {
                     filteredList.add(task);
                     indexList.add(count);
                 }
@@ -89,7 +95,7 @@ public class ViewTaskListCommand extends Command {
         } else {
             filteredList = list;
             int size = list.size();
-            for (int i=1; i<=size; i++) {
+            for (int i = 1; i <= size; i++) {
                 indexList.add(i);
             }
         }
@@ -142,8 +148,13 @@ public class ViewTaskListCommand extends Command {
 
             out.print("<!DOCTYPE html>\n" + "<html>\n"
                     + "<body style=\"background-color:grey;\">\n");
-            out.print("<h1 style=\"font-family:verdana; color:white\">&#9764;"
-                    + DEFAULT_LIST_TITLE + "&#9764;</h1>\n" + "<hr />\n" + "<dl>\n");
+            if (targetWeek > 0) {
+                out.print("<h1 style=\"font-family:verdana; color:white\">&#9764;"
+                        + DEFAULT_LIST_TITLE + "  Week: " + targetWeek + "&#9764;</h1>\n" + "<hr />\n" + "<dl>\n");
+            } else {
+                out.print("<h1 style=\"font-family:verdana; color:white\">&#9764;"
+                        + DEFAULT_LIST_TITLE + "&#9764;</h1>\n" + "<hr />\n" + "<dl>\n");
+            }
 
             for (int i = 0; i < size; i++) {
                 Task task = list.get(i);

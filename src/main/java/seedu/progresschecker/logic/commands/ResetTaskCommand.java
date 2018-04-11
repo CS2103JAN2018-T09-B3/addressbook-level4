@@ -3,6 +3,7 @@ package seedu.progresschecker.logic.commands;
 import static java.util.Objects.requireNonNull;
 
 import static seedu.progresschecker.logic.commands.AddDefaultTasksCommand.DEFAULT_LIST_ID;
+import static seedu.progresschecker.logic.commands.CompleteTaskCommand.DUMMY_WEEK;
 import static seedu.progresschecker.model.task.TaskUtil.undoTask;
 
 import javafx.util.Pair;
@@ -26,7 +27,7 @@ public class ResetTaskCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Mark task with the given index in the list as incompleted.\n"
             + "Parameters: INDEX (an index in the task list)\n "
-            + "Example: " + COMMAND_WORD;
+            + "Example: " + COMMAND_WORD + 1;
 
     public static final String MESSAGE_SUCCESS = "Reset task list: %1$s";
     public static final String MESSAGE_NO_ACTION = "This task is not completed yet: %1$s";
@@ -47,16 +48,20 @@ public class ResetTaskCommand extends Command {
         try {
             Pair<Integer, String> result = undoTask(index, DEFAULT_LIST_ID);
 
+            if (result.getKey() == -1) {
+                return new CommandResult(String.format(result.getValue()));
+            }
+
             String titleWithCode = result.getValue();     // full file name
             String[] parts = titleWithCode.split("&#"); // String array, each element is text between dots
 
             String title = parts[0];
 
-            if(result.getKey()==0) {
+            if (result.getKey() == 0) {
                 return new CommandResult(String.format(MESSAGE_NO_ACTION, index + ". " + title));
             }
 
-            ViewTaskListCommand view = new ViewTaskListCommand(0);
+            ViewTaskListCommand view = new ViewTaskListCommand(DUMMY_WEEK);
             view.updateView();
 
             return new CommandResult(String.format(MESSAGE_SUCCESS, index + ". " + title));

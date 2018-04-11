@@ -42,6 +42,7 @@ import seedu.progresschecker.model.tag.Tag;
 public class ParserUtil {
 
     public static final String MESSAGE_INVALID_INDEX = "Index is not a non-zero unsigned integer.";
+    public static final String MESSAGE_INVALID_INDEX_OR_FORMAT = "Wrong format or index is not a positive integer.";
     public static final String MESSAGE_INVALID_WEEK = "Week number is not an integer 1~13 or *.";
     public static final String MESSAGE_INVALID_TAB_TYPE = "Given type must be 'profile', 'task', or 'exercise'";
     public static final String MESSAGE_INSUFFICIENT_PARTS = "Number of parts must be more than 1.";
@@ -81,16 +82,16 @@ public class ParserUtil {
      */
     public static int parseTaskWeek(String week) throws IllegalValueException {
         String trimmedWeek = week.trim();
-        if(trimmedWeek.equals("*")) {
+        if (trimmedWeek.equals("*")) {
             return 0;
         } else if (!StringUtil.isNonZeroUnsignedInteger(trimmedWeek)) {
-            throw new IllegalValueException(MESSAGE_INVALID_INDEX);
+            throw new IllegalValueException(MESSAGE_INVALID_WEEK);
         }
         int intWeek = Integer.parseInt(trimmedWeek);
-        if(intWeek >= 1 && intWeek <= 13) {
+        if (intWeek >= 1 && intWeek <= 13) {
             return intWeek;
         } else {
-            throw new IllegalValueException(MESSAGE_INVALID_INDEX);
+            throw new IllegalValueException(MESSAGE_INVALID_WEEK);
         }
     }
     //@@author

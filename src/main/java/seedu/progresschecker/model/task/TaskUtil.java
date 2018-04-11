@@ -24,9 +24,11 @@ public class TaskUtil {
 
     public static final String AUTHORIZE_FAILURE = "Failed to authorize tasks api client credentials";
     public static final String LOAD_FAILURE = "Failed to load this task list";
+    public static final String INDEX_OUT_OF_BOUND = "The index is out of bound";
     public static final String DATE_FORMAT = "MM/dd/yyyy HH:mm";
     public static final String COMPLETED = "completed";
     public static final String NEEDS_ACTION = "needsAction";
+    public static final int ERROR_NUMBER = -1;
 
 
     /**
@@ -145,6 +147,10 @@ public class TaskUtil {
             int changed = 0;
             Tasks tasks = service.tasks().list(listId).execute();
             List<Task> list = tasks.getItems();
+            if (list.size() < index) {
+                Pair<Integer, String> result = new Pair<Integer, String>(ERROR_NUMBER, INDEX_OUT_OF_BOUND);
+                return result;
+            }
             Task task = list.get(index - 1);
 
             if (!task.getStatus().equals(COMPLETED)) {
@@ -190,6 +196,10 @@ public class TaskUtil {
             int changed = 0;
             Tasks tasks = service.tasks().list(listId).execute();
             List<Task> list = tasks.getItems();
+            if (list.size() < index) {
+                Pair<Integer, String> result = new Pair<Integer, String>(ERROR_NUMBER, INDEX_OUT_OF_BOUND);
+                return result;
+            }
             Task task = list.get(index - 1);
 
             if (!task.getStatus().equals(NEEDS_ACTION)) {
