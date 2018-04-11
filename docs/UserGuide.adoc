@@ -276,6 +276,7 @@ An exercise's `SECTION_NUMBER` is directly adopted from https://nus-cs2103-ay171
 
 === Issue Tracker
 
+//tag::issues[]
 ==== Github logging in: `gitlogin` OR `gl`
 
 You can login with your Github account and prepare to work with the issues in your team repo. +
@@ -334,6 +335,19 @@ You can reopen the certain issue on github when you want to work on it. +
 * `reopenissue 1`
 * `reopenissue 3`
 
+==== Loggin out of Github: `gitlogout` OR `glo`
+
+You can logout of github after logging in. +
+
+[TIP]
+You will get an error message if you try to logout before logging in.
+
+*Examples:*
+
+* `gitlogout`
+* `glo`
+
+//end::issues[]
 === Task List
 
 ==== New TODO list by dafault: `newtasklist` OR `nl`
@@ -624,6 +638,10 @@ OR `ed INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [m/MAJOR] [y/YEAR] [t/TAG]...`
 
 |*Log in to Github*
 |`gitlogin OR gl`
+|
+
+|*Log out of Github*
+|`gitlogout OR glo`
 |
 
 |*Newtasklist*
