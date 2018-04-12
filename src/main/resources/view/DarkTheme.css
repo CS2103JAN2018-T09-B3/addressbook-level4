@@ -1,10 +1,8 @@
-/* unknown */
 .background {
     -fx-background-color: #202226;
     background-color: #202226;
 }
 
-/* text color of contact details */
 .label {
     -fx-font-size: 12pt;
     -fx-font-family: "Segoe UI Semibold";
@@ -12,7 +10,6 @@
     -fx-opacity: 0.9;
 }
 
-/* unknown */
 .label-bright {
     -fx-font-size: 12pt;
     -fx-font-family: "Segoe UI Semibold";
@@ -20,7 +17,6 @@
     -fx-opacity: 1;
 }
 
-/* unknown */
 .label-header {
     -fx-font-size: 32pt;
     -fx-font-family: "Segoe UI Light";
@@ -28,7 +24,6 @@
     -fx-opacity: 1;
 }
 
-/* unknown */
 .text-field {
     -fx-font-size: 12pt;
     -fx-font-family: "Segoe UI Semibold";
@@ -36,12 +31,10 @@
     -fx-opacity: 1;
 }
 
-/* unknown */
 .tab-pane .tab-header-area .tab-header-background {
     -fx-opacity: 0;
 }
 
-/* unknown */
 .tab-pane {
     -fx-tab-min-width:90px;
 }
@@ -50,7 +43,6 @@
     -fx-background-insets: 0 1 0 1,0,0;
 }
 
-/* background color of right box */
 .tab-pane .tab-header-area {
     -fx-padding: 0 0 0 0;
     -fx-min-height: 0;
@@ -58,33 +50,28 @@
     -fx-background-color: #202226;
 }
 
-/* color of selected tab */
 .tab-pane .tab:selected
 {
     -fx-background-color: #203133;
 }
 
-/* color of unselected tab */
 .tab-pane .tab
 {
     -fx-background-color: #5e6d81;
 }
 
-/* text color of unselected tab */
 .tab .tab-label {
     -fx-alignment: CENTER;
     -fx-text-fill: silver;
     -fx-font-size: 16px;
 }
 
-/* text color of selected tab */
 .tab:selected .tab-label {
     -fx-alignment: CENTER;
     -fx-text-fill: #ffffff;
     -fx-font-weight: bold;
 }
 
-/* unknown */
 .table-view {
     -fx-base: #1d1d1d;
     -fx-control-inner-background: #1d1d1d;
@@ -94,12 +81,10 @@
     -fx-padding: 5;
 }
 
-/* unknown */
 .table-view .column-header-background {
     -fx-background-color: transparent;
 }
 
-/* unknown */
 .table-view .column-header, .table-view .filler {
     -fx-size: 35;
     -fx-border-width: 0 0 1 0;
@@ -112,7 +97,6 @@
     -fx-border-insets: 0 10 1 0;
 }
 
-/* unknown */
 .table-view .column-header .label {
     -fx-font-size: 20pt;
     -fx-font-family: "Segoe UI Light";
@@ -121,32 +105,27 @@
     -fx-opacity: 1;
 }
 
-/* unknown */
 .table-view:focused .table-row-cell:filled:focused:selected {
     -fx-background-color: -fx-focus-color;
 }
 
-/* color of divider between left right box */
 .split-pane:horizontal .split-pane-divider {
     -fx-background-color: #202226;
     -fx-border-color: transparent transparent transparent #202226;
 }
 
-/* background color of left box */
 .split-pane {
     -fx-border-radius: 1;
     -fx-border-width: 1;
     -fx-background-color: #202226;
 }
 
-/* background color of list of items */
 .list-view {
     -fx-background-insets: 0;
     -fx-padding: 0;
     -fx-background-color: #202226;
 }
 
-/* card */
 .list-cell {
     -fx-label-padding: 20;
     -fx-graphic-text-gap : 0;
@@ -175,17 +154,14 @@
     -fx-border-width: 1;
 }
 
-/* text color of names in list */
 .list-cell .label {
     -fx-text-fill: #ffffff;
 }
 
-/* text color of selected name in list */
 .list-cell:selected .label {
     -fx-text-fill: #ffffff;
 }
 
-/* text size of names in list */
 .cell_big_label {
     -fx-font-family: "Segoe UI";
     -fx-font-size: 18px;
