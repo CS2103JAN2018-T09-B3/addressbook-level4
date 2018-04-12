@@ -224,7 +224,7 @@ public class GitIssueList implements Iterable<Issue> {
     }
 
     /**
-     * 
+     * Updates the GHIssueState according to mentioned state and updates the list
      */
     public void listIssue(String state) throws IllegalValueException, IOException, CommandException {
         if(github == null) {
@@ -238,7 +238,7 @@ public class GitIssueList implements Iterable<Issue> {
             throw new IllegalValueException("Enter correct state");
         }
         updateInternalList();
-            
+
     }
     /**
      * Replaces the person {@code target} in the list with {@code editedPerson}.
