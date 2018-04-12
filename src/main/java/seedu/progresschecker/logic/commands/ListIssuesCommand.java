@@ -2,6 +2,8 @@ package seedu.progresschecker.logic.commands;
 
 import java.io.IOException;
 
+import seedu.progresschecker.commons.core.EventsCenter;
+import seedu.progresschecker.commons.events.ui.TabLoadChangedEvent;
 import seedu.progresschecker.commons.exceptions.IllegalValueException;
 import seedu.progresschecker.logic.commands.exceptions.CommandException;
 import seedu.progresschecker.model.person.NameContainsKeywordsPredicate;
@@ -21,6 +23,8 @@ public class ListIssuesCommand extends Command {
             + "Parameters: KEYWORD\n"
             + "Example: " + COMMAND_WORD + " CLOSE";
     private static final String MESSAGE_INVALID_STATE = "Please enter correct issue state";
+    private static final String MESSAGE_VALIDATION_FAILURE = "Please log into github first";
+    private static final String tabType = "issues";
     
     private static String state;
 
@@ -32,11 +36,14 @@ public class ListIssuesCommand extends Command {
     public CommandResult execute() throws CommandException {
         try {
             model.listIssues(state);
-            return new CommandResult(getMessageForPersonListShownSummary(model.getFilteredPersonList().size()));
+            EventsCenter.getInstance().post(new TabLoadChangedEvent(tabType));
+            return new CommandResult("All the " + state + "issues are listed");
         } catch (IllegalValueException ie) {
             throw new CommandException(MESSAGE_INVALID_STATE);
         } catch (IOException ie) {
             throw new CommandException(MESSAGE_INVALID_STATE);
+        } catch (CommandException ce) {
+            throw new CommandException(MESSAGE_VALIDATION_FAILURE);
         }
     }
 

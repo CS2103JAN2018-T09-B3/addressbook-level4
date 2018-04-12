@@ -228,7 +228,7 @@ public class ProgressChecker implements ReadOnlyProgressChecker {
     /**
      * Lists all the issues of the specified state
      */
-    public void listIssues(String state) throws IllegalValueException, IOException {
+    public void listIssues(String state) throws IllegalValueException, IOException, CommandException {
         requireNonNull(state);
         issues.listIssue(state);
     }

@@ -112,7 +112,7 @@ public class ModelManager extends ComponentManager implements Model {
     }
     
     @Override
-    public synchronized void listIssues(String state) throws IllegalValueException, IOException {
+    public synchronized void listIssues(String state) throws IllegalValueException, IOException, CommandException {
         progressChecker.listIssues(state);
         indicateProgressCheckerChanged();
     }
