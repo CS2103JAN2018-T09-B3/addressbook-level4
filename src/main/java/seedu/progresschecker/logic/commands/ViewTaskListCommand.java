@@ -48,13 +48,20 @@ public class ViewTaskListCommand extends Command {
     public static final String TASK_TAB = "task";
     public static final int MAX_TITLE_LENGTH = 49;
     public static final int MAX_WEEK = 13;
+    public static final int ALL_WEEK = 0;
+    public static final int COMPULSORY = -13; // parser returns -13 for compulsory tasks
+    public static final int SUBMISSION = -20; // parser returns -10 for tasks need submission
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             // TODO: change description and parameter range when appropriate
-            + ": View tasks in the default task list, filtered to show only tasks at the input week.\n"
-            + "Parameters: WEEK (must be an integer ranging from 1 to 13, or an asterisk (*) "
-            + "which means all weeks\n"
-            + "Example: " + COMMAND_WORD + "3";
+            + ": View tasks in the default task list, filtered to show only tasks at the input week or the"
+            + " input category. Only ONE filter keyword is allowed.\n"
+            + "Parameters: FILTER_KEYWORD (filter by week: must be an integer ranging from 1 to 13, or an asterisk (*)"
+            + " which means all weeks\n"
+            + "                            filter by category: \"compulsory\" or \"com\" means compulsory. "
+            + "\"submission\" or \"sub\" means to get the task that needs submission."
+            + "Example: " + COMMAND_WORD + "3\n"
+            + "Example: " + COMMAND_WORD + "sub";
 
     public static final String MESSAGE_SUCCESS = "Viewing task list: %1$s";
 
@@ -71,8 +78,14 @@ public class ViewTaskListCommand extends Command {
         if (targetWeek > 0) {
             return new CommandResult(String.format(MESSAGE_SUCCESS,
                     DEFAULT_LIST_TITLE + "  Week: " + targetWeek));
-        } else {
+        } else if (targetWeek == ALL_WEEK) {
             return new CommandResult(String.format(MESSAGE_SUCCESS, DEFAULT_LIST_TITLE));
+        } else if (targetWeek == COMPULSORY) {
+            return new CommandResult(String.format(MESSAGE_SUCCESS,
+                    DEFAULT_LIST_TITLE + "  [Compulsory]"));
+        } else {
+            return new CommandResult(String.format(MESSAGE_SUCCESS,
+                    DEFAULT_LIST_TITLE + "  [Submission]"));
         }
     }
 
@@ -93,11 +106,29 @@ public class ViewTaskListCommand extends Command {
                 }
                 count++;
             }
-        } else {
+        } else if (targetWeek == ALL_WEEK) {
             filteredList = list;
             int size = list.size();
             for (int i = 1; i <= size; i++) {
                 indexList.add(i);
+            }
+        } else if (targetWeek == COMPULSORY) {
+            int count = 1;
+            for (Task task : list) {
+                if (task.getTitle().contains("[Compulsory]")) {
+                    filteredList.add(task);
+                    indexList.add(count);
+                }
+                count++;
+            }
+        } else {
+            int count = 1;
+            for (Task task : list) {
+                if (task.getTitle().contains("[Submission]")) {
+                    filteredList.add(task);
+                    indexList.add(count);
+                }
+                count++;
             }
         }
 
@@ -165,6 +196,12 @@ public class ViewTaskListCommand extends Command {
             if (targetWeek > 0) {
                 out.print("<h2 style=\"font-family:verdana; color:white\">"
                         + DEFAULT_LIST_TITLE + "  Week: " + targetWeek + "</h2>\n<br>\n");
+            } else if (targetWeek == COMPULSORY) {
+                out.print("<h2 style=\"font-family:verdana; color:white\">"
+                        + DEFAULT_LIST_TITLE + "  [Compulsory]" + "</h2>\n<br>\n");
+            } else if (targetWeek == SUBMISSION) {
+                out.print("<h2 style=\"font-family:verdana; color:white\">"
+                        + DEFAULT_LIST_TITLE + "  [Submission]" + "</h2>\n<br>\n");
             } else {
                 out.print("<h2 style=\"font-family:verdana; color:white\">"
                         + DEFAULT_LIST_TITLE + "</h2>\n<br>\n");
@@ -276,7 +313,17 @@ public class ViewTaskListCommand extends Command {
                     + "</head>\n"
                     + "<body  style=\"background-color:grey;\">\n"
                     + "<div class=\"container\">\n"
-                    + "    <h2 style = \"font-size: x-large; color: white;\">Your Progress: "
+                    + "    <h2 style = \"font-size: x-large; color: white;\">Your Progress");
+
+            if (targetWeek > 0) {
+                out.print("(Week" + targetWeek + ")");
+            } else if (targetWeek == COMPULSORY) {
+                out.print("([Compulsory])");
+            } else if (targetWeek == SUBMISSION) {
+                out.print("([Submission])");
+            }
+
+            out.print(": "
                     + percentage + "%</h2>\n"
                     + "    <br>\n"
                     + "    <div class=\"progress\">\n"
