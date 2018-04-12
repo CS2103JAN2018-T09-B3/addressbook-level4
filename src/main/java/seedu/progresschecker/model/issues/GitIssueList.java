@@ -21,6 +21,7 @@ import org.kohsuke.github.GitHub;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.progresschecker.commons.core.index.Index;
+import seedu.progresschecker.commons.exceptions.IllegalValueException;
 import seedu.progresschecker.commons.util.CollectionUtil;
 import seedu.progresschecker.logic.commands.exceptions.CommandException;
 import seedu.progresschecker.model.credentials.GitDetails;
@@ -46,6 +47,7 @@ public class GitIssueList implements Iterable<Issue> {
     private GHIssueBuilder issueBuilder;
     private GHIssue issue;
     private GHIssue toEdit;
+    private GHIssueState issueState;
 
     /**
      * Initialises github credentials
@@ -86,7 +88,7 @@ public class GitIssueList implements Iterable<Issue> {
      */
     private void updateInternalList() throws IOException {
         internalList.remove(0, internalList.size());
-        List<GHIssue> gitIssues = repository.getIssues(GHIssueState.OPEN);
+        List<GHIssue> gitIssues = repository.getIssues(issueState);
         for (GHIssue issueOnGit : gitIssues) {
             Issue toBeAdded = convertToIssue(issueOnGit);
             internalList.add(toBeAdded);
@@ -221,6 +223,18 @@ public class GitIssueList implements Iterable<Issue> {
         }
     }
 
+    /**
+     * 
+     */
+    public void listIssue(String state) throws IllegalValueException, IOException {
+        if (state.equalsIgnoreCase("OPEN")) {
+            issueState = GHIssueState.OPEN;
+        } else if(state.equalsIgnoreCase("CLOSE")) {
+            issueState = GHIssueState.OPEN;
+        }
+        updateInternalList();
+            
+    }
     /**
      * Replaces the person {@code target} in the list with {@code editedPerson}.
      *

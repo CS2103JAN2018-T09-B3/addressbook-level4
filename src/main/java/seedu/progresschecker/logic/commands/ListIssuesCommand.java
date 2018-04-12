@@ -1,5 +1,7 @@
 package seedu.progresschecker.logic.commands;
 
+import java.io.IOException;
+
 import seedu.progresschecker.commons.exceptions.IllegalValueException;
 import seedu.progresschecker.logic.commands.exceptions.CommandException;
 import seedu.progresschecker.model.person.NameContainsKeywordsPredicate;
@@ -32,6 +34,8 @@ public class ListIssuesCommand extends Command {
             model.listIssues(state);
             return new CommandResult(getMessageForPersonListShownSummary(model.getFilteredPersonList().size()));
         } catch (IllegalValueException ie) {
+            throw new CommandException(MESSAGE_INVALID_STATE);
+        } catch (IOException ie) {
             throw new CommandException(MESSAGE_INVALID_STATE);
         }
     }

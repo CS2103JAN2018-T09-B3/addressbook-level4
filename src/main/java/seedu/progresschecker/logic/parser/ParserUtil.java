@@ -347,6 +347,16 @@ public class ParserUtil {
         requireNonNull(repository);
         return repository.isPresent() ? Optional.of(parseRepository(repository.get())) : Optional.empty();
     }
+
+    /**
+     * Parses a {@code String state} into a trimmed string.
+     * Leading and trailing whitespaces will be trimmed.
+     */
+    public static String parseStateType(String state) throws IllegalValueException{
+        requireNonNull(state);
+        String trimmedState = state.trim();
+        return trimmedState;
+    }
     //@@author
 
     //@@author EdwardKSG
