@@ -256,6 +256,7 @@ public class GitIssueList implements Iterable<Issue> {
         ArrayList<GHUser> listOfUsers = new ArrayList<>();
         ArrayList<String> listOfLabels = new ArrayList<>();
         MilestoneMap obj = new MilestoneMap();
+        obj.setRepository(getRepository());
         HashMap<String, GHMilestone> milestoneMap = obj.getMilestoneMap();
 
         for (Assignees assignee : assigneesList) {
@@ -273,7 +274,10 @@ public class GitIssueList implements Iterable<Issue> {
         toEdit.setTitle(editedIssue.getTitle().toString());
         toEdit.setBody(editedIssue.getBody().toString());
         toEdit.setAssignees(listOfUsers);
-        toEdit.setLabels(listOfLabels.toArray(new String[0]));
+        if (listOfLabels.size() != 0) {
+            toEdit.setLabels(listOfLabels.toArray(new String[0]));
+        }
+        updateInternalList();
 
     }
 
