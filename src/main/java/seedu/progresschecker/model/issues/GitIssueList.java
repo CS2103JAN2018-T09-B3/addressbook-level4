@@ -227,12 +227,12 @@ public class GitIssueList implements Iterable<Issue> {
      * Updates the GHIssueState according to mentioned state and updates the list
      */
     public void listIssue(String state) throws IllegalValueException, IOException, CommandException {
-        if(github == null) {
+        if (github == null) {
             throw new CommandException("");
         }
         else if (state.equalsIgnoreCase("OPEN")) {
             issueState = GHIssueState.OPEN;
-        } else if(state.equalsIgnoreCase("CLOSE")) {
+        } else if (state.equalsIgnoreCase("CLOSE")) {
             issueState = GHIssueState.CLOSED;
         } else {
             throw new IllegalValueException("Enter correct state");

@@ -4,7 +4,6 @@ import static seedu.progresschecker.commons.core.Messages.MESSAGE_INVALID_COMMAN
 
 import seedu.progresschecker.commons.exceptions.IllegalValueException;
 import seedu.progresschecker.logic.commands.ListIssuesCommand;
-import seedu.progresschecker.logic.commands.ViewCommand;
 import seedu.progresschecker.logic.parser.exceptions.ParseException;
 
 /**

@@ -177,7 +177,7 @@ public class ProgressCheckerParser {
         case GitLogoutCommand.COMMAND_WORD:
         case GitLogoutCommand.COMMAND_ALIAS:
             return new GitLogoutCommand();
-        
+
         case ListIssuesCommand.COMMAND_WORD:
         case ListIssuesCommand.COMMAND_ALIAS:
             return new ListIssuesCommandParser().parse(arguments);

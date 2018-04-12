@@ -110,7 +110,7 @@ public class ModelManager extends ComponentManager implements Model {
         progressChecker.logoutGithub();
         indicateProgressCheckerChanged();
     }
-    
+
     @Override
     public synchronized void listIssues(String state) throws IllegalValueException, IOException, CommandException {
         progressChecker.listIssues(state);

@@ -6,7 +6,6 @@ import seedu.progresschecker.commons.core.EventsCenter;
 import seedu.progresschecker.commons.events.ui.TabLoadChangedEvent;
 import seedu.progresschecker.commons.exceptions.IllegalValueException;
 import seedu.progresschecker.logic.commands.exceptions.CommandException;
-import seedu.progresschecker.model.person.NameContainsKeywordsPredicate;
 
 /**
  * Finds and lists all persons in ProgressChecker whose name contains any of the argument keywords.
@@ -25,7 +24,7 @@ public class ListIssuesCommand extends Command {
     private static final String MESSAGE_INVALID_STATE = "Please enter correct issue state";
     private static final String MESSAGE_VALIDATION_FAILURE = "Please log into github first";
     private static final String tabType = "issues";
-    
+
     private static String state;
 
     public ListIssuesCommand(String state) {

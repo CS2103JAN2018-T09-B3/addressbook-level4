@@ -352,7 +352,7 @@ public class ParserUtil {
      * Parses a {@code String state} into a trimmed string.
      * Leading and trailing whitespaces will be trimmed.
      */
-    public static String parseStateType(String state) throws IllegalValueException{
+    public static String parseStateType(String state) throws IllegalValueException {
         requireNonNull(state);
         String trimmedState = state.trim();
         return trimmedState;

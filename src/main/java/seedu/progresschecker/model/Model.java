@@ -57,7 +57,7 @@ public interface Model {
 
     /** closes an issue issue on github */
     void closeIssueOnGithub(Index index) throws IOException, CommandException;
-    
+
     /**viwes issues of the specified state */
     void listIssues(String state) throws IllegalValueException, IOException, CommandException;
 
