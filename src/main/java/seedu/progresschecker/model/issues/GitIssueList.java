@@ -229,10 +229,9 @@ public class GitIssueList implements Iterable<Issue> {
     public void listIssue(String state) throws IllegalValueException, IOException, CommandException {
         if (github == null) {
             throw new CommandException("");
-        }
-        else if (state.equalsIgnoreCase("OPEN")) {
+        } else if (state.equalsIgnoreCase("OPEN")) {
             issueState = GHIssueState.OPEN;
-        } else if (state.equalsIgnoreCase("CLOSE")) {
+        } else if (state.equalsIgnoreCase("CLOSED")) {
             issueState = GHIssueState.CLOSED;
         } else {
             throw new IllegalValueException("Enter correct state");

@@ -7,9 +7,10 @@ import seedu.progresschecker.commons.events.ui.TabLoadChangedEvent;
 import seedu.progresschecker.commons.exceptions.IllegalValueException;
 import seedu.progresschecker.logic.commands.exceptions.CommandException;
 
+//@@author adityaa1998
 /**
- * Finds and lists all persons in ProgressChecker whose name contains any of the argument keywords.
- * Keyword matching is case sensitive.
+ * Finds and lists all issues from github with the specified state in the argument.
+ * Keyword matching is case insensitive.
  */
 public class ListIssuesCommand extends Command {
 
@@ -24,6 +25,7 @@ public class ListIssuesCommand extends Command {
     private static final String MESSAGE_INVALID_STATE = "Please enter correct issue state";
     private static final String MESSAGE_VALIDATION_FAILURE = "Please log into github first";
     private static final String tabType = "issues";
+    private static final String MESSAGE_SUCCESS = "All the %s issues are being viewed";
 
     private static String state;
 
@@ -36,7 +38,7 @@ public class ListIssuesCommand extends Command {
         try {
             model.listIssues(state);
             EventsCenter.getInstance().post(new TabLoadChangedEvent(tabType));
-            return new CommandResult("All the " + state + "issues are listed");
+            return new CommandResult(String.format(MESSAGE_SUCCESS, state));
         } catch (IllegalValueException ie) {
             throw new CommandException(MESSAGE_INVALID_STATE);
         } catch (IOException ie) {

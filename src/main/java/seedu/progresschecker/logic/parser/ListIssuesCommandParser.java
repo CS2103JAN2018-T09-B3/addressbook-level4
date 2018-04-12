@@ -6,14 +6,15 @@ import seedu.progresschecker.commons.exceptions.IllegalValueException;
 import seedu.progresschecker.logic.commands.ListIssuesCommand;
 import seedu.progresschecker.logic.parser.exceptions.ParseException;
 
+//@@author adityaa1998
 /**
  * Parses input arguments and creates a new ListIssuesCommand object
  */
 public class ListIssuesCommandParser implements Parser<ListIssuesCommand> {
 
     /**
-     * Parses the given {@code String} of arguments in the context of the ViewCommand
-     * and returns an ViewCommand object for execution.
+     * Parses the given {@code String} of arguments in the context of the ListIssueCommand
+     * and returns an ListIssueCommand object for execution.
      * @throws ParseException if the user input does not conform the expected format
      */
     public ListIssuesCommand parse(String args) throws ParseException {
