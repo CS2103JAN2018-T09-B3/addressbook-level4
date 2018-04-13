@@ -19,13 +19,16 @@ import java.util.List;
 
 import com.google.api.services.tasks.model.Task;
 
+import java.util.logging.Logger;
 import seedu.progresschecker.commons.core.EventsCenter;
+import seedu.progresschecker.commons.core.LogsCenter;
 import seedu.progresschecker.commons.events.ui.LoadBarEvent;
 import seedu.progresschecker.commons.events.ui.LoadTaskEvent;
 import seedu.progresschecker.commons.events.ui.TabLoadChangedEvent;
 import seedu.progresschecker.commons.util.FileUtil;
 import seedu.progresschecker.logic.commands.exceptions.CommandException;
 import seedu.progresschecker.model.task.TaskListUtil;
+import seedu.progresschecker.ui.CommandBox;
 
 //@@author EdwardKSG
 /**
@@ -53,6 +56,8 @@ public class ViewTaskListCommand extends Command {
     public static final int SUBMISSION = -20; // parser returns -10 for tasks need submission
     public static final String COMPULSORY_STR = "  [Compulsory]";
     public static final String SUBMISSION_STR = "  [Submission]";
+
+    private final Logger logger = LogsCenter.getLogger(CommandBox.class);
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             // TODO: change description and parameter range when appropriate
@@ -151,6 +156,7 @@ public class ViewTaskListCommand extends Command {
             EventsCenter.getInstance().post(new LoadTaskEvent(readFile(htmlFile.getAbsolutePath(),
                     StandardCharsets.UTF_8)));
         } catch (IOException ioe) {
+            logger.info(FILE_FAILURE);
             throw new CommandException(FILE_FAILURE);
         }
     }
@@ -279,6 +285,7 @@ public class ViewTaskListCommand extends Command {
             return progressInt;
 
         } catch (IOException e) {
+            logger.info(FILE_FAILURE);
             throw new CommandException(FILE_FAILURE);
 
         }
@@ -347,6 +354,7 @@ public class ViewTaskListCommand extends Command {
             out.close();
 
         } catch (IOException e) {
+            logger.info(FILE_FAILURE);
             throw new CommandException(BAR_FAILURE);
 
         }
@@ -384,7 +392,8 @@ public class ViewTaskListCommand extends Command {
             out.close();
 
         } catch (IOException e) {
-            throw new CommandException(BAR_FAILURE);
+            logger.info(FILE_FAILURE);
+            throw new CommandException(FILE_FAILURE);
 
         }
     }

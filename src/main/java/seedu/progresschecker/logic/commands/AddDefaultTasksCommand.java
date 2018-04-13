@@ -7,12 +7,11 @@ import static seedu.progresschecker.model.task.TaskListUtil.copyTaskList;
 import static seedu.progresschecker.model.task.TaskListUtil.createTaskList;
 import static seedu.progresschecker.model.task.TaskListUtil.setTaskListTitle;
 import static seedu.progresschecker.model.task.TaskUtil.createTask;
-
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import static seedu.progresschecker.storage.DefaultTasks.getDefaultTasks;
+import static seedu.progresschecker.storage.TestTasks.getTestTasks;
 
 import seedu.progresschecker.logic.commands.exceptions.CommandException;
+import seedu.progresschecker.model.task.SimplifiedTask;
 
 //@@author EdwardKSG
 /**
@@ -57,29 +56,19 @@ public class AddDefaultTasksCommand extends Command {
             copyTaskList(FIRST_LIST_TITLE, DEFAULT_LIST_ID);
             clearTaskList(DEFAULT_LIST_ID);
 
-            InputStream in;
+            SimplifiedTask[] tasklist;
             if (!listTitle.equals(DEFAULT_LIST_TITLE)) {
-                in = AddDefaultTasksCommand.class.getResourceAsStream(TEST_FILE);
+                tasklist = getTestTasks();
             } else {
-                in = AddDefaultTasksCommand.class.getResourceAsStream(SOURCE_FILE);
-            }
-            BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-
-            String line;
-            while ((line = reader.readLine()) != null) {
-                String title = line;
-
-                if (title.equals((""))) {
-                    break;
-                } else {
-                    String notes = reader.readLine();
-                    String due = reader.readLine();
-                    createTask(title, DEFAULT_LIST_ID, notes, due);
-                }
+                tasklist = getDefaultTasks();
             }
 
-            reader.close();
-            in.close();
+            for (SimplifiedTask task: tasklist) {
+                createTask(task.getTitle(),
+                        DEFAULT_LIST_ID,
+                        task.getNotes(),
+                        task.getDue());
+            }
 
             return new CommandResult(String.format(MESSAGE_SUCCESS, listTitle));
         } catch (CommandException ce) {
