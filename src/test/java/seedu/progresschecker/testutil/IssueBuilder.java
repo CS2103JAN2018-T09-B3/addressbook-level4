@@ -83,7 +83,7 @@ public class IssueBuilder {
     /**
      * Parses the {@code labels} into a {@code List<Labels>} and set it to the {@code Issues} that we are building.
      */
-    public IssueBuilder withLables(String... labels) {
+    public IssueBuilder withLabels(String... labels) {
         this.labels = SampleDataUtil.getLabelsList(labels);
         return this;
     }
