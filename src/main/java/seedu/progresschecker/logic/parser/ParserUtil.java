@@ -200,6 +200,9 @@ public class ParserUtil {
     public static Title parseTitle(String title) throws IllegalValueException {
         requireNonNull(title);
         String trimmedTitle = title.trim();
+        if (!Title.isValidTitle(trimmedTitle)) {
+            throw new IllegalValueException(Title.MESSAGE_TITLE_CONSTRAINTS);
+        }
         return new Title(trimmedTitle);
     }
 
@@ -217,9 +220,12 @@ public class ParserUtil {
      * Leading and trailing whitespaces will be trimmed.
      */
 
-    public static Assignees parseAssignees(String assignees) {
+    public static Assignees parseAssignees(String assignees) throws IllegalValueException {
         requireNonNull(assignees);
         String trimmedAssignees = assignees.trim();
+        if (!Assignees.isValidAssignee(trimmedAssignees)) {
+            throw new IllegalValueException(Assignees.MESSAGE_ASSIGNEES_CONSTRAINTS);
+        }
         return new Assignees(trimmedAssignees);
     }
 
@@ -240,9 +246,12 @@ public class ParserUtil {
      * Leading and trailing whitespaces will be trimmed.
      */
 
-    public static Labels parseLabels(String labels) {
+    public static Labels parseLabels(String labels) throws IllegalValueException {
         requireNonNull(labels);
         String trimmedLabels = labels.trim();
+        if (!Labels.isValidLabel(trimmedLabels)) {
+            throw new IllegalValueException(Labels.MESSAGE_LABEL_CONSTRAINTS);
+        }
         return new Labels(trimmedLabels);
     }
 
@@ -286,9 +295,12 @@ public class ParserUtil {
      * Leading and trailing whitespaces will be trimmed.
      */
 
-    public static Body parseBody(String body) {
+    public static Body parseBody(String body) throws IllegalValueException{
         requireNonNull(body);
         String trimmedBody = body.trim();
+        if (!Body.isValidBody(trimmedBody)) {
+            throw new IllegalValueException(Body.MESSAGE_BODY_CONSTRAINTS);
+        }
         return new Body(trimmedBody);
     }
 

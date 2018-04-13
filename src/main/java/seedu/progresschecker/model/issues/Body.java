@@ -10,6 +10,9 @@ public class Body {
 
     public final String fullBody;
 
+    public static final String MESSAGE_BODY_CONSTRAINTS =
+            "Issue should only contain non-null body";
+
     /**
      * Constructs a {@code Body}.
      *

@@ -5,10 +5,16 @@ import static seedu.progresschecker.logic.commands.CommandTestUtil.ASSIGNEE_DESC
 import static seedu.progresschecker.logic.commands.CommandTestUtil.ASSIGNEE_DESC_BOB;
 import static seedu.progresschecker.logic.commands.CommandTestUtil.BODY_DESC_ONE;
 import static seedu.progresschecker.logic.commands.CommandTestUtil.BODY_DESC_TWO;
+import static seedu.progresschecker.logic.commands.CommandTestUtil.INVALID_ASSIGNEE_DESC;
+import static seedu.progresschecker.logic.commands.CommandTestUtil.INVALID_BODY_DESC;
+import static seedu.progresschecker.logic.commands.CommandTestUtil.INVALID_LABEL_DESC;
+import static seedu.progresschecker.logic.commands.CommandTestUtil.INVALID_TITLE_DESC;
 import static seedu.progresschecker.logic.commands.CommandTestUtil.LABEL_DEC_STORY;
 import static seedu.progresschecker.logic.commands.CommandTestUtil.LABEL_DEC_TASK;
 import static seedu.progresschecker.logic.commands.CommandTestUtil.MILESTONE_DESC_ONE;
 import static seedu.progresschecker.logic.commands.CommandTestUtil.MILESTONE_DESC_TWO;
+import static seedu.progresschecker.logic.commands.CommandTestUtil.NAME_DESC_BOB;
+import static seedu.progresschecker.logic.commands.CommandTestUtil.PREAMBLE_NON_EMPTY;
 import static seedu.progresschecker.logic.commands.CommandTestUtil.PREAMBLE_WHITESPACE;
 import static seedu.progresschecker.logic.commands.CommandTestUtil.TITLE_DESC_ONE;
 import static seedu.progresschecker.logic.commands.CommandTestUtil.TITLE_DESC_TWO;
@@ -24,9 +30,11 @@ import static seedu.progresschecker.logic.parser.CommandParserTestUtil.assertPar
 
 import org.junit.Test;
 
-import seedu.progresschecker.logic.commands.AddCommand;
 import seedu.progresschecker.logic.commands.CreateIssueCommand;
+import seedu.progresschecker.model.issues.Assignees;
 import seedu.progresschecker.model.issues.Issue;
+import seedu.progresschecker.model.issues.Labels;
+import seedu.progresschecker.model.issues.Title;
 import seedu.progresschecker.testutil.IssueBuilder;
 
 public class CreateIssueCommandParserTest {
@@ -131,7 +139,34 @@ public class CreateIssueCommandParserTest {
                 expectedMessage);
 
     }
-    
-    
+
+    @Test
+    public void parse_invalidValue_failure() {
+        // invalid title
+        assertParseFailure(parser, INVALID_TITLE_DESC + BODY_DESC_ONE + ASSIGNEE_DESC_AMY + MILESTONE_DESC_ONE
+                        + LABEL_DEC_STORY,
+                Title.MESSAGE_TITLE_CONSTRAINTS);
+        
+        // invalid assignee
+        assertParseFailure(parser, TITLE_DESC_ONE + BODY_DESC_ONE + INVALID_ASSIGNEE_DESC + MILESTONE_DESC_ONE
+                        + LABEL_DEC_STORY,
+                Assignees.MESSAGE_ASSIGNEES_CONSTRAINTS);
+        
+        // invalid tag
+        assertParseFailure(parser, TITLE_DESC_ONE + BODY_DESC_ONE + ASSIGNEE_DESC_AMY + MILESTONE_DESC_ONE
+                        + INVALID_LABEL_DESC,
+                Labels.MESSAGE_LABEL_CONSTRAINTS);
+
+        // two invalid values, only first invalid value reported
+        assertParseFailure(parser, INVALID_TITLE_DESC + INVALID_BODY_DESC + ASSIGNEE_DESC_AMY + MILESTONE_DESC_ONE
+                        + LABEL_DEC_STORY,
+                Title.MESSAGE_TITLE_CONSTRAINTS);
+
+        // non-empty preamble
+        assertParseFailure(parser, PREAMBLE_NON_EMPTY + NAME_DESC_BOB + BODY_DESC_ONE + ASSIGNEE_DESC_AMY
+                        + MILESTONE_DESC_ONE + LABEL_DEC_STORY,
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, CreateIssueCommand.MESSAGE_USAGE));
+    }
+
 
 }
