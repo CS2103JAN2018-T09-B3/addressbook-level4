@@ -16,10 +16,10 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.logging.Logger;
 
 import com.google.api.services.tasks.model.Task;
 
-import java.util.logging.Logger;
 import seedu.progresschecker.commons.core.EventsCenter;
 import seedu.progresschecker.commons.core.LogsCenter;
 import seedu.progresschecker.commons.events.ui.LoadBarEvent;
@@ -57,8 +57,6 @@ public class ViewTaskListCommand extends Command {
     public static final String COMPULSORY_STR = "  [Compulsory]";
     public static final String SUBMISSION_STR = "  [Submission]";
 
-    private final Logger logger = LogsCenter.getLogger(CommandBox.class);
-
     public static final String MESSAGE_USAGE = COMMAND_WORD
             // TODO: change description and parameter range when appropriate
             + ": View tasks in the default task list, filtered to show only tasks at the input week or the"
@@ -74,6 +72,8 @@ public class ViewTaskListCommand extends Command {
 
     // when the value of it is -13 or -20, it means the command is filtering compulsory or needsSubmission tasks
     private final int targetWeek;
+
+    private final Logger logger = LogsCenter.getLogger(CommandBox.class);
 
     public ViewTaskListCommand(int targetWeek) {
         this.targetWeek = targetWeek;
