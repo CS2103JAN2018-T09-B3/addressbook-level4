@@ -47,10 +47,10 @@ public class HelpCommandSystemTest extends ProgressCheckerSystemTest {
         getMainMenu().openHelpWindowUsingAccelerator();
         assertHelpWindowNotOpen();
 
-        //use menu button	
+        //use menu button
         getMainMenu().openHelpWindowUsingMenu();
         assertHelpWindowOpen();
-        
+
         //use command box
         executeCommand(HelpCommand.COMMAND_WORD);
         assertHelpWindowOpen();
