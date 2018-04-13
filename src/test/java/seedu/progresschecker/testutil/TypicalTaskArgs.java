@@ -5,6 +5,8 @@ package seedu.progresschecker.testutil;
  * A utility class containing a list of arguments to be used in tests for tasks commands.
  */
 public class TypicalTaskArgs {
+    // User input
+
     // week number arguments
     public static final String FIRST_WEEK = "1";
     public static final int FIRST_WEEK_INT = 1;
@@ -38,6 +40,10 @@ public class TypicalTaskArgs {
     public static final String INVALID_CHARSET = "comppp";
     public static final String INVALID_TITLE = "ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss"
             + "ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss"; // exceeds length limit
-
     public static final String INVALID_MULTIPLE_ARGS = "compulsory 4 2";
+
+    //-----------------------------------------------------------------------------------------------------
+
+    // Parser output (command input)
+
 }
