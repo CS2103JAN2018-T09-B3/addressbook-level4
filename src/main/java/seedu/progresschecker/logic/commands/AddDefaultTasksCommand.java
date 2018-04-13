@@ -1,6 +1,5 @@
 package seedu.progresschecker.logic.commands;
 
-import static java.lang.Thread.sleep;
 import static java.util.Objects.requireNonNull;
 
 import static seedu.progresschecker.model.task.TaskListUtil.clearTaskList;
@@ -8,7 +7,6 @@ import static seedu.progresschecker.model.task.TaskListUtil.copyTaskList;
 import static seedu.progresschecker.model.task.TaskListUtil.createTaskList;
 import static seedu.progresschecker.model.task.TaskListUtil.setTaskListTitle;
 import static seedu.progresschecker.model.task.TaskUtil.addMultipleTask;
-import static seedu.progresschecker.model.task.TaskUtil.createTask;
 import static seedu.progresschecker.storage.DefaultTasks.getDefaultTasks;
 import static seedu.progresschecker.storage.TestTasks.getTestTasks;
 
