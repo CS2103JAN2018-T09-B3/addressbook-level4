@@ -14,7 +14,7 @@ import org.junit.Test;
  * This test may take a long time to execute, roughly 20s.
  */
 public class AddDefaultTasksCommandTest {
-
+    public static final String TEST_TITLE = "testTitle";
     @Test
     public void execute_commandEquals() throws Exception {
         AddDefaultTasksCommand completeTaskCommand = new AddDefaultTasksCommand(DEFAULT_LIST_TITLE);
@@ -35,7 +35,7 @@ public class AddDefaultTasksCommandTest {
     Current solution: have a special fixed test data file which is small. */
     @Test
     public void execute_success() throws Exception {
-        AddDefaultTasksCommand addDefaultTasksCommand = new AddDefaultTasksCommand(DEFAULT_LIST_TITLE);
+        AddDefaultTasksCommand addDefaultTasksCommand = new AddDefaultTasksCommand(TEST_TITLE);
 
         String expected = String.format(MESSAGE_SUCCESS, DEFAULT_LIST_TITLE);
         String actual = addDefaultTasksCommand.execute().feedbackToUser;
