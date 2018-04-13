@@ -65,6 +65,7 @@ public class ViewTaskListCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "Viewing task list: %1$s";
 
+    // when the value of it is -13 or -20, it means the command is filtering compulsory or needsSubmission tasks
     private final int targetWeek;
 
     public ViewTaskListCommand(int targetWeek) {
@@ -411,5 +412,12 @@ public class ViewTaskListCommand extends Command {
         } catch (Exception e) {
             return null;
         }
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        return other == this // short circuit if same object
+                || (other instanceof ViewTaskListCommand // instanceof handles nulls
+                && targetWeek == (((ViewTaskListCommand) other).targetWeek));
     }
 }
