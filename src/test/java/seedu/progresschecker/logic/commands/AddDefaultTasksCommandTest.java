@@ -1,9 +1,7 @@
 package seedu.progresschecker.logic.commands;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static seedu.progresschecker.logic.commands.AddDefaultTasksCommand.MESSAGE_SUCCESS;
 import static seedu.progresschecker.testutil.TypicalTaskArgs.DEFAULT_LIST_TITLE;
 
 import org.junit.Test;
