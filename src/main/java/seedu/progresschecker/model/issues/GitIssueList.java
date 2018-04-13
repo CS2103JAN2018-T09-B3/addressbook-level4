@@ -237,6 +237,7 @@ public class GitIssueList implements Iterable<Issue> {
         ArrayList<GHUser> listOfUsers = new ArrayList<>();
         ArrayList<String> listOfLabels = new ArrayList<>();
         MilestoneMap obj = new MilestoneMap();
+        obj.setRepository(repository);
         HashMap<String, GHMilestone> milestoneMap = obj.getMilestoneMap();
 
         for (Assignees assignee : assigneesList) {

@@ -20,6 +20,13 @@ public class Body {
         this.fullBody = body;
     }
 
+    /**
+     * Returns true if a given string is a valid github body.
+     */
+    public static boolean isValidBody(String test) {
+        return (test != null) ? true : false;
+    }
+
     @Override
     public String toString() {
         return fullBody;
