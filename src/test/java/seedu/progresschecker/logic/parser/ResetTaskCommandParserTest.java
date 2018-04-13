@@ -19,23 +19,23 @@ public class ResetTaskCommandParserTest {
     private ResetTaskCommandParser parser = new ResetTaskCommandParser();
 
     @Test
-    public void parse_validArgs_returnsResetTaskCommand() {
+    public void parse_validArgsFirstTask_returnsResetTaskCommand() {
         assertParseSuccess(parser, INDEX_FIRST_TASK, new ResetTaskCommand(INDEX_FIRST_TASK_INT));
     }
 
     @Test
-    public void parse_invalidArgs1_throwsParseException() {
+    public void parse_invalidArgsNegative_throwsParseException() {
         assertParseFailure(parser, INVALID_NEGATIVE, String.format(MESSAGE_INVALID_INDEX_OR_FORMAT,
                 ResetTaskCommand.MESSAGE_USAGE));
     }
 
     @Test
-    public void parse_invalidArgs2_throwsParseException() {
+    public void parse_invalidArgsZero_throwsParseException() {
         assertParseFailure(parser, INVALID_ZERO, String.format(MESSAGE_INVALID_INDEX_OR_FORMAT,
                 ResetTaskCommand.MESSAGE_USAGE));
     }
     @Test
-    public void parse_invalidArgs3_throwsParseException() {
+    public void parse_invalidArgsCharset_throwsParseException() {
         assertParseFailure(parser, INVALID_CHARSET, String.format(MESSAGE_INVALID_INDEX_OR_FORMAT,
                 ResetTaskCommand.MESSAGE_USAGE));
     }

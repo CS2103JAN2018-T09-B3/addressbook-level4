@@ -19,7 +19,8 @@ public class TypicalTaskArgs {
     // task index number arguments
     public static final String INDEX_FIRST_TASK = "1";
     public static final int INDEX_FIRST_TASK_INT = 1;
-    public static final String OUT_OF_BOUND_TASK_INDEX = "500";
+    public static final int INDEX_LAST_TASK_INT = 4; //specifically for the model being tested
+    public static final int OUT_OF_BOUND_TASK_INDEX_INT = 500;
 
     // valid char arguments
     public static final String COMPULSORY = "compulsory";

@@ -23,33 +23,33 @@ public class ViewTaskListCommandParserTest {
     private ViewTaskListCommandParser parser = new ViewTaskListCommandParser();
 
     @Test
-    public void parse_validArgs1_returnsViewTaskListCommand() {
+    public void parse_validArgsFirstWeek_returnsViewTaskListCommand() {
         assertParseSuccess(parser, FIRST_WEEK, new ViewTaskListCommand(FIRST_WEEK_INT));
     }
 
     @Test
-    public void parse_validArgs2_returnsViewTaskListCommand() {
+    public void parse_validArgsCompulsory_returnsViewTaskListCommand() {
         assertParseSuccess(parser, COMPULSORY, new ViewTaskListCommand(COM_INT));
     }
 
     @Test
-    public void parse_validArgs3_returnsViewTaskListCommand() {
+    public void parse_validArgsSubmission_returnsViewTaskListCommand() {
         assertParseSuccess(parser, SUBMISSION, new ViewTaskListCommand(SUB_INT));
     }
 
     @Test
-    public void parse_invalidArgs1_throwsParseException() {
+    public void parse_invalidArgsNegative_throwsParseException() {
         assertParseFailure(parser, INVALID_NEGATIVE, String.format(MESSAGE_INVALID_TASK_FILTER,
                 ViewTaskListCommand.MESSAGE_USAGE));
     }
 
     @Test
-    public void parse_invalidArgs2_throwsParseException() {
+    public void parse_invalidArgsZero_throwsParseException() {
         assertParseFailure(parser, INVALID_ZERO, String.format(MESSAGE_INVALID_TASK_FILTER,
                 ViewTaskListCommand.MESSAGE_USAGE));
     }
     @Test
-    public void parse_invalidArgs3_throwsParseException() {
+    public void parse_invalidArgsCharset_throwsParseException() {
         assertParseFailure(parser, INVALID_CHARSET, String.format(MESSAGE_INVALID_TASK_FILTER,
                 ViewTaskListCommand.MESSAGE_USAGE));
     }

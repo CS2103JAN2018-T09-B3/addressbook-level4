@@ -19,24 +19,24 @@ public class GoToTaskUrlCommandParserTest {
     private GoToTaskUrlCommandParser parser = new GoToTaskUrlCommandParser();
 
     @Test
-    public void parse_validArgs_returnsGoToTaskUrlCommand() {
+    public void parse_validArgsFirstTask_returnsGoToTaskUrlCommand() {
         assertParseSuccess(parser, INDEX_FIRST_TASK, new GoToTaskUrlCommand(INDEX_FIRST_TASK_INT));
     }
 
     @Test
-    public void parse_invalidArgs1_throwsParseException() {
+    public void parse_invalidArgsNegative_throwsParseException() {
         assertParseFailure(parser, INVALID_NEGATIVE, String.format(MESSAGE_INVALID_INDEX_OR_FORMAT,
                 GoToTaskUrlCommand.MESSAGE_USAGE));
     }
 
     @Test
-    public void parse_invalidArgs2_throwsParseException() {
+    public void parse_invalidArgsZero_throwsParseException() {
         assertParseFailure(parser, INVALID_ZERO, String.format(MESSAGE_INVALID_INDEX_OR_FORMAT,
                 GoToTaskUrlCommand.MESSAGE_USAGE));
     }
 
     @Test
-    public void parse_invalidArgs3_throwsParseException() {
+    public void parse_invalidArgsCharset_throwsParseException() {
         assertParseFailure(parser, INVALID_CHARSET, String.format(MESSAGE_INVALID_INDEX_OR_FORMAT,
                 GoToTaskUrlCommand.MESSAGE_USAGE));
     }
