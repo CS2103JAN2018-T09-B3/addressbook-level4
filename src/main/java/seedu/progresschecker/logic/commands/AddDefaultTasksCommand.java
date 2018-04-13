@@ -24,6 +24,7 @@ public class AddDefaultTasksCommand extends Command {
     public static final String COMMAND_ALIAS = "nl"; // short for "new list"
     public static final String SOURCE_FILE_FOLDER = "/view";
     public static final String SOURCE_FILE = "/defaultTasks.txt";
+    public static final String TEST_FILE = "/testTasks.txt";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Creates a new task list. "
             + "Parameters: "
@@ -51,13 +52,17 @@ public class AddDefaultTasksCommand extends Command {
     @Override
     public CommandResult execute() throws CommandException {
         try {
-            setTaskListTitle(DEFAULT_LIST_ID, listTitle);
+            setTaskListTitle(DEFAULT_LIST_ID, DEFAULT_LIST_TITLE);
             createTaskList(FIRST_LIST_TITLE);
             copyTaskList(FIRST_LIST_TITLE, DEFAULT_LIST_ID);
             clearTaskList(DEFAULT_LIST_ID);
 
-            InputStream in =
-                    AddDefaultTasksCommand.class.getResourceAsStream(SOURCE_FILE);
+            InputStream in;
+            if (!listTitle.equals(DEFAULT_LIST_TITLE)) {
+                in = AddDefaultTasksCommand.class.getResourceAsStream(TEST_FILE);
+            } else {
+                in = AddDefaultTasksCommand.class.getResourceAsStream(SOURCE_FILE);
+            }
             BufferedReader reader = new BufferedReader(new InputStreamReader(in));
 
             String line;

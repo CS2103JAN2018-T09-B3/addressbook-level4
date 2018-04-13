@@ -51,6 +51,8 @@ public class ViewTaskListCommand extends Command {
     public static final int ALL_WEEK = 0;
     public static final int COMPULSORY = -13; // parser returns -13 for compulsory tasks
     public static final int SUBMISSION = -20; // parser returns -10 for tasks need submission
+    public static final String COMPULSORY_STR = "  [Compulsory]";
+    public static final String SUBMISSION_STR = "  [Submission]";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             // TODO: change description and parameter range when appropriate
@@ -65,6 +67,7 @@ public class ViewTaskListCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "Viewing task list: %1$s";
 
+    // when the value of it is -13 or -20, it means the command is filtering compulsory or needsSubmission tasks
     private final int targetWeek;
 
     public ViewTaskListCommand(int targetWeek) {
@@ -82,10 +85,10 @@ public class ViewTaskListCommand extends Command {
             return new CommandResult(String.format(MESSAGE_SUCCESS, DEFAULT_LIST_TITLE));
         } else if (targetWeek == COMPULSORY) {
             return new CommandResult(String.format(MESSAGE_SUCCESS,
-                    DEFAULT_LIST_TITLE + "  [Compulsory]"));
+                    DEFAULT_LIST_TITLE + COMPULSORY_STR));
         } else {
             return new CommandResult(String.format(MESSAGE_SUCCESS,
-                    DEFAULT_LIST_TITLE + "  [Submission]"));
+                    DEFAULT_LIST_TITLE + SUBMISSION_STR));
         }
     }
 
@@ -107,10 +110,13 @@ public class ViewTaskListCommand extends Command {
                 count++;
             }
         } else if (targetWeek == ALL_WEEK) {
-            filteredList = list;
-            int size = list.size();
-            for (int i = 1; i <= size; i++) {
-                indexList.add(i);
+            int count = 1;
+            for (Task task : list) {
+                if (task.getTitle().contains("LO[W")) {
+                    filteredList.add(task);
+                    indexList.add(count);
+                }
+                count++;
             }
         } else if (targetWeek == COMPULSORY) {
             int count = 1;
@@ -411,5 +417,12 @@ public class ViewTaskListCommand extends Command {
         } catch (Exception e) {
             return null;
         }
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        return other == this // short circuit if same object
+                || (other instanceof ViewTaskListCommand // instanceof handles nulls
+                && targetWeek == (((ViewTaskListCommand) other).targetWeek));
     }
 }
