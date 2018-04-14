@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import seedu.progresschecker.testutil.Assert;
 
+//@@author adityaa1998
 public class RepositoryTest {
 
     @Test
@@ -22,21 +23,21 @@ public class RepositoryTest {
 
     @Test
     public void isValidRepository() {
-        // null name
+        // null repo
         Assert.assertThrows(NullPointerException.class, () -> Repository.isValidRepository(null));
 
-        // invalid name
+        // invalid repo
         assertFalse(Repository.isValidRepository("")); // empty string
         assertFalse(Repository.isValidRepository(" ")); // spaces only
         assertFalse(Repository.isValidRepository("^")); // only non-alphanumeric characters
-        assertFalse(Repository.isValidRepository("peter jack")); // alphabets only with spaces
-        assertFalse(Repository.isValidRepository("peter the 2nd")); // alphanumeric characters with spaces
+        assertFalse(Repository.isValidRepository("ca jacxvccxk")); // alphabets only with spaces
+        assertFalse(Repository.isValidRepository("adityaa the 2nd")); // alphanumeric characters with spaces
 
 
-        // valid name
+        // valid repo
         assertTrue(Repository.isValidRepository("12345")); // numbers only
         assertTrue(Repository.isValidRepository("github/repo-4")); // with capital letters
-        assertTrue(Repository.isValidRepository("peter*")); // contains non-alphanumeric characters
+        assertTrue(Repository.isValidRepository("git*")); // contains non-alphanumeric characters
 
     }
 }
