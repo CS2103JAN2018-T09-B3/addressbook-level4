@@ -6,6 +6,9 @@ import static org.junit.Assert.fail;
 import static seedu.progresschecker.logic.parser.CliSyntax.PREFIX_ASSIGNEES;
 import static seedu.progresschecker.logic.parser.CliSyntax.PREFIX_BODY;
 import static seedu.progresschecker.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.progresschecker.logic.parser.CliSyntax.PREFIX_GIT_PASSCODE;
+import static seedu.progresschecker.logic.parser.CliSyntax.PREFIX_GIT_REPO;
+import static seedu.progresschecker.logic.parser.CliSyntax.PREFIX_GIT_USERNAME;
 import static seedu.progresschecker.logic.parser.CliSyntax.PREFIX_LABEL;
 import static seedu.progresschecker.logic.parser.CliSyntax.PREFIX_MAJOR;
 import static seedu.progresschecker.logic.parser.CliSyntax.PREFIX_MILESTONE;
@@ -107,6 +110,20 @@ public class CommandTestUtil {
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
+
+    public static final String VALID_GITHUB_REPO_ONE = "adityaa1998/addressbook-level4";
+    public static final String VALID_GITHUB_REPO_TWO = "adityaa1998/samplerepo-pr-practice";
+    public static final String VALID_GITHUB_USERNAME_ONE = "anminkang";
+    public static final String VALID_GITHUB_USERNAME_TWO = "adityaa1998";
+    public static final String VALID_GITHUB_PASSCODE_ONE = "Github1";
+    public static final String VALID_GITHUB_PASSCODE_TWO = "Github2";
+
+    public static final String GITHUB_DESC_REPO_ONE = " " + PREFIX_GIT_REPO + VALID_GITHUB_REPO_ONE;
+    public static final String GITHUB_DESC_REPO_TWO = " " + PREFIX_GIT_REPO + VALID_GITHUB_REPO_TWO;
+    public static final String GITHUB_DESC_USERNAME_ONE = " " + PREFIX_GIT_USERNAME + VALID_GITHUB_USERNAME_ONE;
+    public static final String GITHUB_DESC_USERNAME_TWO = " " + PREFIX_GIT_USERNAME + VALID_GITHUB_USERNAME_TWO;
+    public static final String GITHUB_DESC_PASSCODE_ONE = " " + PREFIX_GIT_PASSCODE + VALID_GITHUB_PASSCODE_ONE;
+    public static final String GITHUB_DESC_PASSCODE_TWO = " " + PREFIX_GIT_PASSCODE + VALID_GITHUB_PASSCODE_TWO;
 
     public static final EditCommand.EditPersonDescriptor DESC_AMY;
     public static final EditCommand.EditPersonDescriptor DESC_BOB;
