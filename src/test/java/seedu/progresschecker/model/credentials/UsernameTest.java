@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import seedu.progresschecker.testutil.Assert;
 
+//@@author adityaa1998
 public class UsernameTest {
     @Test
     public void constructor_null_throwsNullPointerException() {

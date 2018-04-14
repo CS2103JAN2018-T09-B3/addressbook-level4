@@ -38,7 +38,7 @@ public class IssueBuilder {
     }
 
     /**
-     * Initializes the IssueBioldr with the data of {@code issueToCopy}.
+     * Initializes the IssueBuilder with the data of {@code issueToCopy}.
      */
     public IssueBuilder (Issue issueToCopy) {
         title = issueToCopy.getTitle();
