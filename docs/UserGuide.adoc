@@ -126,10 +126,11 @@ You may want to refer to the User Guide when you have a question. You can read i
 * `h`
 
 // tag::view[]
-==== Viewing a different tab : `view` OR `v`
+==== Viewing a different tab : `view` OR `v` `[since v1.5]`
 
-You can change the tab view to show either `Profile`, `Task`, or `Exercise`. +
-*Format:* `view TYPE` OR `v TYPE`
+You can change the tab view to show either `Profile`, `Task`, `Exercise`, or `Issues`. +
+*Format:* `view TYPE` OR `v TYPE` +
+image:TabView.png[width="600"]
 
 By default, the exercise tab shows exercises from the latest available school week. You can view the exercises in other weeks as well. +
 *Format:* `view exercise WEEK_NUMBER` OR `v exercise WEEK_NUMBER`
@@ -137,7 +138,7 @@ By default, the exercise tab shows exercises from the latest available school we
 ====
 *Notes:*
 
-* `TYPE` refers to the tab names you see in the GUI: `profile`, `task` or `exercise`.
+* `TYPE` refers to the tab names you see in the GUI: `profile`, `task`, `exercise`, or `issues`.
 * `WEEK_NUMBER` refers to the school week number and *must be a positive integer* in the *range of 2 to 11* `2, 3, ..., 11`
 ====
 
@@ -259,15 +260,18 @@ You can exits the program when you are done with the work. +
 ==== Answering an exercise : `answer` `[since v1.4r]`
 
 You can answer an exercise based on the question index. Your answer will be saved automatically upon answering. +
-*Format:* `answer INDEX ANSWER`
+*Format:* `answer QUESTION_INDEX ANSWER`
 
 [TIP]
-If you accidentally overwrite your answer to an exercise, you can undo the change as this is an undoable command! Check out the <<undoing-previous-command-code-undo-code-or-code-u-code,undo>> and <<redoing-the-previously-undone-command-code-redo-code-or-code-r-code,redo>> commands on how you can achieve this.
+If you accidentally overwrite your answer to an exercise, you can undo the change as this is an undoable command! To find out how you can achieve this, check out the example section for this command or look at the <<undoing-previous-command-code-undo-code-or-code-u-code,undo>> and <<redoing-the-previously-undone-command-code-redo-code-or-code-r-code,redo>> commands.
 
 ====
 *Notes:*
 
-* `INDEX` refers to the question index shown in the GUI and it must be of the format `WEEK_NUMBER`.`SECTION_NUMBER`.`QUESTION_NUMBER`, e.g. 2.1.1, 3.2.5, 6.1.7
+* `QUESTION_INDEX` refers to the question index shown in the GUI and it must be of the format `WEEK_NUMBER`.`SECTION_NUMBER`.`QUESTION_NUMBER`, e.g. 2.1.1, 3.2.5, 6.1.7 +
+image:QuestionIndexFormat.png[width="360"]
+[TIP]
+You can see if an exercise has been answered by looking at the color of the question index label. The colors are as shown in the image above, where green means it has been answered and red means otherwise.
 [NOTE]
 An exercise's `SECTION_NUMBER` is directly adopted from https://nus-cs2103-ay1718s2.github.io/website/index.html[CS2103/T's website].
 
@@ -276,6 +280,13 @@ An exercise's `SECTION_NUMBER` is directly adopted from https://nus-cs2103-ay171
 *Examples:*
 
 * `answer 2.1.1 Procedural languages work at simple data structures and functions level`
+
+* `answer 3.5.2 a. Both are UML diagrams.` +
+`u` (reverses the `answer 3.5.2 a. Both are UML diagrams.` command)
+
+* `answer 3.5.2 a. Both are UML diagrams.` +
+`u` (reverses the `answer 3.5.2 a. Both are UML diagrams.` command) +
+`r` (reapplies the `answer 3.5.2 a. Both are UML diagrams.` command)
 // end::answer[]
 
 === Issue Tracker
