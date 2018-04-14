@@ -13,7 +13,7 @@ public class GitDetailsBuilder {
 
     public static final String DEFAULT_REPO = "adityaa1998/samplerepo-pr-practice";
     public static final String DEFAULT_USERNAME = "anminkang";
-    public static final String DEFAULT_PASSCDE = "github123";
+    public static final String DEFAULT_PASSCDE = "aditya2018";
 
     private Repository repository;
     private Username username;
