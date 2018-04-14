@@ -295,7 +295,7 @@ public class ParserUtil {
      * Leading and trailing whitespaces will be trimmed.
      */
 
-    public static Body parseBody(String body) throws IllegalValueException{
+    public static Body parseBody(String body) throws IllegalValueException {
         requireNonNull(body);
         String trimmedBody = body.trim();
         if (!Body.isValidBody(trimmedBody)) {

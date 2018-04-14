@@ -77,7 +77,7 @@ public class CommandTestUtil {
     public static final String INVALID_YEAR_DESC = " " + PREFIX_YEAR + "9"; // year of study cannot exceed 5
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "hubby*"; // '*' not allowed in tags
     public static final String INVALID_PATH_DESC = "/images/ "; // prefix of path is not completed
-    
+
     public static final String VALID_TITLE_ONE = "This is a github issue one";
     public static final String VALID_TITLE_TWO = "This is a github issue two";
     public static final String VALID_ASSIGNEE_BOB = "bob";
@@ -104,8 +104,7 @@ public class CommandTestUtil {
     public static final String INVALID_BODY_DESC = " " + PREFIX_BODY + "";
     public static final String INVALID_LABEL_DESC = " " + PREFIX_LABEL + "";
     public static final String INVALID_ASSIGNEE_DESC = " " + PREFIX_ASSIGNEES + "";
-    
-    
+
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
 

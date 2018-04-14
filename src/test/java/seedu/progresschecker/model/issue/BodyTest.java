@@ -20,7 +20,7 @@ public class BodyTest {
     public void isValidBody() {
         // null name
         assertFalse(Body.isValidBody(null));
-        
+
         // valid name
         assertTrue(Body.isValidBody("peter jack")); // alphabets only
         assertTrue(Body.isValidBody("12345")); // numbers only

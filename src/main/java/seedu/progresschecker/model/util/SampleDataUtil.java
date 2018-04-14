@@ -52,7 +52,7 @@ public class SampleDataUtil {
                 getTagSet("colleagues"))
         };
     }
-    
+
     //@@author adityaa1998
     //@@author adityaa1998
 
@@ -65,9 +65,9 @@ public class SampleDataUtil {
             for (Exercise sampleExercise : getSampleExercises()) {
                 sampleAb.addExercise(sampleExercise);
             }
-//            for (Issue sampleIssue : getSampleIssues()) {
-//                sampleAb.createIssueOnGitHub(sampleIssue);
-//            }
+            /*for (Issue sampleIssue : getSampleIssues()) {
+                sampleAb.createIssueOnGitHub(sampleIssue);
+            }*/
             return sampleAb;
         } catch (DuplicatePersonException e) {
             throw new AssertionError("sample data cannot contain duplicate persons", e);
@@ -78,7 +78,7 @@ public class SampleDataUtil {
         } */
     }
 
-    
+
     /**
      * Returns a tag set containing the list of strings given.
      */
@@ -116,7 +116,7 @@ public class SampleDataUtil {
         return assignees;
     }
     //@@author
-    
+
     //@@author iNekox3
     public static Exercise[] getSampleExercises() {
         return new Exercise[] {

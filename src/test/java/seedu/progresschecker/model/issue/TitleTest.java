@@ -30,7 +30,7 @@ public class TitleTest {
         // invalid name
         assertFalse(Title.isValidTitle("")); // empty string
         assertFalse(Title.isValidTitle(" ")); // spaces only
-       
+
         // valid name
         assertTrue(Title.isValidTitle("peter jack")); // alphabets only
         assertTrue(Title.isValidTitle("12345")); // numbers only

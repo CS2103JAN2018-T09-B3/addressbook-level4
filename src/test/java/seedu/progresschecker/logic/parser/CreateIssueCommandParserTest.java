@@ -62,13 +62,14 @@ public class CreateIssueCommandParserTest {
                 new CreateIssueCommand(expectedIssue));
 
         // multiple milestone - last milestone accepted
-        assertParseSuccess(parser, TITLE_DESC_ONE + BODY_DESC_ONE + ASSIGNEE_DESC_AMY + MILESTONE_DESC_TWO +
-                         MILESTONE_DESC_ONE + LABEL_DEC_STORY,
+        assertParseSuccess(parser, TITLE_DESC_ONE + BODY_DESC_ONE + ASSIGNEE_DESC_AMY + MILESTONE_DESC_TWO
+                        + MILESTONE_DESC_ONE + LABEL_DEC_STORY,
                 new CreateIssueCommand(expectedIssue));
-        
+
 
         // multiple assignees - all accepted
-        Issue expectedIssueMultipleAssignees = new IssueBuilder().withTitle(VALID_TITLE_ONE).withAssignees(VALID_ASSIGNEE_BOB, VALID_ASSIGNEE_AMY)
+        Issue expectedIssueMultipleAssignees = new IssueBuilder().withTitle(VALID_TITLE_ONE)
+                .withAssignees(VALID_ASSIGNEE_BOB, VALID_ASSIGNEE_AMY)
                 .withBody(VALID_BODY_ONE).withMilestone(VALID_MILESTONE_ONE)
                 .withLabels(VALID_LABEL_STORY).build();
 
@@ -77,7 +78,8 @@ public class CreateIssueCommandParserTest {
                 new CreateIssueCommand(expectedIssueMultipleAssignees));
 
         // multiple labels - all accepted
-        Issue expectedIssueMultipleLabels = new IssueBuilder().withTitle(VALID_TITLE_ONE).withAssignees(VALID_ASSIGNEE_BOB)
+        Issue expectedIssueMultipleLabels = new IssueBuilder().withTitle(VALID_TITLE_ONE)
+                .withAssignees(VALID_ASSIGNEE_BOB)
                 .withBody(VALID_BODY_ONE).withMilestone(VALID_MILESTONE_ONE)
                 .withLabels(VALID_LABEL_STORY, VALID_LABEL_TASK).build();
 
@@ -93,39 +95,41 @@ public class CreateIssueCommandParserTest {
                 .withBody(VALID_BODY_ONE).withMilestone(VALID_MILESTONE_ONE)
                 .withLabels().build();
 
-        assertParseSuccess(parser, TITLE_DESC_ONE + BODY_DESC_ONE + MILESTONE_DESC_ONE + ASSIGNEE_DESC_AMY
-                , new CreateIssueCommand(expectedIssue));
+        assertParseSuccess(parser, TITLE_DESC_ONE + BODY_DESC_ONE + MILESTONE_DESC_ONE + ASSIGNEE_DESC_AMY,
+                new CreateIssueCommand(expectedIssue));
 
         // zero body
         Issue expectedIssueWithoutBody = new IssueBuilder().withTitle(VALID_TITLE_ONE).withAssignees(VALID_ASSIGNEE_AMY)
                 .withBody("").withMilestone(VALID_MILESTONE_ONE)
                 .withLabels(VALID_LABEL_STORY).build();
 
-        assertParseSuccess(parser, TITLE_DESC_ONE + MILESTONE_DESC_ONE + ASSIGNEE_DESC_AMY + LABEL_DEC_STORY
-                , new CreateIssueCommand(expectedIssueWithoutBody));
+        assertParseSuccess(parser, TITLE_DESC_ONE + MILESTONE_DESC_ONE
+                        + ASSIGNEE_DESC_AMY + LABEL_DEC_STORY,
+                new CreateIssueCommand(expectedIssueWithoutBody));
 
         // zero assignees
-        Issue expectedIssueWithoutAssignee = new IssueBuilder().withTitle(VALID_TITLE_ONE).withAssignees(VALID_ASSIGNEE_AMY)
-                .withBody(VALID_BODY_ONE).withMilestone(VALID_MILESTONE_ONE)
-                .withLabels().build();
+        Issue expectedIssueWithoutAssignee = new IssueBuilder().withTitle(VALID_TITLE_ONE)
+                .withAssignees(VALID_ASSIGNEE_AMY)
+                .withBody(VALID_BODY_ONE).withMilestone(VALID_MILESTONE_ONE).withLabels().build();
 
-        assertParseSuccess(parser, TITLE_DESC_ONE + BODY_DESC_ONE + MILESTONE_DESC_ONE + ASSIGNEE_DESC_AMY
-                , new CreateIssueCommand(expectedIssueWithoutAssignee));
-        
+        assertParseSuccess(parser, TITLE_DESC_ONE + BODY_DESC_ONE + MILESTONE_DESC_ONE + ASSIGNEE_DESC_AMY,
+                new CreateIssueCommand(expectedIssueWithoutAssignee));
+
         // zero milestone
-        Issue expectedIssueWithoutMilestone = new IssueBuilder().withTitle(VALID_TITLE_ONE).withAssignees(VALID_ASSIGNEE_AMY)
+        Issue expectedIssueWithoutMilestone = new IssueBuilder().withTitle(VALID_TITLE_ONE)
+                .withAssignees(VALID_ASSIGNEE_AMY)
                 .withBody(VALID_BODY_ONE).withMilestone("")
                 .withLabels(VALID_LABEL_STORY).build();
 
-//        assertParseSuccess(parser, TITLE_DESC_ONE + BODY_DESC_ONE + ASSIGNEE_DESC_AMY + LABEL_DEC_STORY
-//                , new CreateIssueCommand(expectedIssueWithoutMilestone));
-        
+        //assertParseSuccess(parser, TITLE_DESC_ONE + BODY_DESC_ONE + ASSIGNEE_DESC_AMY + LABEL_DEC_STORY
+        //        , new CreateIssueCommand(expectedIssueWithoutMilestone));
+
         // only title
         Issue expectedIssueWithOnlyTitle = new IssueBuilder().withTitle(VALID_TITLE_ONE).withAssignees()
                 .withBody("").withMilestone("")
                 .withLabels().build();
 
-//        assertParseSuccess(parser, TITLE_DESC_ONE, new CreateIssueCommand(expectedIssue));
+        //assertParseSuccess(parser, TITLE_DESC_ONE, new CreateIssueCommand(expectedIssue));
 
     }
 
@@ -146,12 +150,12 @@ public class CreateIssueCommandParserTest {
         assertParseFailure(parser, INVALID_TITLE_DESC + BODY_DESC_ONE + ASSIGNEE_DESC_AMY + MILESTONE_DESC_ONE
                         + LABEL_DEC_STORY,
                 Title.MESSAGE_TITLE_CONSTRAINTS);
-        
+
         // invalid assignee
         assertParseFailure(parser, TITLE_DESC_ONE + BODY_DESC_ONE + INVALID_ASSIGNEE_DESC + MILESTONE_DESC_ONE
                         + LABEL_DEC_STORY,
                 Assignees.MESSAGE_ASSIGNEES_CONSTRAINTS);
-        
+
         // invalid tag
         assertParseFailure(parser, TITLE_DESC_ONE + BODY_DESC_ONE + ASSIGNEE_DESC_AMY + MILESTONE_DESC_ONE
                         + INVALID_LABEL_DESC,

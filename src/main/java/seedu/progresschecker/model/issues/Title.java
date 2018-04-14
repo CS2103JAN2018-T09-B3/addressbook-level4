@@ -20,7 +20,7 @@ public class Title {
     public static final String TITLE_VALIDATION_REGEX = ".*\\w.*|[$&+,:;=?@#|'<>.^*()%!-]";
 
     public final String fullMessage;
-    
+
     /**
      * Constructs a {@code Title}.
      *
@@ -38,7 +38,7 @@ public class Title {
     public static boolean isValidTitle(String test) {
         return test.matches(TITLE_VALIDATION_REGEX);
     }
-    
+
     @Override
     public String toString() {
         return fullMessage;
