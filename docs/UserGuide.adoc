@@ -648,7 +648,7 @@ OR `a n/NAME p/PHONE_NUMBER e/EMAIL g/USERNAME m/MAJOR y/YEAR [t/TAG]...`
 
 |*Answer*
 |`answer INDEX ANSWER`
-|answer 2.1.1
+|answer 2.1.1 Procedural languages work at simple data structures and functions level
 
 |*Clear*
 |`clear` OR `c`
@@ -752,10 +752,13 @@ ri 1
 |upload 1 C:\Users\User\Desktop\profile_photo.jpg
 
 |*View tab*
-|`view TYPE` OR `v TYPE` OR `view exercise WEEK_NUMBER`
+|`view TYPE` OR `v TYPE`
 |view task +
-view exercise +
-view exercise 5
+view exercise
+
+|*View exercises by week*
+|`view exercise WEEK_NUMBER` OR `v exercise WEEK_NUMBER`
+|view exercise 5
 
 |*View task*
 |`viewtask OR vt`
