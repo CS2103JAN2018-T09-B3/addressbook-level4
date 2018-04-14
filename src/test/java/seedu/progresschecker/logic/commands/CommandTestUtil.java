@@ -85,6 +85,7 @@ public class CommandTestUtil {
     public static final String VALID_TITLE_TWO = "This is a github issue two";
     public static final String VALID_ASSIGNEE_BOB = "bob";
     public static final String VALID_ASSIGNEE_AMY = "amy";
+    public static final String VALID_ASSIGNEE_ANMIN = "anminkang";
     public static final String VALID_BODY_ONE = "This is issue one's body";
     public static final String VALID_BODY_TWO = "This is issue two's body";
     public static final String VALID_MILESTONE_ONE = "v1.2";
@@ -98,6 +99,7 @@ public class CommandTestUtil {
     public static final String BODY_DESC_TWO = " " + PREFIX_BODY + VALID_BODY_TWO;
     public static final String ASSIGNEE_DESC_BOB = " " + PREFIX_ASSIGNEES + VALID_ASSIGNEE_BOB;
     public static final String ASSIGNEE_DESC_AMY = " " + PREFIX_ASSIGNEES + VALID_ASSIGNEE_AMY;
+    public static final String ASSIGNEE_DESC_ANMIN = " " + PREFIX_ASSIGNEES + VALID_ASSIGNEE_ANMIN;
     public static final String MILESTONE_DESC_ONE = " " + PREFIX_MILESTONE + VALID_MILESTONE_ONE;
     public static final String MILESTONE_DESC_TWO = " " + PREFIX_MILESTONE + VALID_MILESTONE_TWO;
     public static final String LABEL_DEC_TASK = " " + PREFIX_LABEL + VALID_LABEL_TASK;
