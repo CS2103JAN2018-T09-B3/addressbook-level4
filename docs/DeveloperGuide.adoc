@@ -1159,7 +1159,7 @@ See this https://github.com/se-edu/addressbook-level4/pull/599[PR] for the step-
 [appendix]
 == Product Scope
 
-This section covers what ProgressChecker is meant to be and what it can do for the users. Your name and feature contribution will be listed here.
+This section covers what ProgressChecker is meant to be and what it can do for the users.
 
 *Target user profile*:
 
@@ -1184,6 +1184,8 @@ This section covers what ProgressChecker is meant to be and what it can do for t
 
 [appendix]
 == Feature Contribution
+
+The names of the contributors and their contributions to the project are listed here in brief.
 
 === Koh Yee Ru
 
