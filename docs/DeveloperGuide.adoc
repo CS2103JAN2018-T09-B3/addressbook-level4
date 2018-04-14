@@ -1163,24 +1163,24 @@ This section covers what ProgressChecker is meant to be and what it can do for t
 
 *Target user profile*:
 
-* is taking CS2103/CS2103T in NUS
-* wants to keep track on his/her learning progress
-* is willing to have good team management
+* is taking CS2103T in NUS
 * has a need to manage a up to 4 contacts
-* prefers desktop apps over other types
-* can type fast
+* wants to have a centralized hub for managing his/her learning and software development
+* wants to keep track on his/her learning outcomes and progress
+* wants to save and refer to their answers for the weekly CS2103/T exercises
+* wants to manage GitHub issues efficiently
+* prefers desktop apps over other platforms
 * prefers typing over mouse input
 * is reasonably comfortable using CLI apps
 
 *Value proposition*:
 
-* never miss LOs hidden in the nested collapsible list
+* keep track of your teammates' details
 * keep track of your own progress on a week by week basis
-* keep track of your teammates' completion of TO-DO list(at most 20 tasks per day) and learning progress (providing proof for peer evaluation)
-* view the teammates' weekly plan in phase B (to know the upcoming updates even before they send any pull requests to github repo)
-* manage issues from github straight from the software along with other tracking
-* save your answers(no more than 100 words) for the exercises (as proof of completion and for future revision)
-* easily search for information based on key words (which is hard to achieve in the module website with nested collapsible lists)
+* never miss any learning outcomes due to missing them out in nested collapsible list
+* keep track of completed and incomplete (compulsory) learning outcomes
+* view and save your answers for the exercises (as proof of completion and for future revision)
+* manage issues from GitHub straight from the software along with other tracking
 
 [appendix]
 == Feature Contribution
@@ -1228,13 +1228,9 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`* * *` |user |add a teammate's details |help myself to track my current teammates' progress
 
-|`* * *` |user |delete a teammate |remove an entry of a teammate that I'm no longer grouped with
+|`* * *` |user |delete a teammate's details |remove an entry of a teammate's details that I'm no longer grouped with
 
 |`* * *` |new user |upload a photo for myself or my teammates |help me to recognize my teammates
-
-|`* * *` |new user |load a photo of myself or my teammates from github |help me to recognize my teammates
-
-|`* * *` |user |search information in our module website based on keywords |navigate and reference the information I need quickly
 
 |`* * *` |user |view my to-do <<learning outcomes,learning outcomes>> |know all the weekly deliverables and not miss them out
 
@@ -1243,8 +1239,6 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 |`* * *` |user |answer and save my responses for the weekly exercises |show to tutor as proof of my learning outcome and revise before exams
 
 |`* * *` |user |know if my answer for an exercise is correct |learn from any mistakes I made
-
-|`* * *` |user |see the list of completed/incomplete <<learning outcomes,learning outcomes>> of my teammates |help to remind my teammate of the task or know which task to offer help with if they are having difficulties
 
 |`* * *` |user |list issues (tasks) on GitHub |easily inform my teammates of my upcoming plans even before I send any pull requests to the team's repository
 
@@ -1255,6 +1249,12 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 |`* * *` |user |close issues (tasks) on GitHub |easily inform my teammates of a completed task if no particular pull requests closes it
 
 |`* *` |user |see the timeline showing the learning progress of me and my teammates |make sure everyone is on track
+
+|`* *` |new user |load a photo of myself or my teammates from GitHub |help me to recognize my teammates
+
+|`* *` |user |see the list of completed/incomplete <<learning outcomes,learning outcomes>> of my teammates |help to remind my teammate of the task or know which task to offer help with if they are having difficulties
+
+|`* *` |user |search information in our module website based on keywords |navigate and reference the information I need quickly
 
 |`* *` |user |hide <<private-contact-detail,private contact details>> by default |minimize chance of someone else seeing them by accident
 
@@ -1267,6 +1267,30 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 This section list the sequence of events for a feature. It includes possible scenarios in which a feature is not interacted with as intended which you can defense against.
 
 (For all use cases below, the *System* is the `ProgressChecker` and the *Actor* is the `user`, unless specified otherwise)
+
+// tag::viewusecase[]
+[discrete]
+=== Use case: View (toggle) a different tab
+
+*MSS*
+
+1.  User requests to view a specific tab type
+2.  ProgressChecker toggles tab view to show the requested tab
++
+Use case ends.
+
+*Extensions*
+
+* 1a. The given tab type is invalid.
++
+
+** 1a1. ProgressChecker shows an error message.
+Use case ends.
+
+* 2a. There is no content to be shown.
++
+Use case ends.
+// end::viewusecase[]
 
 [discrete]
 === Use case: Add teammate
@@ -1331,13 +1355,14 @@ Use case ends.
 +
 Use case ends.
 
+// tag::answerusecase[]
 [discrete]
 === Use case: Answer a question and save
 
 *MSS*
 
-1.  User requests to view a specific week
-2.  ProgressChecker shows content of the specified week
+1.  User requests to view the exercise tab of week X
+2.  ProgressChecker toggles to exercise tab and list week X's exercises
 3.  User requests to key in and save an answer to a question
 4.  ProgressChecker takes in input and saves
 +
@@ -1345,23 +1370,44 @@ Use case ends.
 
 *Extensions*
 
-* 1a. Specified week does not exist.
+* 1a. The given tab type is invalid.
 +
-[none]
+
 ** 1a1. ProgressChecker shows an error message.
+Use case ends.
+
+* 1b. Specified week does not exist.
++
+
+** 1b1. ProgressChecker shows an error message.
 +
 Use case ends.
 
-[none]
-* 2a. There is no content to be shown.
+* 2a. There are no exercises to be shown.
 +
 Use case ends.
 
-* 3a. The question index does not exist.
-[none]
+* 3a. User did not provide a question index.
++
+
 ** 3a1. ProgressChecker shows an error message.
 +
 Use case ends.
+
+* 3b. User did not provide an answer.
++
+
+** 3b1. ProgressChecker shows an error message.
++
+Use case ends.
+
+* 3c. The given question index does not exists.
++
+
+** 3c. ProgressChecker shows an error message.
++
+Use case ends.
+// end::answerusecase[]
 
 [discrete]
 === Use case: Assign an issue to a teammate
@@ -1533,10 +1579,8 @@ This sections list the criteria needed for the system and software.
 
 .  Should work on any <<mainstream-os,mainstream OS>> as long as it has Java `1.8.0_60` or higher installed.
 .  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
-.  Should work on any <<mainstream-os,mainstream OS>> as long as it has Java `1.8.0_60` or higher installed.
 .  The data cannot be retrieved from outside.
 .  The product may need 3-5 minutes to build up for the first time.
-.  User can only view the information of their teammates.
 .  User need to authenticate with their Google Tasks credentials.
 
 [appendix]
@@ -1552,7 +1596,7 @@ Gradle is an open-source build automation system.
 Graphical User Interface.
 
 [[Learning-Outcomes]] Learning Outcomes::
-Exercises that need to be done through github for module CS2103/T.
+Exercises that need to be done through GitHub for module CS2103/T.
 
 [[mainstream-os]] Mainstream OS::
 Windows, Linux, Unix, OS-X.
