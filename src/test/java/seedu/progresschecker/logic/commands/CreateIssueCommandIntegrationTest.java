@@ -1,7 +1,6 @@
 package seedu.progresschecker.logic.commands;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
 import static seedu.progresschecker.testutil.TypicalPersons.getTypicalProgressChecker;
 
 import org.junit.Before;
@@ -22,11 +21,12 @@ import seedu.progresschecker.testutil.IssueBuilder;
 
 //@@author adityaa1998
 public class CreateIssueCommandIntegrationTest {
-    private Model model;
 
     @Rule
     public ExpectedException thrown = ExpectedException.none();
-    
+
+    private Model model;
+
     @Before
     public void setUp() throws Exception {
         model = new ModelManager(getTypicalProgressChecker(), new UserPrefs());
@@ -36,12 +36,12 @@ public class CreateIssueCommandIntegrationTest {
 
     @Test
     public void execute_newIssue_success() throws Exception {
-        
+
         Issue validIssue = new IssueBuilder().build();
         CommandResult commandResult = prepareCommand(validIssue, model).execute();
 
         /**
-         * The model cannot be tested because if the model is tested,  
+         * The model cannot be tested because if the model is tested,
          * There is just one model instead of two : an expected model and a model
          * The reason for the same is because if createIssue command is executed twice, there will be 2 issues online
          * Thus, the success message is comapred with the feedback to the user
@@ -60,7 +60,7 @@ public class CreateIssueCommandIntegrationTest {
         thrown.expectMessage(CreateIssueCommand.MESSAGE_FAILURE);
 
         prepareCommand(validIssue, model).execute();
-        
+
     }
 
     /**

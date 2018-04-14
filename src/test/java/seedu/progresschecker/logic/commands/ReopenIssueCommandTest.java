@@ -19,7 +19,7 @@ import seedu.progresschecker.model.UserPrefs;
 import seedu.progresschecker.model.credentials.GitDetails;
 import seedu.progresschecker.testutil.GitDetailsBuilder;
 
-public class CloseIssueCommandTest {
+public class ReopenIssueCommandTest {
 
     @Rule
     public ExpectedException thrown = ExpectedException.none();
@@ -45,7 +45,7 @@ public class CloseIssueCommandTest {
          * Thus, the success message is comapred with the feedback to the user
          * success message is only posted after an issue is created on git
          */
-        assertEquals (String.format(CloseIssueCommand.MESSAGE_SUCCESS,
+        assertEquals (String.format(ReopenIssueCommand.MESSAGE_SUCCESS,
                 INDEX_ISSUE.getOneBased()), commandResult.feedbackToUser);
     }
 
@@ -62,11 +62,12 @@ public class CloseIssueCommandTest {
     }
 
     /**
-     * Generates a new {@code CreateIssueCommadn} which upon execution, adds {@code issue} into the {@code model}.
+     * Generates a new {@code ReopenIssueCommand} which upon execution, adds {@code issue} into the {@code model}.
      */
-    private CloseIssueCommand prepareCommand(Index index, Model model) {
-        CloseIssueCommand command = new CloseIssueCommand(index);
+    private ReopenIssueCommand prepareCommand(Index index, Model model) {
+        ReopenIssueCommand command = new ReopenIssueCommand(index);
         command.setData(model, new CommandHistory(), new UndoRedoStack());
         return command;
     }
 }
+

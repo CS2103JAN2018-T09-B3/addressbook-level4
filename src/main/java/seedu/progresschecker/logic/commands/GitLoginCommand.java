@@ -53,6 +53,8 @@ public class GitLoginCommand extends Command {
             return new CommandResult(MESSAGE_SUCCESS);
         } catch (IOException e) {
             throw new CommandException(MESSAGE_FAILURE);
+        } catch (CommandException ce) {
+            throw new CommandException(ce.getMessage());
         }
     }
 

@@ -1,7 +1,6 @@
 package seedu.progresschecker.logic.commands;
 
 import static org.junit.Assert.assertEquals;
-import static seedu.progresschecker.testutil.TypicalIndexes.INDEX_ISSUE;
 import static seedu.progresschecker.testutil.TypicalPersons.getTypicalProgressChecker;
 
 import org.junit.Before;
@@ -9,7 +8,6 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import seedu.progresschecker.commons.core.index.Index;
 import seedu.progresschecker.logic.CommandHistory;
 import seedu.progresschecker.logic.UndoRedoStack;
 import seedu.progresschecker.logic.commands.exceptions.CommandException;
@@ -19,7 +17,7 @@ import seedu.progresschecker.model.UserPrefs;
 import seedu.progresschecker.model.credentials.GitDetails;
 import seedu.progresschecker.testutil.GitDetailsBuilder;
 
-public class CloseIssueCommandTest {
+public class GitlogoutCommandTest {
 
     @Rule
     public ExpectedException thrown = ExpectedException.none();
@@ -34,9 +32,9 @@ public class CloseIssueCommandTest {
     }
 
     @Test
-    public void execute_closeIssue_success() throws Exception {
+    public void execute_gitlogout_success() throws Exception {
 
-        CommandResult commandResult = prepareCommand(INDEX_ISSUE, model).execute();
+        CommandResult commandResult = prepareCommand(model).execute();
 
         /**
          * The model cannot be tested because if the model is tested,
@@ -45,8 +43,7 @@ public class CloseIssueCommandTest {
          * Thus, the success message is comapred with the feedback to the user
          * success message is only posted after an issue is created on git
          */
-        assertEquals (String.format(CloseIssueCommand.MESSAGE_SUCCESS,
-                INDEX_ISSUE.getOneBased()), commandResult.feedbackToUser);
+        assertEquals (GitLogoutCommand.MESSAGE_SUCCESS, commandResult.feedbackToUser);
     }
 
     @Test
@@ -54,18 +51,17 @@ public class CloseIssueCommandTest {
         model.logoutGithub();
 
         thrown.expect(CommandException.class);
-        thrown.expectMessage("Github not authenticated. Use 'gitlogin' "
-                + "command to first authenticate your github account" );
+        thrown.expectMessage(GitLogoutCommand.MESSAGE_FAILURE);
 
-        prepareCommand(INDEX_ISSUE, model).execute();
+        prepareCommand(model).execute();
 
     }
 
     /**
-     * Generates a new {@code CreateIssueCommadn} which upon execution, adds {@code issue} into the {@code model}.
+     * Generates a new {@code GitLogoutCommand} which upon execution, adds {@code issue} into the {@code model}.
      */
-    private CloseIssueCommand prepareCommand(Index index, Model model) {
-        CloseIssueCommand command = new CloseIssueCommand(index);
+    private GitLogoutCommand prepareCommand(Model model) {
+        GitLogoutCommand command = new GitLogoutCommand();
         command.setData(model, new CommandHistory(), new UndoRedoStack());
         return command;
     }
