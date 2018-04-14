@@ -1182,30 +1182,31 @@ This section covers what ProgressChecker is meant to be and what it can do for t
 * save your answers(no more than 100 words) for the exercises (as proof of completion and for future revision)
 * easily search for information based on key words (which is hard to achieve in the module website with nested collapsible lists)
 
-*Feature Contribution*:
+[appendix]
+== Feature Contribution
 
-**Koh Yee Ru:**
+=== Koh Yee Ru
 
-. (Minor) Week based window view: students are able to navigate and view content arranged in a weekly basis. (acts as a base for incorporation of API)
-. (Minor) Changing color themes: students will be able to change between a dark and light theme like the norm for editors which programmers are used to.
-. (Major) Exercises: students will be able to view, answer and save their responses for the weekly exercises to help track their conceptual understanding. Choice based questions will automatically be check for correctness with corresponding feedback to students.
+. (Major) View, answer and save responses for weekly CS2103/T exercises
+. (Minor) View command that toggles the tab view
+image:TabView.png[width="600"]
 
-**Kang Anmin:**
+=== Kang Anmin
 
-. (Minor) Change/Add more fields of information for teammates in the contact list, in order to fit the specific context of this software. It also lays a foundation for other operations.
 . (Major) LO management: Add LOs to google tasks (the users google account, load tasks and sign completion.
+. (Minor) Change/Add more fields of information for teammates in the contact list, in order to fit the specific context of this software. It also lays a foundation for other operations.
 
-**Lai Liwen:**
+=== Lai Liwen
 
-. (Minor) HighLight the key word: the key word will be highlighted in command find
 . (Major) Revamp the UI: rearrange the different sections and panels to best suit audience's needs
 . (Major) Upload profile photo: students will be able to upload a photo to their profile
+. (Minor) HighLight the key word: the key word will be highlighted in command find
 
-**Aditya Agarwal:**
+=== Aditya Agarwal
 
+. (Major) Add a progress checker which will keep a track of number of tasks remaining and accordingly update the progress bar
 . (Minor) Implement dynamic search
 . (Minor) Add an auto-complete for commands with tab press
-. (Major) Add a progress checker which will keep a track of number of tasks remaining and accordingly update the progress bar
 
 [appendix]
 == User Stories
