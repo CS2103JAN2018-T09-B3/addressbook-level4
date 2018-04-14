@@ -55,4 +55,8 @@ include::../UserGuide.adoc[tag=answer]
 
 include::../DeveloperGuide.adoc[tag=view]
 
+include::../DeveloperGuide.adoc[tag=viewusecase]
+
 include::../DeveloperGuide.adoc[tag=answer]
+
+include::../DeveloperGuide.adoc[tag=answerusecase]
