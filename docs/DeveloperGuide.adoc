@@ -25,6 +25,14 @@ If you can type fast, ProgressChecker can get your learning outcome tasks done f
 
 Now you are ready to jump to the <<Setting-up,Setting up>> to get started. Enjoy!
 
+== Icons Meaning
+You will be seeing these icons throughout the guide. Each icon display specific information.
+
+[TIP]
+This lightbulb icon means tips that you can try when using ProgressChecker.
+
+[NOTE]
+This info icon means notes that you should pay attention to when using ProgressChecker.
 
 == Setting up
 
