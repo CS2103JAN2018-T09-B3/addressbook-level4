@@ -621,19 +621,19 @@ There is no need to save manually.
 
 == FAQ
 
-You may encounter some questions related to other aspects of ProgressChecker other than the commands. This section list some frequently asked questions that you may find useful.
+You may encounter some questions related to other aspects of ProgressChecker other than what the commands are. This section list some frequently asked questions that you may find useful.
 
 *Q*: How do I transfer my data to another Computer? +
-*A*: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Progress Checker folder. +
+*A*: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous ProgressChecker folder. +
 
 *Q*: Will the command work if I type in capital letters? +
-*A*: Yes. The commands are case-insenstive. +
+*A*: Yes. The commands are case-insensitive. +
 
-*Q*: Will the app keep all information the same with the time I close it when I open the app the other time? +
-*A*: All data are saved in the hard disk automatically after any command that changes the data. As long as the user doesn't change the data file, the content will be the same when user open the app next time. +
+*Q*: Will the changes I made in ProgressChecker still be intact upon closing and reopening the app? +
+*A*: Yes. All changes made are saved automatically into the data folder. As long as you do not directly edit the data file, the content will remain the same when you reopen the app. +
 
-*Q*: How to close the app? +
-*A*: Either click the 'x' button on the screen or type command `exit`.
+*Q*: How do I close the app? +
+*A*: You can either type the `exit` command or click on the 'x' button in the top right corner of the app.
 
 == Command Summary
 
