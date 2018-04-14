@@ -317,9 +317,12 @@ public class ParserUtil {
      * Parses a {@code String username} into a {@code Username}.
      * Leading and trailing whitespaces will be trimmed.
      */
-    public static Username parseGitUsername(String username) {
+    public static Username parseGitUsername(String username) throws IllegalValueException {
         requireNonNull(username);
         String trimmedUsername = username.trim();
+        if (!Username.isValidUsername(trimmedUsername)) {
+            throw new IllegalValueException(Username.MESSAGE_GITUSERNAME_CONSTRAINTS);
+        }
         return new Username(trimmedUsername);
     }
 
@@ -335,8 +338,11 @@ public class ParserUtil {
     /**
      * Parses a {@code String passcode} into a {@code Passcode}.
      */
-    public static Passcode parsePasscode(String passcode) {
+    public static Passcode parsePasscode(String passcode) throws IllegalValueException {
         requireNonNull(passcode);
+        if (!Passcode.isValidPasscode(passcode)) {
+            throw new IllegalValueException(Passcode.MESSAGE_PASSCODE_CONSTRAINTS);
+        }
         return new Passcode(passcode);
     }
 
@@ -353,9 +359,12 @@ public class ParserUtil {
      * Parses a {@code String repositroy} into a {@code Repository}.
      * Leading and trailing whitespaces will be trimmed.
      */
-    public static Repository parseRepository(String repository) {
+    public static Repository parseRepository(String repository) throws IllegalValueException {
         requireNonNull(repository);
         String trimmedRepository = repository.trim();
+        if (!Repository.isValidRepository(trimmedRepository)) {
+            throw new IllegalValueException(Repository.MESSAGE_REPOSITORY_CONSTRAINTS);
+        }
         return new Repository(trimmedRepository);
     }
 

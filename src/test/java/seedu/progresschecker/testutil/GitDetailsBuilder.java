@@ -5,8 +5,9 @@ import seedu.progresschecker.model.credentials.Passcode;
 import seedu.progresschecker.model.credentials.Repository;
 import seedu.progresschecker.model.credentials.Username;
 
+//@@author adityaa1998
 /**
- * A utility class to help with building Issue objects.
+ * A utility class to help with building GitDetails objects.
  */
 public class GitDetailsBuilder {
 

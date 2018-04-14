@@ -125,6 +125,10 @@ public class CommandTestUtil {
     public static final String GITHUB_DESC_PASSCODE_ONE = " " + PREFIX_GIT_PASSCODE + VALID_GITHUB_PASSCODE_ONE;
     public static final String GITHUB_DESC_PASSCODE_TWO = " " + PREFIX_GIT_PASSCODE + VALID_GITHUB_PASSCODE_TWO;
 
+    public static final String INVALID_GITHUB_REPO_DESC = " " + PREFIX_GIT_REPO + "";
+    public static final String INVALID_GITHUB_USERNAME_DESC = " " + PREFIX_GIT_USERNAME + "";
+    public static final String INVALID_GITHUB_PASSCODE_DESC = " " + PREFIX_GIT_PASSCODE + "";
+
     public static final EditCommand.EditPersonDescriptor DESC_AMY;
     public static final EditCommand.EditPersonDescriptor DESC_BOB;
 
