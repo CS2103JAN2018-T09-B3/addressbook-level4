@@ -22,7 +22,7 @@ By: `Team T09-B3`      Since: `Feb 2018`      Licence: `MIT`
 
 ProgressChecker is for *students* who *prefer to use a desktop app* to keep track of their learning progress throughout the certain module. (Current version is available for CS2103/T) +
 
-For the current version, you can add your teammates details into ProgressChecker. You can also create a new task list through google task. By default, app will display all the link:DeveloperGuide.adoc#Learning-Outcomes[Learning Outcomes] for this week in the task list. Students can use this task list to track their weekly homework and the progress of the project.
+For the current version, you can add your teammates details into ProgressChecker. You can also create a new task list through google task. By default, app will display all the link:DeveloperGuide.adoc#Learning-Outcomes[Learning Outcomes] taken from the https://nus-cs2103-ay1718s2.github.io/website/index.html[CS2103/T module website] for this week in the task list. Students can use this task list to track their weekly homework and the progress of the project.
 
 More importantly, ProgressChecker is *optimized for students who prefer to work with a Command Line Interface* (CLI) while still having the benefits of a Graphical User Interface (link:DeveloperGuide.adoc#GUI[GUI]).
 If you can type fast, ProgressChecker can get your learning outcome tasks done faster than traditional GUI apps. +
