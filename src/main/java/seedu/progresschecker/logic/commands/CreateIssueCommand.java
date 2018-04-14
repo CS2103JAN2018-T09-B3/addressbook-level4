@@ -41,7 +41,7 @@ public class CreateIssueCommand extends Command {
             + PREFIX_BODY + "This is a test issue "
             + PREFIX_LABEL + "bug";
     public static final String MESSAGE_SUCCESS = "Issue successfully created on Github";
-    public static final String MESSAGE_FAILURE = "There is some error in the parameter or authentication";
+    public static final String MESSAGE_FAILURE = "Please log into github first";
 
     private final Issue toCreate;
 

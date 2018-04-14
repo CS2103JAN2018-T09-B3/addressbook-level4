@@ -54,8 +54,7 @@ public class ReopenIssueCommandTest {
         model.logoutGithub();
 
         thrown.expect(CommandException.class);
-        thrown.expectMessage("Github not authenticated. Use 'gitlogin' "
-                + "command to first authenticate your github account" );
+        thrown.expectMessage(ReopenIssueCommand.MESSAGE_AUTHENTICATION_FAILURE);
 
         prepareCommand(INDEX_ISSUE, model).execute();
 
