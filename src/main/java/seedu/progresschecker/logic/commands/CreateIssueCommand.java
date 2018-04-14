@@ -58,7 +58,7 @@ public class CreateIssueCommand extends Command {
         try {
             model.createIssueOnGitHub(toCreate);
             return new CommandResult(MESSAGE_SUCCESS);
-        } catch (IOException e) {
+        } catch (IOException | CommandException e) {
             throw new CommandException(MESSAGE_FAILURE);
         }
     }
