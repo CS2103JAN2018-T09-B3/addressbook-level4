@@ -93,6 +93,7 @@ Type **`nl`** to bring up the Google account authorization page. Select `Allow`.
 You should see the feedback that a verification code has been received. Return to ProgressChecker. +
 [NOTE]
 This step in syncing of tasks can take up to 40 seconds. ProgressChecker might be in the state of not responding in the meantime. +
+. Once the tasks have been loaded, you can view them. +
 Type **`view task`** then **`vt *`** +
 You should now be on the Task tab and see a list of learning outcomes.
 . When you have completed a learning outcome, you can mark them as complete. +
