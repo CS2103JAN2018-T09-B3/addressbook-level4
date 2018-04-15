@@ -1293,10 +1293,11 @@ Use case ends.
 
 * 1a. The given tab type is invalid.
 +
-
+[none]
 ** 1a1. ProgressChecker shows an error message.
 Use case ends.
 
+[none]
 * 2a. There is no content to be shown.
 +
 Use case ends.
@@ -1382,39 +1383,40 @@ Use case ends.
 
 * 1a. The given tab type is invalid.
 +
-
+[none]
 ** 1a1. ProgressChecker shows an error message.
 Use case ends.
 
 * 1b. Specified week does not exist.
 +
-
+[none]
 ** 1b1. ProgressChecker shows an error message.
 +
 Use case ends.
 
+[none]
 * 2a. There are no exercises to be shown.
 +
 Use case ends.
 
 * 3a. User did not provide a question index.
 +
-
+[none]
 ** 3a1. ProgressChecker shows an error message.
 +
 Use case ends.
 
 * 3b. User did not provide an answer.
 +
-
+[none]
 ** 3b1. ProgressChecker shows an error message.
 +
 Use case ends.
 
 * 3c. The given question index does not exists.
 +
-
-** 3c. ProgressChecker shows an error message.
+[none]
+** 3c1. ProgressChecker shows an error message.
 +
 Use case ends.
 // end::answerusecase[]
