@@ -21,7 +21,7 @@ By: `Team T09-B3`      Since: `Feb 2018`      Licence: `MIT`
 == Introduction
 === About the App
 
-ProgressChecker is for *students* who *prefer to use a desktop app* to keep track of their learning progress for module CS2103/T.+
+ProgressChecker is for *students* who *prefer to use a desktop app* to keep track of their learning progress for module CS2103/T.
 
 In this version, you can add your teammates details into ProgressChecker. You can also create a new task list that syncs with Google Tasks. ProgressChecker displays link:DeveloperGuide.adoc#Learning-Outcomes[Learning Outcomes] and exercises pulled from the https://nus-cs2103-ay1718s2.github.io/website/index.html[CS2103/T module website]. Students can use these information to track their weekly homework and the progress of the project.
 
