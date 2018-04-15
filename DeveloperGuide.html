@@ -104,6 +104,8 @@
 <li><a href="#launch-and-shutdown">H.1. Launch and Shutdown</a></li>
 <li><a href="#deleting-a-teammate">H.2. Deleting a teammate</a></li>
 <li><a href="#saving-data">H.3. Saving data</a></li>
+<li><a href="#toggling-a-tab-view">H.4. Toggling a tab view</a></li>
+<li><a href="#answering-an-exercise">H.5. Answering an exercise</a></li>
 </ul>
 </li>
 </ul>
@@ -4100,6 +4102,65 @@ Expected: Similar to previous.</p>
 <div class="paragraph">
 <p><em>{ more test cases &#8230;&#8203; }</em></p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="toggling-a-tab-view"><a class="link" href="#toggling-a-tab-view">H.4. Toggling a tab view</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Navigate to another tab view</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>view exercise</code><br>
+Expected: UI toggles the tab view to the Exercise tab. A list of exercises should be displayed.</p>
+</li>
+<li>
+<p>Test case: <code>view exercise 5</code><br>
+Expected: UI toggles the tab view to the Exercise tab. Week 5&#8217;s list of exercises should be displayed.</p>
+</li>
+<li>
+<p>Test case: <code>view invalidtype</code><br>
+Expected: No such tab found. Error details shown in the status message.</p>
+</li>
+<li>
+<p>Other incorrect view commands to try: <code>view</code>, <code>view exercise x</code> (where x is an input not within 2 to 11 (inclusive)<br>
+Expected: Similar to previous.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="answering-an-exercise"><a class="link" href="#answering-an-exercise">H.5. Answering an exercise</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Answer an exercise and see the suggested answer</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: UI view is on the Exercise tab, showing week 11&#8217;s exercises.</p>
+</li>
+<li>
+<p>Test case: <code>ans 11.1.1 a</code><br>
+Expected: Question index 11.1.1 turns green. Answer <code>a</code> is reflected under "Your Answer" and suggested answer for question index 11.1.1 is revealed.</p>
+</li>
+<li>
+<p>Test case: <code>view 11</code><br>
+Expected: Given question index does not exist. Error details shown in the status message.</p>
+</li>
+<li>
+<p>Other incorrect answer commands to try: <code>ans</code>, <code>ans 11.2</code><br>
+Expected: Similar to previous.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
 <div class="paragraph">
 <p>Back to <a href="#setting-up">TOP</a></p>
 </div>
@@ -4109,7 +4170,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 07:51:09 UTC
+Last updated 2018-04-15 13:52:55 UTC
 </div>
 </div>
 </body>
