@@ -71,7 +71,7 @@ ProgressChecker is filled with lots of functionality that are easy to use. If yo
 
 === Using CLI with ProgressChecker
 
-Let's start using ProgressChecker. To perform anything using CLI, you will have to type a command in the command box and press the kbd:[Enter] key to execute it.
+Let's start using ProgressChecker. To perform anything using CLI, you will have to type a command in the command box and press the kbd:[Enter] key to execute it. +
 image:CommandBoxIndication.png[width="600"]
 
 [TIP]
@@ -79,8 +79,8 @@ You can type a command and press `Tab` to auto bring out all the command paramet
 
 . Start by typing the `help` command in the command box and press kbd:[Enter] to open the help window. This window contains the information you will need to learn how to use ProgressChecker.
 . Next, let's add a teammate's details to your contact list. +
-Type **`add`**`n/John Doe p/98765432 e/johnd@example.com m/Computer Science y/2 g/johndoe`
-Teammate John Doe should now be listed in your contact list.
+Type **`add`**`n/John Doe p/98765432 e/johnd@example.com m/Computer Science y/2 g/johndoe` +
+Teammate John Doe should now be listed in your contact list. +
 image:TeammateAddedIndication.png[width="300"]
 . After adding all of your teammates' details into ProgressChecker, you will need to load the tasks you're required to do into ProgressChecker. +
 Type **`nl`** to bring up the Google account authorization page. Select `Allow`. +
@@ -92,6 +92,7 @@ Type **`view`**`exercise` +
 You should now be on the Exercise tab. You can scroll through and see the list of exercises available for week 11. Let's answer question index 11.1.1. +
 Type **`ans`**`11.1.1 a` +
 You should now see your answer and the suggested answer reflected under question index 11.1.1.
+image:ExerciseAnsweredIndication.png[width="600"]
 . You can also view exercises from other weeks.
 Type **`view`**`exercise 5` +
 You should now be seeing week 5's exercises in the Exercise tab.
@@ -104,7 +105,7 @@ Words in `UPPER_CASE` are the parameters to be supplied by you e.g. in `gitlogin
 If you have successfully logged in, you should see the opened issues in your specified repository listed in the tab. +
 . Next, let's create a GitHub issue to your repository. +
 Type **`+issue`**`ti/Implement remark functionality` +
-You should now see your newly created issue reflected under the Issues tab.
+You should now see your newly created issue reflected under the Issues tab as well as under the issue tracker section of your specified GitHub repository.
 
 And that is the general workflow you would have when using ProgressChecker each week! All changes you have made previously have all already been automatically saved. If you wish to close ProgressChecker now, you can type **`exit`** to quit.
 
