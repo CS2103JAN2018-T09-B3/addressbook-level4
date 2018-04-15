@@ -278,7 +278,7 @@ You can exits the program when you are done with the work. +
 * `exit`
 * `e`
 
-===== Back/Forward the browser in ProgressChecker (coming in v2.0)
+===== Back/Forward the browser in ProgressChecker `[coming in v2.0]`
 
 ==== Exercise
 
@@ -510,8 +510,8 @@ otherwise the application will hang.
  * `goto 1`
  * `go 1`
 
-==== Send reminder email when a deadline is near (coming in v2.0)
-==== View teammates' task list and progress (coming in v2.0)
+==== Send reminder email when a deadline is near `[coming in v2.0]`
+==== View teammates' task list and progress `[coming in v2.0]`
 
 // end::tasks[]
 
