@@ -535,12 +535,8 @@ command box, every key that is pressed is parsed and sent to the `find` command 
 The code snippet for the implementation is:
 [source,java]
 ----
-private void handleKeyPress(KeyEvent keyEvent) {
-        switch (keyEvent.getCode()) {
-        // .. other keypress logic ..
-        default:
-            try {
-                if (// .. checking if the text is `find` command) {
+if ((commandTextField.getText().trim().equalsIgnoreCase(CORRECT_COMMAND_WORD)
+                        || isCorrectCommandWord)) {
                     isCorrectCommandWord = !commandTextField.getText().trim().isEmpty();
                     CommandResult commandResult;
                     if (keyEvent.getCode() != KeyCode.BACK_SPACE && keyEvent.getCode() != KeyCode.DELETE) {
@@ -553,10 +549,6 @@ private void handleKeyPress(KeyEvent keyEvent) {
                     logger.info("Result: " + commandResult.feedbackToUser);
                     raise(new NewResultAvailableEvent(commandResult.feedbackToUser));
                 }
-            } catch (CommandException | ParseException e) {
-               // .. command failure logic ..
-            }
-        }
     }
 ----
 [NOTE]
@@ -652,6 +644,158 @@ image::SDforExercisesEventHandling.png[width="800"]
 {sp} +
 
 // tag::tasks[]
+=== Logging into Github
+==== Current Implemetation
+
+The `GitDetails` represents an object that is used to authenticate github. It contains `Username`, `Passcode`, and `Repository` object which represent the github account's username, password and repository respectively.
+[NOTE]
+All fields are compulsory for github authentication.
+
+IMAGE TO BE ADDED
+
+`GitDetails` object is not stored locally as it can violate user's data and privacy.
+To manage the github account following command classes can be used:
+****
+* GitLoginCommand
+* GitLogoutCommand
+****
+
+`GitLoginCommand` needs to be used for tracking any issue activity on the ProgressChecker application. After the `GitDetails` object is created, its member's are used to create a `Github` object from the Github API library which is used to authenticate github.
+
+==== Logging into github
+
+User can log into github after using the `GitLoginCommand`. After executing the command, a `GitDetails` object is created
+
+Given below is a sequence diagram for authenticating github.
+
+The following code snippet shows how GitLoginCommand#execute() will update the model by creating `Github` object which will be used to authenticate github.
+
+----
+public class GitLoginCommand extends Command {
+@Override
+    public CommandResult execute() throws CommandException {
+
+        try {
+            model.loginGithub(toAuthenticate);
+            return new CommandResult(MESSAGE_SUCCESS);
+        } catch (IOException e) {
+            throw new CommandException(MESSAGE_FAILURE);
+        } catch (CommandException ce) {
+            throw new CommandException(ce.getMessage());
+        }
+    }
+}
+----
+
+==== Design considerations
+
+===== Aspect: Using password for authentication
+
+|===
+|Alternative | Pros | Cons
+|**Used github password for authentication** +
+(current choice)
+|User easily remebers his password, thus logging in is easy. 
+|Password cannot be stored offline to protect users data and privacy.
+
+|**Using OAuth token for authentication**
+|OAuth token can be stored offline which can provide one-time login functionality, as we can restrict the token's usage for only ProgressChecker application.
+|Manually generating a token by the user is a tedious task and github tokens expire regularly which can be a pain for the user. 
+|===
+=== Github Issue Tracker
+==== Current Implementation
+The `Issue` object represents an issue that is to be created on github. It contains `Title`, `Assignees`, `Milestone`, `Body`, and `Labels` which are the different attributes of an issue on github.
+[NOTE]
+Only the `Title` field is compulsory for `Issue` as this the only limitation set by github. 
+
+IMAGE TO BE ADDED
+
+`Issue` objects are not stored in memory after an issue is created on github. The issues are not stored in a local file to protect users confidential data and privacy.  
+
+Issue tracking is done by several command classes, namely: 
+****
+* CreateIssueCommand
+* CloseIssueCommand
+* EditIssueCommand
+* ReopenIssueCommand
+* ListIssueCommand
+****
+
+All the above commands will only work after you have logged into github. Use 'gitLogin' command to login.
+
+==== Creating an issue
+An issue is created on github using the CreateIssueCommand. After executing the command, an `Issue` object is created which is then converted to a `GHIssue` object present in the Github Library. GHIssue is then posted online using the Github API library.
+
+Given below is the sequence diagram for creating an issue on github.
+
+IMAGE TO BE ADDED
+
+The following code snippet shows how `CreateIssueCommand#execute()` will update the model of the application by creating an issue `toCreate` on github and later updating the `GitIssueList`.
+Note: This an issue will not be created if you haven't logged into github. 
+
+----
+public class CloseIssueCommandTest {
+...
+@Override
+    public CommandResult execute() throws CommandException {
+
+        try {
+            model.createIssueOnGitHub(toCreate);
+            return new CommandResult(MESSAGE_SUCCESS);
+        } catch (IOException | CommandException e) {
+            throw new CommandException(MESSAGE_FAILURE);
+        }
+    }
+    ...
+}
+----
+
+The issue created will be shown on the `Issues` tab in the application.
+
+==== Closing an issue
+
+An issue can be closed on github using the CloseIssueCommand. After executing the command, a `GHIssue` object of the specified index is retrieved from the Github database. The state of the GHIssue is checked and it is marked as closed if it is open.
+
+Given below is the sequence diagram for closing an issue.
+
+IMAGE TO BE ADDED
+
+The following code snippet shows how `CloseIssueCommand#execute()` will update the model of application by closing an issue updating the `GitIssueList`. 
+Note: The entered index number should be a valid issue index, and the user should be logged into github before using the command.
+
+----
+public class CloseIssueCommand extends Command {
+@Override
+    public CommandResult execute() throws CommandException {
+        try {
+            model.closeIssueOnGithub(targetIndex);
+        } catch (IOException ie) {
+            throw new CommandException(MESSAGE_FAILURE);
+        } catch (CommandException ce) {
+            throw new CommandException(MESSAGE_AUTHENTICATION_FAILURE);
+        }
+
+        return new CommandResult(String.format(MESSAGE_SUCCESS, targetIndex.getOneBased()));
+    }
+}
+----
+The issue created will be removed from the `Issues` tab in the application, as by default only open issues are displayed.
+
+==== Design considerations
+
+===== Aspect: Storing issues on a local file
+
+|===
+|Alternative | Pros | Cons
+|**Not storing the issues offline** +
+(current choice)
+|Users data and privacy is protected, as issues on github might contain very confidential data regarding the product's information.
+|The user cannot view the exisitng issues offline and he can not use the software to work offline and then push everything online once the internet connection is available.
+
+|**Implementing data encryption so that the issues can be stored offline**
+|User will be able work offline on issues and post changes when internet connection is availabe.
+|In order to do offline authentication and decrypt the issue data, the application will have to store the user credentials offline which might violate Github's API policy. 
+|===
 === Tasks
 ==== Current Implementation
 
@@ -900,31 +1044,6 @@ image::chrome_save_as_pdf.png[width="300"]
 == Testing
 
 ProgressChecker uses JUnit tests to check for its correctness. This section covers the type of tests and how to run them.
-
-=== Running Tests
-
-There are three ways to run tests.
-
-[TIP]
-The most reliable way to run tests is the 3rd one. The first two methods might fail some GUI tests due to platform/resolution-specific idiosyncrasies.
-
-*Method 1: Using IntelliJ JUnit test runner*
-
-* To run all tests, right-click on the `src/test/java` folder and choose `Run 'All Tests'`
-* To run a subset of tests, you can right-click on a test package, test class, or a test and choose `Run 'ABC'`
-
-*Method 2: Using Gradle*
-
-* Open a console and run the command `gradlew clean allTests` (Mac/Linux: `./gradlew clean allTests`)
-
-[NOTE]
-See <<UsingGradle#, UsingGradle.adoc>> for more info on how to run tests using Gradle.
-
-*Method 3: Using Gradle (headless)*
-
-Thanks to the https://github.com/TestFX/TestFX[TestFX] library we use, our GUI tests can be run in the _headless_ mode. In the headless mode, GUI tests do not show up on the screen. That means the developer can do other things on the Computer while the tests are running.
-
-To run tests in headless mode, open a console and run the command `gradlew clean headless allTests` (Mac/Linux: `./gradlew clean headless allTests`)
 
 === Types of tests
 
@@ -1307,8 +1426,7 @@ This section covers what ProgressChecker is meant to be and what it can do for t
 **Aditya Agarwal:**
 
 . (Minor) Implement dynamic search
-. (Minor) Add an auto-complete for commands with tab press
-. (Major) Add a progress checker which will keep a track of number of tasks remaining and accordingly update the progress bar
+. (Major) Create a github issue tracker which will be used to track issues on github using the ProgressChecker application.
 
 [appendix]
 == User Stories
