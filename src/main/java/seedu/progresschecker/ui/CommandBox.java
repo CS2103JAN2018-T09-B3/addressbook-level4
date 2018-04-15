@@ -17,6 +17,7 @@ import seedu.progresschecker.logic.CommandFormatListUtil;
 import seedu.progresschecker.logic.ListElementPointer;
 import seedu.progresschecker.logic.Logic;
 import seedu.progresschecker.logic.commands.CommandResult;
+import seedu.progresschecker.logic.commands.GitLoginCommand;
 import seedu.progresschecker.logic.commands.exceptions.CommandException;
 import seedu.progresschecker.logic.parser.exceptions.ParseException;
 
