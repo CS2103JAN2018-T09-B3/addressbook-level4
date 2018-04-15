@@ -1050,26 +1050,26 @@ public class GitLoginCommand extends Command {
 |Alternative | Pros | Cons
 |**Used github password for authentication** +
 (current choice)
-|User easily remebers his password, thus logging in is easy. 
+|User easily remebers his password, thus logging in is easy.
 |Password cannot be stored offline to protect users data and privacy.
 
 |**Using OAuth token for authentication**
 |OAuth token can be stored offline which can provide one-time login functionality, as we can restrict the token's usage for only ProgressChecker application.
-|Manually generating a token by the user is a tedious task and github tokens expire regularly which can be a pain for the user. 
+|Manually generating a token by the user is a tedious task and github tokens expire regularly which can be a pain for the user.
 |===
 === Github Issue Tracker
 ==== Current Implementation
 The `Issue` object represents an issue that is to be created on github. It contains `Title`, `Assignees`, `Milestone`, `Body`, and `Labels` which are the different attributes of an issue on github.
 [NOTE]
-Only the `Title` field is compulsory for `Issue` as this the only limitation set by github. 
+Only the `Title` field is compulsory for `Issue` as this the only limitation set by github.
 
 .UML diagram for github Issue
 image::issueobject.png[width="800"]
 
 
-`Issue` objects are not stored in memory after an issue is created on github. The issues are not stored in a local file to protect users confidential data and privacy.  
+`Issue` objects are not stored in memory after an issue is created on github. The issues are not stored in a local file to protect users confidential data and privacy.
 
-Issue tracking is done by several command classes, namely: 
+Issue tracking is done by several command classes, namely:
 ****
 * CreateIssueCommand
 * CloseIssueCommand
@@ -1090,7 +1090,7 @@ image::finalcreateIssue.png[width="800"]
 
 
 The following code snippet shows how `CreateIssueCommand#execute()` will update the model of the application by creating an issue `toCreate` on github and later updating the `GitIssueList`.
-Note: This an issue will not be created if you haven't logged into github. 
+Note: This an issue will not be created if you haven't logged into github.
 
 ----
 public class CloseIssueCommandTest {
@@ -1120,7 +1120,7 @@ Given below is the sequence diagram for closing an issue.
 .High Level Sequence Diagram for closing an issue on github
 image::closeissue.png[width="800"]
 
-The following code snippet shows how `CloseIssueCommand#execute()` will update the model of application by closing an issue updating the `GitIssueList`. 
+The following code snippet shows how `CloseIssueCommand#execute()` will update the model of application by closing an issue updating the `GitIssueList`.
 Note: The entered index number should be a valid issue index, and the user should be logged into github before using the command.
 
 ----
@@ -1154,7 +1154,7 @@ The issue created will be removed from the `Issues` tab in the application, as b
 
 |**Implementing data encryption so that the issues can be stored offline**
 |User will be able work offline on issues and post changes when internet connection is availabe.
-|In order to do offline authentication and decrypt the issue data, the application will have to store the user credentials offline which might violate Github's API policy. 
+|In order to do offline authentication and decrypt the issue data, the application will have to store the user credentials offline which might violate Github's API policy.
 |===
 
 === Logging
@@ -2152,7 +2152,7 @@ These instructions only provide a starting point for testers to work on; testers
    Expected: Enter correct username and password. +
 .. Other incorrect gitlogin commands to try: `gitlogin`, +
    Expected: Invalid command format.
-   
+
 === Create an issue on github
 
 . Create issue on github after logging in
@@ -2176,7 +2176,7 @@ These instructions only provide a starting point for testers to work on; testers
   Expected: Issue not edited. Enter correct index number. +
 .. Other incorrect editissue commands to try: `editissue`, +
   Expected: Invalid command format.
-  
+
 === Close an issue on github
 
 . Close an issue on github after logging in
@@ -2188,7 +2188,7 @@ These instructions only provide a starting point for testers to work on; testers
   Expected: Issue not closed. Enter correct index number. +
 .. Other incorrect close issue commands to try: `-issue 3 text`, +
   Expected: Invalid command format.
-  
+
 === Reopen an issue on github
 
 . Reopen an issue on github after logging in
@@ -2199,7 +2199,7 @@ These instructions only provide a starting point for testers to work on; testers
 .. Test case: `reopenissue 9999` +
   Expected: Issue not reopened. Enter correct index number. +
 .. Other incorrect reopen issue commands to try: `reopen 3 text`, +
-  Expected: Invalid command format.  
+  Expected: Invalid command format.
 
 === List issues on github
 
@@ -2212,7 +2212,7 @@ These instructions only provide a starting point for testers to work on; testers
   Expected: Enter correct state value. +
 .. Other incorrect list issues commands to try: `listissues`, +
   Expected: Invalid command format.
-  
+
 === Logout of Github
 
 . Log out of github after logging in
