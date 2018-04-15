@@ -611,75 +611,101 @@ The entered key is not instantly updated in the command box thats why after the 
 |===
 // end::search[]
 
-// tag::answer[]
-=== [Planned] Answering an exercise
-==== Planned Implementation
+// tag::view[]
+=== Toggling between tab views
+==== Current Implementation
 
-The exercises for all weeks would be stored as a local file upon which it would be loaded by the `StorageManager` on start up.
+This command toggles the view between the different type of tabs in the software. +
 
-The _Sequence Diagram_ below shows how the components interact for the scenario where the user issues the command `answer 2.1.1 a d`.
+.Reference of the tab view in the software
+image::TabView.png[width="600"]
 
-.Component interactions for `answer 2.1.1 a d` command (part 1)
-image::SDforAnswerExercise.png[width="800"]
+{sp} +
+
+It inherits `Command` and executes on an _Event Driven_ design between the Logic and UI component.
+
+Suppose that the user is on the `Task` tab and wants to toggle to the `Exercise` tab. The user executes a new `Command`, `view exercise`, to switch to the `Exercise` tab. The _Sequence Diagram_ below shows how the components interact with each other.
+
+.Logic and UI component interaction for `view exercise` command (part 1)
+image::SDforViewExercise.png[width="600"]
+
+{sp} +
 
 [NOTE]
-Note how the `Model` simply raises a `ExercisesChangedEvent` when the exercises data are changed, instead of asking the `Storage` to save the updates to the hard disk.
+Note how the `Logic` simply raises a `TabLoadChangedEvent` when the `view` command gets executed. The `TabLoadChangedEvent` is implemented as follows:
+[source,java]
+----
+public class TabLoadChangedEvent extends BaseEvent {
+    public final String type;
 
-The diagram below shows how the `EventsCenter` reacts to that event, which eventually results in the updates being saved to the hard disk and the exercises display of the UI being updated to reflect the newly given answers.
+    public TabLoadChangedEvent(String type) {
+        this.type = type;
+    }
 
-.Component interactions for `answer 2.1.1 a d` command (part 2)
-image::SDforExercisesEventHandling.png[width="800"]
+    @Override
+    public String toString() {
+        return this.getClass().getSimpleName();
+    }
+
+    public String getTabName() {
+        return type;
+    }
+}
+----
+
+The diagram below shows how the `EventCenter` reacts to that event, which eventually results in the UI updating to which tab view is to be in selection.
+
+.Logic and UI component interaction for `view exercise` command (part 2)
+image::SDforViewExerciseEventHandling.png[width="600"]
 
 {sp} +
 
-==== Design Considerations
+[NOTE]
+The UI scene's elements are automatically populated in `MainWindow.java` due to using JavaFX FXML Controller. That is, a reference to a particular UI element will be available as long as it has its `fx:id` specified in `MainWindow.fxml`.
 
-===== Aspect: Implementation of `AnswerCommand`
+The code snippet below shows how the UI component executes the toggling of tab view upon receiving the event change.
+[source,java]
+----
+@FXML
+private TabPane tabPlaceholder;
 
-* Add a new command that extends `Command`
+@FXML
+private Tab profilePlaceholder;
 
-===== Aspect: Format of answer command
+@FXML
+private Tab taskPlaceholder;
 
-|===
-|Alternative | Pros | Cons
+@FXML
+private Tab exercisePlaceholder;
 
-|**Use same command formatting `answer INDEX ANSWER` regardless of the type of question (e.g. text based question, multiple choice question)** +
-(current choice):
-|Less parser files to manage altogether.
-|Can be unintuitive for users when it comes to answer different question with the same formatting.
+@FXML
+private Tab issuePlaceholder;
 
-|**Use different command based on the type of question (e.g. `answert INDEX ANSWER` for answering text based question and `answerm INDEX CHOICE` for answering multiple choice questions)** +
-(current choice)
-|Can be clearer on what is being answered for the user.
-|More commands and formatting to learn and remember.
+...
 
-|===
-{sp}+
-
-===== Aspect: How answering executes
-
-* Trigger an event change in `Logic` to signal `UI` for a change in text display in `ExercisesPanel`
-* Process checking of correctness in `Model`
-* Save data to local file in `Storage`
-
-===== Aspect: Storing of exercise questions
-
-|===
-|Alternative | Pros | Cons
-
-|**Load from a local file** +
-(current choice)
-|Implementation becomes a lot more modular.
-|Have to implement extra text file parser and involves `Storage` that might be seen as extra load to learn for new programmers
-
-|**Include in `UI` file together with where the text display is being changed at** +
-(current choice)
-|Easier to see where everything is.
-|Formatting the exercises becomes harder and the implementation is less modular.
-
-|===
-// end::answer[]
-{sp} +
+@Subscribe
+private void handleTabLoadChangedEvent(TabLoadChangedEvent event) {
+    logger.info(LogsCenter.getEventHandlingLogMessage(event));
+    SingleSelectionModel<Tab> selectionModel = tabPlaceholder.getSelectionModel();
+    switch (event.getTabName()) {
+    case "profile":
+        selectionModel.select(profilePlaceholder);
+        break;
+    case "task":
+        selectionModel.select(taskPlaceholder);
+        break;
+    case "exercise":
+        selectionModel.select(exercisePlaceholder);
+        break;
+    case "issues":
+        selectionModel.select(issuePlaceholder);
+        break;
+    default:
+        selectionModel.select(selectionModel.getSelectedItem());
+    }
+}
+----
+// end::view[]
 
 // tag::adddefaulttasklist[]
 === [Ongoing] add default task command (Google Tasks API relevant commands)
