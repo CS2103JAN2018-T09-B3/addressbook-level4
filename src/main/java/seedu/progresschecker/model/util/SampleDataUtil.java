@@ -47,9 +47,6 @@ public class SampleDataUtil {
         };
     }
 
-    //@@author adityaa1998
-    //@@author adityaa1998
-
     public static ReadOnlyProgressChecker getSampleProgressChecker() {
         try {
             ProgressChecker sampleAb = new ProgressChecker();
