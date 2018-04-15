@@ -666,23 +666,6 @@ The UI scene's elements are automatically populated in `MainWindow.java` due to 
 The code snippet below shows how the UI component executes the toggling of tab view upon receiving the event change.
 [source,java]
 ----
-@FXML
-private TabPane tabPlaceholder;
-
-@FXML
-private Tab profilePlaceholder;
-
-@FXML
-private Tab taskPlaceholder;
-
-@FXML
-private Tab exercisePlaceholder;
-
-@FXML
-private Tab issuePlaceholder;
-
-...
-
 @Subscribe
 private void handleTabLoadChangedEvent(TabLoadChangedEvent event) {
     logger.info(LogsCenter.getEventHandlingLogMessage(event));
@@ -776,26 +759,7 @@ public Exercise toModelType() throws IllegalValueException {
     }
     final QuestionType questionType = new QuestionType(this.questionType);
 
-    if (this.question == null) {
-        throw new IllegalValueException(
-                String.format(MISSING_FIELD_MESSAGE_FORMAT,
-                Question.class.getSimpleName()));
-    }
-    final Question question = new Question(this.question);
-
-    if (this.studentAnswer == null) {
-        throw new IllegalValueException(
-                String.format(MISSING_FIELD_MESSAGE_FORMAT,
-                StudentAnswer.class.getSimpleName()));
-    }
-    final StudentAnswer studentAnswer = new StudentAnswer(this.studentAnswer);
-
-    if (this.modelAnswer == null) {
-        throw new IllegalValueException(
-                String.format(MISSING_FIELD_MESSAGE_FORMAT,
-                ModelAnswer.class.getSimpleName()));
-    }
-    final ModelAnswer modelAnswer = new ModelAnswer(this.modelAnswer);
+    ...
 
     return new Exercise(questionIndex, questionType, question, studentAnswer, modelAnswer);
 }
