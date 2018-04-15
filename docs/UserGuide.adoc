@@ -373,7 +373,7 @@ An issue can have more than one assignees and labels.
 Given below is the execution outcome of the above command
 
  Issue successfully edited on Github
- 
+
 ===== Closing an issue on Github: `-issue` OR `cli`
 
 You can close the specified issue on github after you have resolved it using this command. +
@@ -393,7 +393,7 @@ If you don't remember the issue number, you can take a look at the issues by usi
 Given below is the execution outcome of the above command
 
  Issue #17 closed successfully
- 
+
 ===== Reopening an issue on Github: `reopenissue` OR `ri`
 
 You can reopen a certain issue on github using this command. +
@@ -413,7 +413,7 @@ If you don't remember the issue number, you can take a look at the issues by usi
 Given below is the execution outcome of the above command
 
  Issue #17 reopened successfully
- 
+
 ===== Listing github issues: `listissue` OR `lis`
 
 You can list the github issues using this command. +
@@ -430,7 +430,7 @@ You can list the github issues using this command. +
 Given below is the execution outcome of the above command
 
  All the OPEN issues are being viewed
- 
+
 ===== Logging out of Github: `gitlogout` OR `glo`
 
 You can logout of github after logging in. +
@@ -446,7 +446,7 @@ You will get an error message if you try to logout before logging in.
 Given below is the execution outcome of the above command
 
  You have successfully logged out of github
- 
+
 //end::issues[]
 
 // tag::tasks[]
