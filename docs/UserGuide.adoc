@@ -91,7 +91,7 @@ image:TeammateAddedIndication.png[width="300"]
 Type **`nl`** to bring up the Google account authorization page. Select `Allow`. +
 You should see the feedback that a verification code has been received. Return to ProgressChecker. +
 [NOTE]
-This step in syncing of tasks can take up to 40s. ProgressChecker might be in the state of not responding in the meantime.
+This step in syncing of tasks can take up to 40 seconds. ProgressChecker might be in the state of not responding in the meantime. +
 Type **`view task`** then **`vt *`** +
 You should now be on the Task tab and see a list of learning outcomes.
 . When you have completed a learning outcome, you can mark them as complete. +
