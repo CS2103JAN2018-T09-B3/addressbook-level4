@@ -9,6 +9,7 @@
 :xrefstyle: full
 :experimental:
 ifdef::env-github[]
+:important-caption: ❗
 :tip-caption: :bulb:
 :note-caption: :information_source:
 endif::[]
