@@ -7,6 +7,7 @@ import static seedu.progresschecker.logic.parser.ParserUtil.MESSAGE_INVALID_WEEK
 import static seedu.progresschecker.testutil.TypicalTabTypes.TYPE_EXERCISE;
 
 import org.junit.Test;
+
 import seedu.progresschecker.logic.commands.ViewCommand;
 
 //@@author iNekox3
@@ -28,13 +29,13 @@ public class ViewCommandParserTest {
 
     @Test
     public void parse_invalidArgsType_throwsParseException() {
-        assertParseFailure(parser, "invalid type", MESSAGE_INVALID_TAB_TYPE +
-                " \n" + ViewCommand.MESSAGE_USAGE);
+        assertParseFailure(parser, "invalid type", MESSAGE_INVALID_TAB_TYPE
+                + " \n" + ViewCommand.MESSAGE_USAGE);
     }
 
     @Test
     public void parse_invalidArgsWeekNumber_throwsParseException() {
-        assertParseFailure(parser, "exercise 0", MESSAGE_INVALID_WEEK_NUMBER +
-                " \n" + ViewCommand.MESSAGE_USAGE);
+        assertParseFailure(parser, "exercise 0", MESSAGE_INVALID_WEEK_NUMBER
+                + " \n" + ViewCommand.MESSAGE_USAGE);
     }
 }
