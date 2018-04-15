@@ -28,7 +28,7 @@ public class ViewCommandParserTest {
 
     @Test
     public void parse_invalidArgsType_throwsParseException() {
-        assertParseFailure(parser, "invalid type", MESSAGE_INVALID_TAB_TYPE + 
+        assertParseFailure(parser, "invalid type", MESSAGE_INVALID_TAB_TYPE +
                 " \n" + ViewCommand.MESSAGE_USAGE);
     }
 
