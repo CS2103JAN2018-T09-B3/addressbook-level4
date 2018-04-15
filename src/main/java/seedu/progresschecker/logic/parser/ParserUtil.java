@@ -362,7 +362,7 @@ public class ParserUtil {
     public static Repository parseRepository(String repository) throws IllegalValueException {
         requireNonNull(repository);
         String trimmedRepository = repository.trim();
-       if (!Repository.isValidRepository(trimmedRepository)) {
+        if (!Repository.isValidRepository(trimmedRepository)) {
             throw new IllegalValueException(Repository.MESSAGE_REPOSITORY_CONSTRAINTS);
         }
         return new Repository(trimmedRepository);

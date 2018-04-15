@@ -553,11 +553,6 @@ If the local path is invalid or the image cannot be found, the upload will not b
 The `find` command shows the searched contact currently. However, the user does not need to type the complete name press enter, the whole search is dynamic. As soon as the user types the command `find` dynamic search state is toggled. After typing `find` command, whichever character is entered by the user, the results which contain
  the typed keywords appear.
 
-The following diagram shows the UML diagram for `find` command :
-
-.UML Diagram of `find` Command
-image::FindCommandUMLDiagram.png[width="120"]
-
 To implement the dynamic search, we used the following method - as soon as the user enters any character in the command box, the text is retrieved from
 the command box and checked if it is the `find` command. If it is the `find` command, dynamic search is started. After the `find` command is detected in the
 command box, every key that is pressed is parsed and sent to the `find` command parser. After that the basic functionality of find is used and the results are displayed.
@@ -993,6 +988,8 @@ retrieve teammate task list data from the shared folder in Google Drive).
 {sp} +
 // end::tasks[]
 
+// tag::github[]
+
 === Github Login
 ==== Current Implemetation
 
@@ -1156,6 +1153,8 @@ The issue created will be removed from the `Issues` tab in the application, as b
 |User will be able work offline on issues and post changes when internet connection is availabe.
 |In order to do offline authentication and decrypt the issue data, the application will have to store the user credentials offline which might violate Github's API policy.
 |===
+
+// end::github[]
 
 === Logging
 
