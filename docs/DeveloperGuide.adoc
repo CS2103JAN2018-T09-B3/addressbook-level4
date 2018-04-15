@@ -763,7 +763,7 @@ public Exercise toModelType() throws IllegalValueException {
 
     return new Exercise(questionIndex, questionType, question, studentAnswer, modelAnswer);
 }
-----  
+----
 
 Additionally, since it is an observable list, the UI element harboring this list will update any changes made to this list accordingly. In viewing of exercises by week, the list is filtered with predicate as follows:
 [source,java]
@@ -796,7 +796,7 @@ model.updateFilteredExerciseList(exercise -> exercise.getQuestionIndex().getWeek
 
 |**Include all exercises data in `SampleDataUtil` and read from there** +
 (current choice)
-|No additional processing required, is easy to modify whenever default data needs to be changed 
+|No additional processing required, is easy to modify whenever default data needs to be changed
 |Is directly affected by the `Clear Command` that is meant for the list of `Persons` which user may not expect it to be for
 
 |**Read from stored text file, parse accordingly, and load into software on fresh start** +
