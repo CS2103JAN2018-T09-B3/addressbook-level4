@@ -708,8 +708,105 @@ private void handleTabLoadChangedEvent(TabLoadChangedEvent event) {
 // end::view[]
 
 // tag::answer[]
-=== Toggling between tab views
+=== View, answer, and save for an exercise
 ==== Current Implementation
+
+This command allows user to answer an exercise based on the question index shown in the software.
+
+.Reference of the question index in the software
+image::QuestionIndexIndication.png[width="300"]
+
+{sp} +
+
+It inherits `UndoableCommand` and executes through all four components in the code base.
+
+Suppose that the user wants to answer an exercise with index 11.1.1. The user executes a new `Command`, `ans 11.1.1 a`, to answer the exercise. The Sequence Diagram below shows how the components interact with each other.
+
+.Component interactions for `ans 11.1.1 a` command (part 1)
+image::SDforAnswerExercise.png[width="800"]
+
+{sp}+
+
+[NOTE]
+Note how the `Model` simply raises a `ProgressCheckerChangedEvent` when the ProgressChecker data has been changed, instead of asking the `Storage` to save the updates to the hard disk.
+
+{sp} +
+
+The diagram below shows how the `EventsCenter` reacts to that event, which eventually results in the updates being saved to the hard disk.
+
+.Component interactions for `ans 11.1.1 a` command (part 2)
+image::SDforAnswerExerciseEventHandling.png[width="800"]
+
+{sp} +
+
+Before the `Logic` component executes the `Undoable Command` which calls the `Model`, it prepares the exercise that needs to be updated by going through the internal list of exercises stored in model. The code that searches for the exercise is as follows:
+[source,java]
+----
+for (Exercise e : exerciseList) {
+    if (e.getQuestionIndex().toString().equals(questionIndex.toString())) {
+        exerciseToEdit = exerciseList.get(exerciseList.indexOf(e));
+        editedExercise = createEditedExercise(exerciseToEdit, studentAnswer);
+        isFound = true;
+        break;
+    }
+}
+----
+
+The internal list, `exerciseList`, is implemented as an observable list of filtered exercises in `Model`. Upon calling the `ProgressCheckerChangedEvent`, `Storage` will run `saveProgressChecker`. Subsequently, to load the data on the next software start up requires parsing of xml data into `Model`. The following code snippet shows how `Storage` does so:
+[source,java]
+----
+public Exercise toModelType() throws IllegalValueException {
+    if (this.questionIndex == null) {
+        throw new IllegalValueException(
+                String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                QuestionIndex.class.getSimpleName()));
+    }
+    if (!QuestionIndex.isValidIndex(this.questionIndex)) {
+        throw new IllegalValueException(QuestionIndex.MESSAGE_INDEX_CONSTRAINTS);
+    }
+    final QuestionIndex questionIndex = new QuestionIndex(this.questionIndex);
+
+    if (this.questionType == null) {
+        throw new IllegalValueException(
+                String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                QuestionType.class.getSimpleName()));
+    }
+    if (!QuestionType.isValidType(this.questionType)) {
+        throw new IllegalValueException(QuestionType.MESSAGE_TYPE_CONSTRAINTS);
+    }
+    final QuestionType questionType = new QuestionType(this.questionType);
+
+    if (this.question == null) {
+        throw new IllegalValueException(
+                String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                Question.class.getSimpleName()));
+    }
+    final Question question = new Question(this.question);
+
+    if (this.studentAnswer == null) {
+        throw new IllegalValueException(
+                String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                StudentAnswer.class.getSimpleName()));
+    }
+    final StudentAnswer studentAnswer = new StudentAnswer(this.studentAnswer);
+
+    if (this.modelAnswer == null) {
+        throw new IllegalValueException(
+                String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                ModelAnswer.class.getSimpleName()));
+    }
+    final ModelAnswer modelAnswer = new ModelAnswer(this.modelAnswer);
+
+    return new Exercise(questionIndex, questionType, question, studentAnswer, modelAnswer);
+}
+----  
+
+Additionally, since it is an observable list, the UI element harboring this list will update any changes made to this list accordingly. In viewing of exercises by week, the list is filtered with predicate as follows:
+[source,java]
+----
+model.updateFilteredExerciseList(exercise -> exercise.getQuestionIndex().getWeekNumber()
+                == editedExercise.getQuestionIndex().getWeekNumber());
+----
 
 ==== Design Considerations
 ===== Aspect: Viewing of exercises by week
@@ -743,8 +840,6 @@ private void handleTabLoadChangedEvent(TabLoadChangedEvent event) {
 |Incurs extra overhead when parsing the text file into Java objects
 
 |===
-
-==== Proposed Implementation
 // end::answer[]
 
 // tag::adddefaulttasklist[]
