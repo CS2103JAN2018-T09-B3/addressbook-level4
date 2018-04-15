@@ -19,6 +19,7 @@ endif::[]
 By: `Team T09-B3`      Since: `Feb 2018`      Licence: `MIT`
 
 == Introduction
+
 === About the App
 
 ProgressChecker is for *students* who *prefer to use a desktop app* to keep track of their learning progress for module CS2103/T.
@@ -31,6 +32,7 @@ If you are reasonably comfortable with using CLI, ProgressChecker can get your l
 Interested? Now you are ready to jump to the <<Quick Start,Quick Start>> to get started. Enjoy!
 
 === Icons Meaning
+
 You will be seeing these icons throughout the guide. Each icon display specific information.
 
 [IMPORTANT]
@@ -488,6 +490,7 @@ otherwise the application will hang.
  * `go 1`
 
 ===== Send reminder email when a deadline is near `[coming in v2.0]`
+
 ===== View teammates' task list and progress `[coming in v2.0]`
 
 // end::tasks[]
