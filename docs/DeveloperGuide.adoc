@@ -668,7 +668,7 @@ User can log into github after using the `GitLoginCommand`. After executing the 
 
 Given below is a sequence diagram for authenticating github.
 
-image::gitlogin.png[width="634"]
+image::gitlogin.png[width="700"]
 
 The following code snippet shows how GitLoginCommand#execute() will update the model by creating `Github` object which will be used to authenticate github.
 
