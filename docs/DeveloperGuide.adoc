@@ -707,6 +707,46 @@ private void handleTabLoadChangedEvent(TabLoadChangedEvent event) {
 ----
 // end::view[]
 
+// tag::answer[]
+=== Toggling between tab views
+==== Current Implementation
+
+==== Design Considerations
+===== Aspect: Viewing of exercises by week
+
+|===
+|Alternative | Pros | Cons
+
+|**Adapt from `View Command` by adding additional WEEK_NUMBER parameter to type `exercise`** +
+(current choice)
+|Not required to create a new command and hence more cohesive with the existing commands as well as one less command for users to learn
+|`ViewCommandParser` requires additional parser check to separate between the `View Command` that can take in WEEK_NUMBER to one that doesn't which might violate SLAP principle
+
+|**Create a new command to list exercises by week** +
+|Standalone from existing commands and hence easier to be built upon or removed without consequences
+|Creates an extra unnecessary complication for users having to learn a new command when the existing `View Command` essentially does something similar
+
+|===
+
+===== Aspect:  Loading of exercises data on fresh start
+
+|===
+|Alternative | Pros | Cons
+
+|**Include all exercises data in `SampleDataUtil` and read from there** +
+(current choice)
+|No additional processing required, is easy to modify whenever default data needs to be changed 
+|Is directly affected by the `Clear Command` that is meant for the list of `Persons` which user may not expect it to be for
+
+|**Read from stored text file, parse accordingly, and load into software on fresh start** +
+|Standalone data and will not be affected by changes made to list of `Persons`
+|Incurs extra overhead when parsing the text file into Java objects
+
+|===
+
+==== Proposed Implementation
+// end::answer[]
+
 // tag::adddefaulttasklist[]
 === [Ongoing] add default task command (Google Tasks API relevant commands)
 ==== Current+Planned Implementation
