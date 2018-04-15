@@ -87,6 +87,8 @@ Type **`nl`** to bring up the Google account authorization page. Select `Allow`.
 You should see the feedback that a verification code has been received. +
 Type **`view task`** then **`viewtasklist *`** +
 You should now be on the Task tab and see a list of learning outcomes.
+. When you have completed a learning outcome, you can mark them as complete. +
+Type **`ct`**`1` to mark our first learning outcome as complete.
 . Now, let's try answering an exercise. +
 Type **`view`**`exercise` +
 You should now be on the Exercise tab. You can scroll through and see the list of exercises available for week 11. Let's answer question index 11.1.1. +
