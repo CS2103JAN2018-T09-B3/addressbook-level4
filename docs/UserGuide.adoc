@@ -283,7 +283,7 @@ You can exits the program when you are done with the work. +
 ==== Exercise
 
 // tag::answer[]
-===== Answering an exercise : `answer` `[since v1.4r]`
+===== Answering an exercise : `answer` OR `ans` `[since v1.4r]`
 
 You can answer an exercise based on the question index. Your answer will be saved automatically upon answering. +
 *Format:* `answer QUESTION_INDEX ANSWER`
@@ -399,7 +399,7 @@ You can add the default task list to the ProgressChecker and your Google Tasks t
 *Format:* `newtasklist` OR `nl`
 
 
-[WARNING]
+[IMPORTANT]
 ====
 * This command should be executed before all other task-related commands
 * The command requires Internet connection. You may be brought to a login page in your browser. Please do not close the tab without accepting/declining request,
@@ -420,7 +420,7 @@ You can view the current default task list in the browser panel in ProgressCheck
 an interger ranging from 1 to 13 means to show tasks in that week. +
 *Format:* `viewtask FILTER_KEYWORD` OR `vt FILTER_KEYWORD`
 
-[WARNING]
+[IMPORTANT]
 ====
 * You should NOT call this command before calling `newtasklist` command.
 * The command requires Internet connection. You may be brought to a login page in your browser. Please do not close the tab without accepting/declining request,
@@ -448,7 +448,7 @@ You can mark the task as completed when you finish it. You cannot use undo comma
 * The index *must be a positive integer* 1, 2, 3, ...
 ====
 
-[WARNING]
+[IMPORTANT]
 ====
 * You should NOT call this command before calling `newtasklist` command.
 * The command requires Internet connection. You may be brought to a login page in your browser. Please do not close the tab without accepting/declining request,
@@ -473,7 +473,7 @@ You can reset a task as not completed when you marked it as completed by mistake
 * The index *must be a positive integer* 1, 2, 3, ...
 ****
 
-[WARNING]
+[IMPORTANT]
 ====
 * You should NOT call this command before calling `newtasklist` command.
 * The command requires Internet connection. You may be brought to a login page in your browser. Please do not close the tab without accepting/declining request,
@@ -498,7 +498,7 @@ You can visit the webpage of a task when you want to see details and work on it.
 * The index *must be a positive integer* 1, 2, 3, ...
 ****
 
-[WARNING]
+[IMPORTANT]
 ====
 * You should NOT call this command before calling `newtasklist` command.
 * The command requires Internet connection. You may be brought to a login page in your browser. Please do not close the tab without accepting/declining request,
