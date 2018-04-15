@@ -644,7 +644,7 @@ image::SDforExercisesEventHandling.png[width="800"]
 {sp} +
 
 // tag::tasks[]
-=== Logging into Github
+=== Github Login
 ==== Current Implemetation
 
 The `GitDetails` represents an object that is used to authenticate github. It contains `Username`, `Passcode`, and `Repository` object which represent the github account's username, password and repository respectively.
@@ -667,6 +667,8 @@ To manage the github account following command classes can be used:
 User can log into github after using the `GitLoginCommand`. After executing the command, a `GitDetails` object is created
 
 Given below is a sequence diagram for authenticating github.
+
+image::gitlogin.png[width="634"]
 
 The following code snippet shows how GitLoginCommand#execute() will update the model by creating `Github` object which will be used to authenticate github.
 
@@ -728,8 +730,8 @@ An issue is created on github using the CreateIssueCommand. After executing the 
 
 Given below is the sequence diagram for creating an issue on github.
 
-IMAGE TO BE ADDED
-
+image::finalcreateIssue.png[width="634"]
+Figure : High level sequence diagram for creating a new issue 
 The following code snippet shows how `CreateIssueCommand#execute()` will update the model of the application by creating an issue `toCreate` on github and later updating the `GitIssueList`.
 Note: This an issue will not be created if you haven't logged into github. 
 
@@ -758,7 +760,7 @@ An issue can be closed on github using the CloseIssueCommand. After executing th
 
 Given below is the sequence diagram for closing an issue.
 
-IMAGE TO BE ADDED
+image::closeissue.png[width="634"]
 
 The following code snippet shows how `CloseIssueCommand#execute()` will update the model of application by closing an issue updating the `GitIssueList`. 
 Note: The entered index number should be a valid issue index, and the user should be logged into github before using the command.
