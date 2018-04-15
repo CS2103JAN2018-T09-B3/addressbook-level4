@@ -250,6 +250,9 @@ You can refresh the program to update it to the latest content. +
 You can clear all information and data inside the ProgressChecker if you want to restore the app. +
 *Format:* `clear` OR `c`
 
+[NOTE]
+Running `clear` will remove the exercises in the software as well! If this was not your intent after running the command, you can undo the change as this is an undoable command! To find out how you can achieve this, check out the <<undoing-previous-command-code-undo-code-or-code-u-code,undo>> and <<redoing-the-previously-undone-command-code-redo-code-or-code-r-code,redo>> commands.
+
 *Examples:*
 
 * `clear`
