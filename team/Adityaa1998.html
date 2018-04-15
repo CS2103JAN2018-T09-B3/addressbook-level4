@@ -156,21 +156,21 @@
 </tbody>
 </table>
 <div class="sect4">
-<h5 id="github-logging-in-code-gitlogin-code-or-code-gl-code"><a class="link" href="#github-logging-in-code-gitlogin-code-or-code-gl-code">Github logging in: <code>gitlogin</code> OR <code>gl</code></a></h5>
+<h5 id="logging-in-to-github-code-gitlogin-code-or-code-gl-code"><a class="link" href="#logging-in-to-github-code-gitlogin-code-or-code-gl-code">Logging in to Github: <code>gitlogin</code> OR <code>gl</code></a></h5>
 <div class="paragraph">
 <p>You can login with your Github account and prepare to work with the issues in your team repo.<br>
 <strong>Format:</strong> <code>gitlogin gu/USERNAME pc/PASSWORD r/REPO</code><br>
 OR<br>
 <code>gl gu/USERNAME pc/PASSWORD r/REPOSITORY</code></p>
 </div>
-<div class="admonitionblock tip">
+<div class="admonitionblock note">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
+<i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Your git details are not saved in our app for sercurity reasons. Hence, you will need to login every time you start the software.<br>
+Your git details are not saved in our app for security reasons. Hence, you will need to login every time you start the software.<br>
 You need to login and mention the repo where you need to create/edit issues.
 </td>
 </tr>
@@ -182,7 +182,15 @@ You need to login and mention the repo where you need to create/edit issues.
 <div class="ulist">
 <ul>
 <li>
-<p><code>gitlogin gu/johndoe pc/dummy123 r/CS2103T/main</code></p>
+<p><code>gitlogin gu/johndoe pc/dummy123 r/CS2103T/main</code><br></p>
+<div class="paragraph">
+<p>Given below is the execution outcome of the above command:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>You have successfully authenticated github!</pre>
+</div>
+</div>
 </li>
 </ul>
 </div>
@@ -190,16 +198,16 @@ You need to login and mention the repo where you need to create/edit issues.
 <div class="sect4">
 <h5 id="creating-an-issue-on-github-code-issue-code-or-code-ci-code"><a class="link" href="#creating-an-issue-on-github-code-issue-code-or-code-ci-code">Creating an issue on Github: <code>+issue</code> OR <code>ci</code></a></h5>
 <div class="paragraph">
-<p>You can create a new issue in the team repo. Other than write the description and title, you can also set assignees, milestone and labels to it.<br>
+<p>You can create an issue in your team repository on github using this command.
 <strong>Format:</strong> <code>+issue ti/TITLE [a/ASSIGNEES]&#8230;&#8203; [ms/MILESTONE] [b/BODY] [l/LABELS]&#8230;&#8203;</code><br>
 OR<br>
 <code>ci ti/TITLE [a/ASSIGNEES]&#8230;&#8203; [ms/MILESTONE] [b/BODY] [l/LABELS]&#8230;&#8203;</code></p>
 </div>
-<div class="admonitionblock tip">
+<div class="admonitionblock note">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
+<i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
 An issue has only 'title' field as compulsory. Rest are all optional.<br>
@@ -221,6 +229,60 @@ An issue can have more than one assignees and labels.
 </li>
 <li>
 <p><code>ci ti/Issue with only body b/test body l/type.test</code></p>
+<div class="paragraph">
+<p>Given below is the execution outcome of the above command</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Issue successfully created on Github</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="editing-an-issue-on-github-code-issue-code-or-code-ci-code"><a class="link" href="#editing-an-issue-on-github-code-issue-code-or-code-ci-code">Editing an issue on Github: <code>+issue</code> OR <code>ci</code></a></h5>
+<div class="paragraph">
+<p>You can edit an existing issue in the team repository using this command.<br>
+<strong>Format:</strong> <code>editissue INDEX [ti/TITLE] [a/ASSIGNEES]&#8230;&#8203; [ms/MILESTONE] [b/BODY] [l/LABELS]&#8230;&#8203;</code><br>
+OR<br>
+<code>edi ti/TITLE [a/ASSIGNEES]&#8230;&#8203; [ms/MILESTONE] [b/BODY] [l/LABELS]&#8230;&#8203;</code></p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+If you don&#8217;t remember the issue number, you can take a look at the issues by using <code>listissues</code> command.<br>
+An issue can have more than one assignees and labels.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><strong>Examples:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>editissue 1 ti/Changed title</code></p>
+</li>
+<li>
+<p><code>editissue ti/changed title b/changed body</code></p>
+</li>
+<li>
+<p><code>edi l/type.task</code></p>
+<div class="paragraph">
+<p>Given below is the execution outcome of the above command</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Issue successfully edited on Github</pre>
+</div>
+</div>
 </li>
 </ul>
 </div>
@@ -228,7 +290,7 @@ An issue can have more than one assignees and labels.
 <div class="sect4">
 <h5 id="closing-an-issue-on-github-code-issue-code-or-code-cli-code"><a class="link" href="#closing-an-issue-on-github-code-issue-code-or-code-cli-code">Closing an issue on Github: <code>-issue</code> OR <code>cli</code></a></h5>
 <div class="paragraph">
-<p>You can close the certain issue on github when you have resolved it.<br>
+<p>You can close the specified issue on github after you have resolved it using this command.<br>
 <strong>Format:</strong> <code>-issue INDEX</code> OR <code>cli INDEX</code></p>
 </div>
 <div class="admonitionblock tip">
@@ -238,36 +300,16 @@ An issue can have more than one assignees and labels.
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-<code>INDEX</code> refers to the #INDEX of an issue on github
+If you don&#8217;t remember the issue number, you can take a look at the issues by using <code>listissues</code> command.<br>
 </td>
 </tr>
 </table>
 </div>
-<div class="paragraph">
-<p><strong>Examples:</strong></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>-issue 1</code></p>
-</li>
-<li>
-<p><code>cli 3</code></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="reopening-an-issue-on-github-code-reopenissue-code-or-code-ri-code"><a class="link" href="#reopening-an-issue-on-github-code-reopenissue-code-or-code-ri-code">Reopening an issue on Github: <code>reopenissue</code> OR <code>ri</code></a></h5>
-<div class="paragraph">
-<p>You can reopen the certain issue on github when you want to work on it.<br>
-<strong>Format:</strong> <code>reopenissue INDEX</code> OR <code>ri INDEX</code></p>
-</div>
-<div class="admonitionblock tip">
+<div class="admonitionblock note">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
+<i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
 <code>INDEX</code> refers to the #INDEX of an issue on github
@@ -281,10 +323,110 @@ An issue can have more than one assignees and labels.
 <div class="ulist">
 <ul>
 <li>
-<p><code>reopenissue 1</code></p>
+<p><code>-issue 17</code></p>
 </li>
 <li>
-<p><code>reopenissue 3</code></p>
+<p><code>cli 17</code></p>
+<div class="paragraph">
+<p>Given below is the execution outcome of the above command</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Issue #17 closed successfully</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="reopening-an-issue-on-github-code-reopenissue-code-or-code-ri-code"><a class="link" href="#reopening-an-issue-on-github-code-reopenissue-code-or-code-ri-code">Reopening an issue on Github: <code>reopenissue</code> OR <code>ri</code></a></h5>
+<div class="paragraph">
+<p>You can reopen a certain issue on github using this command.<br>
+<strong>Format:</strong> <code>reopenissue INDEX</code> OR <code>ri INDEX</code></p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+If you don&#8217;t remember the issue number, you can take a look at the issues by using <code>listissues</code> command.<br>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<code>INDEX</code> refers to the #INDEX of an issue on github
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><strong>Examples:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>reopenissue 17</code></p>
+</li>
+<li>
+<p><code>reopenissue 17</code></p>
+<div class="paragraph">
+<p>Given below is the execution outcome of the above command</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Issue #17 reopened successfully</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="listing-github-issues-code-listissue-code-or-code-lis-code"><a class="link" href="#listing-github-issues-code-listissue-code-or-code-lis-code">Listing github issues: <code>listissue</code> OR <code>lis</code></a></h5>
+<div class="paragraph">
+<p>You can list the github issues using this command.<br>
+<strong>Format:</strong> <code>listissue STATE</code> OR <code>lis STATE</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<code>STATE</code> refers to the state of the issue, i.e OPEN or CLOSED
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><strong>Examples:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>listissue OPEN</code></p>
+</li>
+<li>
+<p><code>lis CLOSED</code></p>
+<div class="paragraph">
+<p>Given below is the execution outcome of the above command</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>All the OPEN issues are being viewed</pre>
+</div>
+</div>
 </li>
 </ul>
 </div>
@@ -294,11 +436,11 @@ An issue can have more than one assignees and labels.
 <div class="paragraph">
 <p>You can logout of github after logging in.<br></p>
 </div>
-<div class="admonitionblock tip">
+<div class="admonitionblock note">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
+<i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
 You will get an error message if you try to logout before logging in.
@@ -316,6 +458,14 @@ You will get an error message if you try to logout before logging in.
 </li>
 <li>
 <p><code>glo</code></p>
+<div class="paragraph">
+<p>Given below is the execution outcome of the above command</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>You have successfully logged out of github</pre>
+</div>
+</div>
 </li>
 </ul>
 </div>
@@ -344,15 +494,6 @@ You will get an error message if you try to logout before logging in.
  the typed keywords appear.</p>
 </div>
 <div class="paragraph">
-<p>The following diagram shows the UML diagram for <code>find</code> command :</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/FindCommandUMLDiagram.png" alt="FindCommandUMLDiagram" width="120">
-</div>
-<div class="title">Figure 1. UML Diagram of <code>find</code> Command</div>
-</div>
-<div class="paragraph">
 <p>To implement the dynamic search, we used the following method - as soon as the user enters any character in the command box, the text is retrieved from
 the command box and checked if it is the <code>find</code> command. If it is the <code>find</code> command, dynamic search is started. After the <code>find</code> command is detected in the
 command box, every key that is pressed is parsed and sent to the <code>find</code> command parser. After that the basic functionality of find is used and the results are displayed.</p>
@@ -362,12 +503,8 @@ command box, every key that is pressed is parsed and sent to the <code>find</cod
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">private</span> <span class="type">void</span> handleKeyPress(<span class="predefined-type">KeyEvent</span> keyEvent) {
-        <span class="keyword">switch</span> (keyEvent.getCode()) {
-        <span class="comment">// .. other keypress logic ..</span>
-        <span class="keyword">default</span>:
-            <span class="keyword">try</span> {
-                <span class="keyword">if</span> (<span class="comment">// .. checking if the text is `find` command) {</span>
+<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">if</span> ((commandTextField.getText().trim().equalsIgnoreCase(CORRECT_COMMAND_WORD)
+                        || isCorrectCommandWord)) {
                     isCorrectCommandWord = !commandTextField.getText().trim().isEmpty();
                     CommandResult commandResult;
                     <span class="keyword">if</span> (keyEvent.getCode() != KeyCode.BACK_SPACE &amp;&amp; keyEvent.getCode() != KeyCode.DELETE) {
@@ -380,10 +517,6 @@ command box, every key that is pressed is parsed and sent to the <code>find</cod
                     logger.info(<span class="string"><span class="delimiter">&quot;</span><span class="content">Result: </span><span class="delimiter">&quot;</span></span> + commandResult.feedbackToUser);
                     raise(<span class="keyword">new</span> NewResultAvailableEvent(commandResult.feedbackToUser));
                 }
-            } <span class="keyword">catch</span> (CommandException | <span class="exception">ParseException</span> e) {
-               <span class="comment">// .. command failure logic ..</span>
-            }
-        }
     }</code></pre>
 </div>
 </div>
@@ -435,12 +568,294 @@ The entered key is not instantly updated in the command box thats why after the 
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="github-login"><a class="link" href="#github-login">Github Login</a></h3>
+<div class="sect3">
+<h4 id="current-implemetation"><a class="link" href="#current-implemetation">Current Implemetation</a></h4>
+<div class="paragraph">
+<p>The <code>GitDetails</code> represents an object that is used to authenticate github. It contains <code>Username</code>, <code>Passcode</code>, and <code>Repository</code> object which represent the github account&#8217;s username, password and repository respectively.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+All fields are compulsory for github authentication.
+.UML diagram for github details
+image::gitdetails.png[width="800"]
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><code>GitDetails</code> object is not stored locally as it can violate user&#8217;s data and privacy.
+To manage the github account following command classes can be used:</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>GitLoginCommand</p>
+</li>
+<li>
+<p>GitLogoutCommand</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><code>GitLoginCommand</code> needs to be used for tracking any issue activity on the ProgressChecker application. After the <code>GitDetails</code> object is created, its member&#8217;s are used to create a <code>Github</code> object from the Github API library which is used to authenticate github.</p>
+</div>
+<div class="paragraph">
+<p>Implementation of github login and issue tracking is done with the help of GitHub API for Java (org.kohsuke.github).
+==== Logging into github</p>
+</div>
+<div class="paragraph">
+<p>User can log into github after using the <code>GitLoginCommand</code>. After executing the command, a <code>GitDetails</code> object is created</p>
+</div>
+<div class="paragraph">
+<p>Given below is a sequence diagram for authenticating github.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/gitlogin1.png" alt="gitlogin1" width="800">
+</div>
+<div class="title">Figure 1. UML Diagram for Github details</div>
+</div>
+<div class="paragraph">
+<p>The following code snippet shows how GitLoginCommand#execute() will update the model by creating <code>Github</code> object which will be used to authenticate github.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>public class GitLoginCommand extends Command {
+@Override
+    public CommandResult execute() throws CommandException {
+
+        try {
+            model.loginGithub(toAuthenticate);
+            return new CommandResult(MESSAGE_SUCCESS);
+        } catch (IOException e) {
+            throw new CommandException(MESSAGE_FAILURE);
+        } catch (CommandException ce) {
+            throw new CommandException(ce.getMessage());
+        }
+    }
+}</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-using-password-for-authentication"><a class="link" href="#aspect-using-password-for-authentication">Aspect: Using password for authentication</a></h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Alternative</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pros</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cons</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Used github password for authentication</strong><br>
+(current choice)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User easily remebers his password, thus logging in is easy.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Password cannot be stored offline to protect users data and privacy.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Using OAuth token for authentication</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">OAuth token can be stored offline which can provide one-time login functionality, as we can restrict the token&#8217;s usage for only ProgressChecker application.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Manually generating a token by the user is a tedious task and github tokens expire regularly which can be a pain for the user.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="github-issue-tracker"><a class="link" href="#github-issue-tracker">Github Issue Tracker</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h4>
+<div class="paragraph">
+<p>The <code>Issue</code> object represents an issue that is to be created on github. It contains <code>Title</code>, <code>Assignees</code>, <code>Milestone</code>, <code>Body</code>, and <code>Labels</code> which are the different attributes of an issue on github.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Only the <code>Title</code> field is compulsory for <code>Issue</code> as this the only limitation set by github.
+</td>
+</tr>
+</table>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/issueobject.png" alt="issueobject" width="800">
+</div>
+<div class="title">Figure 2. UML diagram for github Issue</div>
+</div>
+<div class="paragraph">
+<p><code>Issue</code> objects are not stored in memory after an issue is created on github. The issues are not stored in a local file to protect users confidential data and privacy.</p>
+</div>
+<div class="paragraph">
+<p>Issue tracking is done by several command classes, namely:</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>CreateIssueCommand</p>
+</li>
+<li>
+<p>CloseIssueCommand</p>
+</li>
+<li>
+<p>EditIssueCommand</p>
+</li>
+<li>
+<p>ReopenIssueCommand</p>
+</li>
+<li>
+<p>ListIssueCommand</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>All the above commands will only work after you have logged into github. Use 'gitLogin' command to login.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="creating-an-issue"><a class="link" href="#creating-an-issue">Creating an issue</a></h4>
+<div class="paragraph">
+<p>An issue is created on github using the CreateIssueCommand. After executing the command, an <code>Issue</code> object is created which is then converted to a <code>GHIssue</code> object present in the Github Library. GHIssue is then posted online using the Github API library.</p>
+</div>
+<div class="paragraph">
+<p>Given below is the sequence diagram for creating an issue on github.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/finalcreateIssue.png" alt="finalcreateIssue" width="800">
+</div>
+<div class="title">Figure 3. High level sequence diagram for creating a new issue on github</div>
+</div>
+<div class="paragraph">
+<p>The following code snippet shows how <code>CreateIssueCommand#execute()</code> will update the model of the application by creating an issue <code>toCreate</code> on github and later updating the <code>GitIssueList</code>.
+Note: This an issue will not be created if you haven&#8217;t logged into github.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>public class CloseIssueCommandTest {
+...
+@Override
+    public CommandResult execute() throws CommandException {
+
+        try {
+            model.createIssueOnGitHub(toCreate);
+            return new CommandResult(MESSAGE_SUCCESS);
+        } catch (IOException | CommandException e) {
+            throw new CommandException(MESSAGE_FAILURE);
+        }
+    }
+    ...
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The issue created will be shown on the <code>Issues</code> tab in the application.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="closing-an-issue"><a class="link" href="#closing-an-issue">Closing an issue</a></h4>
+<div class="paragraph">
+<p>An issue can be closed on github using the CloseIssueCommand. After executing the command, a <code>GHIssue</code> object of the specified index is retrieved from the Github database. The state of the GHIssue is checked and it is marked as closed if it is open.</p>
+</div>
+<div class="paragraph">
+<p>Given below is the sequence diagram for closing an issue.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/closeissue.png" alt="closeissue" width="800">
+</div>
+<div class="title">Figure 4. High Level Sequence Diagram for closing an issue on github</div>
+</div>
+<div class="paragraph">
+<p>The following code snippet shows how <code>CloseIssueCommand#execute()</code> will update the model of application by closing an issue updating the <code>GitIssueList</code>.
+Note: The entered index number should be a valid issue index, and the user should be logged into github before using the command.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>public class CloseIssueCommand extends Command {
+@Override
+    public CommandResult execute() throws CommandException {
+        try {
+            model.closeIssueOnGithub(targetIndex);
+        } catch (IOException ie) {
+            throw new CommandException(MESSAGE_FAILURE);
+        } catch (CommandException ce) {
+            throw new CommandException(MESSAGE_AUTHENTICATION_FAILURE);
+        }
+
+        return new CommandResult(String.format(MESSAGE_SUCCESS, targetIndex.getOneBased()));
+    }
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The issue created will be removed from the <code>Issues</code> tab in the application, as by default only open issues are displayed.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-storing-issues-on-a-local-file"><a class="link" href="#aspect-storing-issues-on-a-local-file">Aspect: Storing issues on a local file</a></h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Alternative</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pros</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cons</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Not storing the issues offline</strong><br>
+(current choice)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Users data and privacy is protected, as issues on github might contain very confidential data regarding the product&#8217;s information.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The user cannot view the exisitng issues offline and he can not use the software to work offline and then push everything online once the internet connection is available.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Implementing data encryption so that the issues can be stored offline</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User will be able work offline on issues and post changes when internet connection is availabe.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">In order to do offline authentication and decrypt the issue data, the application will have to store the user credentials offline which might violate Github&#8217;s API policy.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 13:52:55 UTC
+Last updated 2018-04-15 17:58:11 UTC
 </div>
 </div>
 </body>

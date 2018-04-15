@@ -52,8 +52,10 @@
 <li><a href="#toggling-between-tab-views">5.4. Toggling between tab views</a></li>
 <li><a href="#view-answer-and-save-for-an-exercise">5.5. View, answer, and save for an exercise</a></li>
 <li><a href="#tasks">5.6. Tasks</a></li>
-<li><a href="#logging">5.7. Logging</a></li>
-<li><a href="#Implementation-Configuration">5.8. Configuration</a></li>
+<li><a href="#github-login">5.7. Github Login</a></li>
+<li><a href="#github-issue-tracker">5.8. Github Issue Tracker</a></li>
+<li><a href="#logging">5.9. Logging</a></li>
+<li><a href="#Implementation-Configuration">5.10. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">6. Documentation</a>
@@ -65,9 +67,8 @@
 </li>
 <li><a href="#Testing">7. Testing</a>
 <ul class="sectlevel2">
-<li><a href="#running-tests">7.1. Running Tests</a></li>
-<li><a href="#types-of-tests">7.2. Types of tests</a></li>
-<li><a href="#troubleshooting-testing">7.3. Troubleshooting Testing</a></li>
+<li><a href="#types-of-tests">7.1. Types of tests</a></li>
+<li><a href="#troubleshooting-testing">7.2. Troubleshooting Testing</a></li>
 </ul>
 </li>
 <li><a href="#dev-ops">8. Dev Ops</a>
@@ -103,9 +104,16 @@
 <ul class="sectlevel2">
 <li><a href="#launch-and-shutdown">H.1. Launch and Shutdown</a></li>
 <li><a href="#deleting-a-teammate">H.2. Deleting a teammate</a></li>
-<li><a href="#saving-data">H.3. Saving data</a></li>
-<li><a href="#toggling-a-tab-view">H.4. Toggling a tab view</a></li>
-<li><a href="#answering-an-exercise">H.5. Answering an exercise</a></li>
+<li><a href="#log-into-github">H.3. Log into Github</a></li>
+<li><a href="#create-an-issue-on-github">H.4. Create an issue on github</a></li>
+<li><a href="#edit-an-issue-on-github">H.5. Edit an issue on github</a></li>
+<li><a href="#close-an-issue-on-github">H.6. Close an issue on github</a></li>
+<li><a href="#reopen-an-issue-on-github">H.7. Reopen an issue on github</a></li>
+<li><a href="#list-issues-on-github">H.8. List issues on github</a></li>
+<li><a href="#logout-of-github">H.9. Logout of Github</a></li>
+<li><a href="#saving-data">H.10. Saving data</a></li>
+<li><a href="#toggling-a-tab-view">H.11. Toggling a tab view</a></li>
+<li><a href="#answering-an-exercise">H.12. Answering an exercise</a></li>
 </ul>
 </li>
 </ul>
@@ -1146,15 +1154,6 @@ If the local path is invalid or the image cannot be found, the upload will not b
  the typed keywords appear.</p>
 </div>
 <div class="paragraph">
-<p>The following diagram shows the UML diagram for <code>find</code> command :</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/FindCommandUMLDiagram.png" alt="FindCommandUMLDiagram" width="120">
-</div>
-<div class="title">Figure 20. UML Diagram of <code>find</code> Command</div>
-</div>
-<div class="paragraph">
 <p>To implement the dynamic search, we used the following method - as soon as the user enters any character in the command box, the text is retrieved from
 the command box and checked if it is the <code>find</code> command. If it is the <code>find</code> command, dynamic search is started. After the <code>find</code> command is detected in the
 command box, every key that is pressed is parsed and sent to the <code>find</code> command parser. After that the basic functionality of find is used and the results are displayed.</p>
@@ -1164,12 +1163,8 @@ command box, every key that is pressed is parsed and sent to the <code>find</cod
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">private</span> <span class="type">void</span> handleKeyPress(<span class="predefined-type">KeyEvent</span> keyEvent) {
-        <span class="keyword">switch</span> (keyEvent.getCode()) {
-        <span class="comment">// .. other keypress logic ..</span>
-        <span class="keyword">default</span>:
-            <span class="keyword">try</span> {
-                <span class="keyword">if</span> (<span class="comment">// .. checking if the text is `find` command) {</span>
+<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">if</span> ((commandTextField.getText().trim().equalsIgnoreCase(CORRECT_COMMAND_WORD)
+                        || isCorrectCommandWord)) {
                     isCorrectCommandWord = !commandTextField.getText().trim().isEmpty();
                     CommandResult commandResult;
                     <span class="keyword">if</span> (keyEvent.getCode() != KeyCode.BACK_SPACE &amp;&amp; keyEvent.getCode() != KeyCode.DELETE) {
@@ -1182,10 +1177,6 @@ command box, every key that is pressed is parsed and sent to the <code>find</cod
                     logger.info(<span class="string"><span class="delimiter">&quot;</span><span class="content">Result: </span><span class="delimiter">&quot;</span></span> + commandResult.feedbackToUser);
                     raise(<span class="keyword">new</span> NewResultAvailableEvent(commandResult.feedbackToUser));
                 }
-            } <span class="keyword">catch</span> (CommandException | <span class="exception">ParseException</span> e) {
-               <span class="comment">// .. command failure logic ..</span>
-            }
-        }
     }</code></pre>
 </div>
 </div>
@@ -1248,7 +1239,7 @@ The entered key is not instantly updated in the command box thats why after the 
 <div class="content">
 <img src="images/TabView.png" alt="TabView" width="600">
 </div>
-<div class="title">Figure 21. Reference of the tab view in the software</div>
+<div class="title">Figure 20. Reference of the tab view in the software</div>
 </div>
 <div class="paragraph">
 <p> <br></p>
@@ -1263,7 +1254,7 @@ The entered key is not instantly updated in the command box thats why after the 
 <div class="content">
 <img src="images/SDforViewExercise.png" alt="SDforViewExercise" width="600">
 </div>
-<div class="title">Figure 22. Logic and UI component interaction for <code>view exercise</code> command (part 1)</div>
+<div class="title">Figure 21. Logic and UI component interaction for <code>view exercise</code> command (part 1)</div>
 </div>
 <div class="paragraph">
 <p> <br></p>
@@ -1307,7 +1298,7 @@ Note how the <code>Logic</code> simply raises a <code>TabLoadChangedEvent</code>
 <div class="content">
 <img src="images/SDforViewExerciseEventHandling.png" alt="SDforViewExerciseEventHandling" width="600">
 </div>
-<div class="title">Figure 23. Logic and UI component interaction for <code>view exercise</code> command (part 2)</div>
+<div class="title">Figure 22. Logic and UI component interaction for <code>view exercise</code> command (part 2)</div>
 </div>
 <div class="paragraph">
 <p> <br></p>
@@ -1365,7 +1356,7 @@ The UI scene&#8217;s elements are automatically populated in <code>MainWindow.ja
 <div class="content">
 <img src="images/QuestionIndexIndication.png" alt="QuestionIndexIndication" width="300">
 </div>
-<div class="title">Figure 24. Reference of the question index in the software</div>
+<div class="title">Figure 23. Reference of the question index in the software</div>
 </div>
 <div class="paragraph">
 <p> <br></p>
@@ -1380,7 +1371,7 @@ The UI scene&#8217;s elements are automatically populated in <code>MainWindow.ja
 <div class="content">
 <img src="images/SDforAnswerExercise.png" alt="SDforAnswerExercise" width="800">
 </div>
-<div class="title">Figure 25. Component interactions for <code>ans 11.1.1 a</code> command (part 1)</div>
+<div class="title">Figure 24. Component interactions for <code>ans 11.1.1 a</code> command (part 1)</div>
 </div>
 <div class="paragraph">
 <p><br></p>
@@ -1407,7 +1398,7 @@ Note how the <code>Model</code> simply raises a <code>ProgressCheckerChangedEven
 <div class="content">
 <img src="images/SDforAnswerExerciseEventHandling.png" alt="SDforAnswerExerciseEventHandling" width="800">
 </div>
-<div class="title">Figure 26. Component interactions for <code>ans 11.1.1 a</code> command (part 2)</div>
+<div class="title">Figure 25. Component interactions for <code>ans 11.1.1 a</code> command (part 2)</div>
 </div>
 <div class="paragraph">
 <p> <br></p>
@@ -1551,7 +1542,7 @@ for the scenario where the user issues the command <code>viewtasklist 5</code>.<
 <div class="content">
 <img src="images/HighLevelSDforViewTaskListCommand.png" alt="HighLevelSDforViewTaskListCommand" width="800">
 </div>
-<div class="title">Figure 27. Component Interactions for <code>viewtasklist 5</code> Command (High Level)</div>
+<div class="title">Figure 26. Component Interactions for <code>viewtasklist 5</code> Command (High Level)</div>
 </div>
 <div class="paragraph">
 <p> <br></p>
@@ -1560,7 +1551,7 @@ for the scenario where the user issues the command <code>viewtasklist 5</code>.<
 <div class="content">
 <img src="images/SDforViewTaskListCommand.png" alt="SDforViewTaskListCommand" width="800">
 </div>
-<div class="title">Figure 28. Component Interactions for <code>viewtasklist 5</code> Command</div>
+<div class="title">Figure 27. Component Interactions for <code>viewtasklist 5</code> Command</div>
 </div>
 <div class="paragraph">
 <p> <br></p>
@@ -1868,14 +1859,296 @@ retrieve teammate task list data from the shared folder in Google Drive).</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">5.7. Logging</a></h3>
+<h3 id="github-login"><a class="link" href="#github-login">5.7. Github Login</a></h3>
+<div class="sect3">
+<h4 id="current-implemetation"><a class="link" href="#current-implemetation">5.7.1. Current Implemetation</a></h4>
+<div class="paragraph">
+<p>The <code>GitDetails</code> represents an object that is used to authenticate github. It contains <code>Username</code>, <code>Passcode</code>, and <code>Repository</code> object which represent the github account&#8217;s username, password and repository respectively.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+All fields are compulsory for github authentication.
+.UML diagram for github details
+image::gitdetails.png[width="800"]
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><code>GitDetails</code> object is not stored locally as it can violate user&#8217;s data and privacy.
+To manage the github account following command classes can be used:</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>GitLoginCommand</p>
+</li>
+<li>
+<p>GitLogoutCommand</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><code>GitLoginCommand</code> needs to be used for tracking any issue activity on the ProgressChecker application. After the <code>GitDetails</code> object is created, its member&#8217;s are used to create a <code>Github</code> object from the Github API library which is used to authenticate github.</p>
+</div>
+<div class="paragraph">
+<p>Implementation of github login and issue tracking is done with the help of GitHub API for Java (org.kohsuke.github).
+==== Logging into github</p>
+</div>
+<div class="paragraph">
+<p>User can log into github after using the <code>GitLoginCommand</code>. After executing the command, a <code>GitDetails</code> object is created</p>
+</div>
+<div class="paragraph">
+<p>Given below is a sequence diagram for authenticating github.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/gitlogin1.png" alt="gitlogin1" width="800">
+</div>
+<div class="title">Figure 28. UML Diagram for Github details</div>
+</div>
+<div class="paragraph">
+<p>The following code snippet shows how GitLoginCommand#execute() will update the model by creating <code>Github</code> object which will be used to authenticate github.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>public class GitLoginCommand extends Command {
+@Override
+    public CommandResult execute() throws CommandException {
+
+        try {
+            model.loginGithub(toAuthenticate);
+            return new CommandResult(MESSAGE_SUCCESS);
+        } catch (IOException e) {
+            throw new CommandException(MESSAGE_FAILURE);
+        } catch (CommandException ce) {
+            throw new CommandException(ce.getMessage());
+        }
+    }
+}</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">5.7.2. Design considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-using-password-for-authentication"><a class="link" href="#aspect-using-password-for-authentication">Aspect: Using password for authentication</a></h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Alternative</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pros</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cons</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Used github password for authentication</strong><br>
+(current choice)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User easily remebers his password, thus logging in is easy.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Password cannot be stored offline to protect users data and privacy.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Using OAuth token for authentication</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">OAuth token can be stored offline which can provide one-time login functionality, as we can restrict the token&#8217;s usage for only ProgressChecker application.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Manually generating a token by the user is a tedious task and github tokens expire regularly which can be a pain for the user.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="github-issue-tracker"><a class="link" href="#github-issue-tracker">5.8. Github Issue Tracker</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-6"><a class="link" href="#current-implementation-6">5.8.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>The <code>Issue</code> object represents an issue that is to be created on github. It contains <code>Title</code>, <code>Assignees</code>, <code>Milestone</code>, <code>Body</code>, and <code>Labels</code> which are the different attributes of an issue on github.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Only the <code>Title</code> field is compulsory for <code>Issue</code> as this the only limitation set by github.
+</td>
+</tr>
+</table>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/issueobject.png" alt="issueobject" width="800">
+</div>
+<div class="title">Figure 29. UML diagram for github Issue</div>
+</div>
+<div class="paragraph">
+<p><code>Issue</code> objects are not stored in memory after an issue is created on github. The issues are not stored in a local file to protect users confidential data and privacy.</p>
+</div>
+<div class="paragraph">
+<p>Issue tracking is done by several command classes, namely:</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>CreateIssueCommand</p>
+</li>
+<li>
+<p>CloseIssueCommand</p>
+</li>
+<li>
+<p>EditIssueCommand</p>
+</li>
+<li>
+<p>ReopenIssueCommand</p>
+</li>
+<li>
+<p>ListIssueCommand</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>All the above commands will only work after you have logged into github. Use 'gitLogin' command to login.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="creating-an-issue"><a class="link" href="#creating-an-issue">5.8.2. Creating an issue</a></h4>
+<div class="paragraph">
+<p>An issue is created on github using the CreateIssueCommand. After executing the command, an <code>Issue</code> object is created which is then converted to a <code>GHIssue</code> object present in the Github Library. GHIssue is then posted online using the Github API library.</p>
+</div>
+<div class="paragraph">
+<p>Given below is the sequence diagram for creating an issue on github.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/finalcreateIssue.png" alt="finalcreateIssue" width="800">
+</div>
+<div class="title">Figure 30. High level sequence diagram for creating a new issue on github</div>
+</div>
+<div class="paragraph">
+<p>The following code snippet shows how <code>CreateIssueCommand#execute()</code> will update the model of the application by creating an issue <code>toCreate</code> on github and later updating the <code>GitIssueList</code>.
+Note: This an issue will not be created if you haven&#8217;t logged into github.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>public class CloseIssueCommandTest {
+...
+@Override
+    public CommandResult execute() throws CommandException {
+
+        try {
+            model.createIssueOnGitHub(toCreate);
+            return new CommandResult(MESSAGE_SUCCESS);
+        } catch (IOException | CommandException e) {
+            throw new CommandException(MESSAGE_FAILURE);
+        }
+    }
+    ...
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The issue created will be shown on the <code>Issues</code> tab in the application.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="closing-an-issue"><a class="link" href="#closing-an-issue">5.8.3. Closing an issue</a></h4>
+<div class="paragraph">
+<p>An issue can be closed on github using the CloseIssueCommand. After executing the command, a <code>GHIssue</code> object of the specified index is retrieved from the Github database. The state of the GHIssue is checked and it is marked as closed if it is open.</p>
+</div>
+<div class="paragraph">
+<p>Given below is the sequence diagram for closing an issue.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/closeissue.png" alt="closeissue" width="800">
+</div>
+<div class="title">Figure 31. High Level Sequence Diagram for closing an issue on github</div>
+</div>
+<div class="paragraph">
+<p>The following code snippet shows how <code>CloseIssueCommand#execute()</code> will update the model of application by closing an issue updating the <code>GitIssueList</code>.
+Note: The entered index number should be a valid issue index, and the user should be logged into github before using the command.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>public class CloseIssueCommand extends Command {
+@Override
+    public CommandResult execute() throws CommandException {
+        try {
+            model.closeIssueOnGithub(targetIndex);
+        } catch (IOException ie) {
+            throw new CommandException(MESSAGE_FAILURE);
+        } catch (CommandException ce) {
+            throw new CommandException(MESSAGE_AUTHENTICATION_FAILURE);
+        }
+
+        return new CommandResult(String.format(MESSAGE_SUCCESS, targetIndex.getOneBased()));
+    }
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The issue created will be removed from the <code>Issues</code> tab in the application, as by default only open issues are displayed.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">5.8.4. Design considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-storing-issues-on-a-local-file"><a class="link" href="#aspect-storing-issues-on-a-local-file">Aspect: Storing issues on a local file</a></h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Alternative</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pros</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cons</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Not storing the issues offline</strong><br>
+(current choice)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Users data and privacy is protected, as issues on github might contain very confidential data regarding the product&#8217;s information.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The user cannot view the exisitng issues offline and he can not use the software to work offline and then push everything online once the internet connection is available.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Implementing data encryption so that the issues can be stored offline</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User will be able work offline on issues and post changes when internet connection is availabe.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">In order to do offline authentication and decrypt the issue data, the application will have to store the user credentials offline which might violate Github&#8217;s API policy.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="logging"><a class="link" href="#logging">5.9. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 5.8, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 5.10, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -1906,7 +2179,7 @@ retrieve teammate task list data from the shared folder in Google Drive).</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">5.8. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">5.10. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -1972,7 +2245,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 29. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 32. Saving documentation as PDF files in Chrome</div>
 </div>
 </div>
 </div>
@@ -1984,69 +2257,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <p>ProgressChecker uses JUnit tests to check for its correctness. This section covers the type of tests and how to run them.</p>
 </div>
 <div class="sect2">
-<h3 id="running-tests"><a class="link" href="#running-tests">7.1. Running Tests</a></h3>
-<div class="paragraph">
-<p>There are three ways to run tests.</p>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-The most reliable way to run tests is the 3rd one. The first two methods might fail some GUI tests due to platform/resolution-specific idiosyncrasies.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p><strong>Method 1: Using IntelliJ JUnit test runner</strong></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>To run all tests, right-click on the <code>src/test/java</code> folder and choose <code>Run 'All Tests'</code></p>
-</li>
-<li>
-<p>To run a subset of tests, you can right-click on a test package, test class, or a test and choose <code>Run 'ABC'</code></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p><strong>Method 2: Using Gradle</strong></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Open a console and run the command <code>gradlew clean allTests</code> (Mac/Linux: <code>./gradlew clean allTests</code>)</p>
-</li>
-</ul>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-See <a href="UsingGradle.html">UsingGradle.adoc</a> for more info on how to run tests using Gradle.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p><strong>Method 3: Using Gradle (headless)</strong></p>
-</div>
-<div class="paragraph">
-<p>Thanks to the <a href="https://github.com/TestFX/TestFX">TestFX</a> library we use, our GUI tests can be run in the <em>headless</em> mode. In the headless mode, GUI tests do not show up on the screen. That means the developer can do other things on the Computer while the tests are running.</p>
-</div>
-<div class="paragraph">
-<p>To run tests in headless mode, open a console and run the command <code>gradlew clean headless allTests</code> (Mac/Linux: <code>./gradlew clean headless allTests</code>)</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="types-of-tests"><a class="link" href="#types-of-tests">7.2. Types of tests</a></h3>
+<h3 id="types-of-tests"><a class="link" href="#types-of-tests">7.1. Types of tests</a></h3>
 <div class="paragraph">
 <p>We have two types of tests:</p>
 </div>
@@ -2088,7 +2299,7 @@ e.g. <code>seedu.progresschecker.logic.LogicManagerTest</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="troubleshooting-testing"><a class="link" href="#troubleshooting-testing">7.3. Troubleshooting Testing</a></h3>
+<h3 id="troubleshooting-testing"><a class="link" href="#troubleshooting-testing">7.2. Troubleshooting Testing</a></h3>
 <div class="paragraph">
 <p><strong>Problem: <code>HelpWindowTest</code> fails with a <code>NullPointerException</code>.</strong></p>
 </div>
@@ -3014,13 +3225,10 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>(Major) Add a progress checker which will keep a track of number of tasks remaining and accordingly update the progress bar</p>
+<p>(Major) Create a github issue tracker which will be used to track issues on github using the ProgressChecker application.</p>
 </li>
 <li>
 <p>(Minor) Implement dynamic search</p>
-</li>
-<li>
-<p>(Minor) Add an auto-complete for commands with tab press</p>
 </li>
 </ol>
 </div>
@@ -4047,9 +4255,6 @@ Expected: The most recent window size and location is retained.</p>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
-</div>
 </div>
 <div class="sect2">
 <h3 id="deleting-a-teammate"><a class="link" href="#deleting-a-teammate">H.2. Deleting a teammate</a></h3>
@@ -4079,12 +4284,211 @@ Expected: Similar to previous.</p>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
+</div>
+<div class="sect2">
+<h3 id="log-into-github"><a class="link" href="#log-into-github">H.3. Log into Github</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Logging in to github when not not logged in</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: User shouldn&#8217;t have logged into github</p>
+</li>
+<li>
+<p>Test case: <code>gitlogin gu/USERNAME pc/PASSCODE r/REPOSITORY</code><br>
+Expected: You have successfully logged into github!</p>
+</li>
+<li>
+<p>Test case: <code>gitlogin gu/WRONG_USERNAME pc/PASSCODE r/REPOSITORY</code><br>
+Expected: Enter correct username and password.<br></p>
+</li>
+<li>
+<p>Other incorrect gitlogin commands to try: <code>gitlogin</code>,<br>
+Expected: Invalid command format.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-data"><a class="link" href="#saving-data">H.3. Saving data</a></h3>
+<h3 id="create-an-issue-on-github"><a class="link" href="#create-an-issue-on-github">H.4. Create an issue on github</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Create issue on github after logging in</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: User should have logged into github with correct repository</p>
+</li>
+<li>
+<p>Test case: <code>+issue ti/Test b/test body ms/v1.1 a/johndoe l/bug</code><br>
+Expected: You have successfully created an issue on github!</p>
+</li>
+<li>
+<p>Test case: <code>+issue ti/Test b/test body ms/INVALID_MILESTONE a/johndoe l/bug</code><br>
+Expected: Enter correct milestone.<br></p>
+</li>
+<li>
+<p>Other incorrect +issue commands to try: <code>+issue</code>,<br>
+Expected: Invalid command format.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="edit-an-issue-on-github"><a class="link" href="#edit-an-issue-on-github">H.5. Edit an issue on github</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Edit issue on github after logging in</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: User should have logged into github with correct repository</p>
+</li>
+<li>
+<p>Test case: <code>editissue 123 ti/Test b/test body ms/v1.1 a/johndoe l/bug</code><br>
+Expected: You have successfully editted an issue on github!</p>
+</li>
+<li>
+<p>Test case: <code>editissue 99999 ti/Test b/test body ms/v1.1 a/johndoe l/bug</code><br>
+Expected: Issue not edited. Enter correct index number.<br></p>
+</li>
+<li>
+<p>Other incorrect editissue commands to try: <code>editissue</code>,<br>
+Expected: Invalid command format.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="close-an-issue-on-github"><a class="link" href="#close-an-issue-on-github">H.6. Close an issue on github</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Close an issue on github after logging in</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: User should have logged into github with correct repository</p>
+</li>
+<li>
+<p>Test case: <code>-issue 37</code><br>
+Expected: Issue #37 has successfully been closed!</p>
+</li>
+<li>
+<p>Test case: <code>-issue 9999</code><br>
+Expected: Issue not closed. Enter correct index number.<br></p>
+</li>
+<li>
+<p>Other incorrect close issue commands to try: <code>-issue 3 text</code>,<br>
+Expected: Invalid command format.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="reopen-an-issue-on-github"><a class="link" href="#reopen-an-issue-on-github">H.7. Reopen an issue on github</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Reopen an issue on github after logging in</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: User should have logged into github with correct repository</p>
+</li>
+<li>
+<p>Test case: <code>reopenissue 37</code><br>
+Expected: Issue #37 has successfully been reopened!</p>
+</li>
+<li>
+<p>Test case: <code>reopenissue 9999</code><br>
+Expected: Issue not reopened. Enter correct index number.<br></p>
+</li>
+<li>
+<p>Other incorrect reopen issue commands to try: <code>reopen 3 text</code>,<br>
+Expected: Invalid command format.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="list-issues-on-github"><a class="link" href="#list-issues-on-github">H.8. List issues on github</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>List issues on github after logging in</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: User should have logged into github with correct repository</p>
+</li>
+<li>
+<p>Test case: <code>listissues OPEN</code><br>
+Expected: All open issues are listed!</p>
+</li>
+<li>
+<p>Test case: <code>listissues ssxss</code><br>
+Expected: Enter correct state value.<br></p>
+</li>
+<li>
+<p>Other incorrect list issues commands to try: <code>listissues</code>,<br>
+Expected: Invalid command format.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="logout-of-github"><a class="link" href="#logout-of-github">H.9. Logout of Github</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Log out of github after logging in</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: User should have logged into github with correct repository</p>
+</li>
+<li>
+<p>Test case: <code>gitlogout</code><br>
+Expected: You have successfully logged out of github!</p>
+</li>
+<li>
+<p>Prerequisites: User should not have logged into github</p>
+</li>
+<li>
+<p>Test case: <code>gitlogout</code><br>
+Expected: Please log into github first to logout.<br></p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="saving-data"><a class="link" href="#saving-data">H.10. Saving data</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -4104,7 +4508,7 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="toggling-a-tab-view"><a class="link" href="#toggling-a-tab-view">H.4. Toggling a tab view</a></h3>
+<h3 id="toggling-a-tab-view"><a class="link" href="#toggling-a-tab-view">H.11. Toggling a tab view</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -4134,7 +4538,7 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="answering-an-exercise"><a class="link" href="#answering-an-exercise">H.5. Answering an exercise</a></h3>
+<h3 id="answering-an-exercise"><a class="link" href="#answering-an-exercise">H.12. Answering an exercise</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -4170,7 +4574,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 13:52:55 UTC
+Last updated 2018-04-15 17:58:11 UTC
 </div>
 </div>
 </body>

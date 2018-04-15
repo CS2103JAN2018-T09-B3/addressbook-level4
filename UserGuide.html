@@ -57,10 +57,12 @@
 </li>
 <li><a href="#issue-tracker">3.2.3. Issue Tracker</a>
 <ul class="sectlevel4">
-<li><a href="#github-logging-in-code-gitlogin-code-or-code-gl-code">Github logging in: <code>gitlogin</code> OR <code>gl</code></a></li>
+<li><a href="#logging-in-to-github-code-gitlogin-code-or-code-gl-code">Logging in to Github: <code>gitlogin</code> OR <code>gl</code></a></li>
 <li><a href="#creating-an-issue-on-github-code-issue-code-or-code-ci-code">Creating an issue on Github: <code>+issue</code> OR <code>ci</code></a></li>
+<li><a href="#editing-an-issue-on-github-code-issue-code-or-code-ci-code">Editing an issue on Github: <code>+issue</code> OR <code>ci</code></a></li>
 <li><a href="#closing-an-issue-on-github-code-issue-code-or-code-cli-code">Closing an issue on Github: <code>-issue</code> OR <code>cli</code></a></li>
 <li><a href="#reopening-an-issue-on-github-code-reopenissue-code-or-code-ri-code">Reopening an issue on Github: <code>reopenissue</code> OR <code>ri</code></a></li>
+<li><a href="#listing-github-issues-code-listissue-code-or-code-lis-code">Listing github issues: <code>listissue</code> OR <code>lis</code></a></li>
 <li><a href="#logging-out-of-github-code-gitlogout-code-or-code-glo-code">Logging out of Github: <code>gitlogout</code> OR <code>glo</code></a></li>
 </ul>
 </li>
@@ -201,7 +203,30 @@ Your jar file should now be residing in C:\Users\%UserProfile%\Desktop\ProgressC
 <p>You can double-click the <code>progresschecker.jar</code> file to launch ProgressChecker. A GUI as shown below should appear in a few seconds.</p>
 <div class="imageblock">
 <div class="content">
-<img src="images/Ui.png" alt="Ui" width="790">
+<img src="images/UI.jpg" alt="UI" width="790">
+</div>
+</div>
+<div class="paragraph">
+<p>Here are the four tabs(profile, task, exercise and issue) that you can switch in center panel:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/profileTab.jpg" alt="profileTab" width="790">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/exerciseTab.jpg" alt="exerciseTab" width="790">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/taskTab.jpg" alt="taskTab" width="790">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/issueTab.jpg" alt="issueTab" width="790">
 </div>
 </div>
 </li>
@@ -708,21 +733,21 @@ An exercise&#8217;s <code>SECTION_NUMBER</code> is directly adopted from <a href
 <div class="sect3">
 <h4 id="issue-tracker"><a class="link" href="#issue-tracker">3.2.3. Issue Tracker</a></h4>
 <div class="sect4">
-<h5 id="github-logging-in-code-gitlogin-code-or-code-gl-code"><a class="link" href="#github-logging-in-code-gitlogin-code-or-code-gl-code">Github logging in: <code>gitlogin</code> OR <code>gl</code></a></h5>
+<h5 id="logging-in-to-github-code-gitlogin-code-or-code-gl-code"><a class="link" href="#logging-in-to-github-code-gitlogin-code-or-code-gl-code">Logging in to Github: <code>gitlogin</code> OR <code>gl</code></a></h5>
 <div class="paragraph">
 <p>You can login with your Github account and prepare to work with the issues in your team repo.<br>
 <strong>Format:</strong> <code>gitlogin gu/USERNAME pc/PASSWORD r/REPO</code><br>
 OR<br>
 <code>gl gu/USERNAME pc/PASSWORD r/REPOSITORY</code></p>
 </div>
-<div class="admonitionblock tip">
+<div class="admonitionblock note">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
+<i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Your git details are not saved in our app for sercurity reasons. Hence, you will need to login every time you start the software.<br>
+Your git details are not saved in our app for security reasons. Hence, you will need to login every time you start the software.<br>
 You need to login and mention the repo where you need to create/edit issues.
 </td>
 </tr>
@@ -734,7 +759,15 @@ You need to login and mention the repo where you need to create/edit issues.
 <div class="ulist">
 <ul>
 <li>
-<p><code>gitlogin gu/johndoe pc/dummy123 r/CS2103T/main</code></p>
+<p><code>gitlogin gu/johndoe pc/dummy123 r/CS2103T/main</code><br></p>
+<div class="paragraph">
+<p>Given below is the execution outcome of the above command:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>You have successfully authenticated github!</pre>
+</div>
+</div>
 </li>
 </ul>
 </div>
@@ -742,16 +775,16 @@ You need to login and mention the repo where you need to create/edit issues.
 <div class="sect4">
 <h5 id="creating-an-issue-on-github-code-issue-code-or-code-ci-code"><a class="link" href="#creating-an-issue-on-github-code-issue-code-or-code-ci-code">Creating an issue on Github: <code>+issue</code> OR <code>ci</code></a></h5>
 <div class="paragraph">
-<p>You can create a new issue in the team repo. Other than write the description and title, you can also set assignees, milestone and labels to it.<br>
+<p>You can create an issue in your team repository on github using this command.
 <strong>Format:</strong> <code>+issue ti/TITLE [a/ASSIGNEES]&#8230;&#8203; [ms/MILESTONE] [b/BODY] [l/LABELS]&#8230;&#8203;</code><br>
 OR<br>
 <code>ci ti/TITLE [a/ASSIGNEES]&#8230;&#8203; [ms/MILESTONE] [b/BODY] [l/LABELS]&#8230;&#8203;</code></p>
 </div>
-<div class="admonitionblock tip">
+<div class="admonitionblock note">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
+<i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
 An issue has only 'title' field as compulsory. Rest are all optional.<br>
@@ -773,6 +806,60 @@ An issue can have more than one assignees and labels.
 </li>
 <li>
 <p><code>ci ti/Issue with only body b/test body l/type.test</code></p>
+<div class="paragraph">
+<p>Given below is the execution outcome of the above command</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Issue successfully created on Github</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="editing-an-issue-on-github-code-issue-code-or-code-ci-code"><a class="link" href="#editing-an-issue-on-github-code-issue-code-or-code-ci-code">Editing an issue on Github: <code>+issue</code> OR <code>ci</code></a></h5>
+<div class="paragraph">
+<p>You can edit an existing issue in the team repository using this command.<br>
+<strong>Format:</strong> <code>editissue INDEX [ti/TITLE] [a/ASSIGNEES]&#8230;&#8203; [ms/MILESTONE] [b/BODY] [l/LABELS]&#8230;&#8203;</code><br>
+OR<br>
+<code>edi ti/TITLE [a/ASSIGNEES]&#8230;&#8203; [ms/MILESTONE] [b/BODY] [l/LABELS]&#8230;&#8203;</code></p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+If you don&#8217;t remember the issue number, you can take a look at the issues by using <code>listissues</code> command.<br>
+An issue can have more than one assignees and labels.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><strong>Examples:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>editissue 1 ti/Changed title</code></p>
+</li>
+<li>
+<p><code>editissue ti/changed title b/changed body</code></p>
+</li>
+<li>
+<p><code>edi l/type.task</code></p>
+<div class="paragraph">
+<p>Given below is the execution outcome of the above command</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Issue successfully edited on Github</pre>
+</div>
+</div>
 </li>
 </ul>
 </div>
@@ -780,7 +867,7 @@ An issue can have more than one assignees and labels.
 <div class="sect4">
 <h5 id="closing-an-issue-on-github-code-issue-code-or-code-cli-code"><a class="link" href="#closing-an-issue-on-github-code-issue-code-or-code-cli-code">Closing an issue on Github: <code>-issue</code> OR <code>cli</code></a></h5>
 <div class="paragraph">
-<p>You can close the certain issue on github when you have resolved it.<br>
+<p>You can close the specified issue on github after you have resolved it using this command.<br>
 <strong>Format:</strong> <code>-issue INDEX</code> OR <code>cli INDEX</code></p>
 </div>
 <div class="admonitionblock tip">
@@ -790,36 +877,16 @@ An issue can have more than one assignees and labels.
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-<code>INDEX</code> refers to the #INDEX of an issue on github
+If you don&#8217;t remember the issue number, you can take a look at the issues by using <code>listissues</code> command.<br>
 </td>
 </tr>
 </table>
 </div>
-<div class="paragraph">
-<p><strong>Examples:</strong></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>-issue 1</code></p>
-</li>
-<li>
-<p><code>cli 3</code></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="reopening-an-issue-on-github-code-reopenissue-code-or-code-ri-code"><a class="link" href="#reopening-an-issue-on-github-code-reopenissue-code-or-code-ri-code">Reopening an issue on Github: <code>reopenissue</code> OR <code>ri</code></a></h5>
-<div class="paragraph">
-<p>You can reopen the certain issue on github when you want to work on it.<br>
-<strong>Format:</strong> <code>reopenissue INDEX</code> OR <code>ri INDEX</code></p>
-</div>
-<div class="admonitionblock tip">
+<div class="admonitionblock note">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
+<i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
 <code>INDEX</code> refers to the #INDEX of an issue on github
@@ -833,10 +900,110 @@ An issue can have more than one assignees and labels.
 <div class="ulist">
 <ul>
 <li>
-<p><code>reopenissue 1</code></p>
+<p><code>-issue 17</code></p>
 </li>
 <li>
-<p><code>reopenissue 3</code></p>
+<p><code>cli 17</code></p>
+<div class="paragraph">
+<p>Given below is the execution outcome of the above command</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Issue #17 closed successfully</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="reopening-an-issue-on-github-code-reopenissue-code-or-code-ri-code"><a class="link" href="#reopening-an-issue-on-github-code-reopenissue-code-or-code-ri-code">Reopening an issue on Github: <code>reopenissue</code> OR <code>ri</code></a></h5>
+<div class="paragraph">
+<p>You can reopen a certain issue on github using this command.<br>
+<strong>Format:</strong> <code>reopenissue INDEX</code> OR <code>ri INDEX</code></p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+If you don&#8217;t remember the issue number, you can take a look at the issues by using <code>listissues</code> command.<br>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<code>INDEX</code> refers to the #INDEX of an issue on github
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><strong>Examples:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>reopenissue 17</code></p>
+</li>
+<li>
+<p><code>reopenissue 17</code></p>
+<div class="paragraph">
+<p>Given below is the execution outcome of the above command</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Issue #17 reopened successfully</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="listing-github-issues-code-listissue-code-or-code-lis-code"><a class="link" href="#listing-github-issues-code-listissue-code-or-code-lis-code">Listing github issues: <code>listissue</code> OR <code>lis</code></a></h5>
+<div class="paragraph">
+<p>You can list the github issues using this command.<br>
+<strong>Format:</strong> <code>listissue STATE</code> OR <code>lis STATE</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<code>STATE</code> refers to the state of the issue, i.e OPEN or CLOSED
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><strong>Examples:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>listissue OPEN</code></p>
+</li>
+<li>
+<p><code>lis CLOSED</code></p>
+<div class="paragraph">
+<p>Given below is the execution outcome of the above command</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>All the OPEN issues are being viewed</pre>
+</div>
+</div>
 </li>
 </ul>
 </div>
@@ -846,11 +1013,11 @@ An issue can have more than one assignees and labels.
 <div class="paragraph">
 <p>You can logout of github after logging in.<br></p>
 </div>
-<div class="admonitionblock tip">
+<div class="admonitionblock note">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
+<i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
 You will get an error message if you try to logout before logging in.
@@ -868,6 +1035,14 @@ You will get an error message if you try to logout before logging in.
 </li>
 <li>
 <p><code>glo</code></p>
+<div class="paragraph">
+<p>Given below is the execution outcome of the above command</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>You have successfully logged out of github</pre>
+</div>
+</div>
 </li>
 </ul>
 </div>
@@ -1231,6 +1406,9 @@ Edits the name of the 2nd teammate to be <code>Betsy Crower</code> and clears al
 <p>The extension of the image to upload can only be <em>'jpg'</em>, <em>'jepg'</em>  or <em>'png'</em>.</p>
 </li>
 <li>
+<p>The local path cannot have white space inside.</p>
+</li>
+<li>
 <p>Image to upload will be copied to the contact folder which is inside resources.</p>
 </li>
 </ul>
@@ -1241,8 +1419,21 @@ Edits the name of the 2nd teammate to be <code>Betsy Crower</code> and clears al
 <div class="ulist">
 <ul>
 <li>
-<p><code>upload 1 C:\Users\User\Desktop\profilePhoto.png</code><br>
-Uploads the image with local path <em>'C:\Users\User\profilePhoto.png'</em> as the profile photo of the first person.</p>
+<p><code>upload 1 C:\Users\Livian\Desktop\image.png</code><br>
+Uploads the image with local path <em>'C:\Users\Livian\image.png'</em> as the profile photo of the first person.</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/uploadPhoto.jpg" alt="width:790">
+</div>
+</div>
+<div class="paragraph">
+<p>You will see the following changes when you upload the profile photo successfully:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/uploadSuccess.jpg" alt="width:790">
+</div>
+</div>
 </li>
 </ul>
 </div>
@@ -1539,6 +1730,12 @@ OR <code>ed INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [m/MAJOR] [y/YEAR] [t/TAG]
 <td class="tableblock halign-left valign-top"><p class="tableblock">edit 2 n/James Lee e/jameslee@example.com</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Editissue</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>editissue INDEX [t/TITLE] [b/BODY] [ms/MILESTONE] [a/ASSIGNEE] &#8230;&#8203; [l/label]&#8230;&#8203;</code><br>
+OR <code>edi INDEX [t/TITLE] [b/BODY] [ms/MILESTONE] [a/ASSIGNEE] &#8230;&#8203; [l/label]&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">editissue 2 ti/new title l/bug</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Exit</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>exit</code> OR <code>e</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
@@ -1562,6 +1759,11 @@ OR <code>ed INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [m/MAJOR] [y/YEAR] [t/TAG]
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>List</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>list</code> Or <code>l</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>List issue</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>listissue STATE</code> Or <code>lis STATE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">listissue OPEN</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Log in to Github</strong></p></td>
@@ -1681,7 +1883,7 @@ view exercise</p></td>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 13:52:55 UTC
+Last updated 2018-04-15 17:58:11 UTC
 </div>
 </div>
 </body>
