@@ -35,11 +35,11 @@
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: added <strong>a task list which contains tasks assigned by the lecturers of this module</strong></p>
+<p><strong>Major enhancement</strong>: added <strong>a task list which contains tasks assigned by the lecturers of CS2103/T</strong></p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>What it does:</strong> allows students to view tasks by week, mark each task as completed/pending, view web page of each task through URL and check progress (in fraction and percentage).</p>
+<p><strong>What it does:</strong> allows students to view tasks by week and other filters, mark each task as completed/pending, view web page of each task through URL and check progress (in fraction and percentage).</p>
 </li>
 <li>
 <p><strong>Justification:</strong> this feature solves a significant issue that students faced: they are confused when viewing the collapsible nested list on module website and possibly miss some tasks residing in an inner layer. Also, there are a significant number of tasks each week, which is hard to finish in one go. Thus, they may forget what they have covered when they resume after leaving it for a while. They also cannot tell how far are they away from completing all tasks.</p>
@@ -48,19 +48,26 @@
 <p><strong>Highlights:</strong> This enhancement touches on all 4 components in the code base, which requires a good understanding of the existing architecture of the project prototype. Furthermore, it is implemented with Google Task API and cloud services which requires a lot of exploration. Using external libraries also tests the skills of integrating external resources with current code base.</p>
 </li>
 <li>
-<p><strong>Credits:</strong> Some of the implementation was inspired by the existing code base that has implemented a numerous commands to manage a list of contacts in an address book. The utilization of Google Task API borrows my experience with Google Calendar API when doing an Android application in another project organized by NUS School of Computing called Orbital.</p>
+<p><strong>Credits:</strong> Some of the implementation was inspired by the existing code base that has implemented numerous commands to manage a list of contacts in an address book. The utilization of Google Tasks API borrows my experience with Google Calendar API when doing an Android application in another project organized by NUS School of Computing called Orbital.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>: added multiple fields of person and update all relevant commands. These fields are used in my teammates' enhancement. added a  progress bar to give a graphic and more intuitive view of the level of completeness of tasks in the task list.</p>
+<p><strong>Minor enhancement</strong>: added multiple fields of person and updated all relevant commands. These fields are used in my teammates' enhancement. added a  progress bar to give a graphic and more intuitive view of the level of completeness of tasks in the task list.</p>
 </li>
 <li>
-<p><strong>Code contributed</strong>: [<a href="https://github.com/CS2103JAN2018-T09-B3/main/blob/master/collated/functional/EdwardKSG.md">Functional code</a>] [<a href="https://github.com/CS2103JAN2018-T09-B3/main/blob/master/collated/test/EdwardKSG.md">Test code</a>]</p>
+<p><strong>Code contributed</strong>: [<a href="https://github.com/CS2103JAN2018-T09-B3/main/blob/master/collated/functional/EdwardKSG.md">Functional code</a>] [<a href="https://github.com/CS2103JAN2018-T09-B3/main/blob/master/collated/test/EdwardKSG.md">Test code</a>] [<a href="https://github.com/CS2103JAN2018-T09-B3/main/blob/master/collated/unused/EdwardKSG-unused.md">Unused code</a>]</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Non-collatable: add field and tests: <a href="https://github.com/CS2103JAN2018-T09-B3/main/pull/121">#121</a>, add field and tests: <a href="https://github.com/CS2103JAN2018-T09-B3/main/pull/20">#20</a>, refactor:  <a href="https://github.com/CS2103JAN2018-T09-B3/main/pull/57">#57</a></p>
+</li>
+</ul>
+</div>
 </li>
 <li>
-<p><strong>Other contributions</strong>: did refactor of both code and documentations to fit our new project and hide legacy of the prototype project to make it an independent project.</p>
+<p><strong>Other contributions</strong>: did refactor of code, packages and documentations to fit our new project and hide legacy of the prototype project to make it an independent project.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -68,10 +75,13 @@
 <div class="ulist">
 <ul>
 <li>
+<p>Created team repository</p>
+</li>
+<li>
 <p>Managed issues and pull requests with a wide variety of labels and different milestones.</p>
 </li>
 <li>
-<p>Checked completeness of milestone, closed milestone and made release.</p>
+<p>Checked completeness of milestone, closed milestone and made releases (v1.4, v1.5rc).</p>
 </li>
 </ul>
 </div>
@@ -120,7 +130,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Integrated a <a href="https://developers.google.com/google-apps/tasks/">Google Tasks Java API</a>(com.google.api.services.tasks) to the project <a href="https://github.com/CS2103JAN2018-T09-B3/main">ProgressChecker</a>.</p>
+<p>Integrated a <a href="https://developers.google.com/google-apps/tasks/">Google Tasks Java API</a> to the project <a href="https://github.com/CS2103JAN2018-T09-B3/main">ProgressChecker</a>.</p>
 </li>
 </ul>
 </div>
@@ -145,26 +155,28 @@
 </tr>
 </tbody>
 </table>
-<div class="sect2">
-<h3 id="task-list"><a class="link" href="#task-list">Task List</a></h3>
 <div class="sect3">
-<h4 id="new-todo-list-by-dafault-code-newtasklist-code-or-code-nl-code"><a class="link" href="#new-todo-list-by-dafault-code-newtasklist-code-or-code-nl-code">New TODO list by dafault: <code>newtasklist</code> OR <code>nl</code></a></h4>
+<h4 id="task-list"><a class="link" href="#task-list">Task List</a></h4>
+<div class="sect4">
+<h5 id="add-default-task-list-code-newtasklist-code-or-code-nl-code"><a class="link" href="#add-default-task-list-code-newtasklist-code-or-code-nl-code">Add default task list: <code>newtasklist</code> OR <code>nl</code></a></h5>
 <div class="paragraph">
-<p>You can add the default TODO list to the ProgressChecker and your Google Tasks to prepare for your new week work.<br>
+<p>You can add the default task list to the ProgressChecker and your Google Tasks to prepare for your work.<br>
 <strong>Format:</strong> <code>newtasklist</code> OR <code>nl</code></p>
 </div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-The command requires Internet connection. You may be brought to a login page in your browser. Please do not close the tab without accepting/declining request,
-otherwise the application will hang.
-</td>
-</tr>
-</table>
+<div class="ulist IMPORTANT">
+<ul class="IMPORTANT">
+<li>
+<p>This command should be executed before all other task-related commands</p>
+</li>
+<li>
+<p>The command requires Internet connection. You may be brought to a login page in your browser. Please do not close the tab without accepting/declining request,
+otherwise the application will hang.</p>
+</li>
+<li>
+<p>This command will take a long time (roughly 40s) to load all the tasks. Fortunately, you only need to do this command ONCE in the lifetime of the application.
+Please do not interrupt when this command is executing. If the app is hanging (showing no response), it means it is still processing.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p><strong>Examples:</strong></p>
@@ -180,24 +192,24 @@ otherwise the application will hang.
 </ul>
 </div>
 </div>
-<div class="sect3">
-<h4 id="viewing-the-default-todo-list-code-viewtask-code-or-code-vt-code"><a class="link" href="#viewing-the-default-todo-list-code-viewtask-code-or-code-vt-code">Viewing the default TODO list: <code>viewtask</code> OR <code>vt</code></a></h4>
+<div class="sect4">
+<h5 id="viewing-the-default-task-list-code-viewtask-code-or-code-vt-code"><a class="link" href="#viewing-the-default-task-list-code-viewtask-code-or-code-vt-code">Viewing the default task list: <code>viewtask</code> OR <code>vt</code></a></h5>
 <div class="paragraph">
-<p>You can view the current default TODO list in the browser panel in ProgressChecker.<br>
-<strong>Format:</strong> <code>viewtask</code> OR <code>vt</code></p>
+<p>You can view the current default task list in the browser panel in ProgressChecker. There are several FILTER_KEYWORD:
+"<strong>*</strong>" means to show everything, "sub" or "submission" means to show tasks that need submission, "com" or "compulsory" means to show compulsory tasks,
+an interger ranging from 1 to 13 means to show tasks in that week.<br>
+<strong>Format:</strong> <code>viewtask FILTER_KEYWORD</code> OR <code>vt FILTER_KEYWORD</code></p>
 </div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-The command requires Internet connection. You may be brought to a login page in your browser. Please do not close the tab without accepting/declining request,
-otherwise the application will hang.
-</td>
-</tr>
-</table>
+<div class="ulist IMPORTANT">
+<ul class="IMPORTANT">
+<li>
+<p>You should NOT call this command before calling <code>newtasklist</code> command.</p>
+</li>
+<li>
+<p>The command requires Internet connection. You may be brought to a login page in your browser. Please do not close the tab without accepting/declining request,
+otherwise the application will hang.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p><strong>Examples:</strong></p>
@@ -205,22 +217,29 @@ otherwise the application will hang.
 <div class="ulist">
 <ul>
 <li>
-<p><code>-issue 1</code></p>
+<p><code>viewtask compulsory</code></p>
 </li>
 <li>
-<p><code>cli 3</code></p>
+<p><code>viewtask 3</code></p>
+</li>
+<li>
+<p><code>viewtask sub</code></p>
+</li>
+<li>
+<p><code>vt com</code></p>
+</li>
+<li>
+<p><code>vt *</code></p>
 </li>
 </ul>
 </div>
 </div>
-<div class="sect3">
-<h4 id="completing-a-task-code-complete-code-or-code-ct-code"><a class="link" href="#completing-a-task-code-complete-code-or-code-ct-code">Completing a task: <code>complete</code> OR <code>ct</code></a></h4>
+<div class="sect4">
+<h5 id="completing-a-task-code-complete-code-or-code-ct-code"><a class="link" href="#completing-a-task-code-complete-code-or-code-ct-code">Completing a task: <code>complete</code> OR <code>ct</code></a></h5>
 <div class="paragraph">
-<p>You can mark the task as completed when you finish it.<br>
+<p>You can mark the task as completed when you finish it. You cannot use undo command to undo it, but can use <code>reset INDEX</code> command to obtain the same effect.<br>
 <strong>Format:</strong> <code>complete INDEX</code> OR <code>ct INDEX</code></p>
 </div>
-<div class="exampleblock">
-<div class="content">
 <div class="paragraph">
 <p><strong>Notes:</strong></p>
 </div>
@@ -237,20 +256,16 @@ otherwise the application will hang.
 </li>
 </ul>
 </div>
-</div>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-The command requires Internet connection. You may be brought to a login page in your browser. Please do not close the tab without accepting/declining request,
-otherwise the application will hang.
-</td>
-</tr>
-</table>
+<div class="ulist IMPORTANT">
+<ul class="IMPORTANT">
+<li>
+<p>You should NOT call this command before calling <code>newtasklist</code> command.</p>
+</li>
+<li>
+<p>The command requires Internet connection. You may be brought to a login page in your browser. Please do not close the tab without accepting/declining request,
+otherwise the application will hang.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p><strong>Examples:</strong></p>
@@ -258,22 +273,20 @@ otherwise the application will hang.
 <div class="ulist">
 <ul>
 <li>
-<p><code>complete 3</code></p>
+<p><code>complete 1</code></p>
 </li>
 <li>
-<p><code>ct 3</code></p>
+<p><code>ct 1</code></p>
 </li>
 </ul>
 </div>
 </div>
-<div class="sect3">
-<h4 id="resetting-a-task-as-incompleted-code-reset-code-or-code-rt-code"><a class="link" href="#resetting-a-task-as-incompleted-code-reset-code-or-code-rt-code">Resetting a task as incompleted: <code>reset</code> OR <code>rt</code></a></h4>
+<div class="sect4">
+<h5 id="resetting-a-task-as-not-completed-code-reset-code-or-code-rt-code"><a class="link" href="#resetting-a-task-as-not-completed-code-reset-code-or-code-rt-code">Resetting a task as not completed: <code>reset</code> OR <code>rt</code></a></h5>
 <div class="paragraph">
-<p>You can reset a task as incompleted when you want to work on it.<br>
+<p>You can reset a task as not completed when you marked it as completed by mistake. You cannot use undo command to undo it, but can use <code>complete INDEX</code> command to obtain the same effect.<br>
 <strong>Format:</strong> <code>reset INDEX</code> OR <code>rt INDEX</code></p>
 </div>
-<div class="sidebarblock">
-<div class="content">
 <div class="paragraph">
 <p><strong>Notes:</strong></p>
 </div>
@@ -290,37 +303,81 @@ otherwise the application will hang.
 </li>
 </ul>
 </div>
+<div class="ulist IMPORTANT">
+<ul class="IMPORTANT">
+<li>
+<p>You should NOT call this command before calling <code>newtasklist</code> command.</p>
+</li>
+<li>
+<p>The command requires Internet connection. You may be brought to a login page in your browser. Please do not close the tab without accepting/declining request,
+otherwise the application will hang.</p>
+<div class="literalblock">
+<div class="content">
+<pre>*Examples:*</pre>
 </div>
 </div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-An issue has only 'title' field as compulsory. Rest are all optional.<br>
-An issue can have more than one assignees and labels.
-</td>
-</tr>
-</table>
+</li>
+<li>
+<p><code>reset 1</code></p>
+</li>
+<li>
+<p><code>rt 1</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="open-url-of-a-task-code-goto-code-or-code-go-code"><a class="link" href="#open-url-of-a-task-code-goto-code-or-code-go-code">Open URL of a task: <code>goto</code> OR <code>go</code></a></h5>
+<div class="paragraph">
+<p>You can visit the webpage of a task when you want to see details and work on it.<br>
+<strong>Format:</strong> <code>goto INDEX</code> OR <code>go INDEX</code></p>
 </div>
 <div class="paragraph">
-<p><strong>Examples:</strong></p>
+<p><strong>Notes:</strong></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>+issue ti/complete issue a/johndoe ms/v1.1 b/CS2103T is a software engineering module l/type.task l/CS2103T</code></p>
+<p>You can visit URL of the task with index number <code>INDEX</code> as incompleted.</p>
 </li>
 <li>
-<p><code>+issue ti/TestIssue</code></p>
+<p>The index refers to the index number shown in the most recent listing.</p>
 </li>
 <li>
-<p><code>ci ti/Issue with only body b/test body l/type.test</code></p>
+<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
 </li>
 </ul>
 </div>
+<div class="ulist IMPORTANT">
+<ul class="IMPORTANT">
+<li>
+<p>You should NOT call this command before calling <code>newtasklist</code> command.</p>
+</li>
+<li>
+<p>The command requires Internet connection. You may be brought to a login page in your browser. Please do not close the tab without accepting/declining request,
+otherwise the application will hang.</p>
+<div class="literalblock">
+<div class="content">
+<pre>*Examples:*</pre>
+</div>
+</div>
+</li>
+<li>
+<p><code>goto 1</code></p>
+</li>
+<li>
+<p><code>go 1</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="send-reminder-email-when-a-deadline-is-near-code-coming-in-v2-0-code"><a class="link" href="#send-reminder-email-when-a-deadline-is-near-code-coming-in-v2-0-code">Send reminder email when a deadline is near <code>[coming in v2.0]</code></a></h5>
+
+</div>
+<div class="sect4">
+<h5 id="view-teammates-task-list-and-progress-code-coming-in-v2-0-code"><a class="link" href="#view-teammates-task-list-and-progress-code-coming-in-v2-0-code">View teammates' task list and progress <code>[coming in v2.0]</code></a></h5>
+
 </div>
 </div>
 </div>
@@ -339,43 +396,43 @@ An issue can have more than one assignees and labels.
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="ongoing-add-default-task-command-google-tasks-api-relevant-commands"><a class="link" href="#ongoing-add-default-task-command-google-tasks-api-relevant-commands">[Ongoing] add default task command (Google Tasks API relevant commands)</a></h3>
+<h3 id="tasks"><a class="link" href="#tasks">Tasks</a></h3>
 <div class="sect3">
-<h4 id="current-planned-implementation"><a class="link" href="#current-planned-implementation">Current+Planned Implementation</a></h4>
+<h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
 <div class="paragraph">
-<p>The default LOs and todos for all weeks would be stored as a local file upon which it would be loaded by the <code>StorageManager</code> on start up.</p>
+<p>The default LOs for all weeks would be stored in a local file, which will be loaded as input to create a task list on the
+user&#8217;s Google Account with Google Tasks API.</p>
 </div>
 <div class="paragraph">
-<p>The <em>Sequence Diagram</em> below shows how the components interact for the scenario where the user issues the command <code>newtasklist</code>.</p>
+<p>There are several commands related to tasks, including <code>newtasklist</code> to add and upload the default task list, <code>viewtasklist FILTER_KEYWORD</code>
+to view the default task list with filtering, <code>completetask INDEX</code>/<code>resettask INDEX</code> to mark a task as completed/not completed,
+and <code>goto INDEX</code> to open the URL of a task. As an example, the <em>High Level Sequence Diagram</em> and <em>Sequence Diagram</em> below shows how the components interact
+for the scenario where the user issues the command <code>viewtasklist 5</code>.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/SDforAddDefaultTaskList.png" alt="SDforAddDefaultTaskList" width="800">
+<img src="../images/HighLevelSDforViewTaskListCommand.png" alt="HighLevelSDforViewTaskListCommand" width="800">
 </div>
-<div class="title">Figure 1. Component Interactions for <code>newtasklist</code> Command</div>
+<div class="title">Figure 1. Component Interactions for <code>viewtasklist 5</code> Command (High Level)</div>
 </div>
 <div class="paragraph">
 <p> <br></p>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-This command has no parameter regarding user input. The arguments passed are pre-initialized constant variables stored in the AddDefaultTasksCommand Class itself.
-</td>
-</tr>
-</table>
+<div class="imageblock">
+<div class="content">
+<img src="../images/SDforViewTaskListCommand.png" alt="SDforViewTaskListCommand" width="800">
+</div>
+<div class="title">Figure 2. Component Interactions for <code>viewtasklist 5</code> Command</div>
 </div>
 <div class="paragraph">
 <p> <br></p>
 </div>
 <div class="paragraph">
-<p>We apply Google Tasks API to help us save user tasks data online (there will be cases where data of teammates are needed, thus only local data is not enough).
+<p>We apply Google Tasks API to help us save user tasks data online. This offers back up data which allow our users to recover
+their tasks and status of each task even after uninstalling the application. The task list will be ready to display once the user
+reinstall and open the application.
 To use Google Tasks API, we fist need to register this project on google developer console and retrieve a client credential file (client_id.json) to authorize our project.
-Then, add corresponding dependencies to build.gradle, the JAR files will be downloaded automatically upon project rebuild.</p>
+Then, add corresponding dependencies to build.gradle, the library files will be downloaded automatically upon project rebuild.</p>
 </div>
 <div class="paragraph">
 <p>Here is the code snippet to add dependencies:</p>
@@ -397,27 +454,28 @@ Then, add corresponding dependencies to build.gradle, the JAR files will be down
 </td>
 <td class="content">
 Simply downloading JAR files without editing gradle is not suggested. JARs are not in git thus our co-developers will rely on the dependencies to retrieve the libraries.
+Also, set gradleVersion to 4.6 if it is an older version, otherwise runtime compilation of Google API library will affect Junit tests.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
 <p>We write a program to authorize our project (by loading the aforementioned client credential file), trigger user loggin and build service.
-Note that when users are using ProgressChecker, only the first google task command requires them to log in with their google accounts,
-later other commands that use google tasks api will not trigger user login again. Also, very important, we import the APIs at the beginning of the program.</p>
+Note that when users are using ProgressChecker, only the first tasks command requires them to log in and authorize ProgressChecker to access
+their Google Tasks data with their google accounts.</p>
 </div>
 <div class="paragraph">
-<p>Google Tasks API helps us save time building massive data structures (ie. Tasks, TaskLists, Lists of TaskLists, with many methods and exceptions).
-However, we do have a few classes in the modeling part that further add customized methods which are useful for current commands and even future commands.
+<p>Google Tasks API helps us save time building massive data structures (ie. Tasks, TaskLists, Lists of TaskLists, as well as many methods and exceptions).
+However, we do have a few classes (eg. TaskUtil, TaskListUtil) in the modeling part that further add customized methods which are useful for current commands and even future commands.
 In this way, we avoid repetition of code snippet and having big chunks of import statements in numerous commands.</p>
 </div>
 <div class="paragraph">
-<p>Here is a code snippet that can find a task list by its title (while the native method only finds task by its id which is not memorable):</p>
+<p>Here is a code snippet that can find a task list by its title (while the native method only finds task by its id which is not memorable or even known by our users):</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java"><span class="comment">/**
- * Finds the task list with title {@code String} from the current list of task lists
+ * Finds the task list with title {@code String listTitle} from the user's task lists
  *
  * @param listTitle title of the task list we look for
  * @return the task list instance
@@ -449,39 +507,224 @@ In this way, we avoid repetition of code snippet and having big chunks of import
 <div class="sect3">
 <h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
 <div class="sect4">
-<h5 id="aspect-implementation-of-code-adddefaulttaskscommand-code"><a class="link" href="#aspect-implementation-of-code-adddefaulttaskscommand-code">Aspect: Implementation of <code>AddDefaultTasksCommand</code></a></h5>
+<h5 id="aspect-implementation-of-tasks-commands"><a class="link" href="#aspect-implementation-of-tasks-commands">Aspect: Implementation of tasks commands</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p>Add a new command that extends <code>Command</code>. We do not extend <code>UndoableCommand</code> because updating google tasks online cannot be handled by the undo command.</p>
+<p>All these commands extend <code>Command</code> but not extend <code>UndoableCommand</code>. <code>AddDefaultTasksCommand</code>, <code>CompleteTaskCommand</code> and <code>ResetTaskCommand</code> make
+external changes that update task list in users' Google account, which is out of the scope of undo command. <code>ViewTaskListCommand</code> and
+<code>GoToTaskUrlCommand</code> do not make changes to the data, thus no applicable to undo command.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect4">
-<h5 id="aspect-format-of-add-default-task-list-command"><a class="link" href="#aspect-format-of-add-default-task-list-command">Aspect: Format of add default task list command</a></h5>
+<h5 id="aspect-how-code-adddefaulttaskscommand-code-is-executed"><a class="link" href="#aspect-how-code-adddefaulttaskscommand-code-is-executed">Aspect: How <code>AddDefaultTasksCommand</code> is executed</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p>There is only one command word, without any other argument. Therefore, less parser files are needed to manage altogether. This is very simple and easy to type.</p>
+<p>This command will load the tasks from local storage and add a task list filled with these tasks to the user&#8217;s Google account.</p>
 </li>
 </ul>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Alternative</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pros</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cons</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Find the user&#8217;s Google task list with ID "@default" (this is the default task list in Google Task and not removable). Create a new
+task list and transfer the tasks from @default to the new one. Then change the title of @default to "CS2103 LOs", and add the tasks
+loaded from local storage</strong><br>
+(current choice)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The other tasks commands will only need to refer to the ID "@default" to find the task list, which is faster and more accurate than searching with title (
+as list ID is unique while list title can duplicate and the native API method only supports finding list with ID).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">It requires more steps, thus slower (but fortunately this command should only be executed ONCE in the lifetime of this application).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Create a new list with title "CS2103 LOs", then load and push all tasks from local storage</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Will be a bit faster.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The other task commands will be slower since they will be finding the list with title. The commands may also encounter error if
+there are task list with the same name in the user&#8217;s Google account.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p> <br></p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="aspect-how-the-task-is-added"><a class="link" href="#aspect-how-the-task-is-added">Aspect: How the task is added</a></h5>
+<h5 id="aspect-how-code-viewtasklistcommand-code-is-executed"><a class="link" href="#aspect-how-code-viewtasklistcommand-code-is-executed">Aspect: How <code>ViewTaskListCommand</code> is executed</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p>Authorization with client credential file and user login</p>
-</li>
-<li>
-<p>Create a new task list with default given name and push to user&#8217;s google account</p>
-</li>
-<li>
-<p>Load the local file that contains all the default LOs and todos, parse it, create tasks one by one and add the the previously created task</p>
+<p>This command will load the tasks from task list @default from the user&#8217;s Google account and apply user-specified filter before displaying</p>
 </li>
 </ul>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Alternative</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pros</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cons</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Find the user&#8217;s @default task list and load the whole list. Then apply user-specified filter to select applicable
+tasks to form a new list. The new list will be ready to be displayed</strong><br>
+(current choice)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Easy to implement, well modularized.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">More repetitions of list traversal.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Find the user&#8217;s @default task list and load the whole list. Then apply user-specified filter to select applicable
+   tasks while processing the methods to display it</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Easy to implement.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Might lead to complicated methods to display list (eg. multi-level abstraction).</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p> <br></p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-how-code-completetaskcommand-code-and-code-resettaskcommand-code-is-executed"><a class="link" href="#aspect-how-code-completetaskcommand-code-and-code-resettaskcommand-code-is-executed">Aspect: How <code>CompleteTaskCommand</code> and <code>ResetTaskCommand</code> is executed</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p>This command will set the task with user-input index number as completed/ not completed.</p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Alternative</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pros</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cons</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Find the user&#8217;s @default task list and retrieve the task with user-input index number. Check if it needs update, and update it
+if necessary.</strong><br>
+(current choice)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Easy to implement.</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p> <br></p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-how-code-gototaskurl-code-is-executed"><a class="link" href="#aspect-how-code-gototaskurl-code-is-executed">Aspect: How <code>GoToTaskUrl</code> is executed</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p>This command will open the URL of the task with the user-input index number.</p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Alternative</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pros</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cons</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Find the user&#8217;s @default task list and retrieved the task based on the input index. Get the URL in the task object and open it in
+the browser panel</strong><br>
+(current choice)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Easy to implement.</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>No need for implementation, the user can click the hyperlink while viewing the task list</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No need for implementation.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Not command line based.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p> <br></p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-what-ui-structure-to-show-the-task-list"><a class="link" href="#aspect-what-ui-structure-to-show-the-task-list">Aspect: What UI structure to show the task list</a></h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Alternative</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pros</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cons</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Use a browser panel.</strong><br>
+(current choice)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Can show task list and external websites linked to tasks in the same panel.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Exercise list, issue list and person list are all shown in a list panel. The handling of browser panel and list panel is different,
+which leads to inconsistency.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Use a list panel to display tasks, and a browser panel to display external webpages</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Guarantees consistency between task list, exercise list, issue list and person list.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Takes more space.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p> <br></p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-what-can-we-improve-what-command-can-we-add-in-v2-0"><a class="link" href="#aspect-what-can-we-improve-what-command-can-we-add-in-v2-0">Aspect: What can we improve / what command can we add in v2.0</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p>Send reminder email to the user when a deadline is near</p>
+</li>
+<li>
+<p>Back/Forward the browser panel</p>
+</li>
+<li>
+<p>View teammates' task list and progress (Google Tasks does not support it. Thus, a possible implementation is to sync data
+with the help of Google Drive API. After every transaction with Google Tasks, we retrieve the task list and save in Google Drive.
+Students in the same team will use a shared folder on Google Drive, thus can access each other&#8217;s task list data. ProgressChecker will
+retrieve teammate task list data from the shared folder in Google Drive).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p> <br></p>
 </div>
 </div>
 </div>
@@ -491,7 +734,7 @@ In this way, we avoid repetition of code snippet and having big chunks of import
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-14 22:38:09 UTC
+Last updated 2018-04-15 06:20:08 UTC
 </div>
 </div>
 </body>

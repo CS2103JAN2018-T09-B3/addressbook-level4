@@ -35,14 +35,14 @@
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: added <strong>the ability to view and answer weekly exercises taken from CS2103/T module website</strong></p>
+<p><strong>Major enhancement</strong>: added <strong>the ability to view and answer weekly exercises</strong> taken from CS2103/T module website</p>
 <div class="ulist">
 <ul>
 <li>
 <p><strong>What it does:</strong> allows students to view exercises by week and save their answers down for it. Answers are stored automatically and loaded the next time the software runs.</p>
 </li>
 <li>
-<p><strong>Justification:</strong> this feature solves a significant issue that students faced: they can&#8217;t find the exercises easily in the website, or save their answers down directly for that matter</p>
+<p><strong>Justification:</strong> students face significant issues in finding or saving their exercises answers down in the module website for revision purposes; now they can easily do those with this feature</p>
 </li>
 <li>
 <p><strong>Highlights:</strong> This enhancement touches on all 4 components in the code base. It required an in-depth analysis of the existing architecture on how each components work with one another in order to implement it in an optimal way.</p>
@@ -70,9 +70,6 @@
 <li>
 <p>Managed listing of type.epic and type.stories issues on issue tracker to kickstart the team&#8217;s type.task issues management</p>
 </li>
-<li>
-<p>Tracked and made sure pull requests and their relevant issues are assigned the correct milestone and have been closed accordingly</p>
-</li>
 </ul>
 </div>
 </li>
@@ -97,7 +94,7 @@
 <p>Added prefaces to User and Developer Guide for each section <a href="https://github.com/CS2103JAN2018-T09-B3/main/pull/124">#124</a></p>
 </li>
 <li>
-<p>Contributed to User Stories and Use Cases <a href="https://github.com/CS2103JAN2018-T09-B3/main/pull/76">#76</a> <a href="https://github.com/CS2103JAN2018-T09-B3/main/pull/4">#4</a></p>
+<p>Contributed to User Stories and Use Cases <a href="https://github.com/CS2103JAN2018-T09-B3/main/pull/262">#262</a> <a href="https://github.com/CS2103JAN2018-T09-B3/main/pull/76">#76</a></p>
 </li>
 </ul>
 </div>
@@ -135,11 +132,52 @@
 </tr>
 </tbody>
 </table>
-<div class="sect3">
-<h4 id="answering-an-exercise-code-answer-code-code-since-v1-4r-code"><a class="link" href="#answering-an-exercise-code-answer-code-code-since-v1-4r-code">Answering an exercise : <code>answer</code> <code>[since v1.4r]</code></a></h4>
+<div class="sect4">
+<h5 id="viewing-a-different-tab-code-view-code-or-code-v-code-code-since-v1-5-code"><a class="link" href="#viewing-a-different-tab-code-view-code-or-code-v-code-code-since-v1-5-code">Viewing a different tab : <code>view</code> OR <code>v</code> <code>[since v1.5]</code></a></h5>
+<div class="paragraph">
+<p>You can change the tab view to show either <code>Profile</code>, <code>Task</code>, <code>Exercise</code>, or <code>Issues</code>.<br>
+<strong>Format:</strong> <code>view TYPE</code> OR <code>v TYPE</code><br>
+<span class="image"><img src="../images/TabView.png" alt="TabView" width="600"></span></p>
+</div>
+<div class="paragraph">
+<p>By default, the exercise tab shows exercises from the latest available school week. You can view the exercises in other weeks as well.<br>
+<strong>Format:</strong> <code>view exercise WEEK_NUMBER</code> OR <code>v exercise WEEK_NUMBER</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Notes:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>TYPE</code> refers to the tab names you see in the GUI: <code>profile</code>, <code>task</code>, <code>exercise</code>, or <code>issues</code>.</p>
+</li>
+<li>
+<p><code>WEEK_NUMBER</code> refers to the school week number and <strong>must be a positive integer</strong> in the <strong>range of 2 to 11</strong> <code>2, 3, &#8230;&#8203;, 11</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Examples:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>view task</code></p>
+</li>
+<li>
+<p><code>view exercise</code></p>
+</li>
+<li>
+<p><code>view exercise 5</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="answering-an-exercise-code-answer-code-or-code-ans-code-code-since-v1-4r-code"><a class="link" href="#answering-an-exercise-code-answer-code-or-code-ans-code-code-since-v1-4r-code">Answering an exercise : <code>answer</code> OR <code>ans</code> <code>[since v1.4r]</code></a></h5>
 <div class="paragraph">
 <p>You can answer an exercise based on the question index. Your answer will be saved automatically upon answering.<br>
-<strong>Format:</strong> <code>answer INDEX ANSWER</code></p>
+<strong>Format:</strong> <code>answer QUESTION_INDEX ANSWER</code></p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -148,20 +186,31 @@
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-If you accidentally overwrite your answer to an exercise, you can undo the change as this is an undoable command! Check out the <a href="#undoing-previous-command-code-undo-code-or-code-u-code">undo</a> and <a href="#redoing-the-previously-undone-command-code-redo-code-or-code-r-code">redo</a> commands on how you can achieve this.
+If you accidentally overwrite your answer to an exercise, you can undo the change as this is an undoable command! To find out how you can achieve this, check out the example section for this command or look at the <a href="#undoing-previous-command-code-undo-code-or-code-u-code">undo</a> and <a href="#redoing-the-previously-undone-command-code-redo-code-or-code-r-code">redo</a> commands.
 </td>
 </tr>
 </table>
 </div>
-<div class="exampleblock">
-<div class="content">
 <div class="paragraph">
 <p><strong>Notes:</strong></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>INDEX</code> refers to the question index shown in the GUI and it must be of the format <code>WEEK_NUMBER</code>.<code>SECTION_NUMBER</code>.<code>QUESTION_NUMBER</code>, e.g. 2.1.1, 3.2.5, 6.1.7</p>
+<p><code>QUESTION_INDEX</code> refers to the question index shown in the GUI and it must be of the format <code>WEEK_NUMBER</code>.<code>SECTION_NUMBER</code>.<code>QUESTION_NUMBER</code>, e.g. 2.1.1, 3.2.5, 6.1.7<br>
+<span class="image"><img src="../images/QuestionIndexFormat.png" alt="QuestionIndexFormat" width="360"></span></p>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+You can see if an exercise has been answered by looking at the color of the question index label. The colors are as shown in the image above, where green means it has been answered and red means otherwise.
+</td>
+</tr>
+</table>
+</div>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -177,8 +226,6 @@ An exercise&#8217;s <code>SECTION_NUMBER</code> is directly adopted from <a href
 </li>
 </ul>
 </div>
-</div>
-</div>
 <div class="paragraph">
 <p><strong>Examples:</strong></p>
 </div>
@@ -187,49 +234,14 @@ An exercise&#8217;s <code>SECTION_NUMBER</code> is directly adopted from <a href
 <li>
 <p><code>answer 2.1.1 Procedural languages work at simple data structures and functions level</code></p>
 </li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="viewing-a-different-tab-code-view-code-or-code-v-code"><a class="link" href="#viewing-a-different-tab-code-view-code-or-code-v-code">Viewing a different tab : <code>view</code> OR <code>v</code></a></h4>
-<div class="paragraph">
-<p>You can change the tab view to show either <code>Profile</code>, <code>Task</code>, or <code>Exercise</code>.<br>
-<strong>Format:</strong> <code>view TYPE</code> OR <code>v TYPE</code></p>
-</div>
-<div class="paragraph">
-<p>By default, the exercise tab shows exercises from the latest available school week. You can view the exercises in other weeks as well.<br>
-<strong>Format:</strong> <code>view exercise WEEK_NUMBER</code> OR <code>v exercise WEEK_NUMBER</code></p>
-</div>
-<div class="exampleblock">
-<div class="content">
-<div class="paragraph">
-<p><strong>Notes:</strong></p>
-</div>
-<div class="ulist">
-<ul>
 <li>
-<p><code>TYPE</code> refers to the tab names you see in the GUI: <code>profile</code>, <code>task</code> or <code>exercise</code>.</p>
+<p><code>answer 3.5.2 a. Both are UML diagrams.</code><br>
+<code>u</code> (reverses the <code>answer 3.5.2 a. Both are UML diagrams.</code> command)</p>
 </li>
 <li>
-<p><code>WEEK_NUMBER</code> refers to the school week number and <strong>must be a positive integer</strong> in the <strong>range of 2 to 11</strong> <code>2, 3, &#8230;&#8203;, 11</code></p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p><strong>Examples:</strong></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>view task</code></p>
-</li>
-<li>
-<p><code>view exercise</code></p>
-</li>
-<li>
-<p><code>view exercise 5</code></p>
+<p><code>answer 3.5.2 a. Both are UML diagrams.</code><br>
+<code>u</code> (reverses the <code>answer 3.5.2 a. Both are UML diagrams.</code> command)<br>
+<code>r</code> (reapplies the <code>answer 3.5.2 a. Both are UML diagrams.</code> command)</p>
 </li>
 </ul>
 </div>
@@ -250,20 +262,35 @@ An exercise&#8217;s <code>SECTION_NUMBER</code> is directly adopted from <a href
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="planned-answering-an-exercise"><a class="link" href="#planned-answering-an-exercise">[Planned] Answering an exercise</a></h3>
+<h3 id="toggling-between-tab-views"><a class="link" href="#toggling-between-tab-views">Toggling between tab views</a></h3>
 <div class="sect3">
-<h4 id="planned-implementation"><a class="link" href="#planned-implementation">Planned Implementation</a></h4>
+<h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
 <div class="paragraph">
-<p>The exercises for all weeks would be stored as a local file upon which it would be loaded by the <code>StorageManager</code> on start up.</p>
-</div>
-<div class="paragraph">
-<p>The <em>Sequence Diagram</em> below shows how the components interact for the scenario where the user issues the command <code>answer 2.1.1 a d</code>.</p>
+<p>This command toggles the view between the different type of tabs in the software.<br></p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/SDforAnswerExercise.png" alt="SDforAnswerExercise" width="800">
+<img src="../images/TabView.png" alt="TabView" width="600">
 </div>
-<div class="title">Figure 1. Component interactions for <code>answer 2.1.1 a d</code> command (part 1)</div>
+<div class="title">Figure 1. Reference of the tab view in the software</div>
+</div>
+<div class="paragraph">
+<p> <br></p>
+</div>
+<div class="paragraph">
+<p>It inherits <code>Command</code> and executes on an <em>Event Driven</em> design between the Logic and UI component.</p>
+</div>
+<div class="paragraph">
+<p>Suppose that the user is on the <code>Task</code> tab and wants to toggle to the <code>Exercise</code> tab. The user executes a new <code>Command</code>, <code>view exercise</code>, to switch to the <code>Exercise</code> tab. The <em>Sequence Diagram</em> below shows how the components interact with each other.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/SDforViewExercise.png" alt="SDforViewExercise" width="600">
+</div>
+<div class="title">Figure 2. Logic and UI component interaction for <code>view exercise</code> command (part 1)</div>
+</div>
+<div class="paragraph">
+<p> <br></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -272,38 +299,204 @@ An exercise&#8217;s <code>SECTION_NUMBER</code> is directly adopted from <a href
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Note how the <code>Model</code> simply raises a <code>ExercisesChangedEvent</code> when the exercises data are changed, instead of asking the <code>Storage</code> to save the updates to the hard disk.
+Note how the <code>Logic</code> simply raises a <code>TabLoadChangedEvent</code> when the <code>view</code> command gets executed. The <code>TabLoadChangedEvent</code> is implemented as follows:
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">TabLoadChangedEvent</span> <span class="directive">extends</span> BaseEvent {
+    <span class="directive">public</span> <span class="directive">final</span> <span class="predefined-type">String</span> type;
+
+    <span class="directive">public</span> TabLoadChangedEvent(<span class="predefined-type">String</span> type) {
+        <span class="local-variable">this</span>.type = type;
+    }
+
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> <span class="predefined-type">String</span> toString() {
+        <span class="keyword">return</span> <span class="local-variable">this</span>.getClass().getSimpleName();
+    }
+
+    <span class="directive">public</span> <span class="predefined-type">String</span> getTabName() {
+        <span class="keyword">return</span> type;
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The diagram below shows how the <code>EventCenter</code> reacts to that event, which eventually results in the UI updating to which tab view is to be in selection.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/SDforViewExerciseEventHandling.png" alt="SDforViewExerciseEventHandling" width="600">
+</div>
+<div class="title">Figure 3. Logic and UI component interaction for <code>view exercise</code> command (part 2)</div>
+</div>
+<div class="paragraph">
+<p> <br></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The UI scene&#8217;s elements are automatically populated in <code>MainWindow.java</code> due to using JavaFX FXML Controller. That is, a reference to a particular UI element will be available as long as it has its <code>fx:id</code> specified in <code>MainWindow.fxml</code>.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>The diagram below shows how the <code>EventsCenter</code> reacts to that event, which eventually results in the updates being saved to the hard disk and the exercises display of the UI being updated to reflect the newly given answers.</p>
+<p>The code snippet below shows how the UI component executes the toggling of tab view upon receiving the event change.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Subscribe</span>
+<span class="directive">private</span> <span class="type">void</span> handleTabLoadChangedEvent(TabLoadChangedEvent event) {
+    logger.info(LogsCenter.getEventHandlingLogMessage(event));
+    <span class="predefined-type">SingleSelectionModel</span>&lt;Tab&gt; selectionModel = tabPlaceholder.getSelectionModel();
+    <span class="keyword">switch</span> (event.getTabName()) {
+    <span class="keyword">case</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">profile</span><span class="delimiter">&quot;</span></span>:
+        selectionModel.select(profilePlaceholder);
+        <span class="keyword">break</span>;
+    <span class="keyword">case</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">task</span><span class="delimiter">&quot;</span></span>:
+        selectionModel.select(taskPlaceholder);
+        <span class="keyword">break</span>;
+    <span class="keyword">case</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">exercise</span><span class="delimiter">&quot;</span></span>:
+        selectionModel.select(exercisePlaceholder);
+        <span class="keyword">break</span>;
+    <span class="keyword">case</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">issues</span><span class="delimiter">&quot;</span></span>:
+        selectionModel.select(issuePlaceholder);
+        <span class="keyword">break</span>;
+    <span class="keyword">default</span>:
+        selectionModel.select(selectionModel.getSelectedItem());
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="view-answer-and-save-for-an-exercise"><a class="link" href="#view-answer-and-save-for-an-exercise">View, answer, and save for an exercise</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h4>
+<div class="paragraph">
+<p>This command allows user to answer an exercise based on the question index shown in the software.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/SDforExercisesEventHandling.png" alt="SDforExercisesEventHandling" width="800">
+<img src="../images/QuestionIndexIndication.png" alt="QuestionIndexIndication" width="300">
 </div>
-<div class="title">Figure 2. Component interactions for <code>answer 2.1.1 a d</code> command (part 2)</div>
+<div class="title">Figure 4. Reference of the question index in the software</div>
 </div>
 <div class="paragraph">
 <p> <br></p>
+</div>
+<div class="paragraph">
+<p>It inherits <code>UndoableCommand</code> and executes through all four components in the code base.</p>
+</div>
+<div class="paragraph">
+<p>Suppose that the user wants to answer an exercise with index 11.1.1. The user executes a new <code>Command</code>, <code>ans 11.1.1 a</code>, to answer the exercise. The Sequence Diagram below shows how the components interact with each other.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/SDforAnswerExercise.png" alt="SDforAnswerExercise" width="800">
+</div>
+<div class="title">Figure 5. Component interactions for <code>ans 11.1.1 a</code> command (part 1)</div>
+</div>
+<div class="paragraph">
+<p><br></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Note how the <code>Model</code> simply raises a <code>ProgressCheckerChangedEvent</code> when the ProgressChecker data has been changed, instead of asking the <code>Storage</code> to save the updates to the hard disk.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p> <br></p>
+</div>
+<div class="paragraph">
+<p>The diagram below shows how the <code>EventsCenter</code> reacts to that event, which eventually results in the updates being saved to the hard disk.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/SDforAnswerExerciseEventHandling.png" alt="SDforAnswerExerciseEventHandling" width="800">
+</div>
+<div class="title">Figure 6. Component interactions for <code>ans 11.1.1 a</code> command (part 2)</div>
+</div>
+<div class="paragraph">
+<p> <br></p>
+</div>
+<div class="paragraph">
+<p>Before the <code>Logic</code> component executes the <code>Undoable Command</code> which calls the <code>Model</code>, it prepares the exercise that needs to be updated by going through the internal list of exercises stored in model. The code that searches for the exercise is as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">for</span> (Exercise e : exerciseList) {
+    <span class="keyword">if</span> (e.getQuestionIndex().toString().equals(questionIndex.toString())) {
+        exerciseToEdit = exerciseList.get(exerciseList.indexOf(e));
+        editedExercise = createEditedExercise(exerciseToEdit, studentAnswer);
+        isFound = <span class="predefined-constant">true</span>;
+        <span class="keyword">break</span>;
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The internal list, <code>exerciseList</code>, is implemented as an observable list of filtered exercises in <code>Model</code>. Upon calling the <code>ProgressCheckerChangedEvent</code>, <code>Storage</code> will run <code>saveProgressChecker</code>. Subsequently, to load the data on the next software start up requires parsing of xml data into <code>Model</code>. The following code snippet shows how <code>Storage</code> does so:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> Exercise toModelType() <span class="directive">throws</span> IllegalValueException {
+    <span class="keyword">if</span> (<span class="local-variable">this</span>.questionIndex == <span class="predefined-constant">null</span>) {
+        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalValueException(
+                <span class="predefined-type">String</span>.format(MISSING_FIELD_MESSAGE_FORMAT,
+                QuestionIndex.class.getSimpleName()));
+    }
+    <span class="keyword">if</span> (!QuestionIndex.isValidIndex(<span class="local-variable">this</span>.questionIndex)) {
+        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalValueException(QuestionIndex.MESSAGE_INDEX_CONSTRAINTS);
+    }
+    <span class="directive">final</span> QuestionIndex questionIndex = <span class="keyword">new</span> QuestionIndex(<span class="local-variable">this</span>.questionIndex);
+
+    <span class="keyword">if</span> (<span class="local-variable">this</span>.questionType == <span class="predefined-constant">null</span>) {
+        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalValueException(
+                <span class="predefined-type">String</span>.format(MISSING_FIELD_MESSAGE_FORMAT,
+                QuestionType.class.getSimpleName()));
+    }
+    <span class="keyword">if</span> (!QuestionType.isValidType(<span class="local-variable">this</span>.questionType)) {
+        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalValueException(QuestionType.MESSAGE_TYPE_CONSTRAINTS);
+    }
+    <span class="directive">final</span> QuestionType questionType = <span class="keyword">new</span> QuestionType(<span class="local-variable">this</span>.questionType);
+
+    ...
+
+    return <span class="keyword">new</span> Exercise(questionIndex, questionType, question, studentAnswer, modelAnswer);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Additionally, since it is an observable list, the UI element harboring this list will update any changes made to this list accordingly. In viewing of exercises by week, the list is filtered with predicate as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">model.updateFilteredExerciseList(exercise -&gt; exercise.getQuestionIndex().getWeekNumber()
+                == editedExercise.getQuestionIndex().getWeekNumber());</code></pre>
+</div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
 <div class="sect4">
-<h5 id="aspect-implementation-of-code-answercommand-code"><a class="link" href="#aspect-implementation-of-code-answercommand-code">Aspect: Implementation of <code>AnswerCommand</code></a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p>Add a new command that extends <code>Command</code></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="aspect-format-of-answer-command"><a class="link" href="#aspect-format-of-answer-command">Aspect: Format of answer command</a></h5>
+<h5 id="aspect-viewing-of-exercises-by-week"><a class="link" href="#aspect-viewing-of-exercises-by-week">Aspect: Viewing of exercises by week</a></h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -319,41 +512,21 @@ Note how the <code>Model</code> simply raises a <code>ExercisesChangedEvent</cod
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Use same command formatting <code>answer INDEX ANSWER</code> regardless of the type of question (e.g. text based question, multiple choice question)</strong><br>
-(current choice):</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Less parser files to manage altogether.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Can be unintuitive for users when it comes to answer different question with the same formatting.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Adapt from <code>View Command</code> by adding additional WEEK_NUMBER parameter to type <code>exercise</code></strong><br>
+(current choice)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Not required to create a new command and hence more cohesive with the existing commands as well as one less command for users to learn</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ViewCommandParser</code> requires additional parser check to separate between the <code>View Command</code> that can take in WEEK_NUMBER to one that doesn&#8217;t which might violate SLAP principle</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Use different command based on the type of question (e.g. <code>answert INDEX ANSWER</code> for answering text based question and <code>answerm INDEX CHOICE</code> for answering multiple choice questions)</strong><br>
-(current choice)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Can be clearer on what is being answered for the user.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">More commands and formatting to learn and remember.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Create a new command to list exercises by week</strong><br></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Standalone from existing commands and hence easier to be built upon or removed without consequences</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Creates an extra unnecessary complication for users having to learn a new command when the existing <code>View Command</code> essentially does something similar</p></td>
 </tr>
 </tbody>
 </table>
-<div class="paragraph">
-<p><br></p>
-</div>
 </div>
 <div class="sect4">
-<h5 id="aspect-how-answering-executes"><a class="link" href="#aspect-how-answering-executes">Aspect: How answering executes</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p>Trigger an event change in <code>Logic</code> to signal <code>UI</code> for a change in text display in <code>ExercisesPanel</code></p>
-</li>
-<li>
-<p>Process checking of correctness in <code>Model</code></p>
-</li>
-<li>
-<p>Save data to local file in <code>Storage</code></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="aspect-storing-of-exercise-questions"><a class="link" href="#aspect-storing-of-exercise-questions">Aspect: Storing of exercise questions</a></h5>
+<h5 id="aspect-loading-of-exercises-data-on-fresh-start"><a class="link" href="#aspect-loading-of-exercises-data-on-fresh-start">Aspect:  Loading of exercises data on fresh start</a></h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -369,16 +542,15 @@ Note how the <code>Model</code> simply raises a <code>ExercisesChangedEvent</cod
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Load from a local file</strong><br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Include all exercises data in <code>SampleDataUtil</code> and read from there</strong><br>
 (current choice)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Implementation becomes a lot more modular.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Have to implement extra text file parser and involves <code>Storage</code> that might be seen as extra load to learn for new programmers</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No additional processing required, is easy to modify whenever default data needs to be changed</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Is directly affected by the <code>Clear Command</code> that is meant for the list of <code>Persons</code> which user may not expect it to be for</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Include in <code>UI</code> file together with where the text display is being changed at</strong><br>
-(current choice)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Easier to see where everything is.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Formatting the exercises becomes harder and the implementation is less modular.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Read from stored text file, parse accordingly, and load into software on fresh start</strong><br></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Standalone data and will not be affected by changes made to list of <code>Persons</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Incurs extra overhead when parsing the text file into Java objects</p></td>
 </tr>
 </tbody>
 </table>
@@ -390,7 +562,7 @@ Note how the <code>Model</code> simply raises a <code>ExercisesChangedEvent</cod
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-14 22:38:09 UTC
+Last updated 2018-04-15 06:20:08 UTC
 </div>
 </div>
 </body>
